@@ -90,7 +90,7 @@ Transform:
   m_GameObject: {fileID: 26149694693952280}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -19.83, y: -4.35, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 26149694338598254}
@@ -161,9 +161,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02537fbf858b4da419514d7451e1123f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 0
+  HP: 10
   speed: 3
-  AS: 0.5
+  AS: 3
+  FirstDelay: 0.5
+  LastDelay: 0.5
 --- !u!70 &26149694693952277
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

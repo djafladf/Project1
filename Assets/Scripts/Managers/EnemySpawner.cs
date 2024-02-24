@@ -46,8 +46,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        print("!");
-        Vector3 SpawnPos = GameManager.instance.SpawnArea[Random.Range(0, GameManager.instance.SpawnAreaSize - 1)] + GameManager.instance.player.transform.position;
+        Vector3 SpawnPos = GameManager.instance.SpawnArea[Random.Range(0, GameManager.instance.SpawnAreaSize - 1)] + GameManager.instance.player.Self.position;
 
         for (int i = 0; i < 50; i++)
         {

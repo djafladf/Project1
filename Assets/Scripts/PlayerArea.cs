@@ -20,7 +20,7 @@ public class PlayerArea: MonoBehaviour
     {
         if (collision.CompareTag("Area"))
         {
-            Vector3 PlayerPos = GameManager.instance.player.transform.position;
+            Vector3 PlayerPos = GameManager.instance.player.Self.transform.position;
             Vector3 MyPos = transform.position;
 
             Vector3 Dir = GameManager.instance.player.Dir;
