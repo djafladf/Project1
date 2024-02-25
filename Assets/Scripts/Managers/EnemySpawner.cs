@@ -36,10 +36,10 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnTest()
     {
-        for(int i = 0; i < 50; i++)
+        for(int i = 0; i < 1000; i++)
         {
             SpawnEnemy();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
@@ -48,7 +48,7 @@ public class EnemySpawner : MonoBehaviour
     {
         Vector3 SpawnPos = GameManager.instance.SpawnArea[Random.Range(0, GameManager.instance.SpawnAreaSize - 1)] + GameManager.instance.player.Self.position;
 
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < PoolSize[0]; i++)
         {
             if (!Pool[i, 0].activeSelf)
             {

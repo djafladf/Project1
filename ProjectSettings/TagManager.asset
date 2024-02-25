@@ -7,6 +7,10 @@ TagManager:
   - Map
   - Area
   - Enemy
+  - PlayerAttack
+  - Enemy_Array
+  - Item
+  - GainArea
   layers:
   - Default
   - TransparentFX

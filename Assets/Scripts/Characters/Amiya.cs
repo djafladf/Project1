@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Amiya : PlayerSetting
 {
-    [SerializeField] RangeAttack MyAttack;
+    RangeAttack MyAttack;
     bool WeaponA = true;
     protected override void Awake()
     {
@@ -21,7 +21,7 @@ public class Amiya : PlayerSetting
     IEnumerator Test()
     {
         while(true){
-            MyAttack.Fire();
+            MyAttack.Fire(5);
             yield return new WaitForSeconds(1);
         }
     }

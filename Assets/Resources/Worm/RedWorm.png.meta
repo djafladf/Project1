@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0f3159fbc9a2d94459c19b3c09fe1bb0
+guid: aa3d771f1af276b4896443ee465b4a6e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 20
+  spritePixelsToUnits: 15
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Anim_0
+      name: RedWorm_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 165
+        x: 0
+        y: 78
         width: 36
-        height: 78
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e250f15697f888e428f8d086d9040530
-      internalID: 1200984816
+      spriteID: 8674bc65971e5c04a90efb798e38b793
+      internalID: -21155757
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Anim_1
+      name: RedWorm_1
       rect:
         serializedVersion: 2
-        x: 52
-        y: 165
+        x: 37
+        y: 78
         width: 36
-        height: 78
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f644ed0866318794fb6e7621b8081f61
-      internalID: -1331840467
+      spriteID: db710c11e229593409a2bf3e3ef0114a
+      internalID: 1683397500
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Anim_2
+      name: RedWorm_2
       rect:
         serializedVersion: 2
-        x: 90
-        y: 165
+        x: 74
+        y: 78
         width: 36
-        height: 78
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 782b40d26f4269846adfeb6164fe0768
-      internalID: 87548901
+      spriteID: 0d358677c49ed5d4fb85ee8c7778f270
+      internalID: -2023933056
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Anim_3
+      name: RedWorm_3
       rect:
         serializedVersion: 2
-        x: 126
-        y: 163
+        x: 0
+        y: 51
         width: 36
-        height: 80
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,20 +182,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca1c1a327f3c833498ede8917f092f6a
-      internalID: -2112179719
+      spriteID: 63abc5f2bd02aaa448071e5207cc875a
+      internalID: 2107043345
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Anim_4
+      name: RedWorm_4
       rect:
         serializedVersion: 2
-        x: 9
-        y: 82
-        width: 40
-        height: 78
+        x: 37
+        y: 51
+        width: 36
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,20 +203,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b711b1748f866c548b85e22b303313fe
-      internalID: -1217050940
+      spriteID: 3f6ca667b76b55b4daa8f7e3f549938a
+      internalID: -815473150
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Anim_5
+      name: RedWorm_7
       rect:
         serializedVersion: 2
-        x: 49
-        y: 82
-        width: 40
-        height: 78
+        x: 1
+        y: 18
+        width: 36
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,20 +224,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2af866b01fb3fa64e9f9eec278bd1336
-      internalID: 1934346778
+      spriteID: b38a3cfa403e7c147b2a015772761939
+      internalID: 1031151439
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Anim_6
+      name: RedWorm_8
       rect:
         serializedVersion: 2
-        x: 89
-        y: 82
-        width: 40
-        height: 78
+        x: 42
+        y: 17
+        width: 36
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -245,20 +245,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e560d6760311b584b94652c515b027a9
-      internalID: 1552516464
+      spriteID: 5d4250aee796b7547ab760fbb4ab9219
+      internalID: 1061309247
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Anim_7
+      name: RedWorm_10
       rect:
         serializedVersion: 2
-        x: 129
-        y: 82
-        width: 40
-        height: 78
+        x: 82
+        y: 15
+        width: 28
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -266,92 +266,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65d92aac965c65042a5356f640c9b3f9
-      internalID: 392874577
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Anim_8
-      rect:
-        serializedVersion: 2
-        x: 5
-        y: 0
-        width: 40
-        height: 78
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 69b4c57440abf084a9d6ba5905cc3bda
-      internalID: 1994780152
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Anim_9
-      rect:
-        serializedVersion: 2
-        x: 46
-        y: 0
-        width: 40
-        height: 78
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ba7a14291db9a1d44a38b7d0ab5b2f7c
-      internalID: -613397280
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Anim_10
-      rect:
-        serializedVersion: 2
-        x: 88
-        y: 0
-        width: 40
-        height: 78
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8185db96b9c946a49a641ab000574140
-      internalID: 1408227478
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Anim_11
-      rect:
-        serializedVersion: 2
-        x: 129
-        y: 0
-        width: 40
-        height: 78
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3c775b3e58403be40b6547406b03de89
-      internalID: -102082828
+      spriteID: 7eb0fe67f0ac4ad44b12d924fa1b673f
+      internalID: 1464198015
       vertices: []
       indices: 
       edges: []
@@ -367,18 +283,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Anim_8: 1994780152
-      Anim_10: 1408227478
-      Anim_4: -1217050940
-      Anim_11: -102082828
-      Anim_9: -613397280
-      Anim_5: 1934346778
-      Anim_0: 1200984816
-      Anim_2: 87548901
-      Anim_3: -2112179719
-      Anim_1: -1331840467
-      Anim_7: 392874577
-      Anim_6: 1552516464
+      RedWorm_1: 1683397500
+      RedWorm_8: 1061309247
+      RedWorm_10: 1464198015
+      RedWorm_9: -200148579
+      RedWorm_3: 2107043345
+      RedWorm_0: -21155757
+      RedWorm_7: 1031151439
+      RedWorm_2: -2023933056
+      RedWorm_4: -815473150
+      RedWorm_6: -1760354238
+      RedWorm_5: -1088463567
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

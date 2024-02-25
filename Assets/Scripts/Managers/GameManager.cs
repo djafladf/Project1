@@ -10,14 +10,15 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public Player player;
     public BulletManager BM;
+    public ItemManager IM;
     public Vector3[] SpawnArea;
     public int SpawnAreaSize;
 
     public string PlayerName;
     public int KillCount = 0;
     public int HP = 100;
+    public int MaxHP = 100;
     public int CurLevel = 1;
-    int[] NeedExp;
 
     [SerializeField] TMP_Text Name;
     [SerializeField] TMP_Text Kill;
@@ -44,16 +45,13 @@ public class GameManager : MonoBehaviour
         Face.sprite = Resources.Load<Sprite>($"{PlayerName}\\Head");
 
         // Test
-        NeedExp = new int[100]; NeedExp[0] = 100; ExpSub = 0.01f;
-        for (int j = 1; j < 100; j++) NeedExp[j] = (int)(NeedExp[j] * 1.1);
-
+        ExpSub = 0.05f;
     }
 
     private void FixedUpdate()
     {
         CurTime += Time.fixedDeltaTime;
         Timer.text = string.Format("{0:00}:{1:00}",Mathf.FloorToInt(CurTime/60f),Mathf.FloorToInt(CurTime%60f));
-        ExpUp(1);
     }
 
 
@@ -65,8 +63,23 @@ public class GameManager : MonoBehaviour
         while(cnt >= 1)
         {
             CurLevel++;
+            ExpSub = ExpSub * 0.9f;
             cnt -= 1;
         }
         ExpBar.fillAmount = cnt;
+    }
+
+    public void HpChange(int value)
+    {
+        if (value > 0 && HP < MaxHP) HP++;
+        else if (value < 0 && HP > 0) HP--;
+        Hp.text = $"{HP}";
+    }
+
+    int CurKill = 0;
+    public void KillCountUp(int value)
+    {
+        CurKill += value;
+        Kill.text = $"{CurKill}";
     }
 }

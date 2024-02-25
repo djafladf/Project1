@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Purchasing;
 
@@ -12,30 +13,38 @@ public class RangeAttack : MonoBehaviour
     [SerializeField] LayerMask targetLayer;
     RaycastHit2D[] targets;
 
-    Transform GetNearest()
+    List<Transform> GetNearest(int count)
     {
         targets = Physics2D.CircleCastAll(transform.position, scanRange, Vector2.zero, 0, targetLayer);
-        Transform res = null;
-        float diff = scanRange + 10;
+        List<Transform> res = new List<Transform>(count);
+        List<float> diffs = new List<float>(count);
+        for (int i = 0; i < count; i++) { diffs.Add(scanRange + 10); res.Add(null); }
         foreach(RaycastHit2D target in targets)
         {
             float curDiff = Vector3.Distance(transform.position, target.transform.position);
-            if(curDiff < diff)
+            for (int i = 0; i < count; i++)
             {
-                diff = curDiff;
-                res = target.transform;
+                if (curDiff < diffs[i])
+                {
+                    res.Insert(i, target.transform);
+                    res.RemoveAt(count);
+                    diffs.Insert(i, curDiff);
+                    diffs.RemoveAt(count);
+                    break;
+                }
             }
         }
 
         return res;
     }
 
-    public void Fire()
+    public void Fire(int count)
     {
-        Transform Target = GetNearest();
-        if (Target != null)
+        List<Transform> Target = GetNearest(count);
+        foreach(var k in Target)
         {
-            GameManager.instance.BM.MakeBullet(transform,(Target.position - transform.position).normalized,5);
+            if (k == null) break;
+            GameManager.instance.BM.MakeBullet(transform, (k.position - transform.position).normalized, 5);
         }
     }
 }
