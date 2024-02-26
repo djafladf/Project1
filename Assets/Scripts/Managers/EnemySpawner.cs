@@ -36,7 +36,7 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnTest()
     {
-        for(int i = 0; i < 1000; i++)
+        for(int i = 0; i < 10000; i++)
         {
             SpawnEnemy();
             yield return new WaitForSeconds(0.1f);

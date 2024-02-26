@@ -1,0 +1,40 @@
+{
+  "Items": [
+    {
+      "id": 0,
+      "name": "링고짱",
+      "description": "코스트 회복 속도 50% 증가",
+      "extra": "모든 소원을 이뤄준다는 전설의 사과일지도?",
+      "attributes": {
+        "cost": 50
+      }
+    },
+    {
+      "id": 1,
+      "name": "네잎클로버 화석",
+      "description": "소장품 선택지 1개 증가",
+      "extra": "가혹한 환경에도 살아남은 작은 희망의 상징",
+      "attributes": {
+        "special": 0
+      }
+    },
+    {
+      "id": 3,
+      "name": "의료 환경 분석 장치",
+      "description": "SP 회복 속도 1 증가",
+      "extra": "오리지늄을 매개로 방대한 정보를 저장할 수 있는 장치.<size=20>하지만 그 대가는...</size>",
+      "attributes": {
+        "sp": 1
+      }
+    },
+    {
+      "id": 4,
+      "name": "재판관의 등불",
+      "description": "아이템 획득 범위 50% 증가",
+      "extra": "어느 재판관의 등불.\n등불이 비추는 길은 희망인가 절망인가.",
+      "attributes": {
+        "pickup": 50
+      }
+    }
+  ]
+}

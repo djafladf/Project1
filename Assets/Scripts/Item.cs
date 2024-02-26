@@ -42,9 +42,7 @@ public class Item : MonoBehaviour
             switch (type)
             {
                 case 0: GameManager.instance.ExpUp(amount); break;
-                case 1: break;
-                case 2: break;
-                case 3: break;
+                default: GameManager.instance.GoodsUp(type-1,amount); break;
             }
         }
     }

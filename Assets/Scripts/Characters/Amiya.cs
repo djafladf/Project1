@@ -22,7 +22,7 @@ public class Amiya : PlayerSetting
     {
         while(true){
             MyAttack.Fire(5);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
