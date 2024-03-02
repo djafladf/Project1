@@ -11,6 +11,8 @@ TagManager:
   - Enemy_Array
   - Item
   - GainArea
+  - TeamArray
+  - EnemyAttack
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Water
   - UI
   - Enem
-  - 
+  - Team
   - 
   - 
   - 

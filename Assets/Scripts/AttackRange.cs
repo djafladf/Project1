@@ -5,19 +5,34 @@ using UnityEngine;
 public class AttackRange : MonoBehaviour
 {
     Enemy enemy;
+    PlayerSetting player;
+    bool IsPlayer;
+
 
     private void Awake()
     {
-        if (CompareTag("Enemy_Array")) enemy = GetComponentInParent<Enemy>();
+        if (CompareTag("Enemy_Array"))
+        {
+            IsPlayer = false;
+            enemy = GetComponentInParent<Enemy>();
+        }
+        else if(CompareTag("TeamArray"))
+        {
+            IsPlayer = true;
+            player = GetComponentInParent<PlayerSetting>();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (CompareTag("Enemy_Array") && collision.CompareTag("Player")) enemy.BeginAttack = true;
+        if (!IsPlayer && collision.CompareTag("Player"))
+        {
+            enemy.BeginAttack = true; enemy.Target = collision.transform;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (CompareTag("Enemy_Array") && collision.CompareTag("Player")) enemy.BeginAttack = false;
+        if (!IsPlayer && collision.CompareTag("Player")) enemy.BeginAttack = false;
     }
 }

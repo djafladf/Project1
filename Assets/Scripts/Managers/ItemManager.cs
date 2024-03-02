@@ -42,25 +42,25 @@ public class ItemManager : MonoBehaviour
         {
             // If Over MaxItem Num. FIFO
             int First = CreatedTiming[0]; CreatedTiming.RemoveAt(0);
-            Ran = Random.Range(0, 11);
+            Ran = Random.Range(0, 101);
             Items[First].SetActive(true);
             Items[First].transform.position = pos.position;
-            if (Ran < 7)
+            if (Ran < 45)
             {
                 ItemsSprite[First].sprite = EXPs[0];
                 ItemsScript[First].Init(0,1);
             }
-            else if (Ran < 9)
+            else if (Ran < 70)
             {
                 ItemsSprite[First].sprite = Money;
                 ItemsScript[First].Init(1, 10);
             }
-            else if (Ran < 10)
+            else if (Ran < 72)
             {
                 ItemsSprite[First].sprite = Stone;
                 ItemsScript[First].Init(2, 1);
             }
-            else
+            else if (Ran < 74)
             {
                 ItemsSprite[First].sprite = RefinedStone;
                 ItemsScript[First].Init(3, 10);
@@ -73,25 +73,25 @@ public class ItemManager : MonoBehaviour
             {
                 if (!Items[i].activeSelf)
                 {
-                    Ran = Random.Range(0, 11);
+                    Ran = Random.Range(0, 101);
                     Items[i].SetActive(true);
                     Items[i].transform.position = pos.position;
-                    if (Ran < 7)
+                    if (Ran < 45)
                     {
                         ItemsSprite[i].sprite = EXPs[0];
                         ItemsScript[i].Init(0, 1);
                     }
-                    else if (Ran < 9)
+                    else if (Ran < 70)
                     {
                         ItemsSprite[i].sprite = Money;
                         ItemsScript[i].Init(1, 10);
                     }
-                    else if (Ran < 10)
+                    else if (Ran < 72)
                     {
                         ItemsSprite[i].sprite = Stone;
                         ItemsScript[i].Init(2, 1);
                     }
-                    else
+                    else if (Ran < 74)
                     {
                         ItemsSprite[i].sprite = RefinedStone;
                         ItemsScript[i].Init(3, 10);
@@ -105,6 +105,7 @@ public class ItemManager : MonoBehaviour
 
     public void RemoveItem(int ind)
     {
-        CreatedTiming.RemoveAt(CreatedTiming.IndexOf(ind));
+        int l = CreatedTiming.IndexOf(ind);
+        if(l != -1) CreatedTiming.RemoveAt(CreatedTiming.IndexOf(ind));
     }
 }

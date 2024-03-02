@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -11,6 +10,8 @@ public class EnemySpawner : MonoBehaviour
     
     Enemy[,] EnemyScripts;
 
+    [SerializeField] double MaxAble = 20;
+    [HideInInspector] public int CurActive = 0;
 
     private void Awake()
     {
@@ -34,12 +35,15 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(SpawnTest());
     }
 
+    float j = 0;
+    WaitForSeconds SpawnGap = new WaitForSeconds(0.1f);
     IEnumerator SpawnTest()
     {
-        for(int i = 0; i < 10000; i++)
+        while (true)
         {
-            SpawnEnemy();
-            yield return new WaitForSeconds(0.1f);
+            if (CurActive < MaxAble) { SpawnEnemy(); CurActive++; }
+            yield return SpawnGap;
+            j += 0.1f; if (j >= 10) { MaxAble *= 1.05; j = 0; }
         }
     }
 

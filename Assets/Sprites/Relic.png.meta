@@ -108,10 +108,10 @@ TextureImporter:
       name: Relic_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 111
-        width: 42
-        height: 42
+        x: 7
+        y: 12
+        width: 44
+        height: 53
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -129,10 +129,10 @@ TextureImporter:
       name: Relic_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 109
+        x: 65
+        y: 12
         width: 44
-        height: 43
+        height: 53
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,10 +150,10 @@ TextureImporter:
       name: Relic_2
       rect:
         serializedVersion: 2
-        x: 6
-        y: 64
-        width: 34
-        height: 34
+        x: 131
+        y: 12
+        width: 44
+        height: 53
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,10 +171,10 @@ TextureImporter:
       name: Relic_3
       rect:
         serializedVersion: 2
-        x: 67
-        y: 63
-        width: 36
-        height: 36
+        x: 195
+        y: 12
+        width: 45
+        height: 53
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,6 +184,27 @@ TextureImporter:
       bones: []
       spriteID: 2a9b0d66b77322d40aaa68ed50c4597d
       internalID: -992475636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Relic_4
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 14
+        width: 44
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fab38327791ac654cbb65427a882ae29
+      internalID: 1968841842
       vertices: []
       indices: 
       edges: []
@@ -202,6 +223,7 @@ TextureImporter:
       Relic_2: 678453624
       Relic_0: -397090658
       Relic_1: 2051444606
+      Relic_4: 1968841842
       Relic_3: -992475636
   spritePackingTag: 
   pSDRemoveMatte: 0

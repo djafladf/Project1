@@ -18,5 +18,13 @@ public class Player : ScriptableObject
     [NonSerialized] public Rigidbody2D rigid;
     [NonSerialized] public SpriteRenderer sprite;
     [NonSerialized] public Animator anim;
+
+    [NonSerialized] public int MaxHP;
+    [NonSerialized] public int CurHP;
+    [NonSerialized] public int MaxSP;
+    [NonSerialized] public int CurSP;
+    [NonSerialized] public int Defense;
+
+    [NonSerialized] public OperatorBatchTool MyBatch;
 }
 

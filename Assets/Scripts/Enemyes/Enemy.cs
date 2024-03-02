@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Enemy : MonoBehaviour
     Rigidbody2D rigid;
     [NonSerialized] public bool MoveAble = true;
     [NonSerialized] public bool BeginAttack = false;
+    [NonSerialized] public Transform Target = null;
 
     Coroutine AttackType;
 
@@ -55,26 +57,27 @@ public class Enemy : MonoBehaviour
         if (BeginAttack && AttackType == null) AttackType = StartCoroutine(Attack()); 
     }
 
+
+    Vector3 TargetPos;
     protected virtual IEnumerator Attack()
     {
+        anim.SetBool("IsAttack", true);
         while (BeginAttack)
         {
-            anim.SetBool("IsAttack", true);
+            TargetPos = Target.position;
             yield return WFS_Attack_First;
-            MoveAble = false;
-            AttackMethod();
             yield return WFS_Attack_Last;
-            anim.SetBool("IsAttack", false);
-            MoveAble = true;
             if (!BeginAttack) break;
             yield return WFS_Attack_AS;
         }
+        anim.SetBool("IsAttack", false);
+        MoveAble = true;
         AttackType = null;
     }
 
     protected virtual void AttackMethod()
     {
-        if (BeginAttack) GameManager.instance.HpChange(-1);
+        if (BeginAttack) GameManager.instance.BM.MakeBullet(1,0,0.1f, TargetPos, Vector2.zero, 0, null, true, true);
     }
 
     bool CanHit = true;
@@ -84,17 +87,16 @@ public class Enemy : MonoBehaviour
         if (!IsLive) return;
         if (collision.CompareTag("PlayerAttack") && CanHit)
         {
-            HP--;
+            int GetDamage = 0;
+            for (int i = 0; i < collision.name.Length; i++) GetDamage = GetDamage * 10 + (collision.name[i] - '0');
+            GameManager.instance.DM.MakeDamage(GetDamage,transform);
+            HP -= GetDamage;
             if (HP <= 0)
             {
                 anim.SetTrigger("Dead");
                 spriteRenderer.sortingOrder = 2;
-                IsLive = false;
-                CanHit = false;
-                GameManager.instance.KillCountUp(1);
-                transform.position = rigid.position;
-                rigid.simulated = false;
-                coll.enabled = false;
+                IsLive = false; CanHit = false; rigid.simulated = false; coll.enabled = false;
+                GameManager.instance.KillCountUp(1); GameManager.instance.ES.CurActive--;
             }
             else StartCoroutine(NockBack_Enemy());
         }
@@ -114,7 +116,7 @@ public class Enemy : MonoBehaviour
     {
         CanHit = false;
         spriteRenderer.color = Color.gray;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         spriteRenderer.color = Color.white;
         CanHit = true;
     }
