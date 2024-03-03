@@ -104,7 +104,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1539120915725065943
 Transform:
   m_ObjectHideFlags: 0
@@ -245,6 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 11400000, guid: ce6549f2e780e1a42906fa66e1b4a9d9, type: 2}
   Weapon: {fileID: 0}
+  CharName: Cutter
   IsPlayer: 0
   HasWeapon: 0
   targetLayer:

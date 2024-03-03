@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Services.Analytics.Platform;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
 
@@ -47,20 +48,21 @@ public class ItemManager : MonoBehaviour
             Items[First].transform.position = pos.position;
             if (Ran < 45)
             {
-                ItemsSprite[First].sprite = EXPs[0];
-                ItemsScript[First].Init(0,1);
+                int CurExp = Mathf.FloorToInt(GameManager.instance.CurTime*0.002f);
+                ItemsSprite[First].sprite = EXPs[CurExp];
+                ItemsScript[First].Init(0, (int)Mathf.Pow(2 ,CurExp));
             }
             else if (Ran < 70)
             {
                 ItemsSprite[First].sprite = Money;
                 ItemsScript[First].Init(1, 10);
             }
-            else if (Ran < 72)
+            else if (Ran < 71)
             {
                 ItemsSprite[First].sprite = Stone;
                 ItemsScript[First].Init(2, 1);
             }
-            else if (Ran < 74)
+            else if (Ran < 72)
             {
                 ItemsSprite[First].sprite = RefinedStone;
                 ItemsScript[First].Init(3, 10);
@@ -78,20 +80,21 @@ public class ItemManager : MonoBehaviour
                     Items[i].transform.position = pos.position;
                     if (Ran < 45)
                     {
-                        ItemsSprite[i].sprite = EXPs[0];
-                        ItemsScript[i].Init(0, 1);
+                        int CurExp = Mathf.FloorToInt(GameManager.instance.CurTime * 0.002f);
+                        ItemsSprite[i].sprite = EXPs[CurExp];
+                        ItemsScript[i].Init(0, (int)Mathf.Pow(2, CurExp+1));
                     }
                     else if (Ran < 70)
                     {
                         ItemsSprite[i].sprite = Money;
                         ItemsScript[i].Init(1, 10);
                     }
-                    else if (Ran < 72)
+                    else if (Ran < 71)
                     {
                         ItemsSprite[i].sprite = Stone;
                         ItemsScript[i].Init(2, 1);
                     }
-                    else if (Ran < 74)
+                    else if (Ran < 71)
                     {
                         ItemsSprite[i].sprite = RefinedStone;
                         ItemsScript[i].Init(3, 10);

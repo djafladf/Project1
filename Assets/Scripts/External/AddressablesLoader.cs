@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -27,15 +26,35 @@ public static class AddressablesLoader
             if (LoadNames.Contains(locations[i].PrimaryKey)) createdObjs.Add(await Addressables.InstantiateAsync(locations[i], parent).Task as T);
         }
     }
-    // 왠진 모르겠지만 Image는 상위 Object가 필요 없음.
-    public static async Task InitAssets<T>(string[] LoadNames, string label,bool IsIm, List<T> createdObjs) where T : Object
+    /// <summary>
+    /// Load
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="LoadNames"></param>
+    /// <param name="label"></param>
+    /// <param name="createdObjs"> 결과를 담아 둘 List </param>
+    /// <param name="S"> 해당 결과의 순서를 알려줍니다.</param>
+    /// <param name="tp"> List의 타입(Sprite 오류 방지용) </param>
+    /// <returns></returns>
+    public static async Task InitAssets<T>(string[] LoadNames, string label, List<T> createdObjs,List<int> S, System.Type tp) where T : Object
     {
         var handle = await Addressables.LoadResourceLocationsAsync(label).Task;
-        int i = 0;
         foreach(var k in handle)
         {
-            if (IsIm && i++ % 2 == 0) continue;
-            if (LoadNames.Contains(k.PrimaryKey)) createdObjs.Add(await Addressables.LoadAssetAsync<T>(k).Task);
+            if (LoadNames.Contains(k.PrimaryKey) && tp == k.ResourceType)
+            {
+                S.Add(System.Array.IndexOf(LoadNames,k.PrimaryKey));
+                createdObjs.Add(await Addressables.LoadAssetAsync<T>(k).Task);
+            }
+        }
+    }
+
+    public static async Task InitAssets<T>(string[] batchName, string label, List<T> createdObjs, System.Type tp) where T : Object
+    {
+        var handle = await Addressables.LoadResourceLocationsAsync(label).Task;
+        foreach (var k in handle)
+        {
+            if (batchName.Contains(k.PrimaryKey) && tp == k.ResourceType) createdObjs.Add(await Addressables.LoadAssetAsync<T>(k).Task);
         }
     }
 }

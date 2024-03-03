@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ public class PlayerSetting : MonoBehaviour
 {
     [SerializeField] protected Player player;
     [SerializeField] protected GameObject Weapon;
+    [SerializeField] protected string CharName;
     public bool IsPlayer;
     public bool HasWeapon;
     [NonSerialized] public bool CanMove = true;
@@ -22,9 +24,12 @@ public class PlayerSetting : MonoBehaviour
         player.rigid = GetComponent<Rigidbody2D>();
         player.anim = GetComponent<Animator>();
         player.sprite = GetComponent<SpriteRenderer>();
+        player.WeaponLevel = 1;
         CanMove = IsPlayer;
-
+        GameManager.instance.WeaponLevelUps.Add(WeaponLevelUp);
+        GameManager.instance.OwnerList.Add(CharName);
         AttackInf = new AttackType();
+        if (!IsPlayer) gameObject.SetActive(false);
     }
 
     protected virtual void FixedUpdate()
@@ -75,6 +80,10 @@ public class PlayerSetting : MonoBehaviour
     protected virtual void WeaponAnim()
     {
 
+    }
+    protected virtual int WeaponLevelUp()
+    {
+        return -1;
     }
 
 

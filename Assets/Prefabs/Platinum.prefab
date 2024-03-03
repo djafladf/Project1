@@ -96,15 +96,15 @@ GameObject:
   - component: {fileID: 1539120915725065942}
   - component: {fileID: 1539120915725065941}
   - component: {fileID: 1539120915725065940}
-  - component: {fileID: 1539120915725065936}
   - component: {fileID: 2290820357640159078}
+  - component: {fileID: 2093236535252301168}
   m_Layer: 7
   m_Name: Platinum
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1539120915725065943
 Transform:
   m_ObjectHideFlags: 0
@@ -211,7 +211,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!95 &1539120915725065936
+--- !u!114 &2290820357640159078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539120915725065947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca5ff4408484734eaf465196236d6bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 11400000, guid: 3c979b9010ba6614a917ef4419a2d7db, type: 2}
+  Weapon: {fileID: 0}
+  CharName: Platinum
+  IsPlayer: 0
+  HasWeapon: 0
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  scanRange: 10
+  AttackRange: 10
+  HPBar: {fileID: 7163458484042679873}
+  SPBar: {fileID: 3078291144399386686}
+  Bullet: {fileID: -795090753, guid: be71ba11fdd30ef4a8cdedfbee810110, type: 3}
+--- !u!95 &2093236535252301168
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -231,30 +256,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2290820357640159078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1539120915725065947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ca5ff4408484734eaf465196236d6bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 11400000, guid: 3c979b9010ba6614a917ef4419a2d7db, type: 2}
-  Weapon: {fileID: 0}
-  IsPlayer: 0
-  HasWeapon: 0
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  scanRange: 10
-  AttackRange: 10
-  HPBar: {fileID: 7163458484042679873}
-  SPBar: {fileID: 3078291144399386686}
-  Bullet: {fileID: -795090753, guid: be71ba11fdd30ef4a8cdedfbee810110, type: 3}
 --- !u!1 &2521899829976201539
 GameObject:
   m_ObjectHideFlags: 0

@@ -734,7 +734,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142277260}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12, y: -7, z: 0}
+  m_LocalPosition: {x: -12.02, y: -7.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19954,16 +19954,18 @@ MonoBehaviour:
   BatchObj: {fileID: 616336021}
   BatchTool: {fileID: 3912573949135925946, guid: a68c008adff3fcc4ebc74dc72934979d, type: 3}
   BatchName:
+  - Amiya
   - Cutter
   - Platinum
   PlayerStatus:
+    FuncInd: 0
     attack: 10
     defense: 5
     cost: 10
     sp: 1
-    pickup: 1
+    pickup: 20
     selection: 3
-    exp: 0.2
+    exp: 5
   ToolField: {fileID: 1988953923}
   Selections:
   - {fileID: 404996495}
@@ -20722,6 +20724,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 11400000, guid: 7ea27ab6edfe0064a8e9fe4225b4b160, type: 2}
   Weapon: {fileID: 435528504}
+  CharName: Amiya
   IsPlayer: 1
   HasWeapon: 1
   targetLayer:
@@ -20734,7 +20737,6 @@ MonoBehaviour:
   Bullet1: {fileID: 460339736, guid: 3984b5283fed96042ba7d23b68de06f2, type: 3}
   Bullet2: {fileID: 1781649026, guid: 3984b5283fed96042ba7d23b68de06f2, type: 3}
   Weapon2: {fileID: 695431074}
-  WeaponLevel: 1
 --- !u!114 &1525225323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20963,7 +20965,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1607778389
 Transform:
   m_ObjectHideFlags: 0

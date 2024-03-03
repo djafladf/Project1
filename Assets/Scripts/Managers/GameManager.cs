@@ -7,7 +7,6 @@ using System;
 using TMPro;
 using System.Collections.Generic;
 using Object = UnityEngine.Object;
-using System.Runtime.CompilerServices;
 
 public class AttackType
 {
@@ -57,7 +56,7 @@ public class GameManager : MonoBehaviour
 
     int[] GoodsCount;
 
-    float CurTime = 0;
+    [NonSerialized] public float CurTime = 0;
     
 
     string DirPath;
@@ -95,14 +94,18 @@ public class GameManager : MonoBehaviour
     }
 
     [SerializeField] Transform ToolField;
+    List<Player> Players;
     private async void MakeBatch()
     {
         List<GameObject> Prefs = new List<GameObject>();
         List<Sprite> Heads = new List<Sprite>();
-        List<Player> Players = new List<Player>();
+        Players = new List<Player>();
+        List<Sprite> Weapons = new List<Sprite>();
         await AddressablesLoader.InitAssets(BatchName, "Operator_Pref", Prefs, BatchField);
-        await AddressablesLoader.InitAssets(BatchName, "Operator_Head", true, Heads);
-        await AddressablesLoader.InitAssets(BatchName, "Operator_Scriptable", false, Players);
+        await AddressablesLoader.InitAssets(BatchName, "Operator_Head", Heads, typeof(Sprite));
+        await AddressablesLoader.InitAssets(BatchName, "Operator_Scriptable", Players, typeof(Player));
+        await AddressablesLoader.InitAssets(BatchName, "Operator_Weapons", Weapons, typeof(Sprite));
+
         Vector3 StartPos = new Vector3(150 - Prefs.Count * 150, 0, 0); Vector3 Cnt = new Vector3(250, 0, 0);
         for(int i = 0; i< Prefs.Count; i++)
         {
@@ -112,6 +115,16 @@ public class GameManager : MonoBehaviour
             k.Init(Prefs[i], Heads[i]);
             Tool.GetComponent<RectTransform>().anchoredPosition = StartPos + Cnt * i;
             Tool.SetActive(true);
+        }
+        for(int i  = 0; i < Weapons.Count; i++)
+        {
+            Item j = new Item();
+            j.id = ItemInfo.Items.Count;
+            j.attributes = new attribute();
+            j.IsWeapon = true;
+            j.attributes.FuncInd = OwnerList.IndexOf(Weapons[i].name);
+            ItemInfo.Items.Add(j);
+            ItemSprites.Add(Weapons[i]);
         }
     }
 
@@ -126,7 +139,7 @@ public class GameManager : MonoBehaviour
         CurTime += Time.fixedDeltaTime;
         if(CurCost<99)CurCost += Time.fixedDeltaTime * PlayerStatus.cost;
         Cost.text = $"{(int)CurCost}";
-        Timer.text = string.Format("{0:00}:{1:00}",Mathf.FloorToInt(CurTime/60f),Mathf.FloorToInt(CurTime%60f));
+        Timer.text = string.Format("{0:00}:{1:00}",Mathf.FloorToInt(CurTime*0.017f),Mathf.FloorToInt(CurTime%60));
     }
 
     // About Items  -----------------------------------------------------------------------------------------
@@ -144,12 +157,15 @@ public class GameManager : MonoBehaviour
         public string name;
         public string description;
         public string extra;
+        public bool IsWeapon;
         public attribute attributes;
+        public Item() { IsWeapon = false; }
     }
 
     [Serializable]
     public class attribute
     {
+        public int FuncInd;
         public float attack;
         public float defense;
         public float cost;
@@ -176,7 +192,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     LevelUpSelection[] Selections;
     [SerializeField]
-    Sprite[] ItemSprites;
+    List<Sprite> ItemSprites;
+
+    [NonSerialized]
+    public List<Func<int>> WeaponLevelUps = new List<Func<int>>();
+    [NonSerialized]
+    public List<string> OwnerList = new List<String>();
 
     void LevelUpEvent()
     {
@@ -206,12 +227,20 @@ public class GameManager : MonoBehaviour
     public void ApplySelection(int ind)
     {
         Item cnt = ItemInfo.Items[ind];
-        attribute cntatt = cnt.attributes;
-        ItemInfo.Selected.Add(cnt); ItemInfo.Items.RemoveAt(ind);
-        PlayerStatus.attack *= cntatt.attack; PlayerStatus.cost *= cntatt.cost; PlayerStatus.defense *= cntatt.defense; PlayerStatus.pickup *= cntatt.pickup;
-        PlayerStatus.selection += cntatt.selection; PlayerStatus.exp *= cntatt.exp; PlayerStatus.sp += cntatt.sp;
-        if (cntatt.pickup != 1) GetArea.localScale *= PlayerStatus.pickup;
-        if (ItemInfo.Items.Count == 0) PlayerStatus.exp = 0;
+        if (!cnt.IsWeapon)
+        {
+            attribute cntatt = cnt.attributes;
+            ItemInfo.Selected.Add(cnt); ItemInfo.Items.RemoveAt(ind);
+            PlayerStatus.attack *= cntatt.attack; PlayerStatus.cost *= cntatt.cost; PlayerStatus.defense *= cntatt.defense; PlayerStatus.pickup *= cntatt.pickup;
+            PlayerStatus.selection += cntatt.selection; PlayerStatus.exp *= cntatt.exp; PlayerStatus.sp += cntatt.sp;
+            if (cntatt.pickup != 1) GetArea.localScale *= PlayerStatus.pickup;
+            if (ItemInfo.Items.Count == 0) PlayerStatus.exp = 0;
+        }
+        else
+        {
+            int j = WeaponLevelUps[cnt.attributes.FuncInd]();
+            if (j == 7) ItemInfo.Items.RemoveAt(ind);
+        }
     }
 
     // --------------------------------------------------------------------------------------------
@@ -249,6 +278,7 @@ public class GameManager : MonoBehaviour
     float ExpSub;
     public void ExpUp(int value)
     {
+        if (ItemInfo.Items.Count == 0) return;
         float cnt = ExpBar.fillAmount + ExpSub * value * PlayerStatus.exp;
 
         while(cnt >= 1)
@@ -290,9 +320,9 @@ public class GameManager : MonoBehaviour
         await AddressablesLoader.InitAssets(name, _label, _createdObjs, _parent);
     }
 
-    private async void GetExternalAsset<T>(string[] name, string _label, bool IsIm, List<T> _createdObjs) where T : Object
+    /*private async void GetExternalAsset<T>(string[] name, string _label, bool IsIm, List<T> _createdObjs) where T : Object
     {
         await AddressablesLoader.InitAssets(name, _label,IsIm, _createdObjs);
     }
-
+*/
 }

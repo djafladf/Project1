@@ -43,6 +43,10 @@ MonoBehaviour:
   m_GroupAssets:
   - {fileID: 11400000, guid: 8617c0c5977c78d4c9fd9a56afddd935, type: 2}
   - {fileID: 11400000, guid: ab0ac6d6ab1c6d845b290552bdaadbb6, type: 2}
+  - {fileID: 11400000, guid: 1f8659f37c5f56a489044b3f317d7363, type: 2}
+  - {fileID: 11400000, guid: fdcb23e7a626bdd4ab29af43863862a2, type: 2}
+  - {fileID: 11400000, guid: 7fcaf4a81497e444cb1e5a0a435cce04, type: 2}
+  - {fileID: 11400000, guid: 6e40cf6f4b9f5504588b66903ab38c61, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -87,6 +91,7 @@ MonoBehaviour:
     - Operator_Head
     - Operator_Pref
     - Operator_Scriptable
+    - Operator_Weapons
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: e9e27c998b2766140840635f6d52756d, type: 2}

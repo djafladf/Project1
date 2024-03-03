@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 42f362e404a800d4d871fcc4e02fb575
+guid: afc365defca659444a484194207b75ed
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 40
+  spritePixelsToUnits: 18
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,43 +105,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Weapons_0
+      name: Batch_0
       rect:
         serializedVersion: 2
-        x: 29
-        y: 74
-        width: 172
-        height: 172
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 5
+        y: 7
+        width: 64
+        height: 179
+      alignment: 9
+      pivot: {x: 0.61245364, y: 0.49939993}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d018d3e6f25adea46a3011400bfe6a0f
-      internalID: 468443768
+      spriteID: d8e4cc7db065d2549b36675beaaa5b33
+      internalID: 373016457
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Weapons_1
+      name: Batch_1
       rect:
         serializedVersion: 2
-        x: 260
-        y: 171
-        width: 8
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 76
+        y: 7
+        width: 72
+        height: 86
+      alignment: 9
+      pivot: {x: 0.63284177, y: 0.51623595}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb40741f7cb45f64bb63ef948e0c79a1
-      internalID: -932836298
+      spriteID: 3fb2db98eb6f95b44886f3285cdbe898
+      internalID: 1424381272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Batch_6
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 7
+        width: 53
+        height: 88
+      alignment: 9
+      pivot: {x: 0.53531086, y: 0.52658325}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 242f80442e2d95c41b546b7a31558b44
+      internalID: -1910127034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Batch_8
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 7
+        width: 51
+        height: 88
+      alignment: 9
+      pivot: {x: 0.5000006, y: 0.5044306}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d0a525eba3c2a441aaff64007c4b8d2
+      internalID: -1500154514
       vertices: []
       indices: 
       edges: []
@@ -157,8 +199,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Weapons_0: 468443768
-      Weapons_1: -932836298
+      Batch_5: 224475713
+      Batch_7: 2093835396
+      Batch_8: -1500154514
+      Batch_3: 23095685
+      Batch_4: -713633868
+      Batch_1: 1424381272
+      Batch_0: 373016457
+      Batch_6: -1910127034
+      Batch_2: 263970006
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
