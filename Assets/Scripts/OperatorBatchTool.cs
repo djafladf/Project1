@@ -43,12 +43,12 @@ public class OperatorBatchTool : Buttons
 
     private void FixedUpdate()
     {
-        if(GameManager.instance.CurCost >= Cost && !CanBatch)
+        if(GameManager.instance.UM.CurCost >= Cost && !CanBatch)
         {
             CanBatch = true;
             OutPointer(null);
         }
-        else if (GameManager.instance.CurCost < Cost && CanBatch)
+        else if (GameManager.instance.UM.CurCost < Cost && CanBatch)
         {
             OnPointer(null);
             CanBatch = false;
@@ -59,7 +59,7 @@ public class OperatorBatchTool : Buttons
     protected override void Click(PointerEventData Data)
     {
         if (OnUse || !CanBatch) return;
-        if (GameManager.instance.BatchRequest(ObjectImage, this))
+        if (GameManager.instance.UM.BatchRequest(ObjectImage, this))
         {
             OnUse = true;
             face.color += CCnt;
@@ -92,7 +92,7 @@ public class OperatorBatchTool : Buttons
         state.gameObject.SetActive(true);
         ReBatchIm.gameObject.SetActive(false);
         ReBatchText.gameObject.SetActive(false);
-        GameManager.instance.EndBatch(Cost);
+        GameManager.instance.UM.EndBatch(Cost);
     }
 
     public void ReBatch()

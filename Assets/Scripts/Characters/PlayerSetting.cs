@@ -190,7 +190,7 @@ public class PlayerSetting : MonoBehaviour
 
             HPBar.localScale -= Vector3.right * GetDamage / player.MaxHP;
             if (HPBar.localScale.x > 1) HPBar.localScale = Vector3.one;
-            if (IsPlayer) GameManager.instance.HpChange();
+            if (IsPlayer) GameManager.instance.UM.HpChange();
             else {  player.MyBatch.HPBar.fillAmount = (float)player.CurHP / (float)player.MaxHP;  }
             if(player.CurHP > 0 && GetDamage > 0) StartCoroutine(NockBack_Player());
         }

@@ -36,7 +36,7 @@ public class LevelUpSelection : Buttons
         Extra.color -= Sub;
         Image.color += Sub;
         Time.timeScale = 1;
-        GameManager.instance.ApplySelection(ind);
+        GameManager.instance.UM.ApplySelection(ind);
         transform.parent.parent.gameObject.SetActive(false);
     }
 

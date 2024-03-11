@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
     Vector3[] SpawnArea;
     int SpawnAreaSize;
 
-    private void Awake()
+    public void Init()
     {
         // Set Spawn Area
         SpawnArea = new Vector3[68];
@@ -38,11 +38,6 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        
-    }
-
-    private void Start()
-    {
         StartCoroutine(SpawnTest());
     }
 

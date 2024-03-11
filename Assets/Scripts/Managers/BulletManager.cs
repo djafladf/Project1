@@ -9,7 +9,7 @@ public class BulletManager : MonoBehaviour
     Bullet[] BulletScripts;
     SpriteRenderer[] BulletSprites;
 
-    private void Awake()
+    public void Init()
     {
         Bullets = new GameObject[100];
         BulletScripts = new Bullet[100];

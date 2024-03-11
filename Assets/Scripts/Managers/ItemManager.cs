@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Services.Analytics.Platform;
+using System.Threading.Tasks;
 using UnityEngine;
-using static UnityEngine.ParticleSystem;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class ItemManager : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class ItemManager : MonoBehaviour
     Item[] ItemsScript;
     List<int> CreatedTiming;
 
-    private void Awake()
+    public void Init()
     {
         CreatedTiming = new List<int>();
         Items = new GameObject[MaxItem];
@@ -52,7 +53,7 @@ public class ItemManager : MonoBehaviour
             }
             if (Ran < 45)
             {
-                int CurExp = Mathf.FloorToInt(GameManager.instance.CurTime*0.002f);
+                int CurExp = Mathf.FloorToInt(GameManager.instance.UM.CurTime*0.002f);
                 ItemsSprite[First].sprite = EXPs[CurExp];
                 ItemsScript[First].Init(0, (int)Mathf.Pow(2 ,CurExp));
             }
@@ -86,7 +87,7 @@ public class ItemManager : MonoBehaviour
                     }
                     if (Ran < 45)
                     {
-                        int CurExp = Mathf.FloorToInt(GameManager.instance.CurTime * 0.002f);
+                        int CurExp = Mathf.FloorToInt(GameManager.instance.UM.CurTime * 0.002f);
                         ItemsSprite[i].sprite = EXPs[CurExp];
                         ItemsScript[i].Init(0, (int)Mathf.Pow(2, CurExp+1));
                     }
@@ -116,4 +117,6 @@ public class ItemManager : MonoBehaviour
         int l = CreatedTiming.IndexOf(ind);
         if(l != -1) CreatedTiming.RemoveAt(CreatedTiming.IndexOf(ind));
     }
+
+    
 }

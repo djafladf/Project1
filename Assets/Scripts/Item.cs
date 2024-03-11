@@ -41,8 +41,8 @@ public class Item : MonoBehaviour
             GameManager.instance.IM.RemoveItem(poolInd);
             switch (type)
             {
-                case 0: GameManager.instance.ExpUp(amount); break;
-                default: GameManager.instance.GoodsUp(type-1,amount); break;
+                case 0: GameManager.instance.UM.ExpUp(amount); break;
+                default: GameManager.instance.UM.GoodsUp(type-1,amount); break;
             }
         }
     }

@@ -28,6 +28,19 @@ public static class AddressablesLoader
             if (LoadNames.Contains(locations[i].PrimaryKey)) createdObjs[j] = await Addressables.InstantiateAsync(locations[i], parent).Task as T;
         }
     }
+
+    public static async Task InitAssets<T>(string label, List<T> createdObjs, System.Type tp) where T : Object
+    {
+        var handle = await Addressables.LoadResourceLocationsAsync(label).Task;
+        foreach (var k in handle)
+        {
+            if (tp == k.ResourceType)
+            {
+                createdObjs.Add(await Addressables.LoadAssetAsync<T>(k).Task);
+            }
+        }
+    }
+
     /// <summary>
     /// Load
     /// </summary>

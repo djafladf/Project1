@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DamageManager : MonoBehaviour
@@ -9,7 +7,7 @@ public class DamageManager : MonoBehaviour
     DamageObject[] DamageScripts;
     public int MaxDamage = 100;
 
-    private void Awake()
+    public void Init()
     {
         DamageObjects = new GameObject[MaxDamage];
         DamageScripts = new DamageObject[MaxDamage];

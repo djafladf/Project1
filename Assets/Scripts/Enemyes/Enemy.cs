@@ -96,7 +96,7 @@ public class Enemy : MonoBehaviour
                 anim.SetTrigger("Dead");
                 spriteRenderer.sortingOrder = 1;
                 IsLive = false; CanHit = false; rigid.simulated = false; coll.enabled = false;
-                GameManager.instance.KillCountUp(1); GameManager.instance.ES.CurActive--;
+                GameManager.instance.UM.KillCountUp(1); GameManager.instance.ES.CurActive--;
             }
             else if(GetDamage > 0) StartCoroutine(NockBack_Enemy());
         }
