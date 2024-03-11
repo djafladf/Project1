@@ -16,7 +16,10 @@ public class Amiya : PlayerSetting
         player.WeaponSprite = player.Weapon.GetComponent<SpriteRenderer>();
         player.CurHP = player.MaxHP = 150;
         player.CurSP = player.MaxSP = 30;
+        
         BulletIm = Bullet1;
+
+        for (int i = 0; i < 6; i++) WeaponLevelUp();
     }
 
     private void Start()
@@ -60,15 +63,14 @@ public class Amiya : PlayerSetting
             case 1: Penetrate++; break;
             case 2: DamageRatio += 0.5f; break;
             case 3: ProjNum++; break;
-            case 4: Penetrate++; break;
-            case 5: DamageRatio += 0.5f; break;
+            case 4: Penetrate+=2; break;
+            case 5: DamageRatio += 1f; break;
             case 6:
                 ProjNum *= 2;
                 BulletIm = Bullet2;
                 Weapon2.SetActive(true);
                 break;
         }
-        print($"{CharName} : {player.WeaponLevel}");
         return player.WeaponLevel;
     }
 }

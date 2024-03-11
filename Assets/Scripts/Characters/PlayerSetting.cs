@@ -9,10 +9,13 @@ using UnityEngine.InputSystem;
 public class PlayerSetting : MonoBehaviour
 {
     [SerializeField] protected Player player;
+    [SerializeField] protected Sprite WeaponIm;
+    [SerializeField] protected Sprite HeadIm;
     [SerializeField] protected GameObject Weapon;
-    [SerializeField] protected string CharName;
     public bool IsPlayer;
+    public bool IsSummon = false;
     public bool HasWeapon;
+
     [NonSerialized] public bool CanMove = true;
     protected virtual void Awake()
     {
@@ -20,17 +23,20 @@ public class PlayerSetting : MonoBehaviour
         { 
             player.Weapon = Weapon; player.WeaponPos = player.Weapon.transform.localPosition; player.FlipWeaponPos = new Vector3(-player.WeaponPos.x, player.WeaponPos.y);
         }
+        IsPlayer = player.IsPlayer;
         player.Self = transform;
         player.rigid = GetComponent<Rigidbody2D>();
         player.anim = GetComponent<Animator>();
         player.sprite = GetComponent<SpriteRenderer>();
         player.WeaponLevel = 1;
         CanMove = IsPlayer;
-        GameManager.instance.WeaponLevelUps.Add(WeaponLevelUp);
-        GameManager.instance.OwnerList.Add(CharName);
+
+        if(!IsSummon) GameManager.instance.RequestOfWeapon(WeaponLevelUp, player.Id);
+
         AttackInf = new AttackType();
-        if (!IsPlayer) gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
+
 
     protected virtual void FixedUpdate()
     {
@@ -40,13 +46,12 @@ public class PlayerSetting : MonoBehaviour
             if (!IsPlayer)
             {
                 TargetPos = GetNearest(scanRange);
-                if (TargetPos != null) player.Dir = (TargetPos.position - transform.position).normalized;
-                else player.Dir = Vector2.zero;
-
-                if (AttackCor == null)
+                if (TargetPos != null)
                 {
-                    AttackCor = StartCoroutine(Attack());
+                    if (Vector3.Distance(transform.position, TargetPos.position) <= AttackRange) Attack();
+                    player.Dir = (TargetPos.position - transform.position).normalized;  
                 }
+                else player.Dir = Vector2.zero;
             }
             Vector2 nextVec = player.Dir * player.speed * Time.fixedDeltaTime;
             if (nextVec.Equals(Vector2.zero))
@@ -55,7 +60,6 @@ public class PlayerSetting : MonoBehaviour
             }
             else
             {
-                player.anim.SetBool("IsWalk", true);
                 if (player.Dir.x > 0 && !player.sprite.flipX)
                 {
                     player.sprite.flipX = true;
@@ -66,7 +70,8 @@ public class PlayerSetting : MonoBehaviour
                     player.sprite.flipX = false;
                     if (HasWeapon) player.Weapon.transform.localPosition = player.WeaponPos;
                 }
-                if(AttackCor == null) player.rigid.MovePosition(player.rigid.position + nextVec);
+                player.anim.SetBool("IsWalk", true);
+                player.rigid.MovePosition(player.rigid.position + nextVec);
             }
             WeaponAnim();
         } 
@@ -75,7 +80,6 @@ public class PlayerSetting : MonoBehaviour
     protected virtual void OnMove(InputValue value)
     {
         player.Dir = value.Get<Vector2>();
-        player.anim.SetBool("IsWalk", true);
     }
     protected virtual void WeaponAnim()
     {
@@ -95,7 +99,6 @@ public class PlayerSetting : MonoBehaviour
 
     Transform GetNearest(float Range)
     {
-        if (!CanMove) { return null; }
         RaycastHit2D[] targets = Physics2D.CircleCastAll(transform.position, Range, Vector2.zero, 0, targetLayer);
         float diffs = scanRange + 10;
         Transform res = null;
@@ -112,23 +115,45 @@ public class PlayerSetting : MonoBehaviour
     }
 
     protected AttackType AttackInf;
-    [SerializeField] float AttackRange;
-    Coroutine AttackCor = null;
+    [SerializeField] protected float AttackRange;
     protected Transform AttackTarget = null;
 
-    protected virtual IEnumerator Attack()
+    protected virtual void Attack()
     {
         player.anim.SetBool("IsAttack", true);
-        AttackTarget = GetNearest(AttackRange);
         CanMove = false;
-        while (AttackTarget != null)
+    }
+
+    protected virtual void AttackEnd()
+    {
+        TargetPos = GetNearest(scanRange);
+        if (TargetPos != null)
         {
-            yield return new WaitForSeconds(AttackInf.AttackSpeed);
-            AttackTarget = GetNearest(AttackRange);
+            if (Vector3.Distance(transform.position, TargetPos.position) > AttackRange)
+            {
+                player.anim.SetBool("IsAttack", false);
+                CanMove = true;
+            }
+            else
+            {
+                player.Dir = (TargetPos.position - transform.position).normalized;
+                if (player.Dir.x > 0 && !player.sprite.flipX)
+                {
+                    player.sprite.flipX = true;
+                    if (HasWeapon) player.Weapon.transform.localPosition = player.FlipWeaponPos;
+                }
+                else if (player.Dir.x < 0 && player.sprite.flipX)
+                {
+                    player.sprite.flipX = false;
+                    if (HasWeapon) player.Weapon.transform.localPosition = player.WeaponPos;
+                }
+            }
         }
-        player.anim.SetBool("IsAttack", false);
-        CanMove = true;
-        AttackCor = null;
+        else
+        {
+            player.anim.SetBool("IsAttack", false);
+            CanMove = true;
+        }
     }
 
     protected virtual void AttackMethod()
@@ -136,7 +161,7 @@ public class PlayerSetting : MonoBehaviour
 
     }
 
-    void EndBatch()
+    protected virtual void EndBatch()
     {
         CanMove = true;
     }
@@ -149,8 +174,8 @@ public class PlayerSetting : MonoBehaviour
     {
         if (collision.CompareTag("EnemyAttack") && CanHit)
         {
-            int GetDamage = 0;
-            for (int i = 0; i < collision.name.Length; i++) GetDamage = GetDamage * 10 + (collision.name[i] - '0');
+            
+            int GetDamage = int.Parse(collision.name);
             player.CurHP -= GetDamage;
             if (player.CurHP > player.MaxHP) player.CurHP = player.MaxHP;
             else if (player.CurHP <= 0)
@@ -164,9 +189,10 @@ public class PlayerSetting : MonoBehaviour
             }
 
             HPBar.localScale -= Vector3.right * GetDamage / player.MaxHP;
+            if (HPBar.localScale.x > 1) HPBar.localScale = Vector3.one;
             if (IsPlayer) GameManager.instance.HpChange();
             else {  player.MyBatch.HPBar.fillAmount = (float)player.CurHP / (float)player.MaxHP;  }
-            if(player.CurHP > 0) StartCoroutine(NockBack_Player());
+            if(player.CurHP > 0 && GetDamage > 0) StartCoroutine(NockBack_Player());
         }
     }
 
@@ -196,9 +222,11 @@ public class PlayerSetting : MonoBehaviour
         if (!IsPlayer)
         {
             player.anim.SetBool("IsAttack", false);
-            AttackCor = null;
-            player.MyBatch.HPBar.fillAmount = 1;
-            player.MyBatch.SPBar.fillAmount = 0;
+            if (!IsSummon)
+            {
+                player.MyBatch.HPBar.fillAmount = 1;
+                player.MyBatch.SPBar.fillAmount = 0;
+            }
         }
     }
 }

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "NewPlayer", menuName = "ScriptableObjects/Player")]
 public class Player : ScriptableObject
 {
+    [NonSerialized] public bool IsPlayer = false;
+
     [NonSerialized] public Transform Self;
     [NonSerialized] public Vector2 Dir;
     [SerializeField] public float speed;
@@ -25,6 +27,7 @@ public class Player : ScriptableObject
     [NonSerialized] public int CurSP;
     [NonSerialized] public int Defense;
     [NonSerialized] public int WeaponLevel;
+    [NonSerialized] public int Id;
 
     [NonSerialized] public OperatorBatchTool MyBatch;
 }

@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Operator_Weapon
+  m_EditorClassIdentifier: 
+  m_GroupName: Operator_Weapon
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 435352fa75937094fb029bee04b4254a
+  m_SerializeEntries:
+  - m_GUID: 684ab65b882f5eb46b5cadc810765a88
+    m_Address: Amiya
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Operator_Weapons
+    - Operator_Weapon
+  - m_GUID: cda25d51d558d844aac0ad2d2b834f2e
+    m_Address: Cutter
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Operator_Weapons
+    - Operator_Weapon
+  - m_GUID: 81e7fe9c0cc83c942b13df50e3e76468
+    m_Address: Platinum
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Operator_Weapons
+    - Operator_Weapon
+  - m_GUID: 032f33d188c4f354f9fd2f5664047d4b
+    m_Address: Wafarin
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Operator_Weapon
+  - m_GUID: fecaa0b96f51f6842925098fd8ed2d8f
+    m_Address: Rosmontis
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Operator_Weapon
+  - m_GUID: 78ade0e3d2215c74280d608ad0a38b28
+    m_Address: Kazemaru
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Operator_Weapon
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: cc440d98b8634f3449b1aae4fa894063, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: dc3937f2f1fb9834d84c5314016b99ac, type: 2}
+    - {fileID: 11400000, guid: 11125ea0171af0044a0cfd74a45978cd, type: 2}

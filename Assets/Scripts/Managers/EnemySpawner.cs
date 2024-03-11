@@ -13,11 +13,22 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] double MaxAble = 20;
     [HideInInspector] public int CurActive = 0;
 
+    Vector3[] SpawnArea;
+    int SpawnAreaSize;
+
     private void Awake()
     {
+        // Set Spawn Area
+        SpawnArea = new Vector3[68];
+        SpawnAreaSize = SpawnArea.Length;
+        int i = 0;
+        for (int x = -20; x <= 20; x+=2) SpawnArea[i++] = new Vector3(x, 12,0);
+        for (int x = 12; x >= -12; x-=2) { SpawnArea[i++] = new Vector3(-20, x,0); SpawnArea[i++] = new Vector3(20, x,0); }
+        for (int x = -20; x <= 20; x+=2) SpawnArea[i++] = new Vector3(x, -12,0);
+
         EnemyScripts = new Enemy[100, EnemyTypes.Length];
         Pool = new GameObject[100, EnemyTypes.Length];
-        for(int i = 0; i < EnemyTypes.Length; i++)
+        for(i = 0; i < EnemyTypes.Length; i++)
         {
             for(int y = 0; y < PoolSize[i]; y++)
             {
@@ -50,16 +61,23 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        Vector3 SpawnPos = GameManager.instance.SpawnArea[Random.Range(0, GameManager.instance.SpawnAreaSize - 1)] + GameManager.instance.player.Self.position;
+        Vector3 SpawnPos = SpawnArea[Random.Range(0, SpawnAreaSize- 1)] + GameManager.instance.player.Self.position;
 
         for (int i = 0; i < PoolSize[0]; i++)
         {
             if (!Pool[i, 0].activeSelf)
             {
-                Pool[i, 0].SetActive(true);
                 Pool[i, 0].transform.position = SpawnPos;
+                Pool[i, 0].SetActive(true);
                 break;
             }
         }
+    }
+
+    int BatchCall = 0;
+    public Vector3 ReBatchCall()
+    {
+        if (BatchCall >= SpawnArea.Length) BatchCall = 0;
+        return SpawnArea[BatchCall++];
     }
 }

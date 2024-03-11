@@ -44,8 +44,12 @@ public class ItemManager : MonoBehaviour
             // If Over MaxItem Num. FIFO
             int First = CreatedTiming[0]; CreatedTiming.RemoveAt(0);
             Ran = Random.Range(0, 101);
-            Items[First].SetActive(true);
-            Items[First].transform.position = pos.position;
+            if (Ran < 72)
+            {
+                CreatedTiming.Add(First);
+                Items[First].SetActive(true);
+                Items[First].transform.position = pos.position;
+            }
             if (Ran < 45)
             {
                 int CurExp = Mathf.FloorToInt(GameManager.instance.CurTime*0.002f);
@@ -67,8 +71,6 @@ public class ItemManager : MonoBehaviour
                 ItemsSprite[First].sprite = RefinedStone;
                 ItemsScript[First].Init(3, 10);
             }
-
-            CreatedTiming.Add(First);
         }
         else
             for(int i = 0; i < MaxItem; i++)
@@ -76,8 +78,12 @@ public class ItemManager : MonoBehaviour
                 if (!Items[i].activeSelf)
                 {
                     Ran = Random.Range(0, 101);
-                    Items[i].SetActive(true);
-                    Items[i].transform.position = pos.position;
+                    if (Ran < 72)
+                    {
+                        CreatedTiming.Add(i);
+                        Items[i].SetActive(true);
+                        Items[i].transform.position = pos.position;
+                    }
                     if (Ran < 45)
                     {
                         int CurExp = Mathf.FloorToInt(GameManager.instance.CurTime * 0.002f);
@@ -94,14 +100,13 @@ public class ItemManager : MonoBehaviour
                         ItemsSprite[i].sprite = Stone;
                         ItemsScript[i].Init(2, 1);
                     }
-                    else if (Ran < 71)
+                    else if (Ran < 72)
                     {
                         ItemsSprite[i].sprite = RefinedStone;
                         ItemsScript[i].Init(3, 10);
                     }
 
-                    CreatedTiming.Add(i);
-                    return;
+                    break;
                 }
             }
     }

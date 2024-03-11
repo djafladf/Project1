@@ -47,6 +47,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fdcb23e7a626bdd4ab29af43863862a2, type: 2}
   - {fileID: 11400000, guid: 7fcaf4a81497e444cb1e5a0a435cce04, type: 2}
   - {fileID: 11400000, guid: 6e40cf6f4b9f5504588b66903ab38c61, type: 2}
+  - {fileID: 11400000, guid: 96fc3afdc71a47644af9dce1ea18b104, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -88,10 +89,11 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - ETC
+    - Operator_Weapon
+    - Operator_Scriptable
     - Operator_Head
     - Operator_Pref
-    - Operator_Scriptable
-    - Operator_Weapons
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: e9e27c998b2766140840635f6d52756d, type: 2}

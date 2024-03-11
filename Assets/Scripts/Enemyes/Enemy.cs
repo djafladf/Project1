@@ -94,11 +94,11 @@ public class Enemy : MonoBehaviour
             if (HP <= 0)
             {
                 anim.SetTrigger("Dead");
-                spriteRenderer.sortingOrder = 2;
+                spriteRenderer.sortingOrder = 1;
                 IsLive = false; CanHit = false; rigid.simulated = false; coll.enabled = false;
                 GameManager.instance.KillCountUp(1); GameManager.instance.ES.CurActive--;
             }
-            else StartCoroutine(NockBack_Enemy());
+            else if(GetDamage > 0) StartCoroutine(NockBack_Enemy());
         }
     }
 
@@ -107,7 +107,7 @@ public class Enemy : MonoBehaviour
         if (!IsLive) return;
         if (collision.CompareTag("Area"))
         {
-            transform.position = GameManager.instance.player.Self.transform.position * 1.8f - transform.position * 0.8f;
+            transform.position = GameManager.instance.player.Self.position + GameManager.instance.ES.ReBatchCall();
         }
     }
 
@@ -141,6 +141,6 @@ public class Enemy : MonoBehaviour
         coll.enabled = true;
         HP = MaxHP;
         IsLive = true;
-        spriteRenderer.sortingOrder = 5;
+        spriteRenderer.sortingOrder = 2;
     }
 }

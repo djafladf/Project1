@@ -3,7 +3,9 @@
     {
       "id": 0,
       "name": "링고짱",
-      "description": "코스트 회복 속도 50% 증가",
+      "description": [
+        "코스트 회복 속도 50% 증가"
+      ],
       "extra": "모든 소원을 이뤄준다는 전설의 사과일지도?",
       "attributes": {
         "cost": 1.5
@@ -12,7 +14,9 @@
     {
       "id": 1,
       "name": "네잎클로버 화석",
-      "description": "소장품 선택지 1개 증가",
+      "description": [
+        "소장품 선택지 1개 증가"
+      ],
       "extra": "가혹한 환경에도 살아남은 작은 희망의 상징",
       "attributes": {
         "selection": 1
@@ -21,16 +25,20 @@
     {
       "id": 2,
       "name": "의료 환경 분석 장치",
-      "description": "SP 회복 속도 1 증가",
-      "extra": "오리지늄을 매개로 방대한 정보를 저장할 수 있는 장치.\n<size=20>하지만 그 대가는...</size>",
+      "description": [
+        "SP 회복 속도 1 증가"
+      ],
+      "extra": "오리지늄 안에는 방대한 양의 정보가 있다고 한다.\n그 정보를 사람의 두뇌에 넣는다면 어떨까?",
       "attributes": {
         "sp": 1
       }
     },
     {
       "id": 3,
-      "name" : "재판관의 등불",
-      "description" : "아이템 획득 범위 50% 증가",
+      "name": "재판관의 등불",
+      "description": [
+        "아이템 획득 범위 50% 증가"
+      ],
       "extra": "어느 재판관의 등불.\n등불이 비추는 길은 희망인가 절망인가.",
       "attributes": {
         "pickup": 1.5
@@ -39,7 +47,9 @@
     {
       "id": 4,
       "name": "행운의 토끼(?) 인형",
-      "description" : "exp 획득량 30% 증가",
+      "description": [
+        "exp 획득량 30% 증가"
+      ],
       "extra": "해당 인형을 당나귀라 주장하는 인원이 있다면\n<color=red>즉시 제어센터에 연락하십시오</color>",
       "attributes": {
         "exp" : 1.3

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Cutter : PlayerSetting
@@ -10,10 +9,7 @@ public class Cutter : PlayerSetting
     protected override void Awake()
     {
         base.Awake();
-        AttackInf.AttackSpeed = 2f;
-        AttackInf.FirstDelay = 1;
-        AttackInf.LastDelay = 0.5f;
-        player.CurHP = player.MaxHP = 50;
+        player.CurHP = player.MaxHP = 200;
         player.CurSP = player.MaxSP = 10;
     }
 
@@ -21,23 +17,44 @@ public class Cutter : PlayerSetting
     {
         if (TargetPos != null)
         {
-            GameManager.instance.BM.MakeBullet((int)(GameManager.instance.PlayerStatus.attack * DamageRatio), 0, 0.3f,
-                transform.position, -player.Dir,
-                0, NormalAttack, true, false);
+            if (Vector3.Distance(TargetPos.position, transform.position) <= 2)
+            {
+                GameManager.instance.BM.MakeBullet((int)(GameManager.instance.PlayerStatus.attack * DamageRatio), 0, 0.3f,
+                    transform.position, -player.Dir,
+                    0, NormalAttack, true, false);
+            }
+            if(ProjNum != 0)
+            {
+                Vector2 Sub = (TargetPos.position - transform.position).normalized;
+                float rad = Vector2.Angle(Vector2.right, Sub) * Mathf.Deg2Rad;
+                if (Sub.y < 0) rad = Mathf.PI * 2 - rad;
+                for (int i = -ProjNum; i <= ProjNum; i++)
+                {
+                    GameManager.instance.BM.MakeBullet((int)(GameManager.instance.PlayerStatus.attack * DamageRatio * SpecialRatio), 0, 1,
+                    transform.position, new Vector3(Mathf.Cos(rad + 0.1f * i), Mathf.Sin(rad + 0.1f * i), 0),
+                    15, Bullet, false, false);
+                }
+            }
         }
-            
     }
-    float DamageRatio = 4f;
+    protected override void EndBatch()
+    {
+        base.EndBatch();
+    }
+
+    float DamageRatio = 1f;
+    float SpecialRatio = 2f;
+    int ProjNum = 0;
     protected override int WeaponLevelUp()
     {
         switch (player.WeaponLevel++)
         {
-            case 1: DamageRatio+=0.5f; break;
-            case 2: DamageRatio+=0.5f; break;
-            case 3: DamageRatio+=0.5f; break;
-            case 4: DamageRatio+=0.5f; break;
-            case 5: DamageRatio+=0.5f; break;
-            case 6: StartCoroutine(Special()); break;
+            case 1: DamageRatio += 0.5f; break;
+            case 2: DamageRatio += 0.75f; break;
+            case 3: ProjNum++; AttackRange = 5; break;
+            case 4: DamageRatio += 0.5f; break;
+            case 5: DamageRatio += 0.75f; break;
+            case 6: SpecialRatio = 3f; ProjNum++; break;
         }
         return player.WeaponLevel;
     }

@@ -22,6 +22,7 @@ public class DamageManager : MonoBehaviour
 
     public void MakeDamage(int Damage, Transform position)
     {
+        if (Damage <= 0) return;
         for(int i = 0; i < MaxDamage; i++)
         {
             if (!DamageObjects[i].activeSelf)
