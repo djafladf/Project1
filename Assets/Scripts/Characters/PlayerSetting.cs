@@ -174,8 +174,8 @@ public class PlayerSetting : MonoBehaviour
     {
         if (collision.CompareTag("EnemyAttack") && CanHit)
         {
-            
-            int GetDamage = int.Parse(collision.name);
+            BulletInfo Info = GameManager.instance.BM.GetBulletInfo(GameManager.StringToInt(collision.name));
+            int GetDamage = (int)(Info.Damage * (100 - player.Defense) * 0.01);
             player.CurHP -= GetDamage;
             if (player.CurHP > player.MaxHP) player.CurHP = player.MaxHP;
             else if (player.CurHP <= 0)
@@ -193,6 +193,23 @@ public class PlayerSetting : MonoBehaviour
             if (IsPlayer) GameManager.instance.UM.HpChange();
             else {  player.MyBatch.HPBar.fillAmount = (float)player.CurHP / (float)player.MaxHP;  }
             if(player.CurHP > 0 && GetDamage > 0) StartCoroutine(NockBack_Player());
+        }
+        else if (collision.CompareTag("PlayerBuff"))
+        {
+            Buff Info = GameManager.instance.BM.GetBulletInfo(GameManager.StringToInt(collision.name)).Buffs;
+            if(Info.Heal != 0)
+            {
+                int LeftHP = player.MaxHP - player.CurHP;
+                if (Info.Heal > LeftHP) Info.Heal = LeftHP;
+                if(LeftHP != 0)
+                {
+                    player.CurHP += Info.Heal;
+                    GameManager.instance.DM.MakeHealCount(Info.Heal, transform);
+                    HPBar.localScale += Vector3.right * Info.Heal / player.MaxHP;
+                    if (IsPlayer) GameManager.instance.UM.HpChange();
+                    else if(!IsSummon) { player.MyBatch.HPBar.fillAmount = (float)player.CurHP / (float)player.MaxHP; }
+                }
+            }
         }
     }
 

@@ -38,13 +38,13 @@ public class RangeAttack : MonoBehaviour
         return res;
     }
 
-    public void Fire(int count, int Damage, int Penetrate, Vector3 Position, float speed, Sprite Im,bool IsMeele,bool IsEnemey)
+    public void Fire(int count, int Damage, int Penetrate, Vector3 Position, float speed, Sprite Im,bool IsEnemey)
     {
         List<Transform> Target = GetNearest(count,Position);
         foreach(var k in Target)
         {
             if (k == null) break;
-            GameManager.instance.BM.MakeBullet(Damage,Penetrate,0, Position, (k.position - Position).normalized, speed,Im,IsMeele,IsEnemey);
+            GameManager.instance.BM.MakeBullet(Damage,Penetrate,0,Position, (k.position - Position).normalized, speed,Im,IsEnemey);
         }
     }
 }

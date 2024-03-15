@@ -102,7 +102,8 @@ public class UIManager : MonoBehaviour
         {
             int Ind = pickedElements[i]; ItemSub cnt = ItemInfo.Items[Ind];
             Selections[i].gameObject.SetActive(true);
-            Selections[i].Init(RelicSprites[cnt.id], cnt.name, cnt.description[cnt.lv - 1], cnt.extra, Ind);
+            if(cnt.IsWeapon)Selections[i].Init(RelicSprites[cnt.id], cnt.name, cnt.description[cnt.lv - 1], cnt.extra, Ind,cnt.lv);
+            else Selections[i].Init(RelicSprites[cnt.id], cnt.name, cnt.description[cnt.lv - 1], cnt.extra, Ind, -1);
         }
 
         LV.text = $"LV.{++CurLevel}";

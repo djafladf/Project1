@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class DamageManager : MonoBehaviour
 {
@@ -20,13 +21,25 @@ public class DamageManager : MonoBehaviour
 
     public void MakeDamage(int Damage, Transform position)
     {
-        if (Damage <= 0) return;
         for(int i = 0; i < MaxDamage; i++)
         {
             if (!DamageObjects[i].activeSelf)
             {
                 DamageObjects[i].SetActive(true);
                 DamageScripts[i].Init(Damage, position);
+                break;
+            }
+        }
+    }
+
+    public void MakeHealCount(int Amount, Transform Position)
+    {
+        for (int i = 0; i < MaxDamage; i++)
+        {
+            if (!DamageObjects[i].activeSelf)
+            {
+                DamageObjects[i].SetActive(true);
+                DamageScripts[i].Init_Heal(Amount, Position);
                 break;
             }
         }

@@ -16,10 +16,9 @@ public class Amiya : PlayerSetting
         player.WeaponSprite = player.Weapon.GetComponent<SpriteRenderer>();
         player.CurHP = player.MaxHP = 150;
         player.CurSP = player.MaxSP = 30;
-        
-        BulletIm = Bullet1;
+        player.Defense = player.MaxDefense = 0;
 
-        for (int i = 0; i < 6; i++) WeaponLevelUp();
+        BulletIm = Bullet1;
     }
 
     private void Start()
@@ -37,7 +36,7 @@ public class Amiya : PlayerSetting
                     (1, (int)(GameManager.instance.PlayerStatus.attack * DamageRatio),
                     Penetrate,
                     transform.position + RandomSub,10,
-                    BulletIm, false,false);
+                    BulletIm,false);
                 yield return new WaitForSeconds(0.1f);
             }
             yield return new WaitForSeconds(0.5f);

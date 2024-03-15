@@ -13,6 +13,7 @@ public class Wafarin :PlayerSetting
         base.Awake();
         player.CurHP = player.MaxHP = 150;
         player.CurSP = player.MaxSP = 10;
+        player.MaxDefense = player.Defense = 0;
     }
 
     protected override void AttackMethod()
@@ -24,13 +25,13 @@ public class Wafarin :PlayerSetting
             if (Sub.y < 0) rad = Mathf.PI * 2 - rad;
             for (int i = -ProjNum+1; i <= ProjNum-1; i++)
             {
-                GameManager.instance.BM.MakeBullet((int)(GameManager.instance.PlayerStatus.attack * DamageRatio), Penetrate, 1,
+                GameManager.instance.BM.MakeBullet((int)(GameManager.instance.PlayerStatus.attack * DamageRatio), Penetrate,0,
                 transform.position, new Vector3(Mathf.Cos(rad + 0.25f * i), Mathf.Sin(rad + 0.25f * i)),
-                10, Bullet, false, false);
+                10, Bullet,false);
             }
             if (player.WeaponLevel == 7 || Test)
             {
-                if(!Pond.activeSelf)Pond.SetActive(true); Pond.transform.position = TargetPos.position;
+                if (!Pond.activeSelf) { Pond.SetActive(true); Pond.transform.position = TargetPos.position; }
             }
         }
     }

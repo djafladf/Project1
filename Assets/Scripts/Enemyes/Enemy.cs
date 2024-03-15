@@ -2,28 +2,26 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] int HP;
     [SerializeField] float speed;
     [SerializeField] float AS;
-    [SerializeField] float FirstDelay;
-    [SerializeField] float LastDelay;
+    [SerializeField] int Damage;
+    [SerializeField] int Defense;
+    int MaxDefense;
+    int MaxDamage;
+
     Rigidbody2D rigid;
+
+
     [NonSerialized] public bool MoveAble = true;
     [NonSerialized] public bool BeginAttack = false;
     [NonSerialized] public Transform Target = null;
 
-    Coroutine AttackType;
-
     int MaxHP;
     bool IsLive = true;
-
-    WaitForSeconds WFS_Attack_AS;
-    WaitForSeconds WFS_Attack_First;
-    WaitForSeconds WFS_Attack_Last;
 
     Animator anim;
     SpriteRenderer spriteRenderer;
@@ -32,13 +30,11 @@ public class Enemy : MonoBehaviour
     protected virtual void Awake()
     {
         MaxHP = HP;
-        AttackType = null;
+        MaxDamage = Damage;
+        MaxDefense = Defense;
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        WFS_Attack_AS = new WaitForSeconds(AS);
-        WFS_Attack_First = new WaitForSeconds(FirstDelay);
-        WFS_Attack_Last = new WaitForSeconds(LastDelay);
         coll = GetComponent<CapsuleCollider2D>();
     }
 
@@ -46,7 +42,7 @@ public class Enemy : MonoBehaviour
     {
         if (!IsLive) return;
         rigid.velocity = Vector2.zero;
-        if (MoveAble && !BeginAttack)
+        if (MoveAble && !anim.GetBool("IsAttack"))
         {
             Vector2 Dir = (GameManager.instance.player.Self.position - transform.position).normalized;
             if (Dir.x > 0 && !spriteRenderer.flipX) spriteRenderer.flipX = true;
@@ -54,41 +50,41 @@ public class Enemy : MonoBehaviour
 
             rigid.MovePosition(rigid.position + Dir * speed * Time.fixedDeltaTime);
         }
-        if (BeginAttack && AttackType == null) AttackType = StartCoroutine(Attack()); 
-    }
-
-
-    Vector3 TargetPos;
-    protected virtual IEnumerator Attack()
-    {
-        anim.SetBool("IsAttack", true);
-        while (BeginAttack)
+        if (BeginAttack && !anim.GetBool("IsAttack"))
         {
-            TargetPos = Target.position;
-            yield return WFS_Attack_First;
-            yield return WFS_Attack_Last;
-            if (!BeginAttack) break;
-            yield return WFS_Attack_AS;
+            AttackPos = Target.position;
+            MoveAble = false;
+            anim.SetBool("IsAttack", true);
         }
-        anim.SetBool("IsAttack", false);
-        MoveAble = true;
-        AttackType = null;
     }
+
+    protected virtual void AttackEnd()
+    {
+        if (!BeginAttack)
+        {
+            anim.SetBool("IsAttack", false);
+            MoveAble = true;
+        }
+    }
+
+    Vector3 AttackPos;
 
     protected virtual void AttackMethod()
     {
-        if (BeginAttack) GameManager.instance.BM.MakeBullet(1,0,0.1f, TargetPos, Vector2.zero, 0, null, true, true);
+        GameManager.instance.BM.MakeMeele(Damage, 0, 0.2f, AttackPos, Vector2.zero, 0, null, true);
     }
 
     bool CanHit = true;
+    float[] LeftTime = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    float[] DeBuffVar = { 1,1,1,1,1,1,1,1,1,1};
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (!IsLive) return;
         if (collision.CompareTag("PlayerAttack") && CanHit)
         {
-            int GetDamage = 0;
-            for (int i = 0; i < collision.name.Length; i++) GetDamage = GetDamage * 10 + (collision.name[i] - '0');
+            BulletInfo Info = GameManager.instance.BM.GetBulletInfo(GameManager.StringToInt(collision.name));
+            int GetDamage = (int)(Info.Damage * (100 - Defense) * 0.01);
             GameManager.instance.DM.MakeDamage(GetDamage,transform);
             HP -= GetDamage;
             if (HP <= 0)
@@ -98,8 +94,66 @@ public class Enemy : MonoBehaviour
                 IsLive = false; CanHit = false; rigid.simulated = false; coll.enabled = false;
                 GameManager.instance.UM.KillCountUp(1); GameManager.instance.ES.CurActive--;
             }
-            else if(GetDamage > 0) StartCoroutine(NockBack_Enemy());
+            else
+            {
+                if(Info.DeBuffs != null)
+                {
+                    if (Info.DeBuffs.Speed != 1)
+                    {
+
+                    }
+                    if (Info.DeBuffs.Attack != 1)
+                    {
+
+                    }
+                    if (Info.DeBuffs.Defense != 1)
+                    {
+                        if (DeBuffVar[2] > Info.DeBuffs.Defense)
+                        {
+                            Defense = (int)(MaxDefense * Info.DeBuffs.Defense);
+                            DeBuffVar[2] = Info.DeBuffs.Defense;
+                        }
+
+                        if (LeftTime[2] < Info.DeBuffs.Last)
+                        {
+                            if (LeftTime[2] <= 0)
+                            {
+                                DeBuffObj[2] = GameManager.instance.BFM.RequestForDebuff(3);
+                                DeBuffObj[2].transform.parent = transform;
+                                DeBuffObj[2].transform.localPosition = spriteRenderer.sprite.bounds.size * 0.5f;
+                                DeBuffObj[2].gameObject.SetActive(true);
+                                LeftTime[2] = Info.DeBuffs.Last;
+                                StartCoroutine(DefenseChange());
+                            }
+                            else LeftTime[2] = Info.DeBuffs.Last;
+                        }
+
+                    }
+                    if (Info.DeBuffs.Ice != 1)
+                    {
+
+                    }
+                    if (Info.DeBuffs.Fragility != 1)
+                    {
+
+                    }
+                }
+                StartCoroutine(NockBack_Enemy());
+            }
         }
+    }
+    GameObject[] DeBuffObj = new GameObject[5]; 
+
+    IEnumerator DefenseChange()
+    {
+        while (LeftTime[2] > 0)
+        {
+            yield return GameManager.OneSec;
+            LeftTime[2]--;
+        }
+        Defense = MaxDefense;
+        DeBuffObj[2].SetActive(false); DeBuffObj[2].transform.parent = GameManager.instance.BFM.transform;
+        DeBuffObj[2] = null;
     }
 
     protected virtual void OnTriggerExit2D(Collider2D collision)
@@ -126,21 +180,27 @@ public class Enemy : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void OnDisable()
-    {
-        StopAllCoroutines();
-    }
-
     protected virtual void OnEnable()
     {
+        for(int i = 0; i < DeBuffObj.Length;i++)
+        {
+            if (DeBuffObj[i] != null)
+            {
+                LeftTime[i] = 0;
+                DeBuffObj[i].SetActive(false); DeBuffObj[i].transform.parent = GameManager.instance.BFM.transform; DeBuffObj[i] = null;
+            }
+        }
         MoveAble = true;
+        anim.SetBool("IsAttack", false);
         BeginAttack = false;
-        AttackType = null;
         CanHit = true;
         rigid.simulated = true;
         coll.enabled = true;
         HP = MaxHP;
+        Defense = MaxDefense;
         IsLive = true;
         spriteRenderer.sortingOrder = 2;
+
+        StopAllCoroutines();
     }
 }

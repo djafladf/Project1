@@ -25,6 +25,7 @@ public class Player : ScriptableObject
     [NonSerialized] public int CurHP;
     [NonSerialized] public int MaxSP;
     [NonSerialized] public int CurSP;
+    [NonSerialized] public int MaxDefense;
     [NonSerialized] public int Defense;
     [NonSerialized] public int WeaponLevel;
     [NonSerialized] public int Id;

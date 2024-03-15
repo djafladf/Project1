@@ -16,6 +16,7 @@ public class Rosmontis : PlayerSetting
     {
         player.CurHP = player.MaxHP = 200;
         player.CurSP = player.MaxSP = 10;
+        player.MaxDefense = player.Defense = 10;
         WeaponOrigin = new Vector3[2];
         WeaponSprite = new SpriteRenderer[2];
         WeaponTrail = new TrailRenderer[2];
@@ -151,8 +152,8 @@ public class Rosmontis : PlayerSetting
             }
             WeaponSprite[1].sprite = Sprites[3];
         }
-        GameManager.instance.BM.MakeBullet((int)(GameManager.instance.PlayerStatus.attack * 10f), 0, 0.2f,
-                    AttackPos, Vector3.zero, 0, Sprites[4], true, false);
+        GameManager.instance.BM.MakeMeele((int)(GameManager.instance.PlayerStatus.attack * 10f), 0,0.3f,
+                    AttackPos, Vector3.zero, 0, Sprites[4], false, new DeBuff(5,defense:0.5f));
     }
 
     protected override void AttackEnd()
@@ -178,8 +179,4 @@ public class Rosmontis : PlayerSetting
         }
         base.AttackEnd();
     }
-
-
-
-
 }

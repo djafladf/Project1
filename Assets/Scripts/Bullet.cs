@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [NonSerialized] public int Damage;
-    [NonSerialized] public float KnockBackPower;
-
     Rigidbody2D rigid;
     CapsuleCollider2D coll;
     SpriteRenderer sprite;
@@ -23,17 +20,36 @@ public class Bullet : MonoBehaviour
         coll = GetComponent<CapsuleCollider2D>();
     }
 
-    public void Init(int Damage,int Penetrate, Vector3 Dir,bool IsMeele,bool IsEnemy,float AfterTime)
+    public void Init_Attack(int Damage,int Penetrate, Vector3 Dir,
+        bool IsMeele,bool IsEnemy,float AfterTime, Sprite Image)
     {
-        rigid.velocity = Dir;
-        this.Penetrate = Penetrate;
-        name = $"{Damage}";
-        if (sprite.sprite != null) coll.size = sprite.bounds.size * 0.9f;
+        rigid.simulated = true;
+        coll.enabled = true;
+        rigid.velocity = Dir; this.Penetrate = Penetrate; sprite.sprite = Image;
+        this.IsMeele = IsMeele; this.AfterTime = AfterTime;
+        if (Image != null) coll.size = sprite.bounds.size * 0.9f;
         else coll.size = Vector2.one;
-        this.IsMeele = IsMeele;
-        this.AfterTime = AfterTime;
+        
         if (IsMeele) StartCoroutine(AfterImage());
         tag = IsEnemy ? "EnemyAttack" : "PlayerAttack";
+    }
+
+    public void Init_Effect(float AfterTime, Sprite Image)
+    {
+        rigid.simulated = false;
+        coll.enabled = false;
+        sprite.sprite = Image;
+        IsMeele = true;
+        StartCoroutine(AfterImage());
+    }
+
+    public void Init_Buff(Sprite Im,  bool IsEnemy)
+    {
+        rigid.simulated = true;
+        coll.enabled = true;
+        sprite.sprite = Im;
+        IsMeele = false;
+        tag = IsEnemy ? "EnemyBuff" : "PlayerBuff";
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

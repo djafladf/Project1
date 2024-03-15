@@ -103,10 +103,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 30
-  speed: 1.5
+  speed: 1
   AS: 1
-  FirstDelay: 0.5
-  LastDelay: 0.5
+  Damage: 2
+  Defense: 0
 --- !u!70 &1788775384281307614
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

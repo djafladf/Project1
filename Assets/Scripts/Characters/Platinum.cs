@@ -11,6 +11,7 @@ public class Platinum :PlayerSetting
         base.Awake();
         player.CurHP = player.MaxHP = 100;
         player.CurSP = player.MaxSP = 10;
+        player.Defense = player.MaxDefense = 0;
     }
 
     protected override void FixedUpdate()
@@ -29,9 +30,9 @@ public class Platinum :PlayerSetting
             if (Sub.y < 0) rad = Mathf.PI * 2 - rad;
             for (int i = -ProjNum+1; i <= ProjNum-1; i++)
             {
-                GameManager.instance.BM.MakeBullet((int)(GameManager.instance.PlayerStatus.attack * DamageRatio), Penetrate, 1,
+                GameManager.instance.BM.MakeBullet((int)(GameManager.instance.PlayerStatus.attack * DamageRatio), Penetrate,0,
                 transform.position, new Vector3(Mathf.Cos(rad + 0.25f * i), Mathf.Sin(rad + 0.25f * i)),
-                10, Bullet, false, false);
+                10, Bullet, false);
             }
         }
     }

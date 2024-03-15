@@ -1,0 +1,345 @@
+fileFormatVersion: 2
+guid: ffb4c35219de41d4a96d8d2289c37862
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 72
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Bow_9
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 1020
+        width: 308
+        height: 292
+      alignment: 9
+      pivot: {x: 0.73, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7054a5da59acd604da64dacf68be499c
+      internalID: -851615847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bow_10
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 1032
+        width: 308
+        height: 276
+      alignment: 9
+      pivot: {x: 0.81, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bff75bfa559b794f871a800df11c137
+      internalID: -2061098386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bow_11
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 1072
+        width: 312
+        height: 280
+      alignment: 9
+      pivot: {x: 0.77, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13503b822d125a04ca303a4ddbe2d527
+      internalID: 2032552510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bow_12
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 516
+        width: 325
+        height: 284
+      alignment: 9
+      pivot: {x: 0.7232279, y: 0.5537797}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2ccffd13aeb7a14b9156ecf7a9de6cc
+      internalID: -1209266993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bow_13
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 515
+        width: 317
+        height: 284
+      alignment: 9
+      pivot: {x: 0.70589006, y: 0.548942}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4b2ef596724f404dada3027b85d91e9
+      internalID: 1309342759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bow_43
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 40
+        width: 308
+        height: 208
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba8ac9a125630a64ca606ffe77c34319
+      internalID: -2142561530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bow_50
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 24
+        width: 300
+        height: 169
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de88898c17d703446866298f7f0ec46d
+      internalID: -2003778959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bow_52
+      rect:
+        serializedVersion: 2
+        x: 1084
+        y: 24
+        width: 308
+        height: 260
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05d5590152ac59f46946d390adcac06e
+      internalID: 74744609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Bow_17: 340678046
+      Bow_24: 2082647028
+      Bow_36: 1599540896
+      Bow_19: 751015032
+      Bow_20: 338820948
+      Bow_2: 1101546998
+      Bow_1: 511031349
+      Bow_25: -1117249450
+      Bow_53: 1042035112
+      Bow_47: -2038716862
+      Bow_23: -268851746
+      Bow_12: -1209266993
+      Bow_16: 10578044
+      Bow_48: -447725452
+      Bow_29: -559291174
+      Bow_3: 1212306092
+      Bow_31: 1326090763
+      Bow_34: 1610768155
+      Bow_50: -2003778959
+      Bow_30: 1681666717
+      Bow_32: -1381673537
+      Bow_33: 716173650
+      Bow_44: -494460287
+      Bow_10: -2061098386
+      Bow_11: 2032552510
+      Bow_13: 1309342759
+      Bow_27: 1887776593
+      Bow_4: -2083010605
+      Bow_37: -489516959
+      Bow_8: -2090217144
+      Bow_35: 1320209940
+      Bow_42: 281029730
+      Bow_46: 143221120
+      Bow_26: 1904159403
+      Bow_52: 74744609
+      Bow_5: 1738110009
+      Bow_14: -500369543
+      Bow_9: -851615847
+      Bow_21: -1728704054
+      Bow_15: 1107843404
+      Bow_41: 1739786234
+      Bow_45: 1452075420
+      Bow_40: 1833669320
+      Bow_43: -2142561530
+      Bow_39: -552692184
+      Bow_7: 56912173
+      Bow_51: -1043511711
+      Bow_6: 219406552
+      Bow_38: -1482404295
+      Bow_0: 1466224041
+      Bow_28: -1665236333
+      Bow_22: 1087768217
+      Bow_49: 1982162649
+      Bow_18: -745003335
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

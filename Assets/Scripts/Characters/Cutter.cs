@@ -11,6 +11,7 @@ public class Cutter : PlayerSetting
         base.Awake();
         player.CurHP = player.MaxHP = 200;
         player.CurSP = player.MaxSP = 10;
+        player.Defense = player.MaxDefense = 10;
     }
 
     protected override void AttackMethod()
@@ -19,9 +20,9 @@ public class Cutter : PlayerSetting
         {
             if (Vector3.Distance(TargetPos.position, transform.position) <= 2)
             {
-                GameManager.instance.BM.MakeBullet((int)(GameManager.instance.PlayerStatus.attack * DamageRatio), 0, 0.3f,
+                GameManager.instance.BM.MakeMeele((int)(GameManager.instance.PlayerStatus.attack * DamageRatio),0,0.3f,
                     transform.position, -player.Dir,
-                    0, NormalAttack, true, false);
+                    0, NormalAttack, false);
             }
             if(ProjNum != 0)
             {
@@ -30,9 +31,9 @@ public class Cutter : PlayerSetting
                 if (Sub.y < 0) rad = Mathf.PI * 2 - rad;
                 for (int i = -ProjNum; i <= ProjNum; i++)
                 {
-                    GameManager.instance.BM.MakeBullet((int)(GameManager.instance.PlayerStatus.attack * DamageRatio * SpecialRatio), 0, 1,
+                    GameManager.instance.BM.MakeBullet((int)(GameManager.instance.PlayerStatus.attack * DamageRatio * SpecialRatio), 0,0,
                     transform.position, new Vector3(Mathf.Cos(rad + 0.1f * i), Mathf.Sin(rad + 0.1f * i), 0),
-                    15, Bullet, false, false);
+                    15, Bullet, false);
                 }
             }
         }
@@ -59,7 +60,7 @@ public class Cutter : PlayerSetting
         return player.WeaponLevel;
     }
 
-    IEnumerator Special()
+    /*IEnumerator Special()
     {
         CanMove = false;
         player.anim.SetBool("IsWalk", true);
@@ -76,6 +77,6 @@ public class Cutter : PlayerSetting
         CanMove = true;
         yield return new WaitForSeconds(7);
         StartCoroutine(Special());
-    }
+    }*/
 }
 

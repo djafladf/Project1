@@ -1,40 +1,60 @@
 using Newtonsoft.Json;
-using UnityEngine.UI;
 using UnityEngine;
 using System.Linq;
 using System.IO;
 using System;
 using System.Collections.Generic;
-using Cinemachine;
 
 
 
 
 public class GameManager : MonoBehaviour
 {
+    public static WaitForSeconds OneSec = new WaitForSeconds(1);
     public static GameManager instance;
+    public static int StringToInt(string Var)
+    {
+        int outValue = 0;
+        for (int i = 0; i < Var.Length; i++) outValue = outValue * 10 + (Var[i] - '0');
+        return outValue;
+    }
+
+
     public Player player;
     public BulletManager BM;
     public ItemManager IM;
     public EnemySpawner ES;
     public DamageManager DM;
     public UIManager UM;
-    
+    public BuffManager BFM;
+
+    // ID
+
+    string[] Player_ID =
+    {
+        "Amiya",
+        "Cutter",
+        "Platinum",
+        "Wafarin",
+        "Rosmontis",
+        "Kazemaru"
+    };
+
+
 
 
     [NonSerialized] public string PlayerName = "Amiya";
-    public static WaitForSeconds OneSec = new WaitForSeconds(1);
-    [SerializeField] string[] BatchName;
     public attribute PlayerStatus;
 
     private void Awake()
     {
-        LoadAssets();
         instance = this;
+        LoadAssets();
     }
 
     
     Player[] Players;
+    public int[] CurPlayerID;
     public int PlayerInd;
 
 
@@ -46,15 +66,18 @@ public class GameManager : MonoBehaviour
         ES = Managers.GetChild(3).GetComponent<EnemySpawner>();
         UM = Managers.GetChild(4).GetComponent<UIManager>();
         DM = Managers.GetChild(5).GetComponentInChildren<DamageManager>();
+        BFM = Managers.GetChild(6).GetComponentInChildren<BuffManager>();
         
 
         // Get Items
         string DirPath = Directory.GetCurrentDirectory();
         ItemInfos ItemInfo = JsonConvert.DeserializeObject<ItemInfos>(File.ReadAllText(DirPath + "\\Assets\\JSON\\ItemInfos.Json"));
         ItemInfo.Selected = new List<ItemSub>();
+        var BatchName = CurPlayerID.Select(index => Player_ID[index]).ToArray();
         int LL = BatchName.Length;
         // Get Operators
         ItemInfos WeaponSub = JsonConvert.DeserializeObject<ItemInfos>(File.ReadAllText(DirPath + "\\Assets\\JSON\\WeaponInfos.Json"));
+        WeaponSub.Items = CurPlayerID.Select(index => WeaponSub.Items[index]).ToList();
         Players = new Player[LL];
         GameObject[] Prefs = new GameObject[LL];
         Sprite[] Heads = new Sprite[LL];
@@ -69,7 +92,7 @@ public class GameManager : MonoBehaviour
         await AddressablesLoader.InitAssets(BatchName, "Operator_Head", Heads, typeof(Sprite));
         await AddressablesLoader.InitAssets(BatchName, "Operator_Weapon", Weapons, typeof(Sprite));
 
-        IM.Init(); BM.Init(); ES.Init(); DM.Init();
+        IM.Init(); BM.Init(); ES.Init(); DM.Init(); BFM.Init();
 
         
 
@@ -82,7 +105,7 @@ public class GameManager : MonoBehaviour
     {
         if (UM.WeaponLevelUps == null)
         {
-            UM.WeaponLevelUps = new Func<int>[BatchName.Length];
+            UM.WeaponLevelUps = new Func<int>[CurPlayerID.Length];
         }
         UM.WeaponLevelUps[id] = func;
     }

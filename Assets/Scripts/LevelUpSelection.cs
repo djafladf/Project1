@@ -13,15 +13,22 @@ public class LevelUpSelection : Buttons
     [SerializeField] TMP_Text Name;
     [SerializeField] TMP_Text Description;
     [SerializeField] TMP_Text Extra;
+    [SerializeField] TMP_Text Rating;
     [SerializeField] Image Image;
     int ind;
 
-    public void Init(Sprite Im, string nm, string desc, string ext,int ind)
+    public void Init(Sprite Im, string nm, string desc, string ext,int ind,int Level)
     {
         Image.sprite = Im;
         Name.text = nm;
         Description.text = desc;
         Extra.text = ext;
+        if (Level != -1)
+        {
+            Rating.gameObject.SetActive(true);
+            Rating.text = $"LV.{Level}";
+        }
+        else Rating.gameObject.SetActive(false);
         this.ind = ind;
     }
 
