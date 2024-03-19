@@ -1,4 +1,7 @@
+using Newtonsoft.Json;
 using System.Collections;
+using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -10,14 +13,31 @@ public class EnemySpawner : MonoBehaviour
     
     Enemy[,] EnemyScripts;
 
-    [SerializeField] double MaxAble = 20;
     [HideInInspector] public int CurActive = 0;
 
     Vector3[] SpawnArea;
     int SpawnAreaSize;
 
-    public void Init()
+    [SerializeField]
+    public class Enems
     {
+        public List<SpawnInfo> spawninfo;   
+    }
+    [SerializeField]
+    public class SpawnInfo
+    {
+        public int id;
+        public int start;
+        public int end;
+        public float respawn;
+    }
+
+
+    public void Init(int Stage)
+    {
+        Enems EnemSpawn = JsonConvert.DeserializeObject<Enems>(File.ReadAllText($"{Directory.GetCurrentDirectory()}\\Assets\\JSON\\Stage\\{Stage}.Json"));
+
+
         // Set Spawn Area
         SpawnArea = new Vector3[68];
         SpawnAreaSize = SpawnArea.Length;
@@ -26,8 +46,8 @@ public class EnemySpawner : MonoBehaviour
         for (int x = 12; x >= -12; x-=2) { SpawnArea[i++] = new Vector3(-20, x,0); SpawnArea[i++] = new Vector3(20, x,0); }
         for (int x = -20; x <= 20; x+=2) SpawnArea[i++] = new Vector3(x, -12,0);
 
-        EnemyScripts = new Enemy[100, EnemyTypes.Length];
-        Pool = new GameObject[100, EnemyTypes.Length];
+        EnemyScripts = new Enemy[50, EnemyTypes.Length];
+        Pool = new GameObject[50, EnemyTypes.Length];
         for(i = 0; i < EnemyTypes.Length; i++)
         {
             for(int y = 0; y < PoolSize[i]; y++)
@@ -38,18 +58,30 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        StartCoroutine(SpawnTest());
+        for(i = 0; i < EnemyTypes.Length; i++)
+        {
+            StartCoroutine(Spawn(EnemSpawn.spawninfo[i]));
+        }
     }
 
-    float j = 0;
-    WaitForSeconds SpawnGap = new WaitForSeconds(0.1f);
-    IEnumerator SpawnTest()
+
+    IEnumerator Spawn(SpawnInfo Info)
     {
-        while (true)
+        yield return new WaitForSeconds(Info.start);
+        int SpawnTimes = Mathf.FloorToInt((Info.end - Info.start) / Info.respawn);
+        WaitForSeconds SpawnGap = new WaitForSeconds(Info.respawn);
+        for (int i = 0; i <= SpawnTimes; i++)
         {
-            if (CurActive < MaxAble) { SpawnEnemy(); CurActive++; }
+            for (int y = 0; y < PoolSize[Info.id]; y++)
+            {
+                if (!Pool[y, Info.id].activeSelf)
+                {
+                    Pool[y, Info.id].transform.position = SpawnArea[Random.Range(0, SpawnAreaSize - 1)] + GameManager.instance.player.Self.position;
+                    Pool[y, Info.id].SetActive(true);
+                    break;
+                }
+            }
             yield return SpawnGap;
-            j += 0.1f; if (j >= 10) { MaxAble *= 1.05; j = 0; }
         }
     }
 

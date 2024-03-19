@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 98ec389ba6c9218478f244715c514335
+guid: acc048ddfda8aa949923e30f3ee2af86
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 18
+  spritePixelsToUnits: 72
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,106 +105,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ShieldMan_0
+      name: Standing_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 182
-        width: 71
-        height: 73
+        x: 72
+        y: 104
+        width: 256
+        height: 388
       alignment: 9
-      pivot: {x: 0.6, y: 0.6}
+      pivot: {x: 0.5, y: 0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db9d543c48d2b2047b41383ae970d914
-      internalID: 191747816
+      spriteID: eae12ae17b1d64c49bafa08b2396d9ca
+      internalID: -982866954
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ShieldMan_1
+      name: Standing_1
       rect:
         serializedVersion: 2
-        x: 94
-        y: 190
-        width: 76
-        height: 69
+        x: 444
+        y: 108
+        width: 256
+        height: 380
       alignment: 9
-      pivot: {x: 0.8, y: 0.6}
+      pivot: {x: 0.5, y: 0.429}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf612f44533f8554a9d3125d555c2e98
-      internalID: -1145955731
+      spriteID: 2849e03c503c19245b1c775e636ee90d
+      internalID: -1456331304
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ShieldMan_2
+      name: Standing_2
       rect:
         serializedVersion: 2
-        x: 191
-        y: 188
-        width: 59
-        height: 69
+        x: 832
+        y: 120
+        width: 256
+        height: 380
       alignment: 9
-      pivot: {x: 0.8, y: 0.6}
+      pivot: {x: 0.5, y: 0.429}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85f407804a0cfef4aa82287ec382ee44
-      internalID: 1978876914
+      spriteID: 3e8d94689d73f35429861d397b5bbe44
+      internalID: 947849843
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ShieldMan_3
+      name: Standing_3
       rect:
         serializedVersion: 2
-        x: 35
-        y: 90
-        width: 52
-        height: 71
+        x: 1292
+        y: 100
+        width: 256
+        height: 388
       alignment: 9
-      pivot: {x: 0.4, y: 0.6}
+      pivot: {x: 0.5, y: 0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3df06db6a79a1741ab155df1c246587
-      internalID: 962582193
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ShieldMan_4
-      rect:
-        serializedVersion: 2
-        x: 110
-        y: 80
-        width: 58
-        height: 80
-      alignment: 9
-      pivot: {x: 0.35, y: 0.66}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2bda0782638c40041b6aff2184426544
-      internalID: 1461217617
+      spriteID: b8586a6bf9f84014b9faef576a2684dd
+      internalID: -677178647
       vertices: []
       indices: 
       edges: []
@@ -220,24 +199,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ShieldMan_2: 1978876914
-      ShieldMan_14: 2143849784
-      ShieldMan_3: 962582193
-      ShieldMan_17: 1047651734
-      ShieldMan_8: 509545291
-      ShieldMan_5: -1322434848
-      ShieldMan_16: -1601329094
-      ShieldMan_0: 191747816
-      ShieldMan_10: 1427420845
-      ShieldMan_1: -1145955731
-      ShieldMan_12: 1484032599
-      ShieldMan_11: 561993554
-      ShieldMan_7: 1000297911
-      ShieldMan_6: -346348791
-      ShieldMan_4: 1461217617
-      ShieldMan_13: -587042025
-      ShieldMan_15: -1145295174
-      ShieldMan_9: -1073098122
+      Standing_2: 947849843
+      Standing_3: -677178647
+      Standing_0: -982866954
+      Standing_1: -1456331304
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

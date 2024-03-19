@@ -48,6 +48,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Operator_Pref
+  - m_GUID: e99c76b364c996a4684adb19bd1cdea2
+    m_Address: Aurora
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Operator_Pref
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: cc440d98b8634f3449b1aae4fa894063, type: 2}
   m_SchemaSet:

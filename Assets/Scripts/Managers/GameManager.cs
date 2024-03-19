@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     string[] Player_ID =
     {
         "Amiya",
+        "Aurora",
         "Cutter",
         "Platinum",
         "Wafarin",
@@ -92,7 +93,7 @@ public class GameManager : MonoBehaviour
         await AddressablesLoader.InitAssets(BatchName, "Operator_Head", Heads, typeof(Sprite));
         await AddressablesLoader.InitAssets(BatchName, "Operator_Weapon", Weapons, typeof(Sprite));
 
-        IM.Init(); BM.Init(); ES.Init(); DM.Init(); BFM.Init();
+        IM.Init(); BM.Init(); ES.Init(1); DM.Init(); BFM.Init();
 
         
 
