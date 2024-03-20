@@ -7,6 +7,10 @@ public class Rosmontis : PlayerSetting
     [SerializeField] GameObject[] SubWeapons;
     [SerializeField] Sprite[] Sprites;
 
+
+    [SerializeField]
+    Sprite BigBullet;
+
     Vector3[] WeaponOrigin;
     
     SpriteRenderer[] WeaponSprite;
@@ -152,8 +156,8 @@ public class Rosmontis : PlayerSetting
             }
             WeaponSprite[1].sprite = Sprites[3];
         }
-        GameManager.instance.BM.MakeMeele((int)(GameManager.instance.PlayerStatus.attack * 10f), 0,0.3f,
-                    AttackPos, Vector3.zero, 0, Sprites[4], false, new DeBuff(5,defense:0.5f));
+        GameManager.instance.BM.MakeMeele((int)(GameManager.instance.PlayerStatus.attack * DamageRatio), 0,0.3f,
+                    AttackPos, Vector3.zero, 0, Sprites[4], false, new DeBuff(5,defense:defenseRatio));
     }
 
     protected override void AttackEnd()
@@ -178,5 +182,22 @@ public class Rosmontis : PlayerSetting
             TwoCount = 20; TwoSub = 1; OneLast = false; TwoUsed = false;
         }
         base.AttackEnd();
+    }
+
+    float DamageRatio = 7.5f;
+    float defenseRatio = 0.3f;
+
+    protected override int WeaponLevelUp()
+    {
+        switch (player.WeaponLevel++)
+        {
+            case 1: DamageRatio ++; break;
+            case 2: Sprites[4] = BigBullet; break;
+            case 3: player.AttackSpeed *= 1.2f; player.anim.SetFloat("AttackSpeed", player.AttackSpeed); break;
+            case 4: defenseRatio += 0.1f; break;
+            case 5: defenseRatio += 0.1f; break;
+            case 6: break;
+        }
+        return player.WeaponLevel;
     }
 }

@@ -20,14 +20,14 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public Player player;
-    public BulletManager BM;
-    public ItemManager IM;
-    public EnemySpawner ES;
-    public DamageManager DM;
-    public UIManager UM;
-    public BuffManager BFM;
-
+    [HideInInspector] public Player player;
+    [HideInInspector] public BulletManager BM;
+    [HideInInspector] public ItemManager IM;
+    [HideInInspector] public EnemySpawner ES;
+    [HideInInspector] public DamageManager DM;
+    [HideInInspector] public UIManager UM;
+    [HideInInspector] public BuffManager BFM;
+    [HideInInspector] public GameObject Git;
     // ID
 
     string[] Player_ID =
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     }
 
     
-    Player[] Players;
+    public Player[] Players;
     public int[] CurPlayerID;
     public int PlayerInd;
 
@@ -67,8 +67,9 @@ public class GameManager : MonoBehaviour
         ES = Managers.GetChild(3).GetComponent<EnemySpawner>();
         UM = Managers.GetChild(4).GetComponent<UIManager>();
         DM = Managers.GetChild(5).GetComponentInChildren<DamageManager>();
+        Git = Managers.GetChild(5).GetChild(0).gameObject;
         BFM = Managers.GetChild(6).GetComponentInChildren<BuffManager>();
-        
+       
 
         // Get Items
         string DirPath = Directory.GetCurrentDirectory();

@@ -377,6 +377,7 @@ MonoBehaviour:
   HeadIm: {fileID: 0}
   Weapon: {fileID: 0}
   IsPlayer: 0
+  IsSummon: 0
   HasWeapon: 0
   targetLayer:
     serializedVersion: 2
@@ -394,6 +395,7 @@ MonoBehaviour:
   - {fileID: 1327570947, guid: f4cf77cb12123f14c9deea8ecb15fcf0, type: 3}
   - {fileID: 1156548046, guid: f4cf77cb12123f14c9deea8ecb15fcf0, type: 3}
   - {fileID: 21300000, guid: dacb402dfa0b79e4380a56ab83b010a3, type: 3}
+  BigBullet: {fileID: 21300000, guid: d62e574f3c78cd5449b3dd7bf2737ef3, type: 3}
 --- !u!70 &1539120915725065941
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

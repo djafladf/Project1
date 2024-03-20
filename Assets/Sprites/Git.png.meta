@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fb382ac0cf85d904c985c6866b8d34d5
+guid: f91418643024b7e4ab2f38ebb624fc86
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 20
+  spritePixelsToUnits: 70
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Relic_0
+      name: Git_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 148
-        width: 42
-        height: 38
+        x: 54
+        y: 265
+        width: 85
+        height: 69
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85b0e0f62c683e54eb16021d2c84b766
-      internalID: -397090658
+      spriteID: b97e3762b33f4804b9da419e0b63a9c0
+      internalID: 1034433907
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Relic_1
+      name: Git_2
       rect:
         serializedVersion: 2
-        x: 71
-        y: 149
-        width: 30
-        height: 34
+        x: 359
+        y: 11
+        width: 148
+        height: 234
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,71 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71f44d5aa36d5714c93d20f03b4cd9d7
-      internalID: 2051444606
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Relic_2
-      rect:
-        serializedVersion: 2
-        x: 133
-        y: 153
-        width: 43
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 47ea4b60fe7a111439396a3049433f16
-      internalID: 678453624
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Relic_3
-      rect:
-        serializedVersion: 2
-        x: 207
-        y: 148
-        width: 20
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2a9b0d66b77322d40aaa68ed50c4597d
-      internalID: -992475636
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Relic_4
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 143
-        width: 37
-        height: 53
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fab38327791ac654cbb65427a882ae29
-      internalID: 1968841842
+      spriteID: e8521c1acc52fe042ae65f1e23cc79bd
+      internalID: -1841388062
       vertices: []
       indices: 
       edges: []
@@ -220,11 +157,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Relic_2: 678453624
-      Relic_0: -397090658
-      Relic_1: 2051444606
-      Relic_4: 1968841842
-      Relic_3: -992475636
+      Git_2: -1841388062
+      Git_0: 1034433907
+      Git_1: 1715130584
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

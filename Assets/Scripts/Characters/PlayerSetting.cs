@@ -9,9 +9,9 @@ using UnityEngine.InputSystem;
 public class PlayerSetting : MonoBehaviour
 {
     [SerializeField] protected Player player;
-    [SerializeField] protected Sprite WeaponIm;
-    [SerializeField] protected Sprite HeadIm;
-    [SerializeField] protected GameObject Weapon;
+    /*[SerializeField] protected Sprite WeaponIm;
+    [SerializeField] protected Sprite HeadIm;*/
+    
     public bool IsPlayer;
     public bool IsSummon = false;
     public bool HasWeapon;
@@ -19,10 +19,6 @@ public class PlayerSetting : MonoBehaviour
     [NonSerialized] public bool CanMove = true;
     protected virtual void Awake()
     {
-        if (HasWeapon) 
-        { 
-            player.Weapon = Weapon; player.WeaponPos = player.Weapon.transform.localPosition; player.FlipWeaponPos = new Vector3(-player.WeaponPos.x, player.WeaponPos.y);
-        }
         IsPlayer = player.IsPlayer;
         player.Self = transform;
         player.rigid = GetComponent<Rigidbody2D>();
@@ -45,13 +41,22 @@ public class PlayerSetting : MonoBehaviour
         {
             if (!IsPlayer)
             {
-                TargetPos = GetNearest(scanRange);
-                if (TargetPos != null)
+                if (player.IsFollow)
                 {
-                    if (Vector3.Distance(transform.position, TargetPos.position) <= AttackRange) Attack();
-                    player.Dir = (TargetPos.position - transform.position).normalized;  
+                    TargetPos = GameManager.instance.Git.transform;
+                    player.Dir = (TargetPos.position - transform.position).normalized;
+                    if (Vector3.Distance(transform.position, TargetPos.position) <= 1.5f) player.IsFollow = false;
                 }
-                else player.Dir = Vector2.zero;
+                else
+                {
+                    TargetPos = GetNearest(scanRange);
+                    if (TargetPos != null)
+                    {
+                        if (Vector3.Distance(transform.position, TargetPos.position) <= AttackRange) Attack();
+                        player.Dir = (TargetPos.position - transform.position).normalized;
+                    }
+                    else player.Dir = Vector2.zero;
+                }
             }
             Vector2 nextVec = player.Dir * player.speed * Time.fixedDeltaTime;
             if (nextVec.Equals(Vector2.zero))
@@ -127,7 +132,7 @@ public class PlayerSetting : MonoBehaviour
     protected virtual void AttackEnd()
     {
         TargetPos = GetNearest(scanRange);
-        if (TargetPos != null)
+        if (TargetPos != null && !player.IsFollow)
         {
             if (Vector3.Distance(transform.position, TargetPos.position) > AttackRange)
             {
@@ -197,19 +202,20 @@ public class PlayerSetting : MonoBehaviour
         else if (collision.CompareTag("PlayerBuff"))
         {
             Buff Info = GameManager.instance.BM.GetBulletInfo(GameManager.StringToInt(collision.name)).Buffs;
-            if(Info.Heal != 0)
-            {
-                int LeftHP = player.MaxHP - player.CurHP;
-                if (Info.Heal > LeftHP) Info.Heal = LeftHP;
-                if(LeftHP != 0)
-                {
-                    player.CurHP += Info.Heal;
-                    GameManager.instance.DM.MakeHealCount(Info.Heal, transform);
-                    HPBar.localScale += Vector3.right * Info.Heal / player.MaxHP;
-                    if (IsPlayer) GameManager.instance.UM.HpChange();
-                    else if(!IsSummon) { player.MyBatch.HPBar.fillAmount = (float)player.CurHP / (float)player.MaxHP; }
-                }
-            }
+            if (Info.Heal != 0) Heal(Info.Heal);
+        }
+    }
+    protected void Heal(int Amount)
+    {
+        int LeftHP = player.MaxHP - player.CurHP;
+        if (Amount > LeftHP) Amount = LeftHP;
+        if (LeftHP != 0)
+        {
+            player.CurHP += Amount;
+            GameManager.instance.DM.MakeHealCount(Amount, transform);
+            HPBar.localScale += Vector3.right * Amount / player.MaxHP;
+            if (IsPlayer) GameManager.instance.UM.HpChange();
+            else if (!IsSummon) { player.MyBatch.HPBar.fillAmount = (float)player.CurHP / (float)player.MaxHP; }
         }
     }
 
@@ -230,12 +236,14 @@ public class PlayerSetting : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         player.CurHP = player.MaxHP;
         player.CurSP = player.MaxSP;
         HPBar.localScale = Vector3.one;
         SPBar.localScale = Vector3.up;
+        player.anim.SetFloat("AttackSpeed", player.AttackSpeed);
+
         if (!IsPlayer)
         {
             player.anim.SetBool("IsAttack", false);

@@ -30,6 +30,10 @@ public class Player : ScriptableObject
     [NonSerialized] public int WeaponLevel;
     [NonSerialized] public int Id;
 
+    [NonSerialized] public float AttackSpeed = 1f;
+
+
+    [NonSerialized] public bool IsFollow = false;
     [NonSerialized] public OperatorBatchTool MyBatch;
 }
 

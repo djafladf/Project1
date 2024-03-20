@@ -5,6 +5,9 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using Cinemachine;
+using UnityEditor.PackageManager;
+using Unity.VisualScripting;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
@@ -34,6 +37,29 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject GetAreaPref;
     Transform GetArea;
     int[] GoodsCount = new int[3];
+
+    private void Update()
+    {
+        if (Time.timeScale == 0) return;
+        if (Input.GetMouseButtonDown(1))
+        {
+            GameManager.instance.Git.SetActive(true);
+            Vector3 cnt = Camera.main.ScreenToWorldPoint(Input.mousePosition); cnt.z = 1;
+            GameManager.instance.Git.transform.position = cnt;
+            foreach (var k in GameManager.instance.Players) k.IsFollow = true;
+        }
+    }
+    
+    public void RemoveGit(BaseEventData data)
+    {
+        PointerEventData Data = data as PointerEventData;
+        if (Data.button == PointerEventData.InputButton.Left)
+        {
+            foreach (var k in GameManager.instance.Players) k.IsFollow = false;
+            GameManager.instance.Git.SetActive(false);
+        }
+    }
+
 
     private void FixedUpdate()
     {

@@ -6,12 +6,21 @@ public class Amiya : PlayerSetting
 {
     [SerializeField] Sprite Bullet1;
     [SerializeField] Sprite Bullet2;
+    [SerializeField] GameObject Weapon;
+
     [SerializeField] GameObject Weapon2;
+
+
+
+
     Sprite BulletIm;
     RangeAttack MyAttack;
     protected override void Awake()
     {
         base.Awake();
+
+        player.Weapon = Weapon; player.WeaponPos = player.Weapon.transform.localPosition; player.FlipWeaponPos = new Vector3(-player.WeaponPos.x, player.WeaponPos.y);
+
         MyAttack = GetComponent<RangeAttack>();
         player.WeaponSprite = player.Weapon.GetComponent<SpriteRenderer>();
         player.CurHP = player.MaxHP = 150;

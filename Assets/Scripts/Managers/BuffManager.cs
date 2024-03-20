@@ -30,17 +30,20 @@ public class BuffManager : MonoBehaviour
     /// 0 : 서리, 1 : 빙결, 2 : 감속, 3 : 방어구 파괴
     /// </param>
     /// <returns></returns>
-    public GameObject RequestForDebuff(int type)
+    public GameObject RequestForDebuff(int type, float Size_X = 0, float Size_Y = 0)
     {
         for (int i = 0; i < 200; i++)
         {
-            if (!DeBuffs[i].activeSelf)
+            if (!DeBuffs[i].activeSelf) 
             {
+                DeBuffs[i].transform.localScale = Vector3.one;
                 switch (type)
                 {
                     case 0: Sprites[i].sprite = Chill; break;
                     case 1:
-                        Sprites[i].sprite = Freeze; break;
+                        Sprites[i].sprite = Freeze;
+                        DeBuffs[i].transform.localScale = new Vector3(Size_X / Freeze.bounds.size.x, Size_Y / Freeze.bounds.size.y, 1);
+                        break;
                     case 2:
                         Sprites[i].sprite = Slow; break;
                     case 3:

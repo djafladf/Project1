@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] int Defense;
     int MaxDefense;
     int MaxDamage;
+    float MaxSpeed;
 
     Rigidbody2D rigid;
 
@@ -22,6 +23,10 @@ public class Enemy : MonoBehaviour
 
     int MaxHP;
     bool IsLive = true;
+    bool OnIce = false;
+
+    float IceRatio = 1;
+    float Cheeled = 0;
 
     Animator anim;
     SpriteRenderer spriteRenderer;
@@ -29,9 +34,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Awake()
     {
-        MaxHP = HP;
-        MaxDamage = Damage;
-        MaxDefense = Defense;
+        MaxHP = HP; MaxDamage = Damage; MaxDefense = Defense; MaxSpeed = speed;
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -40,7 +43,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        if (!IsLive) return;
+        if (!IsLive || OnIce) return;
         rigid.velocity = Vector2.zero;
         if (MoveAble && !anim.GetBool("IsAttack"))
         {
@@ -76,7 +79,7 @@ public class Enemy : MonoBehaviour
 
     bool CanHit = true;
     float[] LeftTime = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-    float[] DeBuffVar = { 1,1,1,1,1,1,1,1,1,1};
+    float[] DeBuffVar = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
@@ -85,7 +88,7 @@ public class Enemy : MonoBehaviour
         {
             BulletInfo Info = GameManager.instance.BM.GetBulletInfo(GameManager.StringToInt(collision.name));
             int GetDamage = (int)(Info.Damage * (100 - Defense) * 0.01);
-            GameManager.instance.DM.MakeDamage(GetDamage,transform);
+            GameManager.instance.DM.MakeDamage(GetDamage, transform);
             HP -= GetDamage;
             if (HP <= 0)
             {
@@ -94,55 +97,72 @@ public class Enemy : MonoBehaviour
                 IsLive = false; CanHit = false; rigid.simulated = false; coll.enabled = false;
                 GameManager.instance.UM.KillCountUp(1); GameManager.instance.ES.CurActive--;
             }
-            else
+            else if (Info.DeBuffs != null)
             {
-                if(Info.DeBuffs != null)
+
+                if (Info.DeBuffs.Speed != 1)
                 {
-                    if (Info.DeBuffs.Speed != 1)
-                    {
 
-                    }
-                    if (Info.DeBuffs.Attack != 1)
-                    {
+                }
+                if (Info.DeBuffs.Attack != 1)
+                {
 
-                    }
-                    if (Info.DeBuffs.Defense != 1)
+                }
+                if (Info.DeBuffs.Defense != 1)
+                {
+                    if (DeBuffVar[2] > Info.DeBuffs.Defense)
                     {
-                        if (DeBuffVar[2] > Info.DeBuffs.Defense)
+                        Defense = (int)(MaxDefense * Info.DeBuffs.Defense);
+                        DeBuffVar[2] = Info.DeBuffs.Defense;
+                    }
+
+                    if (LeftTime[2] < Info.DeBuffs.Last)
+                    {
+                        if (LeftTime[2] <= 0)
                         {
-                            Defense = (int)(MaxDefense * Info.DeBuffs.Defense);
-                            DeBuffVar[2] = Info.DeBuffs.Defense;
+                            DeBuffObj[2] = GameManager.instance.BFM.RequestForDebuff(3);
+                            DeBuffObj[2].transform.parent = transform;
+                            DeBuffObj[2].transform.localPosition = spriteRenderer.sprite.bounds.size * 0.5f;
+                            DeBuffObj[2].gameObject.SetActive(true);
+                            LeftTime[2] = Info.DeBuffs.Last;
+                            StartCoroutine(DefenseChange());
                         }
-
-                        if (LeftTime[2] < Info.DeBuffs.Last)
-                        {
-                            if (LeftTime[2] <= 0)
-                            {
-                                DeBuffObj[2] = GameManager.instance.BFM.RequestForDebuff(3);
-                                DeBuffObj[2].transform.parent = transform;
-                                DeBuffObj[2].transform.localPosition = spriteRenderer.sprite.bounds.size * 0.5f;
-                                DeBuffObj[2].gameObject.SetActive(true);
-                                LeftTime[2] = Info.DeBuffs.Last;
-                                StartCoroutine(DefenseChange());
-                            }
-                            else LeftTime[2] = Info.DeBuffs.Last;
-                        }
-
+                        else LeftTime[2] = Info.DeBuffs.Last;
                     }
-                    if (Info.DeBuffs.Ice != 1)
-                    {
 
+                }
+                if (Info.DeBuffs.Ice != 0 && !OnIce)
+                {
+                    Cheeled += Info.DeBuffs.Ice * IceRatio;
+                    if (DeBuffObj[3] == null)
+                    {
+                        DeBuffObj[3] = GameManager.instance.BFM.RequestForDebuff(0);
+                        DeBuffObj[3].transform.parent = transform;
+                        DeBuffObj[3].transform.localPosition = new Vector3(0, spriteRenderer.sprite.bounds.size.y * 0.6f, 0);
+                        DeBuffObj[3].gameObject.SetActive(true);
+                        speed *= 0.7f;
                     }
-                    if (Info.DeBuffs.Fragility != 1)
+                    if (Cheeled >= 5)
                     {
+                        DeBuffObj[3].SetActive(false); DeBuffObj[3].transform.parent = GameManager.instance.BFM.transform;
+                        DeBuffObj[3] = null;
 
+                        DeBuffObj[3] = GameManager.instance.BFM.RequestForDebuff(1,spriteRenderer.sprite.bounds.size.x,spriteRenderer.bounds.size.y);
+                        DeBuffObj[3].transform.parent = transform;
+                        DeBuffObj[3].transform.localPosition = Vector3.zero;
+                        DeBuffObj[3].gameObject.SetActive(true);
+                        StartCoroutine(Iced());
                     }
                 }
-                StartCoroutine(NockBack_Enemy());
+                if (Info.DeBuffs.Fragility != 0)
+                {
+
+                }
             }
+            StartCoroutine(NockBack_Enemy());
         }
     }
-    GameObject[] DeBuffObj = new GameObject[5]; 
+    GameObject[] DeBuffObj = new GameObject[5];
 
     IEnumerator DefenseChange()
     {
@@ -154,6 +174,20 @@ public class Enemy : MonoBehaviour
         Defense = MaxDefense;
         DeBuffObj[2].SetActive(false); DeBuffObj[2].transform.parent = GameManager.instance.BFM.transform;
         DeBuffObj[2] = null;
+    }
+
+    IEnumerator Iced()
+    {
+        anim.enabled = false;
+        OnIce = true;
+        yield return GameManager.OneSec;
+
+        Cheeled = 0;
+        anim.enabled = true;
+        IceRatio *= 0.5f;
+        OnIce = false;
+        DeBuffObj[3].SetActive(false); DeBuffObj[3].transform.parent = GameManager.instance.BFM.transform;
+        DeBuffObj[3] = null;
     }
 
     protected virtual void OnTriggerExit2D(Collider2D collision)
@@ -182,7 +216,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-        for(int i = 0; i < DeBuffObj.Length;i++)
+        for (int i = 0; i < DeBuffObj.Length; i++)
         {
             if (DeBuffObj[i] != null)
             {
@@ -191,16 +225,20 @@ public class Enemy : MonoBehaviour
             }
         }
         MoveAble = true;
+        
+        anim.enabled = true;
         anim.SetBool("IsAttack", false);
         BeginAttack = false;
         CanHit = true;
         rigid.simulated = true;
         coll.enabled = true;
         HP = MaxHP;
-        Defense = MaxDefense;
-        IsLive = true;
-        spriteRenderer.sortingOrder = 2;
 
-        StopAllCoroutines();
+        IsLive = true;
+
+        OnIce = false; IceRatio = 1; Cheeled = 0;
+        Defense = MaxDefense; speed = MaxSpeed; Damage = MaxDamage;
+
+        spriteRenderer.sortingOrder = 2;
     }
 }
