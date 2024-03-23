@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Rosmontis
   m_EditorClassIdentifier: 
   speed: 5
-  Weapon: {fileID: 0}
+  InitHP: 200
+  InitSP: 0
+  InitDefense: 5

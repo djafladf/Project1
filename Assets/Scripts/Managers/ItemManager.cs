@@ -114,8 +114,7 @@ public class ItemManager : MonoBehaviour
 
     public void RemoveItem(int ind)
     {
-        int l = CreatedTiming.IndexOf(ind);
-        if(l != -1) CreatedTiming.RemoveAt(CreatedTiming.IndexOf(ind));
+        if(CreatedTiming.Contains(ind)) CreatedTiming.RemoveAt(CreatedTiming.IndexOf(ind));
     }
 
     

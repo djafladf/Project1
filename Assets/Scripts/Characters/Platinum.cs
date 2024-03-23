@@ -6,14 +6,6 @@ public class Platinum :PlayerSetting
 {
     [SerializeField] Sprite Bullet;
 
-    protected override void Awake()
-    {
-        base.Awake();
-        player.CurHP = player.MaxHP = 100;
-        player.CurSP = player.MaxSP = 10;
-        player.Defense = player.MaxDefense = 0;
-    }
-
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -28,9 +20,10 @@ public class Platinum :PlayerSetting
             Vector2 Sub = (TargetPos.position - transform.position).normalized;
             float rad = Vector2.Angle(Vector2.right, Sub) * Mathf.Deg2Rad;
             if (Sub.y < 0) rad = Mathf.PI * 2 - rad;
+            int Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10);
             for (int i = -ProjNum+1; i <= ProjNum-1; i++)
             {
-                GameManager.instance.BM.MakeBullet((int)(GameManager.instance.PlayerStatus.attack * DamageRatio), Penetrate,0,
+                GameManager.instance.BM.MakeBullet(Damage, Penetrate,0,
                 transform.position, new Vector3(Mathf.Cos(rad + 0.25f * i), Mathf.Sin(rad + 0.25f * i)),
                 10, Bullet, false);
             }

@@ -1,10 +1,8 @@
-using JetBrains.Annotations;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.UI;
 
 public class PlayerSetting : MonoBehaviour
 {
@@ -26,16 +24,34 @@ public class PlayerSetting : MonoBehaviour
         player.sprite = GetComponent<SpriteRenderer>();
         player.WeaponLevel = 1;
         CanMove = IsPlayer;
+        player.CurHP = player.InitHP; player.MaxHP = player.InitHP;
+        //player.MaxSp = player.CurSP = player.InitSP;
 
-        if(!IsSummon) GameManager.instance.RequestOfWeapon(WeaponLevelUp, player.Id);
+        if (!IsSummon)
+        {
+            GameManager.instance.RequestOfWeapon(WeaponLevelUp, player.Id);
+        }
 
-        AttackInf = new AttackType();
         gameObject.SetActive(false);
     }
 
 
     protected virtual void FixedUpdate()
     {
+        if (player.ChangeOccur)
+        {
+            player.ChangeOccur = false;
+            int cnt = player.MaxHP;
+            player.MaxHP = Mathf.FloorToInt(player.InitHP * (1 + player.HPRatio + GameManager.instance.PlayerStatus.hp));
+            if (cnt - player.MaxHP != 0)
+            {
+                player.CurHP += cnt;
+                HPBar.fillAmount = player.CurHP / (float)player.MaxHP;
+                if (!IsPlayer) player.MyBatch.HPBar.fillAmount = player.CurHP / (float)player.MaxHP;
+            }
+            player.anim.SetFloat("AttackSpeed", player.AttackSpeed + GameManager.instance.PlayerStatus.attackspeed);
+        }
+
         player.rigid.velocity = Vector2.zero;
         if (CanMove)
         {
@@ -58,7 +74,7 @@ public class PlayerSetting : MonoBehaviour
                     else player.Dir = Vector2.zero;
                 }
             }
-            Vector2 nextVec = player.Dir * player.speed * Time.fixedDeltaTime;
+            Vector2 nextVec = player.Dir * player.speed * (1 + player.SpeedRatio + GameManager.instance.PlayerStatus.speed) *  Time.fixedDeltaTime;
             if (nextVec.Equals(Vector2.zero))
             {
                 player.anim.SetBool("IsWalk", false);
@@ -173,16 +189,15 @@ public class PlayerSetting : MonoBehaviour
 
     bool CanHit = true;
 
-    [SerializeField] Transform HPBar;
-    [SerializeField] Transform SPBar;
+    [SerializeField] Image HPBar;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("EnemyAttack") && CanHit)
         {
             BulletInfo Info = GameManager.instance.BM.GetBulletInfo(GameManager.StringToInt(collision.name));
-            int GetDamage = (int)(Info.Damage * (100 - player.Defense) * 0.01);
+            int GetDamage = (int)(Info.Damage * (100 - player.InitDefense * (1 + player.DefenseRatio + GameManager.instance.PlayerStatus.defense)) * 0.01);
             player.CurHP -= GetDamage;
-            if (player.CurHP > player.MaxHP) player.CurHP = player.MaxHP;
+            if (player.CurHP > player.InitHP ) player.CurHP = player.MaxHP;
             else if (player.CurHP <= 0)
             {
                 player.CurHP = 0;
@@ -193,10 +208,9 @@ public class PlayerSetting : MonoBehaviour
                 }
             }
 
-            HPBar.localScale -= Vector3.right * GetDamage / player.MaxHP;
-            if (HPBar.localScale.x > 1) HPBar.localScale = Vector3.one;
+            HPBar.fillAmount = player.CurHP / (float)player.MaxHP;
             if (IsPlayer) GameManager.instance.UM.HpChange();
-            else {  player.MyBatch.HPBar.fillAmount = (float)player.CurHP / (float)player.MaxHP;  }
+            else {  player.MyBatch.HPBar.fillAmount = player.CurHP / (float)player.MaxHP;  }
             if(player.CurHP > 0 && GetDamage > 0) StartCoroutine(NockBack_Player());
         }
         else if (collision.CompareTag("PlayerBuff"))
@@ -207,15 +221,16 @@ public class PlayerSetting : MonoBehaviour
     }
     protected void Heal(int Amount)
     {
+        Amount = (int)(Amount * GameManager.instance.PlayerStatus.heal);
         int LeftHP = player.MaxHP - player.CurHP;
         if (Amount > LeftHP) Amount = LeftHP;
         if (LeftHP != 0)
         {
             player.CurHP += Amount;
             GameManager.instance.DM.MakeHealCount(Amount, transform);
-            HPBar.localScale += Vector3.right * Amount / player.MaxHP;
+            HPBar.fillAmount = player.CurHP / (float)player.MaxHP;
             if (IsPlayer) GameManager.instance.UM.HpChange();
-            else if (!IsSummon) { player.MyBatch.HPBar.fillAmount = (float)player.CurHP / (float)player.MaxHP; }
+            else if (!IsSummon) { player.MyBatch.HPBar.fillAmount = player.CurHP / (float)player.MaxHP; }
         }
     }
 
@@ -239,10 +254,9 @@ public class PlayerSetting : MonoBehaviour
     protected virtual void OnEnable()
     {
         player.CurHP = player.MaxHP;
-        player.CurSP = player.MaxSP;
-        HPBar.localScale = Vector3.one;
-        SPBar.localScale = Vector3.up;
-        player.anim.SetFloat("AttackSpeed", player.AttackSpeed);
+        HPBar.fillAmount = 1;
+        player.AttackSpeed = player.MaxAttackSpeed;
+        player.anim.SetFloat("AttackSpeed", player.MaxAttackSpeed + GameManager.instance.PlayerStatus.attackspeed);
 
         if (!IsPlayer)
         {
@@ -250,7 +264,6 @@ public class PlayerSetting : MonoBehaviour
             if (!IsSummon)
             {
                 player.MyBatch.HPBar.fillAmount = 1;
-                player.MyBatch.SPBar.fillAmount = 0;
             }
         }
     }

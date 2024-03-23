@@ -23,9 +23,6 @@ public class Amiya : PlayerSetting
 
         MyAttack = GetComponent<RangeAttack>();
         player.WeaponSprite = player.Weapon.GetComponent<SpriteRenderer>();
-        player.CurHP = player.MaxHP = 150;
-        player.CurSP = player.MaxSP = 30;
-        player.Defense = player.MaxDefense = 0;
 
         BulletIm = Bullet1;
     }
@@ -38,11 +35,12 @@ public class Amiya : PlayerSetting
     IEnumerator Test()
     {
         while(true){
-            for (int i = 0; i < ProjNum; i++)
+            int Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10);
+            for (int i = 0; i < ProjNum * ProjRatio; i++)
             {
                 Vector3 RandomSub = new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 1f));
                 MyAttack.Fire
-                    (1, (int)(GameManager.instance.PlayerStatus.attack * DamageRatio),
+                    (1, Damage,
                     Penetrate,
                     transform.position + RandomSub,10,
                     BulletIm,false);
@@ -60,6 +58,7 @@ public class Amiya : PlayerSetting
     }
 
     int ProjNum = 1;
+    int ProjRatio = 1;
     float DamageRatio = 2f;
     int Penetrate = 0;
 
@@ -74,7 +73,7 @@ public class Amiya : PlayerSetting
             case 4: Penetrate+=2; break;
             case 5: DamageRatio += 1f; break;
             case 6:
-                ProjNum *= 2;
+                ProjRatio = 3;
                 BulletIm = Bullet2;
                 Weapon2.SetActive(true);
                 break;

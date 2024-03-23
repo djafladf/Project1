@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 01fb43fe82adabd4eb52c26b2f3fb9dd
+guid: 71c8da25a7a6b3f44a3ad4e081c4d6aa
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 30
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,64 +105,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: StatBar_0
+      name: Selection_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 10
-        width: 80
-        height: 20
+        x: 35
+        y: 784
+        width: 750
+        height: 178
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba81c3ba5fe3de14fa3f97f815e5c61a
-      internalID: 420953416
+      spriteID: 4408ce5c851b95441b18744d332e06d9
+      internalID: 1512018330
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: StatBar_1
+      name: Selection_1
       rect:
         serializedVersion: 2
-        x: 90
-        y: 15
-        width: 80
-        height: 20
+        x: 37
+        y: 545
+        width: 750
+        height: 178
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 00995d16a02c2a94eb07026e6dbe499d
-      internalID: -248167206
+      spriteID: e7a84a04a42fff247973726e59061228
+      internalID: -938868294
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: StatBar_2
+      name: Selection_4
       rect:
         serializedVersion: 2
-        x: 90
-        y: 0
-        width: 80
-        height: 10
+        x: 700
+        y: 363
+        width: 38
+        height: 38
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07757f131c415a4478094f63c29181ff
-      internalID: -2079971746
+      spriteID: 59532700642fbe24790d4a1234827fc3
+      internalID: 1841745030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selection_5
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 173
+        width: 169
+        height: 169
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e58fa8cb8f039d46bf40b1a26dfe730
+      internalID: 2003958746
       vertices: []
       indices: 
       edges: []
@@ -178,9 +199,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      StatBar_1: -248167206
-      StatBar_0: 420953416
-      StatBar_2: -2079971746
+      Selection_3: -670043424
+      Selection_6: -1749692420
+      Selection_0: 1512018330
+      Selection_2: -1170912894
+      Selection_4: 1841745030
+      Selection_5: 2003958746
+      Selection_1: -938868294
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

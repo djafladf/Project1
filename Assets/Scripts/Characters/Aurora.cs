@@ -5,27 +5,29 @@ public class Aurora : PlayerSetting
 {
     [SerializeField] GameObject IceField;
 
-    bool IceOn = true;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        player.CurHP = player.MaxHP = 500;
-        player.CurSP = player.MaxSP = 10;
-        player.Defense = player.MaxDefense = 25;
-    }
+    bool IceOn = false;
 
     bool IsHeal = false;
+
+    float s = 0;
 
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-        if (IsHeal) Heal(5);
+        if (IsHeal)
+        {
+            s += Time.fixedDeltaTime;
+            if (s >= 1)
+            {
+                s = 0;
+                Heal((int)(player.MaxHP * 0.01f));
+            }
+        }
     }
 
     protected override void AttackMethod()
     {
-        GameManager.instance.BM.MakeMeele((int)(GameManager.instance.PlayerStatus.attack), 0, 0.2f,
+        GameManager.instance.BM.MakeMeele((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * 10), 0, 0.2f,
                     TargetPos.position, Vector3.zero, 0, null, false,new DeBuff(ice : this.ice));
     }
 
@@ -35,10 +37,10 @@ public class Aurora : PlayerSetting
     {
         switch (player.WeaponLevel++)
         {
-            case 1: player.Defense += 5; player.MaxDefense += 5; break;
-            case 2: player.Defense += 5; player.MaxDefense += 5; break;
+            case 1: player.InitDefense += 5; player.InitDefense += 5; break;
+            case 2: player.InitDefense += 5; player.InitDefense += 5; break;
             case 3: ice = 1; break;
-            case 4: player.Defense += 5; player.MaxDefense += 5; break;
+            case 4: player.InitDefense += 5; player.InitDefense += 5; break;
             case 5: IsHeal = true; break;
             case 6: IceField.SetActive(true); IceOn = true; StartCoroutine(FieldAct()); break;
         }
@@ -53,7 +55,7 @@ public class Aurora : PlayerSetting
             foreach (RaycastHit2D t in targets)
             {
                 Transform cnt = t.transform;
-                GameManager.instance.BM.MakeMeele((int)(player.Defense * 1.5f), 0, 0.2f,
+                GameManager.instance.BM.MakeMeele((int)(player.InitDefense * (1 + player.DefenseRatio + GameManager.instance.PlayerStatus.defense) * 1.5f), 0, 0.2f,
                     cnt.position, Vector3.zero, 0, null, false,new DeBuff(ice : 1));
             }
             yield return GameManager.OneSec;

@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Amiya
   m_EditorClassIdentifier: 
   speed: 5
-  Weapon: {fileID: 0}
+  InitHP: 150
+  InitSP: 30
+  InitDefense: 0

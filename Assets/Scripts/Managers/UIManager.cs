@@ -1,13 +1,12 @@
+using Cinemachine;
 using System;
-using TMPro;
-using UnityEngine.UI;
-using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Cinemachine;
-using UnityEditor.PackageManager;
-using Unity.VisualScripting;
+using TMPro;
+using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -35,11 +34,30 @@ public class UIManager : MonoBehaviour
     [SerializeField] Transform ToolField;
 
     [SerializeField] GameObject GetAreaPref;
+    [SerializeField] GameObject PauseObj;
     Transform GetArea;
     int[] GoodsCount = new int[3];
 
+    //
+
+    int l = 0;
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (PauseObj.activeSelf)
+            {
+                GameManager.instance.SetTime(0, true);
+                PauseObj.SetActive(false);
+            }
+            else
+            {
+                PauseObj.SetActive(true);
+                GameManager.instance.SetTime(0, false);
+                
+            }
+        }
+
         if (Time.timeScale == 0) return;
         if (Input.GetMouseButtonDown(1))
         {
@@ -49,7 +67,7 @@ public class UIManager : MonoBehaviour
             foreach (var k in GameManager.instance.Players) k.IsFollow = true;
         }
     }
-    
+
     public void RemoveGit(BaseEventData data)
     {
         PointerEventData Data = data as PointerEventData;
@@ -72,15 +90,10 @@ public class UIManager : MonoBehaviour
     float ExpSub = 0.05f;
     public void ExpUp(int value)
     {
-        if (ItemInfo.Items.Count == 0) return;
+        if (NonSelected.Count == 0) return;
         float cnt = ExpBar.fillAmount + ExpSub * value * GameManager.instance.PlayerStatus.exp;
-
-        while (cnt >= 1)
-        {
-            LevelUpEvent();
-            cnt -= 1;
-        }
-
+        if (cnt < 0) cnt = 0;
+        if (cnt > 1) { LevelUpEvent(); cnt -= 1; }
         ExpBar.fillAmount = cnt;
     }
 
@@ -103,8 +116,6 @@ public class UIManager : MonoBehaviour
     }
 
     // Level Up
-    [SerializeField]
-    List<Sprite> RelicSprites;
 
     [SerializeField]
     GameObject LevelUP;
@@ -115,21 +126,25 @@ public class UIManager : MonoBehaviour
     [NonSerialized]
     public Func<int>[] WeaponLevelUps;
 
+
+    List<ItemSub> NonSelected;
+    List<ItemSub> Selected;
+
+
     void LevelUpEvent()
     {
-        int[] array = new int[ItemInfo.Items.Count]; for (int i = 0; i < array.Length; i++) array[i] = i;
+        int[] array = new int[NonSelected.Count]; for (int i = 0; i < array.Length; i++) array[i] = i;
         array = array.OrderBy(x => Guid.NewGuid()).ToArray();
-
-        int RealSelect = ItemInfo.Items.Count; if (RealSelect > GameManager.instance.PlayerStatus.selection) RealSelect = GameManager.instance.PlayerStatus.selection;
+        int RealSelect = NonSelected.Count; if (RealSelect > GameManager.instance.PlayerStatus.selection) RealSelect = GameManager.instance.PlayerStatus.selection;
 
         int[] pickedElements = array.Take(RealSelect).ToArray();
         foreach (var k in Selections) k.gameObject.SetActive(false);
         for (int i = 0; i < RealSelect; i++)
         {
-            int Ind = pickedElements[i]; ItemSub cnt = ItemInfo.Items[Ind];
+            int Ind = pickedElements[i];
+            ItemSub cnt = NonSelected[Ind];
             Selections[i].gameObject.SetActive(true);
-            if(cnt.IsWeapon)Selections[i].Init(RelicSprites[cnt.id], cnt.name, cnt.description[cnt.lv - 1], cnt.extra, Ind,cnt.lv);
-            else Selections[i].Init(RelicSprites[cnt.id], cnt.name, cnt.description[cnt.lv - 1], cnt.extra, Ind, -1);
+            Selections[i].Init(cnt.sprite, cnt.name, cnt.description[cnt.lv - 1], cnt.extra, Ind, cnt.lv,cnt.IsWeapon);
         }
 
         LV.text = $"LV.{++CurLevel}";
@@ -137,30 +152,160 @@ public class UIManager : MonoBehaviour
 
 
         LevelUP.gameObject.SetActive(true);
-        Time.timeScale = 0;
+        GameManager.instance.SetTime(0, false);
     }
 
+    [SerializeField] TMP_Text AttackStat;
+    [SerializeField] TMP_Text HealthStat;
+    [SerializeField] TMP_Text DefenseStat;
+    [SerializeField] TMP_Text SpeedStat;
+    [SerializeField] TMP_Text HasteStat;
+    [SerializeField] TMP_Text GainStat;
+    [SerializeField] TMP_Text CostStat;
+    [SerializeField] TMP_Text ExpStat;
+
+    [SerializeField] Transform RelicList;
+    [SerializeField] GameObject RelicObj;
+
+
+    bool[] Dragons = { false, false, false, false, false };
+    int DragonCount = 0;
     public void ApplySelection(int ind)
     {
-        ItemSub cnt = ItemInfo.Items[ind];
+        ItemSub cnt = NonSelected[ind];
         if (!cnt.IsWeapon)
         {
+            GameObject cntRelic = Instantiate(RelicObj,RelicList);
+            cntRelic.transform.GetChild(0).GetComponent<Image>().sprite = cnt.sprite;
+
             attribute cntatt = cnt.attributes;
-            ItemInfo.Selected.Add(cnt); ItemInfo.Items.RemoveAt(ind);
-            GameManager.instance.PlayerStatus.attack *= cntatt.attack; 
-            GameManager.instance.PlayerStatus.cost *= cntatt.cost; 
-            GameManager.instance.PlayerStatus.defense *= cntatt.defense; 
-            GameManager.instance.PlayerStatus.pickup *= cntatt.pickup;
-            GameManager.instance.PlayerStatus.selection += cntatt.selection;
-            GameManager.instance.PlayerStatus.exp *= cntatt.exp; GameManager.instance.PlayerStatus.sp += cntatt.sp;
-            if (cntatt.pickup != 1) GetArea.localScale *= GameManager.instance.PlayerStatus.pickup;
-            if (ItemInfo.Items.Count == 0) GameManager.instance.PlayerStatus.exp = 0;
+            Selected.Add(cnt); NonSelected.RemoveAt(ind);
+            if (cntatt.attack != 0)
+            {
+                GameManager.instance.PlayerStatus.attack += cntatt.attack;
+                AttackStat.text = $"+{Mathf.FloorToInt(GameManager.instance.PlayerStatus.attack * 100)}%";
+            }
+
+            if (cntatt.cost != 0)
+            {
+                GameManager.instance.PlayerStatus.cost += cntatt.cost;
+                CostStat.text = $"+{Mathf.FloorToInt((cntatt.cost-1) * 100)}%";
+            }
+
+            if (cntatt.defense != 0)
+            {
+                GameManager.instance.PlayerStatus.defense += cntatt.defense;
+                DefenseStat.text = $"+{Mathf.FloorToInt(GameManager.instance.PlayerStatus.defense * 100)}%";
+            }
+
+            if (cntatt.pickup != 0) 
+            { 
+                GameManager.instance.PlayerStatus.pickup += cntatt.pickup; 
+                GetArea.localScale *= GameManager.instance.PlayerStatus.pickup;
+                GainStat.text = $"+{Mathf.FloorToInt((GameManager.instance.PlayerStatus.pickup-1) * 100)}%";
+            }
+            if (cntatt.exp != 0)
+            {
+                GameManager.instance.PlayerStatus.exp += cntatt.exp;
+                ExpStat.text = $"+{Mathf.FloorToInt((GameManager.instance.PlayerStatus.exp-1) * 100)}%";
+            }
+
+            if (cntatt.selection != 0) GameManager.instance.PlayerStatus.selection += cntatt.selection;
+            if(cntatt.attackspeed != 0)
+            {
+                GameManager.instance.PlayerStatus.attackspeed += cntatt.attackspeed;
+                HasteStat.text = $"+{Mathf.FloorToInt(GameManager.instance.PlayerStatus.attackspeed * 100)}%";
+                foreach (var k in GameManager.instance.Players) k.ChangeOccur = true;
+            }
+            if(cntatt.hp != 0)
+            {
+                GameManager.instance.PlayerStatus.hp += cntatt.hp;
+                foreach (var k in GameManager.instance.Players) k.ChangeOccur = true;
+                HealthStat.text = $"+{Mathf.FloorToInt(cntatt.exp * 100)}%";
+            }
+
+            if (cntatt.dragons != 0)
+            {
+                Dragons[cntatt.dragons - 1] = true;
+                if(DragonCount >= 1)
+                {
+                    switch (cntatt.dragons)
+                    {
+                        case 1: GameManager.instance.PlayerStatus.attack += 0.05f * DragonCount++; break;
+                        case 2: GameManager.instance.PlayerStatus.defense += 0.05f * DragonCount++; break;
+                        case 3: GameManager.instance.PlayerStatus.exp += 0.05f * DragonCount++; break;
+                        case 4: GameManager.instance.PlayerStatus.attackspeed += 0.03f * DragonCount++; break;
+                        case 5: GameManager.instance.PlayerStatus.hp += 0.05f * DragonCount++; break;
+                    }
+
+                }
+                if (Dragons[0])
+                {
+                    GameManager.instance.PlayerStatus.attack += 0.05f;
+                    AttackStat.text = $"+{Mathf.FloorToInt(GameManager.instance.PlayerStatus.attack * 100)}%";
+                }
+
+                if (Dragons[1])
+                {
+                    GameManager.instance.PlayerStatus.defense += 0.05f;
+                    DefenseStat.text = $"+{Mathf.FloorToInt(GameManager.instance.PlayerStatus.defense * 100)}%";
+                }
+
+                if (Dragons[2])
+                {
+                    GameManager.instance.PlayerStatus.exp += 0.05f;
+                    ExpStat.text = $"+{Mathf.FloorToInt(GameManager.instance.PlayerStatus.exp * 100)}%";
+                }
+
+                if (Dragons[3])
+                {
+                    GameManager.instance.PlayerStatus.attackspeed += 0.03f;
+                    foreach (var k in GameManager.instance.Players) k.ChangeOccur = true;
+                    HasteStat.text = $"+{Mathf.FloorToInt(GameManager.instance.PlayerStatus.attackspeed * 100)}%";
+                }
+                if (Dragons[4])
+                {
+                    GameManager.instance.PlayerStatus.hp += 0.05f;
+                    foreach (var k in GameManager.instance.Players) k.ChangeOccur = true;
+                    HealthStat.text = $"+{Mathf.FloorToInt(GameManager.instance.PlayerStatus.hp * 100)}%";
+                }
+            }
+            if (cntatt.special != 0)
+            {
+                switch (cntatt.special)
+                {
+                    case 1:
+                        StartCoroutine(SpecialAct(60, () => { ExpUp(-100000); }));
+                        break;
+                    case 2:
+                        StartCoroutine(SpecialAct(60, () => { 
+                            GameManager.instance.PlayerStatus.attack += UnityEngine.Random.Range(-10, 10) * 0.01f;
+                            AttackStat.text = $"+{Mathf.FloorToInt(GameManager.instance.PlayerStatus.attack * 100)}%";
+                        }));
+                        break;
+                }
+            }
         }
         else
         {
-            int j = WeaponLevelUps[cnt.operatorid]();
-            if (j == 7) ItemInfo.Items.RemoveAt(ind);
-            else cnt.lv++;
+
+            if (cnt.lv == 7) NonSelected.RemoveAt(ind);
+            else
+            {
+                WeaponLevelUps[cnt.operatorid]();
+                cnt.lv++;
+            }
+        }
+
+        if (NonSelected.Count == 0) GameManager.instance.PlayerStatus.exp = 0;
+    }
+
+    IEnumerator SpecialAct(int Count, Action act)
+    {
+        while (true)
+        {
+            act();
+            yield return new WaitForSeconds(Count);
         }
     }
 
@@ -172,25 +317,21 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] CinemachineVirtualCamera VC;
 
-    ItemInfos ItemInfo;
 
-    public void Init(int Count, ItemInfos ItemInfo, ItemInfos WeaponSub, Sprite[] Weapons, 
-        Player[] Players, GameObject[] Prefs, Sprite[] Heads,int PlayerInd)
+    public void Init(int Count, List<ItemSub> Weapons, Player[] Players, GameObject[] Prefs, Sprite[] Heads, int PlayerInd)
     {
-        this.ItemInfo = ItemInfo;
-
-
+        NonSelected = new List<ItemSub>(); Selected = new List<ItemSub>();
+        NonSelected.AddRange(GameManager.instance.Items);
         Vector3 StartPos = new Vector3(300 - Count * 150, 0, 0); Vector3 Cnt = new Vector3(250, 0, 0);
         int batchl = 0;
+
         for (int i = 0; i < Count; i++)
         {
             // Add Weapon To Item
-            ItemSub j = WeaponSub.Items[i];
-            j.id = ItemInfo.Items.Count;
+            ItemSub j = Weapons[i];
             j.IsWeapon = true;
             j.operatorid = i;
-            ItemInfo.Items.Add(j);
-            RelicSprites.Add(Weapons[i]);
+            NonSelected.Add(j);
             // Init BatchTool;
             if (i != PlayerInd)
             {

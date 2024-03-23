@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public GameObject Git;
     // ID
 
-    string[] Player_ID =
+    public string[] Player_ID =
     {
         "Amiya",
         "Aurora",
@@ -59,6 +59,13 @@ public class GameManager : MonoBehaviour
     public int PlayerInd;
 
 
+    [SerializeField]
+    public List<ItemSub> Items;
+
+    [SerializeField]
+    public List<ItemSub> WeaponSub;
+
+
     private async void LoadAssets()
     {
         Transform Managers = GameObject.Find("Managers").transform;
@@ -73,13 +80,9 @@ public class GameManager : MonoBehaviour
 
         // Get Items
         string DirPath = Directory.GetCurrentDirectory();
-        ItemInfos ItemInfo = JsonConvert.DeserializeObject<ItemInfos>(File.ReadAllText(DirPath + "\\Assets\\JSON\\ItemInfos.Json"));
-        ItemInfo.Selected = new List<ItemSub>();
         var BatchName = CurPlayerID.Select(index => Player_ID[index]).ToArray();
         int LL = BatchName.Length;
         // Get Operators
-        ItemInfos WeaponSub = JsonConvert.DeserializeObject<ItemInfos>(File.ReadAllText(DirPath + "\\Assets\\JSON\\WeaponInfos.Json"));
-        WeaponSub.Items = CurPlayerID.Select(index => WeaponSub.Items[index]).ToList();
         Players = new Player[LL];
         GameObject[] Prefs = new GameObject[LL];
         Sprite[] Heads = new Sprite[LL];
@@ -90,15 +93,15 @@ public class GameManager : MonoBehaviour
         player = Players[PlayerInd];
 
 
-        await AddressablesLoader.InitAssets(BatchName, "Operator_Pref", Prefs, transform.parent);
+        await AddressablesLoader.InitAssets(BatchName, "Operator_Pref", Prefs, Managers.GetChild(5));
         await AddressablesLoader.InitAssets(BatchName, "Operator_Head", Heads, typeof(Sprite));
-        await AddressablesLoader.InitAssets(BatchName, "Operator_Weapon", Weapons, typeof(Sprite));
+        //await AddressablesLoader.InitAssets(BatchName, "Operator_Weapon", Weapons, typeof(Sprite));
 
         IM.Init(); BM.Init(); ES.Init(1); DM.Init(); BFM.Init();
 
         
 
-        UM.Init(LL,ItemInfo,WeaponSub,Weapons,Players,Prefs,Heads,PlayerInd);
+        UM.Init(LL, CurPlayerID.Select(index => WeaponSub[index]).ToList(),Players,Prefs,Heads,PlayerInd);
         
     }
 
@@ -110,6 +113,24 @@ public class GameManager : MonoBehaviour
             UM.WeaponLevelUps = new Func<int>[CurPlayerID.Length];
         }
         UM.WeaponLevelUps[id] = func;
+    }
+
+    List<float> TimeSet = new List<float>();
+    public void SetTime(float var,bool IsRemove)
+    {
+        if (IsRemove)
+        {
+            TimeSet.Remove(var);
+            if (TimeSet.Count == 0) Time.timeScale = 1;
+            else Time.timeScale = TimeSet[0];
+        }
+        else
+        {
+            if (TimeSet.Count == 0) Time.timeScale = var;
+            else if (var < TimeSet[0]) Time.timeScale = var;
+            TimeSet.Add(var);
+            TimeSet.Sort();
+        }
     }
 
     // --------------------------------------------------------------------------------------------

@@ -6,21 +6,13 @@ public class Cutter : PlayerSetting
     [SerializeField] Sprite NormalAttack;
     [SerializeField] Sprite Bullet;
 
-    protected override void Awake()
-    {
-        base.Awake();
-        player.CurHP = player.MaxHP = 200;
-        player.CurSP = player.MaxSP = 10;
-        player.Defense = player.MaxDefense = 10;
-    }
-
     protected override void AttackMethod()
     {
         if (TargetPos != null)
         {
             if (Vector3.Distance(TargetPos.position, transform.position) <= 2)
             {
-                GameManager.instance.BM.MakeMeele((int)(GameManager.instance.PlayerStatus.attack * DamageRatio),0,0.3f,
+                GameManager.instance.BM.MakeMeele((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10),0,0.3f,
                     transform.position, -player.Dir,
                     0, NormalAttack, false);
             }
@@ -31,7 +23,7 @@ public class Cutter : PlayerSetting
                 if (Sub.y < 0) rad = Mathf.PI * 2 - rad;
                 for (int i = -ProjNum; i <= ProjNum; i++)
                 {
-                    GameManager.instance.BM.MakeBullet((int)(GameManager.instance.PlayerStatus.attack * DamageRatio * SpecialRatio), 0,0,
+                    GameManager.instance.BM.MakeBullet((int)((1+GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * SpecialRatio * 10), 0,0,
                     transform.position, new Vector3(Mathf.Cos(rad + 0.1f * i), Mathf.Sin(rad + 0.1f * i), 0),
                     15, Bullet, false);
                 }

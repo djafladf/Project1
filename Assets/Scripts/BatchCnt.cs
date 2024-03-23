@@ -16,7 +16,7 @@ public class BatchCnt : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0) && BatchAble)
         {
-            Time.timeScale = 1;
+            GameManager.instance.SetTime(0.1f, true);
             GameManager.instance.UM.CurRequest.EndBatch();
             gameObject.SetActive(false);
         }

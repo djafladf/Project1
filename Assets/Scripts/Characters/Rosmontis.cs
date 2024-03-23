@@ -18,9 +18,6 @@ public class Rosmontis : PlayerSetting
 
     protected override void Awake()
     {
-        player.CurHP = player.MaxHP = 200;
-        player.CurSP = player.MaxSP = 10;
-        player.MaxDefense = player.Defense = 10;
         WeaponOrigin = new Vector3[2];
         WeaponSprite = new SpriteRenderer[2];
         WeaponTrail = new TrailRenderer[2];
@@ -156,7 +153,10 @@ public class Rosmontis : PlayerSetting
             }
             WeaponSprite[1].sprite = Sprites[3];
         }
-        GameManager.instance.BM.MakeMeele((int)(GameManager.instance.PlayerStatus.attack * DamageRatio), 0,0.3f,
+
+        int Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10);
+
+        GameManager.instance.BM.MakeMeele(Damage, 0,0.3f,
                     AttackPos, Vector3.zero, 0, Sprites[4], false, new DeBuff(5,defense:defenseRatio));
     }
 

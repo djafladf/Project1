@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Aurora
   m_EditorClassIdentifier: 
   speed: 2.5
-  Weapon: {fileID: 0}
+  InitHP: 500
+  InitSP: 30
+  InitDefense: 25

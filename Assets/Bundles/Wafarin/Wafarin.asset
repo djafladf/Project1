@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Wafarin
   m_EditorClassIdentifier: 
   speed: 2.5
-  Weapon: {fileID: 0}
+  InitHP: 150
+  InitSP: 0
+  InitDefense: 0

@@ -24,7 +24,6 @@ public class OperatorBatchTool : Buttons
     [SerializeField] Image face;
     [SerializeField] Image state;
     public Image HPBar;
-    public Image SPBar;
     Sprite ObjectImage;
 
     Color CCnt = new Color(0.5f, 0.5f, 0.5f, 0);
@@ -64,7 +63,7 @@ public class OperatorBatchTool : Buttons
             OnUse = true;
             face.color += CCnt;
             pan.color += CCnt;
-            Time.timeScale = 0.1f;
+            GameManager.instance.SetTime(0.1f, false);
         }
         
     }

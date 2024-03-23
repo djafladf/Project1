@@ -15,34 +15,30 @@ public class LevelUpSelection : Buttons
     [SerializeField] TMP_Text Extra;
     [SerializeField] TMP_Text Rating;
     [SerializeField] Image Image;
+
+    [SerializeField] GameObject SelectionButtons;
     int ind;
 
-    public void Init(Sprite Im, string nm, string desc, string ext,int ind,int Level)
+    public void Init(Sprite Im, string nm, string desc, string ext,int ind,int Level,bool SetRating = false)
     {
         Image.sprite = Im;
         Name.text = nm;
         Description.text = desc;
         Extra.text = ext;
-        if (Level != -1)
-        {
-            Rating.gameObject.SetActive(true);
-            Rating.text = $"LV.{Level}";
-        }
-        else Rating.gameObject.SetActive(false);
+        Rating.gameObject.SetActive(SetRating);
+        Rating.text = $"LV.{Level+1}";
         this.ind = ind;
     }
 
-    Color Sub = new Color(0.5f, 0.5f, 0.5f,0);
+    Color Sub = new Color(0.25f, 0.25f, 0.25f,0);
 
     protected override void Click(PointerEventData Data)
     {
         MyIm.sprite = NonClicked;
-        MyIm.sprite = NonClicked;
-        Name.color -= Sub;
+        
         Description.color -= Sub;
         Extra.color -= Sub;
-        Image.color += Sub;
-        Time.timeScale = 1;
+        GameManager.instance.SetTime(0, true);
         GameManager.instance.UM.ApplySelection(ind);
         transform.parent.parent.gameObject.SetActive(false);
     }
@@ -50,19 +46,15 @@ public class LevelUpSelection : Buttons
     protected override void OnPointer(PointerEventData data)
     {
         MyIm.sprite = Clicked;
-        Name.color += Sub;
         Description.color += Sub;
         Extra.color += Sub;
-        Image.color -= Sub;
     }
 
     protected override void OutPointer(PointerEventData data)
     {
         MyIm.sprite = NonClicked;
-        Name.color -= Sub;
         Description.color -= Sub;
         Extra.color -= Sub;
-        Image.color += Sub;
     }
 
 

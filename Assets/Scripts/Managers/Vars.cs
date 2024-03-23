@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class AttackType
 {
@@ -9,41 +11,36 @@ public class AttackType
     public float LastDelay;
 }
 
-public class ItemInfos
-{
-    public List<ItemSub> Items;
-    public List<ItemSub> Selected;
-}
 
-[Serializable]
+[System.Serializable]
 public class ItemSub
 {
-    public int id;
+    public string name;
     public int operatorid;
     public int lv;
-    public string name;
     public List<string> description;
+    [Multiline(2)]
     public string extra;
     public bool IsWeapon;
+    public Sprite sprite;
     public attribute attributes;
-    public ItemSub() { lv = 1; IsWeapon = false; }
 }
 
-[Serializable]
+[System.Serializable]
 public class attribute
 {
     public float attack;
+    public float attackspeed;
     public float defense;
+    public float speed;
     public float cost;
-    public float sp;
     public float pickup;
     public int selection;
     public float exp;
-
-    public attribute()
-    {
-        attack = 1; defense = 1; cost = 1; pickup = 1; exp = 1;
-    }
+    public float heal;    
+    public int dragons;
+    public int special;
+    public float hp;
 }
 
 public class BulletInfo
