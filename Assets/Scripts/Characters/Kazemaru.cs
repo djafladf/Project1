@@ -13,6 +13,7 @@ public class Kazemaru : PlayerSetting
 
     protected override void Awake()
     {
+        
         if (!IsSummon)
         {
             DamageRatio = 1f;
@@ -24,8 +25,13 @@ public class Kazemaru : PlayerSetting
             SpecialRatio = 1f;
         }
 
-        if(!IsSummon) Doll = Instantiate(DollPref, transform.parent);
+        if (!IsSummon)
+        {
+            Doll = Instantiate(DollPref, transform.parent);
+        }
+
         base.Awake();
+
     }
 
     protected override void AttackMethod()
@@ -55,7 +61,7 @@ public class Kazemaru : PlayerSetting
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-        if (!IsSummon) if(!Doll.activeSelf && player.WeaponLevel > 6){ Doll.SetActive(true); Doll.transform.position = transform.position + Vector3.right; }
+        if (!IsSummon) if(!Doll.activeSelf /*&& player.WeaponLevel > 6*/ && CanMove){ Doll.SetActive(true); Doll.transform.position = transform.position + Vector3.right; }
     }
 
     float DamageRatio;
@@ -70,7 +76,7 @@ public class Kazemaru : PlayerSetting
             case 3: ProjNum++; AttackRange = 5; break;
             case 4: DamageRatio += 0.5f; break;
             case 5: DamageRatio += 0.75f; break;
-            case 6: SpecialRatio = 3f; ProjNum++; break;
+            case 6: player.anim.SetBool("IsSpecial",true); break;
         }
         return player.WeaponLevel;
     }

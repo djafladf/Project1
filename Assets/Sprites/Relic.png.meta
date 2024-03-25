@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 20
+  spritePixelsToUnits: 40
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -109,7 +109,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 8
-        y: 148
+        y: 188
         width: 42
         height: 38
       alignment: 0
@@ -130,7 +130,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 71
-        y: 149
+        y: 189
         width: 30
         height: 34
       alignment: 0
@@ -151,7 +151,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 133
-        y: 153
+        y: 193
         width: 43
         height: 23
       alignment: 0
@@ -172,7 +172,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 207
-        y: 148
+        y: 188
         width: 20
         height: 35
       alignment: 0
@@ -193,7 +193,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 143
+        y: 183
         width: 37
         height: 53
       alignment: 0
@@ -214,7 +214,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 12
-        y: 86
+        y: 126
         width: 36
         height: 44
       alignment: 0
@@ -235,7 +235,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 70
-        y: 86
+        y: 126
         width: 36
         height: 44
       alignment: 0
@@ -256,7 +256,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 130
-        y: 87
+        y: 127
         width: 36
         height: 44
       alignment: 0
@@ -277,7 +277,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 188
-        y: 88
+        y: 128
         width: 38
         height: 44
       alignment: 0
@@ -298,7 +298,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 252
-        y: 87
+        y: 127
         width: 36
         height: 44
       alignment: 0
@@ -319,7 +319,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 19
-        y: 33
+        y: 73
         width: 23
         height: 28
       alignment: 0
@@ -340,7 +340,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 57
-        y: 28
+        y: 68
         width: 56
         height: 40
       alignment: 0
@@ -361,7 +361,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 122
-        y: 26
+        y: 66
         width: 52
         height: 43
       alignment: 0
@@ -382,7 +382,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 188
-        y: 29
+        y: 69
         width: 40
         height: 39
       alignment: 0
@@ -403,7 +403,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 250
-        y: 26
+        y: 66
         width: 37
         height: 47
       alignment: 0
@@ -415,6 +415,48 @@ TextureImporter:
       bones: []
       spriteID: 829b063d77caee841892cedfca3f6a22
       internalID: -86018714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Relic_15
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 14
+        width: 39
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2da553bff564c484087c45ed4b0772b6
+      internalID: -136236407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Relic_16
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 12
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49a18e6315504b94183fc0f6bbbc31bd
+      internalID: -1959299541
       vertices: []
       indices: 
       edges: []
@@ -438,6 +480,8 @@ TextureImporter:
       Relic_1: 2051444606
       Relic_10: 1360136005
       Relic_8: -1362669851
+      Relic_15: -136236407
+      Relic_16: -1959299541
       Relic_13: 1269430726
       Relic_4: 1968841842
       Relic_11: -828106274

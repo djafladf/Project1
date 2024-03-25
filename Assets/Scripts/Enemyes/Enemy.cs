@@ -5,32 +5,32 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] int HP;
-    [SerializeField] float speed;
-    [SerializeField] float AS;
-    [SerializeField] int Damage;
-    [SerializeField] int Defense;
-    int MaxDefense;
-    int MaxDamage;
-    float MaxSpeed;
+    [SerializeField] protected int HP;
+    [SerializeField] protected float speed;
+    [SerializeField] protected float AS;
+    [SerializeField] protected int Damage;
+    [SerializeField] protected int Defense;
+    protected int MaxDefense;
+    protected int MaxDamage;
+    protected float MaxSpeed;
 
-    Rigidbody2D rigid;
+    protected Rigidbody2D rigid;
 
 
     [NonSerialized] public bool MoveAble = true;
     [NonSerialized] public bool BeginAttack = false;
     [NonSerialized] public Transform Target = null;
 
-    int MaxHP;
-    bool IsLive = true;
-    bool OnIce = false;
+    protected int MaxHP;
+    protected bool IsLive = true;
+    protected bool OnIce = false;
 
-    float IceRatio = 1;
-    float Cheeled = 0;
+    protected float IceRatio = 1;
+    protected float Cheeled = 0;
 
-    Animator anim;
-    SpriteRenderer spriteRenderer;
-    CapsuleCollider2D coll;
+    protected Animator anim;
+    protected SpriteRenderer spriteRenderer;
+    protected CapsuleCollider2D coll;
 
     protected virtual void Awake()
     {
@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    Vector3 AttackPos;
+    protected Vector3 AttackPos;
 
     protected virtual void AttackMethod()
     {
@@ -162,7 +162,7 @@ public class Enemy : MonoBehaviour
             StartCoroutine(NockBack_Enemy());
         }
     }
-    GameObject[] DeBuffObj = new GameObject[5];
+    protected GameObject[] DeBuffObj = new GameObject[5];
 
     IEnumerator DefenseChange()
     {

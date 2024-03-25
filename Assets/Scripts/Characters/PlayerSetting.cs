@@ -210,7 +210,7 @@ public class PlayerSetting : MonoBehaviour
 
             HPBar.fillAmount = player.CurHP / (float)player.MaxHP;
             if (IsPlayer) GameManager.instance.UM.HpChange();
-            else {  player.MyBatch.HPBar.fillAmount = player.CurHP / (float)player.MaxHP;  }
+            else if(!IsSummon) {  player.MyBatch.HPBar.fillAmount = player.CurHP / (float)player.MaxHP;  }
             if(player.CurHP > 0 && GetDamage > 0) StartCoroutine(NockBack_Player());
         }
         else if (collision.CompareTag("PlayerBuff"))
