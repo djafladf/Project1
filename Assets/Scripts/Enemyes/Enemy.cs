@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
     protected int MaxHP;
     protected bool IsLive = true;
     protected bool OnIce = false;
+    protected bool OnHit = false;
 
     protected float IceRatio = 1;
     protected float Cheeled = 0;
@@ -44,14 +45,13 @@ public class Enemy : MonoBehaviour
     protected virtual void FixedUpdate()
     {
         if (!IsLive || OnIce) return;
-        rigid.velocity = Vector2.zero;
         if (MoveAble && !anim.GetBool("IsAttack"))
         {
             Vector2 Dir = (GameManager.instance.player.Self.position - transform.position).normalized;
             if (Dir.x > 0 && !spriteRenderer.flipX) spriteRenderer.flipX = true;
             else if (Dir.x < 0 && spriteRenderer.flipX) spriteRenderer.flipX = false;
 
-            rigid.MovePosition(rigid.position + Dir * speed * Time.fixedDeltaTime);
+            if (!OnHit) rigid.MovePosition(rigid.position + Dir * speed * Time.fixedDeltaTime);
         }
         if (BeginAttack && !anim.GetBool("IsAttack"))
         {
@@ -68,6 +68,7 @@ public class Enemy : MonoBehaviour
             anim.SetBool("IsAttack", false);
             MoveAble = true;
         }
+        else AttackPos = Target.position;
     }
 
     protected Vector3 AttackPos;
@@ -81,6 +82,11 @@ public class Enemy : MonoBehaviour
     float[] LeftTime = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     float[] DeBuffVar = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 
+    protected virtual void HPChange()
+    {
+        
+    }
+
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (!IsLive) return;
@@ -90,6 +96,7 @@ public class Enemy : MonoBehaviour
             int GetDamage = (int)(Info.Damage * (100 - Defense) * 0.01);
             GameManager.instance.DM.MakeDamage(GetDamage, transform);
             HP -= GetDamage;
+            HPChange();     // For Boss
             if (HP <= 0)
             {
                 anim.SetTrigger("Dead");
@@ -159,7 +166,7 @@ public class Enemy : MonoBehaviour
 
                 }
             }
-            StartCoroutine(NockBack_Enemy());
+            StartCoroutine(NockBack_Enemy(Info.KnockBack,transform.position - collision.transform.position));
         }
     }
     protected GameObject[] DeBuffObj = new GameObject[5];
@@ -199,15 +206,36 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    Coroutine Fric = null;
 
-    IEnumerator NockBack_Enemy()
+    IEnumerator NockBack_Enemy(float Power,Vector2 Dir)
     {
-        CanHit = false;
+        CanHit = false; OnHit = true;
         spriteRenderer.color = Color.gray;
+        Power += 3;
+        if (Power > 0) 
+        {
+            rigid.AddForce(Dir.normalized * (Power), ForceMode2D.Impulse);
+            if (Fric == null) Fric = StartCoroutine(Friction());
+        }
         yield return new WaitForSeconds(0.1f);
         spriteRenderer.color = Color.white;
-        CanHit = true;
+        CanHit = true;  if(Power == 0) OnHit = false;
     }
+
+    IEnumerator Friction()
+    {
+        while (rigid.velocity.magnitude > 0.1f)
+        {
+            rigid.velocity = Vector2.Lerp(rigid.velocity, Vector2.zero, 0.5f);
+            yield return new WaitForSeconds(0.1f);
+        }
+        print("End");
+        rigid.velocity = Vector2.zero;
+        Fric = null; OnHit = false;
+    }
+
+
     void Dead()
     {
         GameManager.instance.IM.MakeItem(transform);

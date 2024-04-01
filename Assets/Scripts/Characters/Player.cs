@@ -1,7 +1,6 @@
 using System;
-using UnityEngine.InputSystem;
 using UnityEngine;
-using UnityEngine.UI;
+using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "NewPlayer", menuName = "ScriptableObjects/Player")]
 public class Player : ScriptableObject
@@ -22,7 +21,7 @@ public class Player : ScriptableObject
     [NonSerialized] public int CurSP;
 
 
-    [NonSerialized] public GameObject Weapon;
+    [NonSerialized] public List<SpriteRenderer> SubEffects = new List<SpriteRenderer>();
 
     [NonSerialized] public Vector3 WeaponPos;
     [NonSerialized] public Vector3 FlipWeaponPos;

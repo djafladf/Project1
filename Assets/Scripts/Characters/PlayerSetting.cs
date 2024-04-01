@@ -84,12 +84,12 @@ public class PlayerSetting : MonoBehaviour
                 if (player.Dir.x > 0 && !player.sprite.flipX)
                 {
                     player.sprite.flipX = true;
-                    if (HasWeapon) player.Weapon.transform.localPosition = player.FlipWeaponPos;
+                    foreach (var k in player.SubEffects) k.flipX = true;
                 }
                 else if (player.Dir.x < 0 && player.sprite.flipX)
                 {
                     player.sprite.flipX = false;
-                    if (HasWeapon) player.Weapon.transform.localPosition = player.WeaponPos;
+                    foreach (var k in player.SubEffects) k.flipX = false;
                 }
                 player.anim.SetBool("IsWalk", true);
                 player.rigid.MovePosition(player.rigid.position + nextVec);
@@ -161,12 +161,12 @@ public class PlayerSetting : MonoBehaviour
                 if (player.Dir.x > 0 && !player.sprite.flipX)
                 {
                     player.sprite.flipX = true;
-                    if (HasWeapon) player.Weapon.transform.localPosition = player.FlipWeaponPos;
+                    foreach (var k in player.SubEffects) k.flipX = true;
                 }
                 else if (player.Dir.x < 0 && player.sprite.flipX)
                 {
                     player.sprite.flipX = false;
-                    if (HasWeapon) player.Weapon.transform.localPosition = player.WeaponPos;
+                    foreach (var k in player.SubEffects) k.flipX = false;
                 }
             }
         }

@@ -39,8 +39,7 @@ public class Kazemaru : PlayerSetting
         if (Vector3.Distance(TargetPos.position, transform.position) <= 2)
         {
             GameManager.instance.BM.MakeMeele((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10),0,0.3f,
-                transform.position, -player.Dir,
-                0, MeeleAttack,false);
+                transform.position, -player.Dir,0,MeeleAttack,false);
         }
         if (ProjNum != 0)
         {

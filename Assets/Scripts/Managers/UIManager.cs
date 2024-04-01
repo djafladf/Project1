@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -40,7 +41,6 @@ public class UIManager : MonoBehaviour
 
     //
 
-    int l = 0;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -81,10 +81,13 @@ public class UIManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        CurTime += Time.fixedDeltaTime;
+        if (!GameManager.instance.IsBoss)
+        {
+            CurTime += Time.fixedDeltaTime;
+            Timer.text = string.Format("{0:00}:{1:00}", Mathf.FloorToInt(CurTime * 0.017f), Mathf.FloorToInt(CurTime % 60));
+        }
         if (CurCost < 99) CurCost += Time.fixedDeltaTime * GameManager.instance.PlayerStatus.cost;
         Cost.text = $"{(int)CurCost}";
-        Timer.text = string.Format("{0:00}:{1:00}", Mathf.FloorToInt(CurTime * 0.017f), Mathf.FloorToInt(CurTime % 60));
     }
 
     float ExpSub = 0.05f;
@@ -130,16 +133,16 @@ public class UIManager : MonoBehaviour
     List<ItemSub> NonSelected;
     List<ItemSub> Selected;
 
+    [SerializeField] List<ItemSub> StatItem;
 
     void LevelUpEvent()
     {
+        if (NonSelected.Count < GameManager.instance.PlayerStatus.selection) NonSelected.AddRange(StatItem);
         int[] array = new int[NonSelected.Count]; for (int i = 0; i < array.Length; i++) array[i] = i;
         array = array.OrderBy(x => Guid.NewGuid()).ToArray();
-        int RealSelect = NonSelected.Count; if (RealSelect > GameManager.instance.PlayerStatus.selection) RealSelect = GameManager.instance.PlayerStatus.selection;
-
-        int[] pickedElements = array.Take(RealSelect).ToArray();
+        int[] pickedElements = array.Take(GameManager.instance.PlayerStatus.selection).ToArray();
         foreach (var k in Selections) k.gameObject.SetActive(false);
-        for (int i = 0; i < RealSelect; i++)
+        for (int i = 0; i < GameManager.instance.PlayerStatus.selection; i++)
         {
             int Ind = pickedElements[i];
             ItemSub cnt = NonSelected[Ind];
@@ -179,7 +182,7 @@ public class UIManager : MonoBehaviour
             cntRelic.transform.GetChild(0).GetComponent<Image>().sprite = cnt.sprite;
 
             attribute cntatt = cnt.attributes;
-            Selected.Add(cnt); NonSelected.RemoveAt(ind);
+            if (cntatt.special != -1) { Selected.Add(cnt); NonSelected.RemoveAt(ind); }
             if (cntatt.attack != 0)
             {
                 GameManager.instance.PlayerStatus.attack += cntatt.attack;
@@ -374,4 +377,9 @@ public class UIManager : MonoBehaviour
         CurRequest = null;
         CurCost -= Cost;
     }
+
+
+    // Boss
+    public Image BossHP;
+    public TMP_Text BossName;
 }

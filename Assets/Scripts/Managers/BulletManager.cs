@@ -41,7 +41,8 @@ public class BulletManager : MonoBehaviour
     /// <param name="im"> Image Of Bullet </param>
     /// <param name="IsEnemy"> Is Enemy </param>
     /// <param name="debuffInfo"> About DeBuff </param>
-    public void MakeBullet(int Damage, int Penetrate,float Power, Vector3 Start, Vector3 Dir, float speed,Sprite im,bool IsEnemy,DeBuff debuffInfo = null)
+    public void MakeBullet(int Damage, int Penetrate,float Power, Vector3 Start, Vector3 Dir, float speed,Sprite im,bool IsEnemy,
+        DeBuff debuffInfo = null,BulletLine BL = null, RuntimeAnimatorController anim = null)
     {
         for(int i = 0; i < 100; i++)
         {
@@ -51,7 +52,7 @@ public class BulletManager : MonoBehaviour
                 Bullets[i].transform.position = Start; Dir.z = 0;
                 Bullets[i].transform.rotation = Quaternion.FromToRotation(Vector3.up, Dir);
                 BulletInfos[i].Set(Damage, false, Power, debuffInfo);
-                BulletScripts[i].Init_Attack(Damage, Penetrate, Dir * speed,false,IsEnemy,0,im);
+                BulletScripts[i].Init_Attack(Damage, Penetrate, Dir * speed,false,IsEnemy,0,im,BL,anim);
                 break;
             }
         }
@@ -85,7 +86,7 @@ public class BulletManager : MonoBehaviour
         }
     }
 
-    public void MakeEffect(float AfterTime, Vector3 Start, Vector3 Dir, Sprite im)
+    public void MakeBoom(int Damage, int AfterDamage, float Power,  Vector3 Start, Vector3 Dir, float speed, Sprite im, Sprite HitIm, bool IsEnemy, DeBuff debuffInfo = null)
     {
         for (int i = 0; i < 100; i++)
         {
@@ -94,7 +95,24 @@ public class BulletManager : MonoBehaviour
                 Bullets[i].SetActive(true);
                 Bullets[i].transform.position = Start; Dir.z = 0;
                 Bullets[i].transform.rotation = Quaternion.FromToRotation(Vector3.up, Dir);
-                BulletScripts[i].Init_Effect(AfterTime,im);
+                BulletInfos[i].Set(Damage, false, Power, debuffInfo);
+                BulletScripts[i].Init_Explode(Damage, Dir * speed,IsEnemy,AfterDamage, im,HitIm);
+                break;
+            }
+        }
+    }
+
+
+    public void MakeEffect(float AfterTime, Vector3 Start, Vector3 Dir, Sprite im,BulletLine BL = null, RuntimeAnimatorController Anim = null)
+    {
+        for (int i = 0; i < 100; i++)
+        {
+            if (!Bullets[i].activeSelf)
+            {
+                Bullets[i].SetActive(true);
+                Bullets[i].transform.position = Start; Dir.z = 0;
+                Bullets[i].transform.rotation = Quaternion.FromToRotation(Vector3.up, Dir);
+                BulletScripts[i].Init_Effect(AfterTime,im,Dir,BL,Anim);
                 break;
             }
         }

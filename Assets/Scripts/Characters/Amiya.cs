@@ -18,11 +18,9 @@ public class Amiya : PlayerSetting
     protected override void Awake()
     {
         base.Awake();
-
-        player.Weapon = Weapon; player.WeaponPos = player.Weapon.transform.localPosition; player.FlipWeaponPos = new Vector3(-player.WeaponPos.x, player.WeaponPos.y);
-
+        player.SubEffects.Add(Weapon.GetComponent<SpriteRenderer>());
+        player.SubEffects.Add(Weapon2.GetComponent<SpriteRenderer>());
         MyAttack = GetComponent<RangeAttack>();
-        player.WeaponSprite = player.Weapon.GetComponent<SpriteRenderer>();
 
         BulletIm = Bullet1;
     }
@@ -52,10 +50,6 @@ public class Amiya : PlayerSetting
 
     Vector3 RotateSub = new Vector3(30f, 60f, 90f);
 
-    protected override void WeaponAnim()
-    {
-        Weapon2.transform.Rotate(RotateSub * Time.fixedDeltaTime);
-    }
 
     int ProjNum = 1;
     int ProjRatio = 1;

@@ -7,6 +7,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject[] EnemyTypes;
+    [SerializeField] GameObject BossSet;
     [SerializeField] int[] PoolSize;
     
     GameObject[,] Pool;
@@ -18,24 +19,27 @@ public class EnemySpawner : MonoBehaviour
     Vector3[] SpawnArea;
     int SpawnAreaSize;
 
-    [SerializeField]
-    public class Enems
+    [System.Serializable]
+    public class StageInfo
     {
         public List<SpawnInfo> spawninfo;   
     }
-    [SerializeField]
+    [System.Serializable]
     public class SpawnInfo
     {
         public int id;
         public int start;
         public int end;
         public float respawn;
+        public bool IsBoss = false;
     }
 
+    [SerializeField] List<StageInfo> Stages;
+    int CurStage = 0;
 
     public void Init(int Stage)
     {
-        Enems EnemSpawn = JsonConvert.DeserializeObject<Enems>(File.ReadAllText($"{Directory.GetCurrentDirectory()}\\Assets\\JSON\\Stage\\{Stage}.Json"));
+        //Enems EnemSpawn = JsonConvert.DeserializeObject<Enems>(File.ReadAllText($"{Directory.GetCurrentDirectory()}\\Assets\\JSON\\Stage\\{Stage}.Json"));
 
 
         // Set Spawn Area
@@ -58,18 +62,27 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        for(i = 0; i < EnemyTypes.Length; i++)
+        StartStage();
+        /*for(i = 0; i < EnemyTypes.Length; i++)
         {
             StartCoroutine(Spawn(EnemSpawn.spawninfo[i]));
-        }
+        }*/
     }
 
+    public void StartStage()
+    {
+
+        if (CurStage > Stages.Count) return;
+        foreach (SpawnInfo cnt in Stages[CurStage].spawninfo) StartCoroutine(Spawn(cnt));
+        CurStage++;
+    }
 
     IEnumerator Spawn(SpawnInfo Info)
     {
         yield return new WaitForSeconds(Info.start);
         int SpawnTimes = Mathf.FloorToInt((Info.end - Info.start) / Info.respawn);
         WaitForSeconds SpawnGap = new WaitForSeconds(Info.respawn);
+        if (Info.IsBoss) { GameManager.instance.BossStage(); BossSet.SetActive(true); }
         for (int i = 0; i <= SpawnTimes; i++)
         {
             for (int y = 0; y < PoolSize[Info.id]; y++)
@@ -81,8 +94,14 @@ public class EnemySpawner : MonoBehaviour
                     break;
                 }
             }
+            if (Info.IsBoss) break;
             yield return SpawnGap;
         }
+    }
+
+    public void StopCor()
+    {
+        StopAllCoroutines();
     }
 
 

@@ -53,6 +53,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Operator_Pref
+  - m_GUID: 0095db753ba21dc44a17024fb5ff19f6
+    m_Address: Astesia
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Operator_Pref
+  - m_GUID: debe72360e82fae42a71d834ec0f92fa
+    m_Address: FEater
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Operator_Pref
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: cc440d98b8634f3449b1aae4fa894063, type: 2}
   m_SchemaSet:

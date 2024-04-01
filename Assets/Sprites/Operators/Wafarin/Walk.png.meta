@@ -109,11 +109,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 5
-        y: 1
+        y: 7
         width: 55
         height: 74
       alignment: 9
-      pivot: {x: 0.4968098, y: 0.49293813}
+      pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -129,12 +129,12 @@ TextureImporter:
       name: Walk_1
       rect:
         serializedVersion: 2
-        x: 67
-        y: 2
+        x: 65
+        y: 7
         width: 71
-        height: 74
+        height: 80
       alignment: 9
-      pivot: {x: 0.6107815, y: 0.49329263}
+      pivot: {x: 0.65, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -142,6 +142,27 @@ TextureImporter:
       bones: []
       spriteID: fb645225e2d753943a18e9fb549ad46f
       internalID: -407563049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_2
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 9
+        width: 71
+        height: 74
+      alignment: 9
+      pivot: {x: 0.7, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c942a9c5970816d4da1c468e26958e32
+      internalID: -7413266
       vertices: []
       indices: 
       edges: []
@@ -158,6 +179,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Walk_0: 628470969
+      Walk_2: -7413266
       Walk_1: -407563049
   spritePackingTag: 
   pSDRemoveMatte: 0

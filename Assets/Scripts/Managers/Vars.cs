@@ -43,6 +43,7 @@ public class attribute
     public float hp;
 }
 
+[System.Serializable]
 public class BulletInfo
 {
     public int Damage;
@@ -72,6 +73,7 @@ public class BulletInfo
     }
 }
 
+[System.Serializable]
 public class Buff
 {
     public float Last;
@@ -92,6 +94,7 @@ public class Buff
     }
 }
 
+[System.Serializable]
 public class DeBuff
 {
     public float Last;
@@ -109,6 +112,26 @@ public class DeBuff
         Defense = defense;
         Ice = ice;
         Fragility = fragility;
+    }
+}
+
+
+[System.Serializable]
+public class BulletLine
+{
+    public Color Start;
+    public Color End;
+    public float StartWidth;
+    public float EndWidth;
+    public float Time;
+
+    public BulletLine(Color start, Color end, float startWidth, float endWidth,float time)
+    {
+        Start = start;
+        End = end;
+        StartWidth = startWidth;
+        EndWidth = endWidth;
+        Time = time;
     }
 }
 

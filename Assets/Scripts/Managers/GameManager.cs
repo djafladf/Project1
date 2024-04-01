@@ -133,6 +133,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public bool IsBoss = false;
+    public void BossStage()
+    {
+        ES.StopCor();
+        IsBoss = true;
+    }
+
+    public void BossEnd()
+    {
+        ES.StartStage();
+        IsBoss = false;
+
+    }
+
     // --------------------------------------------------------------------------------------------
 
     
