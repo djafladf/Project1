@@ -109,7 +109,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 8
-        y: 188
+        y: 261
         width: 42
         height: 38
       alignment: 0
@@ -130,7 +130,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 71
-        y: 189
+        y: 262
         width: 30
         height: 34
       alignment: 0
@@ -151,7 +151,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 133
-        y: 193
+        y: 266
         width: 43
         height: 23
       alignment: 0
@@ -172,7 +172,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 207
-        y: 188
+        y: 261
         width: 20
         height: 35
       alignment: 0
@@ -193,7 +193,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 183
+        y: 256
         width: 37
         height: 53
       alignment: 0
@@ -214,7 +214,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 12
-        y: 126
+        y: 199
         width: 36
         height: 44
       alignment: 0
@@ -235,7 +235,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 70
-        y: 126
+        y: 199
         width: 36
         height: 44
       alignment: 0
@@ -256,7 +256,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 130
-        y: 127
+        y: 200
         width: 36
         height: 44
       alignment: 0
@@ -277,7 +277,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 188
-        y: 128
+        y: 201
         width: 38
         height: 44
       alignment: 0
@@ -298,7 +298,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 252
-        y: 127
+        y: 200
         width: 36
         height: 44
       alignment: 0
@@ -319,7 +319,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 19
-        y: 73
+        y: 146
         width: 23
         height: 28
       alignment: 0
@@ -340,7 +340,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 57
-        y: 68
+        y: 141
         width: 56
         height: 40
       alignment: 0
@@ -361,7 +361,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 122
-        y: 66
+        y: 139
         width: 52
         height: 43
       alignment: 0
@@ -382,7 +382,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 188
-        y: 69
+        y: 142
         width: 40
         height: 39
       alignment: 0
@@ -403,7 +403,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 250
-        y: 66
+        y: 139
         width: 37
         height: 47
       alignment: 0
@@ -424,7 +424,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 11
-        y: 14
+        y: 80
         width: 39
         height: 35
       alignment: 0
@@ -445,7 +445,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 66
-        y: 12
+        y: 78
         width: 39
         height: 40
       alignment: 0
@@ -457,6 +457,174 @@ TextureImporter:
       bones: []
       spriteID: 49a18e6315504b94183fc0f6bbbc31bd
       internalID: -1959299541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Relic_17
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 81
+        width: 27
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfd4ba78932023b439c5f5e7f5b51726
+      internalID: -2124807962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Relic_18
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 74
+        width: 45
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 359d450db706f1640993f4cdf92e39c0
+      internalID: 241251011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Relic_19
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 75
+        width: 34
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b309419265ee5946b719e226dbd0d95
+      internalID: -421338576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Relic_20
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 21
+        width: 41
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30b64164653426046aa0529a15089e2a
+      internalID: -1689662322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Relic_21
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 34
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17be403af03d6c440a99263046777b39
+      internalID: 232379206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Relic_22
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 7
+        width: 25
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f16114124bd54254a912582c955290c2
+      internalID: -2116539596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Relic_23
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 8
+        width: 46
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5544abee402cca84c90b0bec348fec61
+      internalID: 756872362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Relic_24
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 5
+        width: 58
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 010984b4c514551498d324cabef46edb
+      internalID: -571485702
       vertices: []
       indices: 
       edges: []
@@ -476,7 +644,9 @@ TextureImporter:
       Relic_12: 1309502970
       Relic_5: 1449561882
       Relic_6: -498474841
+      Relic_19: -421338576
       Relic_0: -397090658
+      Relic_20: -1689662322
       Relic_1: 2051444606
       Relic_10: 1360136005
       Relic_8: -1362669851
@@ -484,11 +654,17 @@ TextureImporter:
       Relic_16: -1959299541
       Relic_13: 1269430726
       Relic_4: 1968841842
+      Relic_24: -571485702
       Relic_11: -828106274
       Relic_9: -1015346699
+      Relic_23: 756872362
+      Relic_21: 232379206
       Relic_3: -992475636
       Relic_14: -86018714
+      Relic_22: -2116539596
       Relic_7: -1888439534
+      Relic_18: 241251011
+      Relic_17: -2124807962
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

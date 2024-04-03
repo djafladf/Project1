@@ -183,48 +183,57 @@ public class UIManager : MonoBehaviour
 
             attribute cntatt = cnt.attributes;
             if (cntatt.special != -1) { Selected.Add(cnt); NonSelected.RemoveAt(ind); }
+            
             if (cntatt.attack != 0)
             {
                 GameManager.instance.PlayerStatus.attack += cntatt.attack;
-                AttackStat.text = $"+{Mathf.FloorToInt(GameManager.instance.PlayerStatus.attack * 100)}%";
+                AttackStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.attack * 100)}%";
             }
 
             if (cntatt.cost != 0)
             {
                 GameManager.instance.PlayerStatus.cost += cntatt.cost;
-                CostStat.text = $"+{Mathf.FloorToInt((cntatt.cost-1) * 100)}%";
+                CostStat.text = $"{Mathf.FloorToInt((cntatt.cost-1) * 100)}%";
             }
 
             if (cntatt.defense != 0)
             {
                 GameManager.instance.PlayerStatus.defense += cntatt.defense;
-                DefenseStat.text = $"+{Mathf.FloorToInt(GameManager.instance.PlayerStatus.defense * 100)}%";
+                DefenseStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.defense * 100)}%";
             }
+
+            if(cntatt.speed != 0)
+            {
+                GameManager.instance.PlayerStatus.speed += cntatt.speed;
+                SpeedStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.speed * 100)}%";
+            }
+
+            if (cntatt.power != 0) GameManager.instance.PlayerStatus.power += cntatt.power;
 
             if (cntatt.pickup != 0) 
             { 
                 GameManager.instance.PlayerStatus.pickup += cntatt.pickup; 
                 GetArea.localScale *= GameManager.instance.PlayerStatus.pickup;
-                GainStat.text = $"+{Mathf.FloorToInt((GameManager.instance.PlayerStatus.pickup-1) * 100)}%";
+                GainStat.text = $"{Mathf.FloorToInt((GameManager.instance.PlayerStatus.pickup-1) * 100)}%";
             }
             if (cntatt.exp != 0)
             {
                 GameManager.instance.PlayerStatus.exp += cntatt.exp;
-                ExpStat.text = $"+{Mathf.FloorToInt((GameManager.instance.PlayerStatus.exp-1) * 100)}%";
+                ExpStat.text = $"{Mathf.FloorToInt((GameManager.instance.PlayerStatus.exp-1) * 100)}%";
             }
 
             if (cntatt.selection != 0) GameManager.instance.PlayerStatus.selection += cntatt.selection;
             if(cntatt.attackspeed != 0)
             {
                 GameManager.instance.PlayerStatus.attackspeed += cntatt.attackspeed;
-                HasteStat.text = $"+{Mathf.FloorToInt(GameManager.instance.PlayerStatus.attackspeed * 100)}%";
+                HasteStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.attackspeed * 100)}%";
                 foreach (var k in GameManager.instance.Players) k.ChangeOccur = true;
             }
             if(cntatt.hp != 0)
             {
                 GameManager.instance.PlayerStatus.hp += cntatt.hp;
                 foreach (var k in GameManager.instance.Players) k.ChangeOccur = true;
-                HealthStat.text = $"+{Mathf.FloorToInt(cntatt.exp * 100)}%";
+                HealthStat.text = $"{Mathf.FloorToInt(cntatt.exp * 100)}%";
             }
 
             if (cntatt.dragons != 0)
@@ -245,32 +254,32 @@ public class UIManager : MonoBehaviour
                 if (Dragons[0])
                 {
                     GameManager.instance.PlayerStatus.attack += 0.05f;
-                    AttackStat.text = $"+{Mathf.FloorToInt(GameManager.instance.PlayerStatus.attack * 100)}%";
+                    AttackStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.attack * 100)}%";
                 }
 
                 if (Dragons[1])
                 {
                     GameManager.instance.PlayerStatus.defense += 0.05f;
-                    DefenseStat.text = $"+{Mathf.FloorToInt(GameManager.instance.PlayerStatus.defense * 100)}%";
+                    DefenseStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.defense * 100)}%";
                 }
 
                 if (Dragons[2])
                 {
                     GameManager.instance.PlayerStatus.exp += 0.05f;
-                    ExpStat.text = $"+{Mathf.FloorToInt(GameManager.instance.PlayerStatus.exp * 100)}%";
+                    ExpStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.exp * 100)}%";
                 }
 
                 if (Dragons[3])
                 {
                     GameManager.instance.PlayerStatus.attackspeed += 0.03f;
                     foreach (var k in GameManager.instance.Players) k.ChangeOccur = true;
-                    HasteStat.text = $"+{Mathf.FloorToInt(GameManager.instance.PlayerStatus.attackspeed * 100)}%";
+                    HasteStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.attackspeed * 100)}%";
                 }
                 if (Dragons[4])
                 {
                     GameManager.instance.PlayerStatus.hp += 0.05f;
                     foreach (var k in GameManager.instance.Players) k.ChangeOccur = true;
-                    HealthStat.text = $"+{Mathf.FloorToInt(GameManager.instance.PlayerStatus.hp * 100)}%";
+                    HealthStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.hp * 100)}%";
                 }
             }
             if (cntatt.special != 0)
@@ -283,7 +292,7 @@ public class UIManager : MonoBehaviour
                     case 2:
                         StartCoroutine(SpecialAct(60, () => { 
                             GameManager.instance.PlayerStatus.attack += UnityEngine.Random.Range(-10, 10) * 0.01f;
-                            AttackStat.text = $"+{Mathf.FloorToInt(GameManager.instance.PlayerStatus.attack * 100)}%";
+                            AttackStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.attack * 100)}%";
                         }));
                         break;
                 }

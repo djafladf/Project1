@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class AttackType
 {
@@ -33,11 +31,12 @@ public class attribute
     public float attackspeed;
     public float defense;
     public float speed;
+    public float power;
     public float cost;
     public float pickup;
     public int selection;
     public float exp;
-    public float heal;    
+    public float heal;   
     public int dragons;
     public int special;
     public float hp;

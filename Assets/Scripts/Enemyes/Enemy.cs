@@ -212,7 +212,7 @@ public class Enemy : MonoBehaviour
     {
         CanHit = false; OnHit = true;
         spriteRenderer.color = Color.gray;
-        Power += 3;
+        Power += GameManager.instance.PlayerStatus.power;
         if (Power > 0) 
         {
             rigid.AddForce(Dir.normalized * (Power), ForceMode2D.Impulse);

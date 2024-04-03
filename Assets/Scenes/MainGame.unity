@@ -21238,7 +21238,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1297366979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21270,14 +21270,15 @@ MonoBehaviour:
   - Rosmontis
   - Kazemaru
   PlayerStatus:
-    attack: 5
+    attack: 0
     attackspeed: 0
     defense: 0
     speed: 0
-    cost: 1
+    power: 0
+    cost: 0
     pickup: 1
     selection: 3
-    exp: 10
+    exp: 1
     heal: 1
     dragons: 0
     special: 0
@@ -21300,6 +21301,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0
       speed: 0
+      power: 0
       cost: 0.15
       pickup: 0
       selection: 0
@@ -21322,6 +21324,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 1
@@ -21345,6 +21348,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -21367,6 +21371,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0
       speed: 0
+      power: 0
       cost: 0
       pickup: 0.3
       selection: 0
@@ -21390,6 +21395,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -21413,6 +21419,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -21436,6 +21443,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -21459,6 +21467,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -21481,6 +21490,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -21504,6 +21514,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -21527,6 +21538,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -21549,6 +21561,7 @@ MonoBehaviour:
       attackspeed: 0.15
       defense: 0
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -21571,6 +21584,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0.1
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -21592,6 +21606,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0.05
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -21613,6 +21628,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -21636,6 +21652,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -21659,6 +21676,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -21667,6 +21685,193 @@ MonoBehaviour:
       dragons: 0
       special: 0
       hp: 0
+  - name: "\uCD1B\uBD88"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uC544\uC774\uD15C \uD68D\uB4DD \uBC94\uC704 30% \uC99D\uAC00"
+    extra: "\uCD1B\uBD88\uC758 \uBD88\uAF43\uC740 \uADF8 \uC0AC\uB78C\uC758 \uC778\uC0DD\uC744
+      \uB098\uD0C0\uB0B8\uB2E4\uACE0 \uD558\uC9C0\n\uB2F9\uC2E0\uC758 \uBD88\uAF43\uC740
+      \uBB34\uC2A8 \uC0C9\uC778\uAC00?"
+    IsWeapon: 0
+    sprite: {fileID: -2124807962, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0.3
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uC6D0\uC554 \uD050\uBE0C"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uBC29\uC5B4\uB825 10% \uC99D\uAC00"
+    extra: "\uD14C\uB77C\uC5D0\uC11C \uAC00\uC7A5 \uC778\uAE30\uAC00 \uB9CE\uB2E4\uB294
+      \uBA39\uAC70\uB9AC \uC911 \uD558\uB098!\n\uB108\uBB34 \uC778\uAE30\uAC00 \uB9CE\uC544\uC11C
+      \uD56D\uC0C1 \uBD80\uC871\uD558\uB2E4\uACE0 \uD55C\uB2E4."
+    IsWeapon: 0
+    sprite: {fileID: 241251011, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0.1
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uD2B9\uC81C \uD30C\uB974\uD398"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uCCB4\uB825 10% \uC99D\uAC00"
+    extra: "\uC815\uB9D0 \uB9DB\uC788\uC5B4\uBCF4\uC774\uB294 \uB85C\uB3C4\uC2A4
+      \uD2B9\uC81C \uD30C\uB974\uD398\n\uD55C\uC785 \uBA39\uB294 \uC21C\uAC04 \uB204\uAD70\uAC00\uC758
+      \uAC15\uB82C\uD55C \uC2DC\uC120\uC774 \uB290\uAEF4\uC9C4\uB2E4.."
+    IsWeapon: 0
+    sprite: {fileID: -421338576, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 0.1
+  - name: "\uB3CC\uACE0\uB798 \uC778\uD615"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uACF5\uACA9\uB825 15% \uC99D\uAC00."
+    extra: "\uC815\uB9D0 \uADC0\uC5EC\uC6B4 \uB3CC\uACE0\uB798 \uC778\uD615\uC774\uC9C0\uB9CC..
+      \uBB34\uAE30\uB77C\uACE0 \uD55C\uB2E4\n\uC18D\uC5D0 \uBB50\uAC00 \uB4E4\uC740\uAC70\uC9C0?"
+    IsWeapon: 0
+    sprite: {fileID: -1959299541, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0.15
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uCE7C\uCDA4"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uB79C\uB364 \uC624\uD37C\uB808\uC774\uD130 1\uBA85\uC758 \uCCB4\uB825, \uACF5\uACA9\uB825
+      30% \uC99D\uAC00"
+    extra: "\uADF9\uB2E8\uC5D0 \uCDA9\uC131\uC744!"
+    IsWeapon: 0
+    sprite: {fileID: 232379206, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 3
+      hp: 0
+  - name: "\uBD80\uD45C"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uACF5\uACA9\uB825 20% \uC99D\uAC00"
+    extra: "\uBD80\uC720\uD558\uBA70 \uC801\uC744 \uACF5\uACA9\uD558\uB294 \uC720\uB2DB\n\uAC15\uB825\uD55C
+      \uC804\uAE30 \uC544\uCE20\uAC00 \uB290\uAEF4\uC9C4\uB2E4"
+    IsWeapon: 0
+    sprite: {fileID: -2116539596, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0.2
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uB9AC\uD504"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uBAA8\uB4E0 \uACF5\uACA9\uC774 \uC801\uC744 \uC0B4\uC9DD \uBC00\uC5B4\uB0B8\uB2E4."
+    extra: "\uD0C0\uAC8C\uD305\uC744 \uB3C4\uC640\uC8FC\uB294 \uC2DC\uB4DC\uB798\uACE4\n\uADF8
+      \uC6D0\uD615\uC740 \u16B1\xB5\u0298\u0376\xDF\uB77C\uACE0 \uD55C\uB2E4"
+    IsWeapon: 0
+    sprite: {fileID: 756872362, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 1
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uC2DC\uC81C\uD488 \uCD08\uCF5C\uB9BF"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uCCB4\uB825 10% \uC99D\uAC00"
+    extra: "\uC5B4\uB290 \uC5F0\uAD6C\uC6D0\uC758 \uAD11\uAE30\uAC00 \uBE5A\uC5B4\uB0B8
+      \uC0B0\uBB3C\n\uC758\uC678\uB85C \uB9DB\uC740 \uAD1C\uCC2E..\uB098?"
+    IsWeapon: 0
+    sprite: {fileID: -571485702, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 0.1
   WeaponSub:
   - name: "\uC544\uBBF8\uC57C\uC758 \uAD6C\uC18D\uAD6C"
     operatorid: 0
@@ -21688,6 +21893,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -21714,6 +21920,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -21740,6 +21947,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -21768,6 +21976,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -21794,6 +22003,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -21822,6 +22032,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -21849,6 +22060,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -21877,6 +22089,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -21903,6 +22116,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -28758,6 +28972,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -28779,6 +28994,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0.005
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -28800,6 +29016,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -28821,6 +29038,7 @@ MonoBehaviour:
       attackspeed: 0
       defense: 0
       speed: 0.01
+      power: 0
       cost: 0
       pickup: 0
       selection: 0
@@ -28842,6 +29060,7 @@ MonoBehaviour:
       attackspeed: 1
       defense: 0
       speed: 0
+      power: 0
       cost: 0
       pickup: 0
       selection: 0

@@ -1,0 +1,921 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6491225465143214388
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6491225465143214386}
+  - component: {fileID: 6491225465143214389}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6491225465143214386
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6491225465143214388}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6491225465143214389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6491225465143214388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a1dd4197acf1034e85206916f238627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 11400000, guid: 7ea27ab6edfe0064a8e9fe4225b4b160, type: 2}
+  BM: {fileID: 0}
+  IM: {fileID: 0}
+  ES: {fileID: 0}
+  DM: {fileID: 0}
+  UM: {fileID: 0}
+  BFM: {fileID: 0}
+  Git: {fileID: 0}
+  Player_ID:
+  - Amiya
+  - Astesia
+  - Aurora
+  - Cutter
+  - FEater
+  - Platinum
+  - Wafarin
+  - Rosmontis
+  - Kazemaru
+  PlayerStatus:
+    attack: 0
+    attackspeed: 0
+    defense: 0
+    speed: 0
+    power: 0
+    cost: 0
+    pickup: 1
+    selection: 3
+    exp: 1
+    heal: 1
+    dragons: 0
+    special: 0
+    hp: 0
+  Players: []
+  CurPlayerID: 0000000004000000
+  PlayerInd: 0
+  Items:
+  - name: "\uB9C1\uACE0\uC9F1"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uCF54\uC2A4\uD2B8 \uD68C\uBCF5 \uC18D\uB3C4 15% \uC99D\uAC00"
+    extra: "\uBAA8\uB4E0 \uC18C\uC6D0\uC744 \uC774\uB904\uC900\uB2E4\uB294 \uC804\uC124\uC758
+      \uC0AC\uACFC.. \uC77C\uC9C0\uB3C4?"
+    IsWeapon: 0
+    sprite: {fileID: -397090658, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0.15
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uB124\uC78E\uD074\uB85C\uBC84 \uD654\uC11D"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uC18C\uC7A5\uD488 \uC120\uD0DD\uC9C0 1\uAC1C \uC99D\uAC00"
+    extra: "\uAC00\uD639\uD55C \uD658\uACBD\uC5D0\uB3C4 \uC0B4\uC544\uB0A8\uC740
+      \uC791\uC740 \uD76C\uB9DD\uC758 \uC0C1\uC9D5"
+    IsWeapon: 0
+    sprite: {fileID: 2051444606, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 1
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uC758\uB8CC \uD658\uACBD \uBD84\uC11D \uC7A5\uCE58"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uBAA8\uB4E0 \uD68C\uBCF5\uB7C9 10% \uC99D\uAC00"
+    extra: "\uC624\uB9AC\uC9C0\uB284 \uC548\uC5D0\uB294 \uBC29\uB300\uD55C \uC591\uC758
+      \uC815\uBCF4\uAC00 \uC788\uB2E4\uACE0 \uD55C\uB2E4.\n\uADF8 \uC815\uBCF4\uB97C
+      \uC0AC\uB78C\uC758 \uB450\uB1CC\uC5D0 \uB123\uB294\uB2E4\uBA74 \uC5B4\uB5A8\uAEBC\uAC19\uC544?"
+    IsWeapon: 0
+    sprite: {fileID: 678453624, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0.1
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uC7AC\uD310\uAD00\uC758 \uB4F1\uBD88"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uC544\uC774\uD15C \uD68D\uB4DD \uBC94\uC704 30% \uC99D\uAC00"
+    extra: "\uC5B4\uB290 \uC7AC\uD310\uAD00\uC758 \uB4F1\uBD88.\n\uB4F1\uBD88\uC774
+      \uBE44\uCD94\uB294 \uAE38\uC740 \uD76C\uB9DD\uC778\uAC00 \uC808\uB9DD\uC778\uAC00."
+    IsWeapon: 0
+    sprite: {fileID: -992475636, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0.3
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uD589\uC6B4\uC758 \uD1A0\uB07C(?) \uC778\uD615"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uACBD\uD5D8\uCE58 \uD68D\uB4DD\uB7C9 15% \uC99D\uAC00"
+    extra: "\uD574\uB2F9 \uC778\uD615\uC744 \uB2F9\uB098\uADC0\uB77C \uC8FC\uC7A5\uD558\uB294
+      \uC778\uC6D0\uC774 \uC788\uB2E4\uBA74\n<color=red>\uC989\uC2DC \uC81C\uC5B4\uC13C\uD130\uC5D0
+      \uC5F0\uB77D\uD558\uC2ED\uC2DC\uC624</color>"
+    IsWeapon: 0
+    sprite: {fileID: 1968841842, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0.15
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uB4DC\uB798\uACE4 \uBC84\uBE14 \uC778\uD615(\uC2DC)"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uBC84\uBE14\uC744 1\uAC1C \uBCF4\uC720\uD560 \uB54C\uB9C8\uB2E4 \uACF5\uACA9\uB825
+      5% \uC99D\uAC00"
+    extra: "\uADC0\uC5EC\uC6B4 \uBC84\uBE14 \uC778\uD615 \uC2DC\uB9AC\uC988! \n\uC5B4\uB518\uAC00
+      \uAE30\uBD84\uC774 \uC548\uC88B\uC544 \uBCF4\uC778\uB2E4."
+    IsWeapon: 0
+    sprite: {fileID: 1449561882, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 1
+      special: 0
+      hp: 0
+  - name: "\uB4DC\uB798\uACE4 \uBC84\uBE14 \uC778\uD615(\uB2C8\uC5D4)"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uBC84\uBE14\uC744 1\uAC1C \uBCF4\uC720\uD560 \uB54C\uB9C8\uB2E4 \uBE59\uC544\uB825
+      5% \uC99D\uAC00"
+    extra: "\uADC0\uC5EC\uC6B4 \uBC84\uBE14 \uC778\uD615 \uC2DC\uB9AC\uC988! \n\uAE30\uBD84\uC774
+      \uC88B\uC544\uBCF4\uC778\uB2E4!"
+    IsWeapon: 0
+    sprite: {fileID: -498474841, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 2
+      special: 0
+      hp: 0
+  - name: "\uB4DC\uB798\uACE4 \uBC84\uBE14 \uC778\uD615(\uB9C1)"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uBC84\uBE14\uC744 1\uAC1C \uBCF4\uC720\uD560 \uB54C\uB9C8\uB2E4 \uACBD\uD5D8\uCE58
+      \uD68D\uB4DD\uB7C9 5% \uC99D\uAC00"
+    extra: "\uADC0\uC5EC\uC6B4 \uBC84\uBE14 \uC778\uD615 \uC2DC\uB9AC\uC988! \n\uC220\uC744
+      \uC88B\uC544\uD558\uB294 \uB4EF \uD558\uB2E4."
+    IsWeapon: 0
+    sprite: {fileID: -1888439534, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 3
+      special: 0
+      hp: 0
+  - name: "\uB4DC\uB798\uACE4 \uBC84\uBE14 \uC778\uD615(\uCD1D\uC6E8)"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uBC84\uBE14\uC744 1\uAC1C \uBCF4\uC720\uD560 \uB54C\uB9C8\uB2E4 \uACF5\uACA9\uC18D\uB3C4
+      3% \uC99D\uAC00"
+    extra: "\uADC0\uC5EC\uC6B4 \uBC84\uBE14 \uC778\uD615 \uC2DC\uB9AC\uC988! \n\uD2C0\uC774\uBAA8\uC591\uC744\uC774\uB8E8\uC9C0\uBABB\uD558\uACE0.."
+    IsWeapon: 0
+    sprite: {fileID: -1362669851, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 4
+      special: 0
+      hp: 0
+  - name: "\uB4DC\uB798\uACE4 \uBC84\uBE14 \uC778\uD615(\uC288)"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uBC84\uBE14\uC744 1\uAC1C \uBCF4\uC720\uD560 \uB54C\uB9C8\uB2E4 \uCCB4\uB825
+      5% \uC99D\uAC00"
+    extra: "\uADC0\uC5EC\uC6B4 \uBC84\uBE14 \uC778\uD615 \uC2DC\uB9AC\uC988! \n\uB2E4\uB978
+      \uBC84\uBE14\uB4E4\uC774 \uB450\uB824\uC6CC \uD55C\uB2E4\uACE0 \uD558\uB294\uB370.."
+    IsWeapon: 0
+    sprite: {fileID: -1015346699, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 5
+      special: 0
+      hp: 1
+  - name: "\uB204\uAD70\uAC00\uC758 \uC218\uCCA9"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uACF5\uACA9\uB825\uC774 100% \uC99D\uAC00\uD558\uB098, \uBD84\uB9C8\uB2E4
+      \uBAA8\uB4E0 \uACBD\uD5D8\uCE58\uB97C \uC783\uB294\uB2E4."
+    extra: "\uC783\uACE0 \uC2F6\uC9C0 \uC54A\uC740 \uB204\uAD70\uAC00\uC640\uC758
+      \uCD94\uC5B5\uB4E4"
+    IsWeapon: 0
+    sprite: {fileID: 1360136005, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 1
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 1
+      hp: 0
+  - name: "\uAE30\uC0AC\uACC4\uC728-\uC2E0\uD310"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uACF5\uACA9\uC18D\uB3C4\uAC00 15% \uC99D\uAC00\uD55C\uB2E4."
+    extra: "\uBA85\uC608\uB85C\uC6B4 \uAE30\uC0AC\uAC00 \uB418\uC2E0 \uAC83\uC744
+      \uD658\uC601\uD569\uB2C8\uB2E4."
+    IsWeapon: 0
+    sprite: {fileID: -828106274, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0.15
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uB9E4\uC6B4 \uC0AC\uD0D5"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uBC29\uC5B4\uB825\uC774 10% \uC99D\uAC00\uD55C\uB2E4."
+    extra: "\uBAB9\uC2DC \uB9E4\uC6B4 \uC0AC\uD0D5\n\uC5B4\uC9F8\uC120\uC9C0 \uBAB9\uC2DC
+      \uC501\uC4F8\uD55C \uB9DB\uC774 \uB09C\uB2E4."
+    IsWeapon: 0
+    sprite: {fileID: 1309502970, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0.1
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uBAA8\uB974\uB294 \uAC74\uAC00?"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uB124\uAC00 \uC54C \uD544\uC694\uB294 \uC5C6\uB2E4."
+    extra: "\uC774 \uC774\uC57C\uAE30\uB294 \uADF8\uB9CC \uD558\uB3C4\uB85D \uD558\uC9C0."
+    IsWeapon: 0
+    sprite: {fileID: 1269430726, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0.05
+      attackspeed: 0
+      defense: 0.05
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uB2E8-\uC8C4"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uBD84\uB9C8\uB2E4 \uACF5\uACA9\uB825\uC774 \uBCC0\uD55C\uB2E4."
+    extra: "\uB2E8\uC8C4 \uD380\uCE58! \uB2E8\uC8C4 \uD380\uCE58! \uB2E8\uC8C4 \uD380\uCE58!"
+    IsWeapon: 0
+    sprite: {fileID: -86018714, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 2
+      hp: 0
+  - name: "\uCD5C\uC2E0\uC2DD \uC11C\uBC84 \uC7A5\uBE44 MK.1"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uACBD\uD5D8\uCE58 \uD68D\uB4DD\uB7C9 10% \uC99D\uAC00"
+    extra: "\uD55C \uB54C \uC138\uACC4\uB97C \uC8FC\uB984\uC7A1\uB358 \uCD5C\uC2E0\uC2DD
+      \uC11C\uBC84\uC7A5\uBE44!\n<\uCDE8\uAE09 \uC8FC\uC758> \uC808\uB300 \uC12D\uCDE8\uD558\uC9C0
+      \uB9D0 \uAC83"
+    IsWeapon: 0
+    sprite: {fileID: -136236407, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0.1
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uCD5C\uC2E0\uC2DD \uC11C\uBC84 \uC7A5\uBE44 MK.2"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uACBD\uD5D8\uCE58 \uD68D\uB4DD\uB7C9 15% \uC99D\uAC00"
+    extra: "\uAE30\uC874\uC758 \uC11C\uBC84 \uC7A5\uBE44\uBCF4\uB2E4 \uB354\uC6B1\uB354
+      \uD5A5\uC0C1\uB41C \uC11C\uBC84 \uC7A5\uBE44!\n<\uCDE8\uAE09 \uC8FC\uC758>
+      \uC808\uB300 \uC12D\uCDE8\uD558\uC9C0 \uB9D0 \uAC83"
+    IsWeapon: 0
+    sprite: {fileID: -1959299541, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0.15
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uCD1B\uBD88"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uC544\uC774\uD15C \uD68D\uB4DD \uBC94\uC704 30% \uC99D\uAC00"
+    extra: "\uCD1B\uBD88\uC758 \uBD88\uAF43\uC740 \uADF8 \uC0AC\uB78C\uC758 \uC778\uC0DD\uC744
+      \uB098\uD0C0\uB0B8\uB2E4\uACE0 \uD558\uC9C0\n\uB2F9\uC2E0\uC758 \uBD88\uAF43\uC740
+      \uBB34\uC2A8 \uC0C9\uC778\uAC00?"
+    IsWeapon: 0
+    sprite: {fileID: -2124807962, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0.3
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uC6D0\uC554 \uD050\uBE0C"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uBC29\uC5B4\uB825 10% \uC99D\uAC00"
+    extra: "\uD14C\uB77C\uC5D0\uC11C \uAC00\uC7A5 \uC778\uAE30\uAC00 \uB9CE\uB2E4\uB294
+      \uBA39\uAC70\uB9AC \uC911 \uD558\uB098!\n\uB108\uBB34 \uC778\uAE30\uAC00 \uB9CE\uC544\uC11C
+      \uD56D\uC0C1 \uBD80\uC871\uD558\uB2E4\uACE0 \uD55C\uB2E4."
+    IsWeapon: 0
+    sprite: {fileID: 241251011, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0.1
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uD2B9\uC81C \uD30C\uB974\uD398"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uCCB4\uB825 10% \uC99D\uAC00"
+    extra: "\uC815\uB9D0 \uB9DB\uC788\uC5B4\uBCF4\uC774\uB294 \uB85C\uB3C4\uC2A4
+      \uD2B9\uC81C \uD30C\uB974\uD398\n\uD55C\uC785 \uBA39\uB294 \uC21C\uAC04 \uB204\uAD70\uAC00\uC758
+      \uAC15\uB82C\uD55C \uC2DC\uC120\uC774 \uB290\uAEF4\uC9C4\uB2E4.."
+    IsWeapon: 0
+    sprite: {fileID: -421338576, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 0.1
+  - name: "\uB3CC\uACE0\uB798 \uC778\uD615"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uACF5\uACA9\uB825 15% \uC99D\uAC00."
+    extra: "\uC815\uB9D0 \uADC0\uC5EC\uC6B4 \uB3CC\uACE0\uB798 \uC778\uD615\uC774\uC9C0\uB9CC..
+      \uBB34\uAE30\uB77C\uACE0 \uD55C\uB2E4\n\uC18D\uC5D0 \uBB50\uAC00 \uB4E4\uC740\uAC70\uC9C0?"
+    IsWeapon: 0
+    sprite: {fileID: -1959299541, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0.15
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uCE7C\uCDA4"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uB79C\uB364 \uC624\uD37C\uB808\uC774\uD130 1\uBA85\uC758 \uCCB4\uB825, \uACF5\uACA9\uB825
+      30% \uC99D\uAC00"
+    extra: "\uADF9\uB2E8\uC5D0 \uCDA9\uC131\uC744!"
+    IsWeapon: 0
+    sprite: {fileID: 232379206, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 3
+      hp: 0
+  - name: "\uBD80\uD45C"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uACF5\uACA9\uB825 20% \uC99D\uAC00"
+    extra: "\uBD80\uC720\uD558\uBA70 \uC801\uC744 \uACF5\uACA9\uD558\uB294 \uC720\uB2DB\n\uAC15\uB825\uD55C
+      \uC804\uAE30 \uC544\uCE20\uAC00 \uB290\uAEF4\uC9C4\uB2E4"
+    IsWeapon: 0
+    sprite: {fileID: -2116539596, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0.2
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uB9AC\uD504"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uBAA8\uB4E0 \uACF5\uACA9\uC774 \uC801\uC744 \uC0B4\uC9DD \uBC00\uC5B4\uB0B8\uB2E4."
+    extra: "\uD0C0\uAC8C\uD305\uC744 \uB3C4\uC640\uC8FC\uB294 \uC2DC\uB4DC\uB798\uACE4\n\uADF8
+      \uC6D0\uD615\uC740 \u16B1\xB5\u0298\u0376\xDF\uB77C\uACE0 \uD55C\uB2E4"
+    IsWeapon: 0
+    sprite: {fileID: 756872362, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 1
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uC2DC\uC81C\uD488 \uCD08\uCF5C\uB9BF"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uCCB4\uB825 10% \uC99D\uAC00"
+    extra: "\uC5B4\uB290 \uC5F0\uAD6C\uC6D0\uC758 \uAD11\uAE30\uAC00 \uBE5A\uC5B4\uB0B8
+      \uC0B0\uBB3C\n\uC758\uC678\uB85C \uB9DB\uC740 \uAD1C\uCC2E..\uB098?"
+    IsWeapon: 0
+    sprite: {fileID: -571485702, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 0.1
+  WeaponSub:
+  - name: "\uC544\uBBF8\uC57C\uC758 \uAD6C\uC18D\uAD6C"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uAD00\uD1B5\uB825 1 \uC99D\uAC00"
+    - "\uB300\uBBF8\uC9C0 50%p \uCD94\uAC00"
+    - "\uD22C\uC0AC\uCCB4 \uC218 1 \uC99D\uAC00"
+    - "\uAD00\uD1B5\uB825 2 \uC99D\uAC00"
+    - "\uB300\uBBF8\uC9C0 100%p \uC99D\uAC00"
+    - "\uD798\uC744 \uC77C\uBD80 \uD574\uBC29\uD55C\uB2E4."
+    extra: "\uCC29\uC6A9\uC790\uC758 \uB2A5\uB825\uC744 \uC5B5\uC81C\uD558\uB294
+      \uAD6C\uC18D\uAD6C.\n<size=75%>\uC774 \uAD6C\uC18D\uAD6C\uB97C \uB07C\uBA74
+      \uB3C4\uB11B \uC7A5\uC778\uC774 \uB41C\uB2E4\uB294 \uC18C\uBB38\uC774..?</size>"
+    IsWeapon: 1
+    sprite: {fileID: 1382738697, guid: cb87e0f4884fbd24d8d2360be61eafdd, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 1
+  - name: "\uC544\uC2A4\uD14C\uC2DC\uC544\uC758 \uAC80"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uB300\uBBF8\uC9C0 50%p \uCD94\uAC00"
+    - "\uB300\uBBF8\uC9C0 50%p \uCD94\uAC00"
+    - "\uB9E4 \uACF5\uACA9\uC2DC \uC218\uB9AC\uAC80\uC744 \uB358\uC9C4\uB2E4."
+    - "\uB300\uBBF8\uC9C0 75%p \uCD94\uAC00"
+    - "\uB300\uBBF8\uC9C0 75%p \uCD94\uAC00"
+    - "\uBD84\uB9C8\uB2E4 \uCD5C\uB300 1\uAE30\uC758 [\uB300\uC5ED] \uC18C\uD658"
+    extra: "\uAC70\uC9D3\uB41C \uD558\uB298\uC5D0 \uC9C4\uC2E4\uC740 \uC5C6\uB294\uAC00?"
+    IsWeapon: 1
+    sprite: {fileID: 1201906897, guid: cb87e0f4884fbd24d8d2360be61eafdd, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 1
+  - name: "\uC624\uB85C\uB77C\uC758 \uBC29\uD328"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uBC29\uC5B4\uB825 5 \uC99D\uAC00"
+    - "\uBC29\uC5B4\uB825 5 \uC99D\uAC00"
+    - "\uB9E4 \uACF5\uACA9\uC774 \uC801\uC5D0\uAC8C \uB0C9\uAE30 \uD6A8\uACFC \uBD80\uC5EC"
+    - "\uBC29\uC5B4\uB825 5 \uC99D\uAC00"
+    - "\uB9E4\uCD08 \uCD5C\uB300 \uCCB4\uB825\uC758 1% \uD68C\uBCF5"
+    - "\uC5BC\uC74C\uC758 \uC18C\uC6A9\uB3CC\uC774 \uC18C\uD658"
+    extra: "\uBD81\uADF9\uACF0\uC740 \uC0AC\uB78C\uC744 \uCC22\uC5B4!"
+    IsWeapon: 1
+    sprite: {fileID: -1987540644, guid: cb87e0f4884fbd24d8d2360be61eafdd, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 1
+  - name: "\uCEE4\uD130\uC758 \uB3C4\uAC80"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uB300\uBBF8\uC9C0 50%p \uCD94\uAC00"
+    - "\uB300\uBBF8\uC9C0 50%p \uCD94\uAC00"
+    - "\uB9E4 \uACF5\uACA9\uC2DC \uB2E8\uAC80\uC744 \uB358\uC9C4\uB2E4."
+    - "\uB300\uBBF8\uC9C0 75%p \uCD94\uAC00"
+    - "\uB300\uBBF8\uC9C0 75%p \uCD94\uAC00"
+    - "\uB2E8\uAC80\uC774 \uAC15\uD654\uB418\uBA70 \uB2E8\uAC80\uC744 \uCD94\uAC00\uB85C
+      \uB358\uC9C4\uB2E4."
+    extra: "\uC774 \uAC80\uC740 \uADF8\uB140\uC758 \uCD5C\uCD08\uC5D0\uB3C4 \uCD5C\uD6C4\uC5D0\uB3C4
+      \uD568\uAED8\uD560 \uAC83\uC774\uB2E4."
+    IsWeapon: 1
+    sprite: {fileID: -1700633392, guid: cb87e0f4884fbd24d8d2360be61eafdd, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 1
+  - name: "\uC5D0\uD504\uC774\uD130\uC758 \uAC74\uD2C0\uB9BF"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uB300\uBBF8\uC9C0 50%p \uCD94\uAC00"
+    - "\uB300\uBBF8\uC9C0 50%p \uCD94\uAC00"
+    - "\uB9E4 \uACF5\uACA9\uC2DC \uC218\uB9AC\uAC80\uC744 \uB358\uC9C4\uB2E4."
+    - "\uB300\uBBF8\uC9C0 75%p \uCD94\uAC00"
+    - "\uB300\uBBF8\uC9C0 75%p \uCD94\uAC00"
+    - "\uBD84\uB9C8\uB2E4 \uCD5C\uB300 1\uAE30\uC758 [\uB300\uC5ED] \uC18C\uD658"
+    extra: "\uC77C\uB2E8 \uD55C\uB300 \uB9DE\uC544!"
+    IsWeapon: 1
+    sprite: {fileID: 865768842, guid: cb87e0f4884fbd24d8d2360be61eafdd, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 1
+  - name: "\uD50C\uB798\uD2F0\uB118\uC758 \uD65C"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uB300\uBBF8\uC9C0 100%p \uC99D\uAC00"
+    - "\uAD00\uD1B5\uB825 1 \uC99D\uAC00"
+    - "\uB300\uBBF8\uC9C0 100%p \uC99D\uAC00"
+    - "\uD22C\uC0AC\uCCB4 \uC218 2 \uC99D\uAC00"
+    - "\uB300\uBBF8\uC9C0 100%p \uC99D\uAC00"
+    - "\uB300\uBBF8\uC9C0\uAC00 \uC99D\uD3ED\uB418\uBA70, \uACF5\uACA9\uC774 \uD56D\uC0C1
+      \uC801\uC744 \uAD00\uD1B5\uD55C\uB2E4."
+    extra: "\uC774 \uD65C\uC744 \uB4E0 \uADF8\uB140\uB294 \uCD5C\uAC15\uC774\uB77C\uB294
+      \uC18C\uBB38\uC774?\n<\uCE74\uC2DC\uBBF8\uC5B4 \uC6C3\uC74C>"
+    IsWeapon: 1
+    sprite: {fileID: -694137584, guid: cb87e0f4884fbd24d8d2360be61eafdd, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 1
+  - name: "\uC640\uD30C\uB9B0\uC758 \uC544\uCE20 \uC2A4\uD0DC\uD504"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uAD00\uD1B5\uB825 1 \uC99D\uAC00"
+    - "\uB300\uBBF8\uC9C0 50%p \uCD94\uAC00"
+    - "\uD22C\uC0AC\uCCB4 \uC218 2 \uC99D\uAC00"
+    - "\uAD00\uD1B5\uB825 2 \uC99D\uAC00"
+    - "\uB300\uBBF8\uC9C0 75%p \uC99D\uAC00"
+    - "\uD53C\uC758 \uC6C5\uB369\uC774 \uC18C\uD658"
+    extra: "\uC774 \uD761\uD608\uADC0\uB294 \uC0AC\uB78C\uC744 \uBB3C\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.
+      \uC544\uB9C8\uB3C4\uC694?"
+    IsWeapon: 1
+    sprite: {fileID: -499433692, guid: cb87e0f4884fbd24d8d2360be61eafdd, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 1
+  - name: "\uB85C\uC988\uBAAC\uD2F0\uC2A4\uC758 \uC544\uCE20 \uC6D0\uACA9 \uC870\uC791\uD615
+      \uC7A5\uCE58"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uB300\uBBF8\uC9C0 100%p \uCD94\uAC00"
+    - "\uC5EC\uC9C4 \uBC94\uC704 25%p \uC99D\uAC00"
+    - "\uACF5\uACA9 \uB51C\uB808\uC774 \uC57D\uAC04 \uAC10\uC18C"
+    - "\uB300\uBBF8\uC9C0 150%p \uCD94\uAC00"
+    - "\uBC29\uC5B4\uAD6C \uAC10\uC18C\uB7C9 20%p \uC99D\uAC00"
+    - "\uB3D9\uC2DC\uC5D0 \uB450 \uBA85\uC758 \uC801 \uACF5\uACA9"
+    extra: "\uACF5\uC911\uC5D0\uC11C \uB0B4\uB824\uCC0D\uB294\uB370 \uB300\uACF5
+      \uBD88\uAC00\uB2A5\uD55C \uBB34\uAE30\uAC00 \uC788\uB098\uC694..?"
+    IsWeapon: 1
+    sprite: {fileID: 643932704, guid: cb87e0f4884fbd24d8d2360be61eafdd, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 1
+  - name: "\uCE74\uC81C\uB9C8\uB8E8\uC758 \uB3C4\uAC80"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uB300\uBBF8\uC9C0 50%p \uCD94\uAC00"
+    - "\uB300\uBBF8\uC9C0 50%p \uCD94\uAC00"
+    - "\uB9E4 \uACF5\uACA9\uC2DC \uC218\uB9AC\uAC80\uC744 \uB358\uC9C4\uB2E4."
+    - "\uB300\uBBF8\uC9C0 75%p \uCD94\uAC00"
+    - "\uB300\uBBF8\uC9C0 75%p \uCD94\uAC00"
+    - "\uBD84\uB9C8\uB2E4 \uCD5C\uB300 1\uAE30\uC758 [\uB300\uC5ED] \uC18C\uD658"
+    extra: "\uB3C4-\uBAA8 \uBBFC\uB098=\uC0C1. \uB2CC\uC790\uB370\uC2A4."
+    IsWeapon: 1
+    sprite: {fileID: 865768842, guid: cb87e0f4884fbd24d8d2360be61eafdd, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      dragons: 0
+      special: 0
+      hp: 1
+  IsBoss: 0

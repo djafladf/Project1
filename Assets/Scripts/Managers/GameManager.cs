@@ -4,9 +4,7 @@ using System.Linq;
 using System.IO;
 using System;
 using System.Collections.Generic;
-
-
-
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -42,15 +40,14 @@ public class GameManager : MonoBehaviour
     };
 
 
-
-
     [NonSerialized] public string PlayerName = "Amiya";
     public attribute PlayerStatus;
 
     private void Awake()
     {
-        instance = this;
-        LoadAssets();
+        if(instance == null) instance = this;
+        DontDestroyOnLoad(gameObject);
+        //LoadAssets();
     }
 
     
@@ -65,6 +62,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public List<ItemSub> WeaponSub;
 
+    public void ScenChange(string ScenName)
+    {
+        SceneManager.LoadSceneAsync(ScenName);
+    }
 
     private async void LoadAssets()
     {
@@ -95,14 +96,11 @@ public class GameManager : MonoBehaviour
 
         await AddressablesLoader.InitAssets(BatchName, "Operator_Pref", Prefs, Managers.GetChild(5));
         await AddressablesLoader.InitAssets(BatchName, "Operator_Head", Heads, typeof(Sprite));
-        //await AddressablesLoader.InitAssets(BatchName, "Operator_Weapon", Weapons, typeof(Sprite));
 
         IM.Init(); BM.Init(); ES.Init(1); DM.Init(); BFM.Init();
 
-        
 
-        UM.Init(LL, CurPlayerID.Select(index => WeaponSub[index]).ToList(),Players,Prefs,Heads,PlayerInd);
-        
+        UM.Init(LL, CurPlayerID.Select(index => WeaponSub[index]).ToList(),Players,Prefs,Heads,PlayerInd);   
     }
 
     // 오퍼레이터 무기
