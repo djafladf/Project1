@@ -18,6 +18,7 @@ public class PlayerSetting : MonoBehaviour
     protected virtual void Awake()
     {
         IsPlayer = player.IsPlayer;
+        player.SubEffects.Clear();
         player.Self = transform;
         player.rigid = GetComponent<Rigidbody2D>();
         player.anim = GetComponent<Animator>();
@@ -201,11 +202,9 @@ public class PlayerSetting : MonoBehaviour
             else if (player.CurHP <= 0)
             {
                 player.CurHP = 0;
-                if (!IsPlayer)
-                {
-                    gameObject.SetActive(false);
-                    player.MyBatch.ReBatch();
-                }
+                gameObject.SetActive(false);
+                if (!IsPlayer) player.MyBatch.ReBatch();
+                else GameManager.instance.UM.GameFail();
             }
 
             HPBar.fillAmount = player.CurHP / (float)player.MaxHP;

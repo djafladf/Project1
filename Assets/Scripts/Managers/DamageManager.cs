@@ -8,6 +8,12 @@ public class DamageManager : MonoBehaviour
     DamageObject[] DamageScripts;
     public int MaxDamage = 100;
 
+    private void Awake()
+    {
+        GameManager.instance.DM = this;
+        GameManager.instance.StartLoading();
+    }
+
     public void Init()
     {
         DamageObjects = new GameObject[MaxDamage];
@@ -17,6 +23,7 @@ public class DamageManager : MonoBehaviour
             DamageObjects[i] = Instantiate(DamagePref, transform);
             DamageScripts[i] = DamageObjects[i].GetComponent<DamageObject>();
         }
+        GameManager.instance.StartLoading();
     }
 
     public void MakeDamage(int Damage, Transform position)

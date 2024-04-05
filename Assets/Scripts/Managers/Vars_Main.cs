@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Vars_Main : MonoBehaviour
+[System.Serializable]
+public class OperatorInfos
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public string name;
+    public string name_e;
+    public int id;
+    public Player player;
+    public Sprite Head;
+    public Sprite Standing;
+    public Sprite Standing2;
 }

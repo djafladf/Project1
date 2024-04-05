@@ -13,6 +13,12 @@ public class BuffManager : MonoBehaviour
     GameObject[] DeBuffs;
     SpriteRenderer[] Sprites;
 
+    private void Awake()
+    {
+        GameManager.instance.BFM = this;
+        GameManager.instance.StartLoading();
+    }
+
     public void Init()
     {
         DeBuffs = new GameObject[200];
@@ -22,6 +28,7 @@ public class BuffManager : MonoBehaviour
             DeBuffs[i] = Instantiate(DebuffObject, transform);
             Sprites[i] = DeBuffs[i].GetComponent<SpriteRenderer>();
         }
+        GameManager.instance.StartLoading();
     }
     /// <summary>
     /// 

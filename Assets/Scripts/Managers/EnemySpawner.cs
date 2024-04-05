@@ -37,6 +37,12 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] List<StageInfo> Stages;
     int CurStage = 0;
 
+    private void Awake()
+    {
+        GameManager.instance.ES = this;
+        GameManager.instance.StartLoading();
+    }
+
     public void Init(int Stage)
     {
         //Enems EnemSpawn = JsonConvert.DeserializeObject<Enems>(File.ReadAllText($"{Directory.GetCurrentDirectory()}\\Assets\\JSON\\Stage\\{Stage}.Json"));
@@ -61,8 +67,8 @@ public class EnemySpawner : MonoBehaviour
                 Pool[y, i].SetActive(false);
             }
         }
-
-        StartStage();
+        GameManager.instance.StartLoading();
+        //StartStage();
         /*for(i = 0; i < EnemyTypes.Length; i++)
         {
             StartCoroutine(Spawn(EnemSpawn.spawninfo[i]));

@@ -20,6 +20,12 @@ public class ItemManager : MonoBehaviour
     Item[] ItemsScript;
     List<int> CreatedTiming;
 
+    private void Awake()
+    {
+        GameManager.instance.IM = this;
+        GameManager.instance.StartLoading();
+    }
+
     public void Init()
     {
         CreatedTiming = new List<int>();
@@ -35,6 +41,7 @@ public class ItemManager : MonoBehaviour
             ItemsScript[i].poolInd = i;
             Items[i].SetActive(false);
         }
+        GameManager.instance.StartLoading();
     }
 
     public void MakeItem(Transform pos)

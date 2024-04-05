@@ -16,3 +16,5 @@ MonoBehaviour:
   InitHP: 150
   InitSP: 0
   InitDefense: 0
+  Cost: 12
+  ReBatchTime: 70

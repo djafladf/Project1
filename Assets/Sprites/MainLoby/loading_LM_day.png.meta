@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 74606d919f422dd47ba0039148d54c84
+guid: b39744bee180b2c4da51ae76f9049d8d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,12 +42,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 72
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -103,70 +103,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Walking_0
-      rect:
-        serializedVersion: 2
-        x: 30
-        y: 3
-        width: 505
-        height: 385
-      alignment: 9
-      pivot: {x: 0.75, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a47706119e6d1de489fa260fb503f701
-      internalID: 1515989776
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Walking_1
-      rect:
-        serializedVersion: 2
-        x: 601
-        y: 1
-        width: 456
-        height: 387
-      alignment: 9
-      pivot: {x: 0.67, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0b2c70f8894435145879e557f5a3d741
-      internalID: 617523126
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Walking_2
-      rect:
-        serializedVersion: 2
-        x: 1120
-        y: 0
-        width: 529
-        height: 377
-      alignment: 9
-      pivot: {x: 0.74, y: 0.49}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bb42e6eb3e988394fbb6de6f81b535d7
-      internalID: -2060392401
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -177,10 +114,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Walking_1: 617523126
-      Walking_2: -2060392401
-      Walking_0: 1515989776
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

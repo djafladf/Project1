@@ -1,9 +1,7 @@
-using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -39,7 +37,11 @@ public class UIManager : MonoBehaviour
     Transform GetArea;
     int[] GoodsCount = new int[3];
 
-    //
+    private void Awake()
+    {
+        GameManager.instance.UM = this;
+        GameManager.instance.StartLoading();
+    }
 
     private void Update()
     {
@@ -327,14 +329,14 @@ public class UIManager : MonoBehaviour
     public Image BatchImage;
     [SerializeField] RectTransform BatchRect;
 
-    [SerializeField] CinemachineVirtualCamera VC;
+    
 
 
-    public void Init(int Count, List<ItemSub> Weapons, Player[] Players, GameObject[] Prefs, Sprite[] Heads, int PlayerInd)
+    public void Init(int Count, List<ItemSub> Weapons, Player[] Players, GameObject[] Prefs, OperatorInfos[] Opers, int PlayerInd)
     {
         NonSelected = new List<ItemSub>(); Selected = new List<ItemSub>();
-        NonSelected.AddRange(GameManager.instance.Items);
-        Vector3 StartPos = new Vector3(300 - Count * 150, 0, 0); Vector3 Cnt = new Vector3(250, 0, 0);
+        NonSelected.AddRange(GameManager.instance.Data.Items);
+        Vector3 StartPos = new Vector3(100, 840, 0); Vector3 Cnt = new Vector3(0, 280, 0);
         int batchl = 0;
 
         for (int i = 0; i < Count; i++)
@@ -351,8 +353,8 @@ public class UIManager : MonoBehaviour
                 GameObject Tool = Instantiate(BatchTool, ToolField);
                 var k = Tool.GetComponent<OperatorBatchTool>();
                 Players[i].MyBatch = k;
-                k.Init(Prefs[i], Heads[i]);
-                Tool.GetComponent<RectTransform>().anchoredPosition = StartPos + Cnt * batchl++;
+                k.Init(Prefs[i], Opers[i].Head);
+                Tool.GetComponent<RectTransform>().anchoredPosition = StartPos - Cnt * batchl++;
                 Tool.SetActive(true);
             }
             else
@@ -362,11 +364,9 @@ public class UIManager : MonoBehaviour
         }
 
         HpChange();
-
-        Prefs[PlayerInd].SetActive(true);
-        VC.Follow = Prefs[PlayerInd].transform;
-        Prefs[PlayerInd].SetActive(true);
+        GameManager.instance.VC.Follow = Prefs[PlayerInd].transform;
         Prefs[PlayerInd].transform.position = Vector2.zero;
+        GameManager.instance.StartLoading();
     }
 
 
@@ -391,4 +391,29 @@ public class UIManager : MonoBehaviour
     // Boss
     public Image BossHP;
     public TMP_Text BossName;
+
+
+    // Result
+    [SerializeField] Image Ending;
+    [SerializeField] Image EndingSprite;
+    [SerializeField] Sprite FailEnding;
+
+    public void GameClear()
+    {
+        EventTrigger.Entry entry = new EventTrigger.Entry();
+        entry.eventID = EventTriggerType.PointerClick;
+        entry.callback.AddListener((data) => { GameManager.instance.EndGame(); });
+        Ending.GetComponent<EventTrigger>().triggers.Add(entry);
+        Ending.gameObject.SetActive(true);
+    }
+    public void GameFail()
+    {
+        EventTrigger.Entry entry = new EventTrigger.Entry();
+        entry.eventID = EventTriggerType.PointerClick;
+        entry.callback.AddListener((data) => { GameManager.instance.EndGame(); });
+        Ending.GetComponent<EventTrigger>().triggers.Add(entry);
+        Ending.color = new Color(1, 0, 0, 0.4f);
+        EndingSprite.sprite = FailEnding;
+        Ending.gameObject.SetActive(true);
+    }
 }

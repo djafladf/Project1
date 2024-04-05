@@ -109,7 +109,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 79
+        y: 295
         width: 50
         height: 50
       alignment: 0
@@ -130,7 +130,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 101
-        y: 28
+        y: 244
         width: 460
         height: 100
       alignment: 0
@@ -151,7 +151,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3
-        y: 18
+        y: 234
         width: 54
         height: 54
       alignment: 0
@@ -163,6 +163,111 @@ TextureImporter:
       bones: []
       spriteID: 2277bee5517f095438e4e957e8be8900
       internalID: 620522478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BatchPictures_3
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 164
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b4e86cf210160c43a35e1448023e721
+      internalID: 497538176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BatchPictures_4
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 164
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b6e4e01ed090c04a870696032670525
+      internalID: -715350059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BatchPictures_5
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 57
+        width: 98
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cf627b4182675f4188d2ee1a586c405
+      internalID: -99285114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BatchPictures_6
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 90
+        width: 80
+        height: 120
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e61a575c7cdf203408849e074e98ab09
+      internalID: -862872035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BatchPictures_7
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 110
+        width: 111
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dedbf0f6cc6502b41b8c74d82f329b56
+      internalID: -112749054
       vertices: []
       indices: 
       edges: []
@@ -179,7 +284,13 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       BatchPictures_2: 620522478
+      BatchPictures_4: -715350059
       BatchPictures_1: 142621045
+      BatchPictures_3: 497538176
+      BatchPictures_5: -99285114
+      BatchPictures_7: -112749054
+      BatchPictures_8: 1641850473
+      BatchPictures_6: -862872035
       BatchPictures_0: 716338323
   spritePackingTag: 
   pSDRemoveMatte: 0

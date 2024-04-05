@@ -11,6 +11,12 @@ public class BulletManager : MonoBehaviour
     Bullet[] BulletScripts;
     BulletInfo[] BulletInfos;
 
+    private void Awake()
+    {
+        GameManager.instance.BM = this;
+        GameManager.instance.StartLoading();
+    }
+
     public void Init()
     {
         Bullets = new GameObject[100];
@@ -24,6 +30,7 @@ public class BulletManager : MonoBehaviour
             BulletScripts[i] = Bullets[i].GetComponent<Bullet>();
             BulletInfos[i] = new BulletInfo(0,false,0);
         }
+        GameManager.instance.StartLoading();
     }
 
     DeBuff NoDeBuff = new DeBuff();

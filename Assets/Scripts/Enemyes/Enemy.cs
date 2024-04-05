@@ -230,7 +230,6 @@ public class Enemy : MonoBehaviour
             rigid.velocity = Vector2.Lerp(rigid.velocity, Vector2.zero, 0.5f);
             yield return new WaitForSeconds(0.1f);
         }
-        print("End");
         rigid.velocity = Vector2.zero;
         Fric = null; OnHit = false;
     }
