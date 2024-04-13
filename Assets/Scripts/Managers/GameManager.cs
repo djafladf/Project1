@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         InitPlayerStatus = PlayerStatus;
-        if (instance == null) { instance = this;  this.name = "Babo"; DontDestroyOnLoad(gameObject); }
+        if (instance == null) { instance = this;  DontDestroyOnLoad(gameObject); }
         else if (instance != this) Destroy(gameObject);
         //else Destroy(gameObject);
         
@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour
         Players = new Player[LL];
         GameObject[] Prefs = new GameObject[LL];
         await AddressablesLoader.InitAssets(BatchName, "Operator_Scriptable", Players, typeof(Player));
-        for (int i = 0; i < LL; i++) Players[i].Id = i;
+        for (int i = 0; i < LL; i++) { Players[i].Id = i; }
         Players[PlayerInd].IsPlayer = true;
         player = Players[PlayerInd];
         await AddressablesLoader.InitAssets(BatchName, "Operator_Pref", Prefs, DM.transform.parent);

@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 18
+  spritePixelsToUnits: 72
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -109,11 +109,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 4
-        width: 56
-        height: 170
-      alignment: 9
-      pivot: {x: 0.59674203, y: 0.4994505}
+        y: 0
+        width: 224
+        height: 696
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -129,12 +129,12 @@ TextureImporter:
       name: Batch_1
       rect:
         serializedVersion: 2
-        x: 85
-        y: 3
-        width: 56
-        height: 90
+        x: 340
+        y: 12
+        width: 224
+        height: 360
       alignment: 9
-      pivot: {x: 0.5605349, y: 0.50401413}
+      pivot: {x: 0.5, y: 0.52}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -150,12 +150,12 @@ TextureImporter:
       name: Batch_2
       rect:
         serializedVersion: 2
-        x: 183
-        y: 1
-        width: 71
-        height: 84
+        x: 732
+        y: 4
+        width: 280
+        height: 336
       alignment: 9
-      pivot: {x: 0.59822553, y: 0.4927241}
+      pivot: {x: 0.6, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -171,12 +171,12 @@ TextureImporter:
       name: Batch_3
       rect:
         serializedVersion: 2
-        x: 282
-        y: 2
-        width: 78
-        height: 92
+        x: 1128
+        y: 8
+        width: 312
+        height: 368
       alignment: 9
-      pivot: {x: 0.7233073, y: 0.49461633}
+      pivot: {x: 0.7, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -199,9 +199,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Batch_5: 1886604996
+      Batch_7: -2028860994
       Batch_3: 368779974
+      Batch_4: -1779172659
       Batch_1: 844488740
       Batch_0: -1052427031
+      Batch_6: -1155766879
       Batch_2: 314155974
   spritePackingTag: 
   pSDRemoveMatte: 0

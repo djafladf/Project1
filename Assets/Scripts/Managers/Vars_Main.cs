@@ -8,6 +8,7 @@ public class OperatorInfos
     public string name;
     public string name_e;
     public int id;
+    public bool IsLD;
     public Player player;
     public Sprite Head;
     public Sprite Standing;

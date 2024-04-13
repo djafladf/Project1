@@ -21,8 +21,6 @@ public class Rosmontis : PlayerSetting
         WeaponOrigin = new Vector3[2];
         WeaponSprite = new SpriteRenderer[2];
         WeaponTrail = new TrailRenderer[2];
-        WeaponOrigin[0] = SubWeapons[0].transform.localPosition;
-        WeaponOrigin[1] = SubWeapons[1].transform.localPosition;
         
         WeaponSprite[0] = SubWeapons[0].GetComponent<SpriteRenderer>(); WeaponTrail[0] = SubWeapons[0].GetComponent<TrailRenderer>();
         WeaponSprite[1] = SubWeapons[1].GetComponent<SpriteRenderer>(); WeaponTrail[1] = SubWeapons[1].GetComponent<TrailRenderer>();
@@ -36,52 +34,11 @@ public class Rosmontis : PlayerSetting
     protected override void EndBatch()
     {
         CanMove = true;
-        SubWeapons[0].transform.localPosition = WeaponOrigin[0]; WeaponSprite[0].flipX = false;
-        SubWeapons[1].transform.localPosition = WeaponOrigin[1]; WeaponSprite[1].flipX = false;
         SubWeapons[0].SetActive(true); SubWeapons[1].SetActive(true);
     }
 
-    int OneCount = 20;
-    int OneSub = 1;
-    int TwoCount = 20;
-    int TwoSub = 1;
-
-    bool OneUsed = false;
-    bool TwoUsed = false;
-
     bool OneLast = false;
 
-    protected override void WeaponAnim()
-    {
-        if (!OneUsed)
-        {
-            if (OneCount == 20) OneSub = -1;
-            else if (OneCount == 0) OneSub = 1;
-            OneCount += OneSub;
-
-            if (player.Dir.x > 0 && !WeaponSprite[0].flipX)
-            {
-                WeaponSprite[0].flipX = true;
-                SubWeapons[0].transform.localPosition *= Vector2.left;
-                WeaponOrigin[0].x *= -1;
-            }
-            else if (player.Dir.x < 0 && WeaponSprite[0].flipX) {WeaponSprite[0].flipX = false;SubWeapons[0].transform.localPosition *= Vector2.left; WeaponOrigin[0].x *= -1; }
-            
-            if (OneCount % 10 == 0)  SubWeapons[0].transform.Translate(Vector2.up * Time.fixedDeltaTime * OneSub * 2);
-        }
-
-        if (!TwoUsed)
-        {
-            if (TwoCount == 20) TwoSub = -1;
-            else if (TwoCount == 0) TwoSub = 1;
-            TwoCount += TwoSub;
-
-            if (player.Dir.x > 0 && !WeaponSprite[1].flipX){ WeaponSprite[1].flipX = true; SubWeapons[1].transform.localPosition *= Vector2.left; }
-            else if (player.Dir.x < 0 && WeaponSprite[1].flipX) { WeaponSprite[1].flipX = false; SubWeapons[1].transform.localPosition *= Vector2.left; }
-
-            if (TwoCount % 10 == 0) SubWeapons[1].transform.Translate(Vector2.up * Time.fixedDeltaTime * TwoSub * 2);
-        }
-    }
 
     void Attack1()
     {
@@ -93,7 +50,6 @@ public class Rosmontis : PlayerSetting
         if (!OneLast)
         {
             WeaponSprite[0].sprite = Sprites[0];
-            OneUsed = true;
             WeaponTrail[0].enabled = true;
             for (int i = 0; i < 5; i++)
             {
@@ -105,7 +61,6 @@ public class Rosmontis : PlayerSetting
         else
         {
             WeaponSprite[1].sprite = Sprites[1];
-            TwoUsed = true;
             WeaponTrail[1].enabled = true;
             for (int i = 0; i < 5; i++)
             {
@@ -162,24 +117,15 @@ public class Rosmontis : PlayerSetting
 
     protected override void AttackEnd()
     {
-        if (!OneLast)
+        if (!SubWeapons[0].activeSelf)
         {
-            WeaponTrail[0].enabled = false;
-            SubWeapons[0].SetActive(true);
-            
-            if (player.sprite.flipX) WeaponSprite[0].transform.localPosition = WeaponOrigin[0] * Vector2.left;
-            else SubWeapons[0].transform.localPosition = WeaponOrigin[0];
-            WeaponSprite[0].flipX = player.sprite.flipX;
-            OneCount = 20; OneSub = 1; OneLast = true; OneUsed = false;
+            WeaponTrail[0].enabled = false; SubWeapons[0].SetActive(true); SubWeapons[0].transform.localPosition = Vector3.zero;
+            OneLast = true;
         }
         else
         {
-            WeaponTrail[1].enabled = false;
-            SubWeapons[1].SetActive(true);
-            if (player.sprite.flipX) WeaponSprite[1].transform.localPosition = WeaponOrigin[01] * Vector2.left;
-            else SubWeapons[1].transform.localPosition = WeaponOrigin[1];
-            WeaponSprite[1].flipX = player.sprite.flipX;
-            TwoCount = 20; TwoSub = 1; OneLast = false; TwoUsed = false;
+            WeaponTrail[1].enabled = false; SubWeapons[1].SetActive(true); SubWeapons[1].transform.localPosition = Vector3.zero;
+            OneLast = false;
         }
         base.AttackEnd();
     }

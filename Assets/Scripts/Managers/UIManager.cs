@@ -128,7 +128,7 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     LevelUpSelection[] Selections;
 
-    [NonSerialized]
+    //[NonSerialized]
     public Func<int>[] WeaponLevelUps;
 
 
@@ -235,7 +235,7 @@ public class UIManager : MonoBehaviour
             {
                 GameManager.instance.PlayerStatus.hp += cntatt.hp;
                 foreach (var k in GameManager.instance.Players) k.ChangeOccur = true;
-                HealthStat.text = $"{Mathf.FloorToInt(cntatt.exp * 100)}%";
+                HealthStat.text = $"{Mathf.FloorToInt(cntatt.hp * 100)}%";
             }
 
             if (cntatt.dragons != 0)
@@ -343,6 +343,7 @@ public class UIManager : MonoBehaviour
         {
             // Add Weapon To Item
             ItemSub j = Weapons[i];
+            print(j.name);
             j.IsWeapon = true;
             j.operatorid = i;
             NonSelected.Add(j);

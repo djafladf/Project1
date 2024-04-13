@@ -44,12 +44,12 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 18
+  spritePixelsToUnits: 72
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -108,12 +108,12 @@ TextureImporter:
       name: Batch_0
       rect:
         serializedVersion: 2
-        x: 23
-        y: 17
-        width: 95
-        height: 131
+        x: 90
+        y: 67
+        width: 384
+        height: 527
       alignment: 9
-      pivot: {x: 0.47640243, y: 0.43823218}
+      pivot: {x: 0.46, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -129,12 +129,12 @@ TextureImporter:
       name: Batch_1
       rect:
         serializedVersion: 2
-        x: 141
-        y: 19
-        width: 120
-        height: 117
+        x: 570
+        y: 76
+        width: 475
+        height: 469
       alignment: 9
-      pivot: {x: 0.49873516, y: 0.500857}
+      pivot: {x: 0.49, y: 0.49}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -147,36 +147,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Batch_2
-      rect:
-        serializedVersion: 2
-        x: 280
-        y: 18
-        width: 103
-        height: 109
-      alignment: 9
-      pivot: {x: 0.4131351, y: 0.53702015}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: abb442e82fa4e7348a37d364c4d2b72e
-      internalID: 2007084868
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Batch_3
       rect:
         serializedVersion: 2
-        x: 429
-        y: 21
-        width: 107
-        height: 107
+        x: 1112
+        y: 71
+        width: 441
+        height: 465
       alignment: 9
-      pivot: {x: 0.3807604, y: 0.5372435}
+      pivot: {x: 0.395, y: 0.498}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -192,12 +171,12 @@ TextureImporter:
       name: Batch_4
       rect:
         serializedVersion: 2
-        x: 585
-        y: 31
-        width: 107
-        height: 98
+        x: 1692
+        y: 82
+        width: 426
+        height: 407
       alignment: 9
-      pivot: {x: 0.48979744, y: 0.41363072}
+      pivot: {x: 0.427, y: 0.57}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -205,6 +184,27 @@ TextureImporter:
       bones: []
       spriteID: cf1d8c514d621db42ba84d971e2701db
       internalID: -625696541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Batch_5
+      rect:
+        serializedVersion: 2
+        x: 2314
+        y: 121
+        width: 492
+        height: 398
+      alignment: 9
+      pivot: {x: 0.468, y: 0.402}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4adcaee361c42334cad7eda38047ea56
+      internalID: -1952697994
       vertices: []
       indices: 
       edges: []
@@ -220,6 +220,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Batch_5: -1952697994
       Batch_3: -91261932
       Batch_4: -625696541
       Batch_1: -908627868

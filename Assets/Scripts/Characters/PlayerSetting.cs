@@ -46,7 +46,7 @@ public class PlayerSetting : MonoBehaviour
             player.MaxHP = Mathf.FloorToInt(player.InitHP * (1 + player.HPRatio + GameManager.instance.PlayerStatus.hp));
             if (cnt - player.MaxHP != 0)
             {
-                player.CurHP += cnt;
+                player.CurHP += player.MaxHP - cnt;
                 HPBar.fillAmount = player.CurHP / (float)player.MaxHP;
                 if (!IsPlayer) player.MyBatch.HPBar.fillAmount = player.CurHP / (float)player.MaxHP;
             }
@@ -198,7 +198,7 @@ public class PlayerSetting : MonoBehaviour
             BulletInfo Info = GameManager.instance.BM.GetBulletInfo(GameManager.StringToInt(collision.name));
             int GetDamage = (int)(Info.Damage * (100 - player.InitDefense * (1 + player.DefenseRatio + GameManager.instance.PlayerStatus.defense)) * 0.01);
             player.CurHP -= GetDamage;
-            if (player.CurHP > player.InitHP ) player.CurHP = player.MaxHP;
+            if (player.CurHP > player.MaxHP ) player.CurHP = player.MaxHP;
             else if (player.CurHP <= 0)
             {
                 player.CurHP = 0;

@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 18
+  spritePixelsToUnits: 72
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -109,11 +109,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 7
-        width: 78
-        height: 92
+        y: 28
+        width: 312
+        height: 368
       alignment: 9
-      pivot: {x: 0.7239368, y: 0.4961254}
+      pivot: {x: 0.7, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -129,12 +129,12 @@ TextureImporter:
       name: Standing_1
       rect:
         serializedVersion: 2
-        x: 87
-        y: 7
-        width: 77
-        height: 90
+        x: 348
+        y: 28
+        width: 312
+        height: 360
       alignment: 9
-      pivot: {x: 0.7334426, y: 0.5055479}
+      pivot: {x: 0.7, y: 0.511}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -150,12 +150,12 @@ TextureImporter:
       name: Standing_2
       rect:
         serializedVersion: 2
-        x: 177
-        y: 8
-        width: 78
-        height: 90
+        x: 708
+        y: 33
+        width: 312
+        height: 360
       alignment: 9
-      pivot: {x: 0.7261824, y: 0.5064725}
+      pivot: {x: 0.7, y: 0.511}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -171,12 +171,12 @@ TextureImporter:
       name: Standing_3
       rect:
         serializedVersion: 2
-        x: 269
-        y: 8
-        width: 78
-        height: 92
+        x: 1081
+        y: 32
+        width: 312
+        height: 368
       alignment: 9
-      pivot: {x: 0.72511524, y: 0.49457276}
+      pivot: {x: 0.7, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

@@ -109,11 +109,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 295
+        y: 432
         width: 50
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -130,11 +130,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 101
-        y: 244
+        y: 381
         width: 460
         height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -151,11 +151,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3
-        y: 234
+        y: 371
         width: 54
         height: 54
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -172,11 +172,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 8
-        y: 164
+        y: 301
         width: 50
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -193,11 +193,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 67
-        y: 164
+        y: 301
         width: 50
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -214,11 +214,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 148
-        y: 57
+        y: 194
         width: 98
         height: 155
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -234,11 +234,11 @@ TextureImporter:
       name: BatchPictures_6
       rect:
         serializedVersion: 2
-        x: 300
-        y: 90
-        width: 80
-        height: 120
-      alignment: 9
+        x: 290
+        y: 225
+        width: 100
+        height: 155
+      alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -256,11 +256,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 427
-        y: 110
+        y: 247
         width: 111
         height: 62
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -268,6 +268,48 @@ TextureImporter:
       bones: []
       spriteID: dedbf0f6cc6502b41b8c74d82f329b56
       internalID: -112749054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BatchPictures_8
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 51
+        width: 113
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d71c8546789d7849a43bab2c8c90d3c
+      internalID: 1641850473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BatchPictures_9
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 5
+        width: 50
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddd1e88708b56ce428e5d122ea5fe29e
+      internalID: 1679345436
       vertices: []
       indices: 
       edges: []
@@ -284,6 +326,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       BatchPictures_2: 620522478
+      BatchPictures_9: 1679345436
       BatchPictures_4: -715350059
       BatchPictures_1: 142621045
       BatchPictures_3: 497538176

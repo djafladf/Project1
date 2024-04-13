@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 18
+  spritePixelsToUnits: 65
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -108,12 +108,12 @@ TextureImporter:
       name: Attack_0
       rect:
         serializedVersion: 2
-        x: 29
-        y: 21
-        width: 69
-        height: 77
+        x: 116
+        y: 84
+        width: 276
+        height: 308
       alignment: 9
-      pivot: {x: 0.3089469, y: 0.42752352}
+      pivot: {x: 0.32, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -129,12 +129,12 @@ TextureImporter:
       name: Attack_1
       rect:
         serializedVersion: 2
-        x: 120
-        y: 15
-        width: 88
-        height: 77
+        x: 480
+        y: 60
+        width: 352
+        height: 304
       alignment: 9
-      pivot: {x: 0.79270226, y: 0.41006544}
+      pivot: {x: 0.8, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -150,12 +150,12 @@ TextureImporter:
       name: Attack_2
       rect:
         serializedVersion: 2
-        x: 247
-        y: 14
-        width: 115
-        height: 73
+        x: 988
+        y: 56
+        width: 460
+        height: 292
       alignment: 9
-      pivot: {x: 0.46503428, y: 0.43291155}
+      pivot: {x: 0.5, y: 0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -171,12 +171,12 @@ TextureImporter:
       name: Attack_3
       rect:
         serializedVersion: 2
-        x: 378
-        y: 12
-        width: 66
-        height: 77
-      alignment: 9
-      pivot: {x: 0.6282788, y: 0.4251044}
+        x: 1512
+        y: 48
+        width: 264
+        height: 308
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

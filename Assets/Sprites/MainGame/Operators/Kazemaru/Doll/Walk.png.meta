@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 18
+  spritePixelsToUnits: 72
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -108,12 +108,12 @@ TextureImporter:
       name: Walk_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 4
-        width: 52
-        height: 89
-      alignment: 9
-      pivot: {x: 0.52957034, y: 0.47759384}
+        x: 20
+        y: 16
+        width: 208
+        height: 356
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -129,12 +129,12 @@ TextureImporter:
       name: Walk_1
       rect:
         serializedVersion: 2
-        x: 86
-        y: 2
-        width: 52
-        height: 87
-      alignment: 9
-      pivot: {x: 0.5299969, y: 0.4675336}
+        x: 344
+        y: 8
+        width: 208
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
