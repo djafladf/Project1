@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float AS;
     [SerializeField] protected int Damage;
     [SerializeField] protected int Defense;
+    [SerializeField] protected int ItemVal;
     protected int MaxDefense;
     protected int MaxDamage;
     protected float MaxSpeed;
@@ -235,14 +236,15 @@ public class Enemy : MonoBehaviour
     }
 
 
-    void Dead()
+    protected virtual void Dead()
     {
-        GameManager.instance.IM.MakeItem(transform);
+        GameManager.instance.IM.MakeItem(transform.position);
         gameObject.SetActive(false);
     }
-
+    bool IsInit = true;
     protected virtual void OnEnable()
     {
+        if (IsInit) { IsInit = false; return; }
         for (int i = 0; i < DeBuffObj.Length; i++)
         {
             if (DeBuffObj[i] != null)

@@ -5,3 +5,4 @@
 4. DualMan
 5. ShieldMan
 6. Magician
+7. Skul

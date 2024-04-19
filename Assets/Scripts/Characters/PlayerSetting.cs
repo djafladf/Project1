@@ -259,6 +259,7 @@ public class PlayerSetting : MonoBehaviour
 
         if (!IsPlayer)
         {
+            CanMove = false;
             player.anim.SetBool("IsAttack", false);
             if (!IsSummon)
             {

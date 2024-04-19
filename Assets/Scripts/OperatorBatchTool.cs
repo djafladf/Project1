@@ -14,7 +14,6 @@ public class OperatorBatchTool : Buttons
     GameObject BatchObject;
 
     int LeftReBatchTime = 0;
-    bool OnUse = false;
     bool CanBatch = true;
 
     [SerializeField] TMP_Text cost;
@@ -26,65 +25,86 @@ public class OperatorBatchTool : Buttons
     public Image HPBar;
     Sprite ObjectImage;
 
-    Color CCnt = new Color(0.5f, 0.5f, 0.5f, 0);
+    Color CCnt = new Color(0.5f, 0.5f, 0.5f, 1);
     Color Black = new Color(0.1f, 0.1f, 0.1f, 0.5f);
     Color Red = new Color(1, 0, 0, 0.5f);
 
 
-    public void Init(GameObject BatchObj, Sprite Head)
+    public void Init(GameObject BatchObj, Sprite Head, int Cost, int BatchTime)
     {
+        this.Cost = Cost; ReBatchTime = BatchTime;
         cost.text = $"{Cost}";
         BatchObject = BatchObj;
         ObjectImage = BatchObject.GetComponent<SpriteRenderer>().sprite;
-        face.sprite = Head;
-        OnPointer(null); CanBatch = false;
+        face.sprite = Head; CanBatch = true;
     }
 
     private void FixedUpdate()
     {
+        if (BatchObject.activeSelf) return;
         if(GameManager.instance.UM.CurCost >= Cost && !CanBatch)
         {
             CanBatch = true;
-            OutPointer(null);
+            face.color = Color.white;
+            pan.color = Color.white;
         }
         else if (GameManager.instance.UM.CurCost < Cost && CanBatch)
         {
-            OnPointer(null);
             CanBatch = false;
+            face.color = CCnt;
+            pan.color = CCnt;
         }
     }
 
     
     protected override void Click(PointerEventData Data)
     {
-        if (OnUse || !CanBatch) return;
-        if (GameManager.instance.UM.BatchRequest(ObjectImage, this))
+        if (BatchObject.activeSelf)
         {
-            OnUse = true;
-            face.color += CCnt;
-            pan.color += CCnt;
-            GameManager.instance.SetTime(0.1f, false);
+            BatchObject.SetActive(false);
+            StartCoroutine(ReBatchAble());
         }
-        
+        else if(CanBatch)
+        {
+            if (GameManager.instance.UM.BatchRequest(ObjectImage, this))
+            {
+                CanBatch = false;
+                face.color = Color.white;
+                pan.color = Color.white;
+                GameManager.instance.SetTime(0.1f, false);
+            }
+        }
     }
 
     protected override void OnPointer(PointerEventData data)
     {
-        if (OnUse || !CanBatch) return;
-        face.color -= CCnt;
-        pan.color -= CCnt;
+        if (BatchObject.activeSelf)
+        {
+
+        }
+        else
+        {
+            face.color = CCnt;
+            pan.color = CCnt;
+        }
+        
     }
 
     protected override void OutPointer(PointerEventData data)
     {
-        if (OnUse || !CanBatch) return;
-        face.color += CCnt;
-        pan.color += CCnt;
+        if (BatchObject.activeSelf)
+        {
+
+        }
+        else
+        {
+            face.color = Color.white;
+            pan.color = Color.white;
+        }
     }
 
     public void EndBatch()
     {
-        OnUse = true;
         BatchObject.SetActive(true);
         Vector3 newPos = Camera.main.ScreenToWorldPoint(Input.mousePosition); newPos.z = 1;
         BatchObject.transform.position = newPos;
@@ -101,14 +121,10 @@ public class OperatorBatchTool : Buttons
 
     IEnumerator ReBatchAble()
     {
-        state.gameObject.SetActive(true);
-        ReBatchIm.gameObject.SetActive(true);
-        ReBatchText.gameObject.SetActive(true);
-        state.color = Red;
+        state.gameObject.SetActive(true); ReBatchIm.gameObject.SetActive(true); ReBatchText.gameObject.SetActive(true); state.color = Red;
         LeftReBatchTime = ReBatchTime;
-        ReBatchIm.fillAmount = 1;
-        float a = 1 / (float)ReBatchTime;
-        ReBatchText.text = $"{ReBatchTime}";
+        ReBatchIm.fillAmount = 1; float a = 1 / (float)ReBatchTime; ReBatchText.text = $"{ReBatchTime}";
+        ET.enabled = false;
         while (LeftReBatchTime > 0)
         {
             yield return GameManager.OneSec;
@@ -116,10 +132,7 @@ public class OperatorBatchTool : Buttons
             LeftReBatchTime--;
             ReBatchText.text = $"{LeftReBatchTime}";
         }
-        OnUse = false;
-        state.color = Black;
-        state.gameObject.SetActive(false);
-        ReBatchIm.gameObject.SetActive(false);
-        ReBatchText.gameObject.SetActive(false);
+        state.color = Black; state.gameObject.SetActive(false); ReBatchIm.gameObject.SetActive(false); ReBatchText.gameObject.SetActive(false);
+        ET.enabled = true;
     }
 }

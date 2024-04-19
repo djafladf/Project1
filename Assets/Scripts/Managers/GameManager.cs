@@ -135,6 +135,7 @@ public class GameManager : MonoBehaviour
         // Get Operators
         Players = new Player[LL];
         GameObject[] Prefs = new GameObject[LL];
+        
         await AddressablesLoader.InitAssets(BatchName, "Operator_Scriptable", Players, typeof(Player));
         for (int i = 0; i < LL; i++) { Players[i].Id = i; }
         Players[PlayerInd].IsPlayer = true;

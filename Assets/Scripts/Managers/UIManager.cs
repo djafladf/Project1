@@ -354,7 +354,7 @@ public class UIManager : MonoBehaviour
                 GameObject Tool = Instantiate(BatchTool, ToolField);
                 var k = Tool.GetComponent<OperatorBatchTool>();
                 Players[i].MyBatch = k;
-                k.Init(Prefs[i], Opers[i].Head);
+                k.Init(Prefs[i], Opers[i].Head, Players[i].Cost, Players[i].ReBatchTime);
                 Tool.GetComponent<RectTransform>().anchoredPosition = StartPos - Cnt * batchl++;
                 Tool.SetActive(true);
             }

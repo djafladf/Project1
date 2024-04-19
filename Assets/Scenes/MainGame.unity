@@ -28461,6 +28461,12 @@ MonoBehaviour:
   CurActive: 0
   Stages:
   - spawninfo:
+    - id: 7
+      start: 5
+      end: 5
+      respawn: 5
+      IsBoss: 1
+  - spawninfo:
     - id: 0
       start: 0
       end: 300
@@ -28500,7 +28506,7 @@ MonoBehaviour:
       start: 540
       end: 540
       respawn: 0
-      IsBoss: 0
+      IsBoss: 1
 --- !u!4 &8712970481732150842
 Transform:
   m_ObjectHideFlags: 0

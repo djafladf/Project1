@@ -44,19 +44,20 @@ public class ItemManager : MonoBehaviour
         GameManager.instance.StartLoading();
     }
 
-    public void MakeItem(Transform pos)
+    public void MakeItem(Vector3 pos, bool MustMake = false)
     {
         int Ran;
         if (CreatedTiming.Count == MaxItem)
         {
             // If Over MaxItem Num. FIFO
             int First = CreatedTiming[0]; CreatedTiming.RemoveAt(0);
-            Ran = Random.Range(0, 101);
+            if (MustMake) Ran = Random.Range(0, 73);
+            else Ran = Random.Range(0, 101);
             if (Ran < 72)
             {
                 CreatedTiming.Add(First);
                 Items[First].SetActive(true);
-                Items[First].transform.position = pos.position;
+                Items[First].transform.position = pos;
             }
             if (Ran < 45)
             {
@@ -85,12 +86,13 @@ public class ItemManager : MonoBehaviour
             {
                 if (!Items[i].activeSelf)
                 {
-                    Ran = Random.Range(0, 101);
+                    if (MustMake) Ran = Random.Range(0, 73);
+                    else Ran = Random.Range(0, 101);
                     if (Ran < 72)
                     {
                         CreatedTiming.Add(i);
                         Items[i].SetActive(true);
-                        Items[i].transform.position = pos.position;
+                        Items[i].transform.position = pos;
                     }
                     if (Ran < 45)
                     {

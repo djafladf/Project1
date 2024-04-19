@@ -77,7 +77,6 @@ public class EnemySpawner : MonoBehaviour
 
     public void StartStage()
     {
-
         if (CurStage > Stages.Count) return;
         foreach (SpawnInfo cnt in Stages[CurStage].spawninfo) StartCoroutine(Spawn(cnt));
         CurStage++;
@@ -110,7 +109,7 @@ public class EnemySpawner : MonoBehaviour
         StopAllCoroutines();
     }
 
-
+/*
     public void SpawnEnemy()
     {
         Vector3 SpawnPos = SpawnArea[Random.Range(0, SpawnAreaSize- 1)] + GameManager.instance.player.Self.position;
@@ -124,7 +123,7 @@ public class EnemySpawner : MonoBehaviour
                 break;
             }
         }
-    }
+    }*/
 
     int BatchCall = 0;
     public Vector3 ReBatchCall()

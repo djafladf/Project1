@@ -293,6 +293,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Standings_9
+      rect:
+        serializedVersion: 2
+        x: 1965
+        y: 329
+        width: 300
+        height: 354
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 962058561fcf49c43b3b1c1ef3b5899c
+      internalID: 1596115076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -306,6 +327,7 @@ TextureImporter:
     nameFileIdTable:
       Standings_7: 922643873
       Standings_2: 530092768
+      Standings_9: 1596115076
       Standings_4: 1415707880
       Standings_0: -1466009962
       Standings_6: 134435340
