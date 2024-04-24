@@ -44,12 +44,12 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -108,9 +108,9 @@ TextureImporter:
       name: MainSpr_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 52
         y: 222
-        width: 304
+        width: 365
         height: 110
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -129,9 +129,9 @@ TextureImporter:
       name: MainSpr_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 106
-        width: 210
+        x: 44
+        y: 123
+        width: 169
         height: 88
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -142,6 +142,69 @@ TextureImporter:
       bones: []
       spriteID: d75ca3fbcaf60274a85e5958df202e2c
       internalID: 1534518978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MainSpr_2
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 123
+        width: 197
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02361043dcf781e479a1f0c97dd9c2e3
+      internalID: 234497745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MainSpr_3
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 21
+        width: 169
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bdcbc4bf1c270e4b8ee840f9c587942
+      internalID: -1347342604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MainSpr_4
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 21
+        width: 197
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b37407fcb5ac2ea49b84e08ee7358455
+      internalID: -426939529
       vertices: []
       indices: 
       edges: []
@@ -157,6 +220,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      MainSpr_2: 234497745
+      MainSpr_4: -426939529
+      MainSpr_3: -1347342604
       MainSpr_1: 1534518978
       MainSpr_0: 150043895
   spritePackingTag: 

@@ -38,8 +38,9 @@ public class Wafarin_Special : MonoBehaviour
             foreach(RaycastHit2D t in targets)
             {
                 Transform cnt = t.transform;
-                GameManager.instance.BM.MakeMeele((int)((1+GameManager.instance.PlayerStatus.attack) * 30f),0,0.3f,
-                    cnt.position,Vector3.zero,0,Bullet,false);
+                GameManager.instance.BM.MakeMeele(
+                    new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack) * 30f),false,0),0.3f,
+                    cnt.position,Vector3.zero,0,false,Bullet);
             }
             RaycastHit2D[] targetss = Physics2D.CircleCastAll(transform.position, 2f, Vector2.zero, 0, Layers[1]);
             for (int x = 0; x < 6; x++) { Particles[x].gameObject.SetActive(false); Particles[x].Stop(); }

@@ -40,6 +40,7 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         GameManager.instance.UM = this;
+        CurCost = GameManager.instance.gameStatus.Stat[6] * 2;
         GameManager.instance.StartLoading();
     }
 
@@ -92,7 +93,7 @@ public class UIManager : MonoBehaviour
         Cost.text = $"{(int)CurCost}";
     }
 
-    float ExpSub = 0.05f;
+    float ExpSub = 0.1f;
     public void ExpUp(int value)
     {
         if (NonSelected.Count == 0) return;
@@ -133,23 +134,40 @@ public class UIManager : MonoBehaviour
 
 
     List<ItemSub> NonSelected;
+    List<ItemSub> WeaponSelection;
     List<ItemSub> Selected;
 
     [SerializeField] List<ItemSub> StatItem;
 
     void LevelUpEvent()
     {
-        if (NonSelected.Count < GameManager.instance.PlayerStatus.selection) NonSelected.AddRange(StatItem);
+        if (NonSelected.Count< GameManager.instance.PlayerStatus.selection) NonSelected.AddRange(StatItem);
+        foreach (var k in Selections) k.gameObject.SetActive(false);
+
         int[] array = new int[NonSelected.Count]; for (int i = 0; i < array.Length; i++) array[i] = i;
         array = array.OrderBy(x => Guid.NewGuid()).ToArray();
-        int[] pickedElements = array.Take(GameManager.instance.PlayerStatus.selection).ToArray();
-        foreach (var k in Selections) k.gameObject.SetActive(false);
-        for (int i = 0; i < GameManager.instance.PlayerStatus.selection; i++)
+        List<int> pickedElements = array.Take(GameManager.instance.PlayerStatus.selection).ToList();
+
+        int[] _array = new int[WeaponSelection.Count]; for (int i = 0; i < _array.Length; i++) _array[i] = i;
+        _array = _array.OrderBy(x => Guid.NewGuid()).ToArray();
+        List<int> _pickedElements = _array.Take(WeaponSelection.Count).ToList();
+
+        for (int i = 0; i < GameManager.instance.PlayerStatus.selection;i++)
         {
-            int Ind = pickedElements[i];
-            ItemSub cnt = NonSelected[Ind];
             Selections[i].gameObject.SetActive(true);
-            Selections[i].Init(cnt.sprite, cnt.name, cnt.description[cnt.lv - 1], cnt.extra, Ind, cnt.lv,cnt.IsWeapon);
+            int l = UnityEngine.Random.Range(0,2);
+            if(l == 0 && _pickedElements.Count > 0)
+            {
+                int Ind = _pickedElements[0]; _pickedElements.RemoveAt(0);
+                ItemSub cnt = WeaponSelection[Ind]; 
+                Selections[i].Init(cnt.sprite, cnt.name, cnt.description[cnt.lv - 1], cnt.extra, Ind, cnt.lv,true);
+            }
+            else
+            {
+                int Ind = pickedElements[0]; pickedElements.RemoveAt(0);
+                ItemSub cnt = NonSelected[Ind];
+                Selections[i].Init(cnt.sprite, cnt.name, cnt.description[cnt.lv - 1], cnt.extra, Ind, cnt.lv);
+            }
         }
 
         LV.text = $"LV.{++CurLevel}";
@@ -175,11 +193,11 @@ public class UIManager : MonoBehaviour
 
     bool[] Dragons = { false, false, false, false, false };
     int DragonCount = 0;
-    public void ApplySelection(int ind)
+    public void ApplySelection(int ind,bool IsWeapon)
     {
-        ItemSub cnt = NonSelected[ind];
-        if (!cnt.IsWeapon)
+        if (!IsWeapon)
         {
+            ItemSub cnt = NonSelected[ind];
             GameObject cntRelic = Instantiate(RelicObj,RelicList);
             cntRelic.transform.GetChild(0).GetComponent<Image>().sprite = cnt.sprite;
 
@@ -302,13 +320,9 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-
-            if (cnt.lv == 7) NonSelected.RemoveAt(ind);
-            else
-            {
-                WeaponLevelUps[cnt.operatorid]();
-                cnt.lv++;
-            }
+            ItemSub cnt = WeaponSelection[ind];
+            WeaponLevelUps[cnt.operatorid]();
+            cnt.lv++; if (cnt.lv == 7) WeaponSelection.RemoveAt(ind);
         }
 
         if (NonSelected.Count == 0) GameManager.instance.PlayerStatus.exp = 0;
@@ -334,7 +348,7 @@ public class UIManager : MonoBehaviour
 
     public void Init(int Count, List<ItemSub> Weapons, Player[] Players, GameObject[] Prefs, OperatorInfos[] Opers, int PlayerInd)
     {
-        NonSelected = new List<ItemSub>(); Selected = new List<ItemSub>();
+        NonSelected = new List<ItemSub>(); Selected = new List<ItemSub>(); WeaponSelection = new List<ItemSub>();
         NonSelected.AddRange(GameManager.instance.Data.Items);
         Vector3 StartPos = new Vector3(100, 840, 0); Vector3 Cnt = new Vector3(0, 280, 0);
         int batchl = 0;
@@ -343,10 +357,8 @@ public class UIManager : MonoBehaviour
         {
             // Add Weapon To Item
             ItemSub j = Weapons[i];
-            print(j.name);
-            j.IsWeapon = true;
             j.operatorid = i;
-            NonSelected.Add(j);
+            WeaponSelection.Add(j);
             // Init BatchTool;
             if (i != PlayerInd)
             {
@@ -361,12 +373,23 @@ public class UIManager : MonoBehaviour
             else
             {
                 GetArea = Instantiate(GetAreaPref, Prefs[i].transform).transform.GetChild(0);
+                GetArea.localScale *= GameManager.instance.PlayerStatus.pickup;
             }
         }
 
         HpChange();
         GameManager.instance.VC.Follow = Prefs[PlayerInd].transform;
         Prefs[PlayerInd].transform.position = Vector2.zero;
+
+        AttackStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.attack * 100)}%";
+        CostStat.text = $"{Mathf.FloorToInt((GameManager.instance.PlayerStatus.cost - 1) * 100)}%";
+        DefenseStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.defense * 100)}%";
+        SpeedStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.speed * 100)}%";
+        GainStat.text = $"{Mathf.FloorToInt((GameManager.instance.PlayerStatus.pickup - 1) * 100)}%";
+        ExpStat.text = $"{Mathf.FloorToInt((GameManager.instance.PlayerStatus.exp - 1) * 100)}%";
+        HasteStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.attackspeed * 100)}%";
+        HealthStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.hp * 100)}%";
+
         GameManager.instance.StartLoading();
     }
 
@@ -406,6 +429,7 @@ public class UIManager : MonoBehaviour
         entry.callback.AddListener((data) => { GameManager.instance.EndGame(); });
         Ending.GetComponent<EventTrigger>().triggers.Add(entry);
         Ending.gameObject.SetActive(true);
+        for (int i = 0; i < 3; i++) GameManager.instance.gameStatus.Objects[i] += GoodsCount[i];
     }
     public void GameFail()
     {
@@ -416,5 +440,6 @@ public class UIManager : MonoBehaviour
         Ending.color = new Color(1, 0, 0, 0.4f);
         EndingSprite.sprite = FailEnding;
         Ending.gameObject.SetActive(true);
+        for (int i = 0; i < 3; i++) GameManager.instance.gameStatus.Objects[i] += GoodsCount[i];
     }
 }

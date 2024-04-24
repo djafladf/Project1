@@ -44,7 +44,9 @@ public class RangeAttack : MonoBehaviour
         foreach(var k in Target)
         {
             if (k == null) break;
-            GameManager.instance.BM.MakeBullet(Damage,Penetrate,0,Position, (k.position - Position).normalized, speed,Im,IsEnemey);
+            GameManager.instance.BM.MakeBullet
+                (
+                new BulletInfo(Damage,false,0), Penetrate, Position, (k.position - Position).normalized, speed,false,Im);
         }
     }
 }

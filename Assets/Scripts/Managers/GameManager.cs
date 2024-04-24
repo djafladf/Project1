@@ -7,6 +7,7 @@ using System.Linq;
 using Cinemachine;
 using System.Collections;
 using UnityEngine.UI;
+using Newtonsoft.Json;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     // On Loby
     [HideInInspector] public DataManager Data;
+    [HideInInspector] public ShopManager Shop;
 
     // On Game
     [HideInInspector] public Player player;
@@ -45,10 +47,25 @@ public class GameManager : MonoBehaviour
     public attribute PlayerStatus;
     attribute InitPlayerStatus;
 
-    private void Awake()
+    public GameStatus gameStatus;
+
+
+    private void OnApplicationQuit()
+    {
+        string json = JsonConvert.SerializeObject(gameStatus);
+        File.WriteAllText(Path.Combine(Application.persistentDataPath, "Status.json"), json);
+    }
+    
+    void Awake()
     {
         InitPlayerStatus = PlayerStatus;
-        if (instance == null) { instance = this;  DontDestroyOnLoad(gameObject); }
+        if (instance == null) { 
+            instance = this; 
+            DontDestroyOnLoad(gameObject);
+            string path = Path.Combine(Application.persistentDataPath, "Status.json");
+            if (File.Exists(path)) gameStatus = JsonConvert.DeserializeObject<GameStatus>(File.ReadAllText(path));
+            else gameStatus = new GameStatus();
+        }
         else if (instance != this) Destroy(gameObject);
         //else Destroy(gameObject);
         
@@ -57,6 +74,7 @@ public class GameManager : MonoBehaviour
 
 
     [HideInInspector] public Player[] Players;
+    [HideInInspector] public GameObject[] Prefs;
     public List<int> CurPlayerID;
     public int PlayerInd = 0;
 
@@ -134,7 +152,7 @@ public class GameManager : MonoBehaviour
 
         // Get Operators
         Players = new Player[LL];
-        GameObject[] Prefs = new GameObject[LL];
+        Prefs = new GameObject[LL];
         
         await AddressablesLoader.InitAssets(BatchName, "Operator_Scriptable", Players, typeof(Player));
         for (int i = 0; i < LL; i++) { Players[i].Id = i; }
@@ -142,6 +160,20 @@ public class GameManager : MonoBehaviour
         player = Players[PlayerInd];
         await AddressablesLoader.InitAssets(BatchName, "Operator_Pref", Prefs, DM.transform.parent);
         PlayerObj = Prefs[PlayerInd]; PlayerObj.SetActive(false);
+
+        // Init
+
+        PlayerStatus.attack = gameStatus.Stat[0] * 0.05f - 0.05f;
+        PlayerStatus.defense = gameStatus.Stat[1] * 0.02f - 0.02f;
+        PlayerStatus.hp = gameStatus.Stat[2] * 0.04f - 0.04f;
+        PlayerStatus.speed = gameStatus.Stat[3] * 0.05f - 0.05f;
+        PlayerStatus.pickup = gameStatus.Stat[4] * 0.1f + 0.9f;
+        PlayerStatus.attackspeed = gameStatus.Stat[5] * 0.02f - 0.02f;
+        PlayerStatus.cost = gameStatus.Stat[7] * 0.05f + 0.95f;
+        PlayerStatus.exp = gameStatus.Stat[8] * 0.05f + 0.95f;
+        PlayerStatus.GoodsEarn = gameStatus.Stat[9] * 0.05f + 0.95f;
+        PlayerStatus.selection = 3;
+
 
         IM.Init(); BM.Init(); ES.Init(1); DM.Init(); BFM.Init();
         UM.Init(LL, CurPlayerID.Select(index => Data.WeaponSub[index]).ToList(), Players, Prefs, CurPlayerID.Select(index => Data.Infos[index]).ToArray(), PlayerInd);

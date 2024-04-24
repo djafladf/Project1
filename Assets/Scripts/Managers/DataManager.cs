@@ -12,13 +12,16 @@ public class DataManager : MonoBehaviour
     public List<ItemSub> Items;
 
     [SerializeField]
+    public List<ItemSub> BossItems;
+
+    [SerializeField]
     public List<ItemSub> WeaponSub;
 
     [SerializeField]
     public List<OperatorInfos> Infos;
 
 
-    private void Awake()
+    private void Start()
     {
         GameManager.instance.Data = this;
     }

@@ -50,10 +50,11 @@ public class BatchSet : MonoBehaviour
             cnt.GetComponent<BatchInfoBT>().Init(j++,false,k.IsLD,this);
             cnt.transform.GetChild(1).GetComponent<TMP_Text>().text = k.name;
         }
+        j = 0;
         foreach (var k in GameManager.instance.CurPlayerID)
         {
             if (k == -1) continue;
-            BatchIms[k].sprite = GameManager.instance.Data.Infos[k].Standing2;
+            BatchIms[j++].sprite = GameManager.instance.Data.Infos[k].Standing2;
         }
     }
     

@@ -19,7 +19,6 @@ public class ItemSub
     public List<string> description;
     [Multiline(2)]
     public string extra;
-    public bool IsWeapon;
     public Sprite sprite;
     public attribute attributes;
 }
@@ -36,7 +35,8 @@ public class attribute
     public float pickup;
     public int selection;
     public float exp;
-    public float heal;   
+    public float heal;
+    public float GoodsEarn;
     public int dragons;
     public int special;
     public float hp;
@@ -47,28 +47,28 @@ public class BulletInfo
 {
     public int Damage;
     public bool IsEffect;
+    public bool IsFix;
     public float KnockBack;
+    public float IgnoreDefense;
 
     public DeBuff DeBuffs;
 
     public Buff Buffs;
 
-    public BulletInfo(int damage, bool isEffect, float knockBack, DeBuff debuffs = null, Buff buffs = null)
+    public BulletInfo(int damage, bool isEffect,float knockBack, bool isFix = false, float ignoreDefense = 0,
+        DeBuff debuffs = null, Buff buffs = null)
     {
         Damage = damage;
-        IsEffect = isEffect;
-        KnockBack = knockBack;
+        IsEffect = isEffect; IsFix = isFix;
+        KnockBack = knockBack; IgnoreDefense = ignoreDefense;
         DeBuffs = debuffs;
         Buffs = buffs;
     }
 
-    public void Set(int damage, bool isEffect, float knockBack, DeBuff debuffs = null, Buff buffs = null)
+    public int ReturnDamage(float defense)
     {
-        Damage = damage;
-        IsEffect = isEffect;
-        KnockBack = knockBack;
-        DeBuffs = debuffs;
-        Buffs = buffs;
+        if (IsFix) return Damage;
+        return (int)(Damage * (100 + IgnoreDefense - defense) * 0.01);
     }
 }
 

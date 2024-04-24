@@ -23,13 +23,15 @@ public class Platinum :PlayerSetting
             int Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10);
             for (int i = -ProjNum+1; i <= ProjNum-1; i++)
             {
-                GameManager.instance.BM.MakeBullet(Damage, Penetrate,0,
+                GameManager.instance.BM.MakeBullet(
+                    new BulletInfo(Damage,false,0,ignoreDefense : DefenseIgnore),Penetrate,
                 transform.position, new Vector3(Mathf.Cos(rad + 0.25f * i), Mathf.Sin(rad + 0.25f * i)),
-                10, Bullet, false);
+                10, false,Bullet);
             }
         }
     }
     float DamageRatio = 5f;
+    float DefenseIgnore = 0;
     int Penetrate = 0;
     int ProjNum = 1;
 
@@ -44,6 +46,7 @@ public class Platinum :PlayerSetting
             case 5: DamageRatio ++; break;
             case 6:
                 Penetrate = 100;
+                DefenseIgnore = 0.5f;
                 break;
         }
         return player.WeaponLevel;

@@ -111,8 +111,10 @@ public class Rosmontis : PlayerSetting
 
         int Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10);
 
-        GameManager.instance.BM.MakeMeele(Damage, 0,0.3f,
-                    AttackPos, Vector3.zero, 0, Sprites[4], false, new DeBuff(5,defense:defenseRatio));
+        GameManager.instance.BM.MakeMeele
+            (
+            new BulletInfo(Damage,false,0,debuffs: new DeBuff(5, defense: defenseRatio)), 0.3f,
+                    AttackPos, Vector3.zero, 0, false,Sprites[4]);
     }
 
     protected override void AttackEnd()

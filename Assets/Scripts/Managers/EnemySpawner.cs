@@ -104,6 +104,29 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    public void ExternalSpawnCall(int ind,int Times, float Gap)
+    {
+        StartCoroutine(ExtraSpawn(ind,Times,Gap));
+    }
+
+    IEnumerator ExtraSpawn(int ind,int Times,float Gap)
+    {
+        WaitForSeconds SpawnGap = new WaitForSeconds(Gap);
+        while(Times-- != 0)
+        {
+            for(int i = 0; i < PoolSize[ind]; i++)
+            {
+                if (!Pool[i, ind].activeSelf)
+                {
+                    Pool[i, ind].transform.position = SpawnArea[Random.Range(0, SpawnAreaSize - 1)] + GameManager.instance.player.Self.position;
+                    Pool[i, ind].SetActive(true);
+                    break;
+                }
+            }
+            yield return SpawnGap;
+        }
+    }
+
     public void StopCor()
     {
         StopAllCoroutines();

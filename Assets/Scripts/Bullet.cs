@@ -13,8 +13,10 @@ public class Bullet : MonoBehaviour
     TrailRenderer Line;
 
 
+    BulletInfo AfterBull;
+
     int Penetrate;
-    int AfterDamage;
+    
     bool IsMeele;
     bool IsEnem;
     bool IsBoom;
@@ -28,8 +30,8 @@ public class Bullet : MonoBehaviour
         Line = GetComponent<TrailRenderer>(); Line.enabled = false;
     }
 
-    public void Init_Attack(int Damage, int Penetrate, Vector3 Dir,
-        bool IsMeele, bool IsEnemy, float AfterTime, Sprite Image, 
+    public void Init_Attack(int Penetrate, Vector3 Dir,
+        bool IsMeele, bool IsEnemy, float AfterTime, Sprite Image = null, 
         BulletLine BL = null, RuntimeAnimatorController Anim = null,Sprite HitImage = null)
     {
         if (BL == null) Line.enabled = false;
@@ -55,13 +57,13 @@ public class Bullet : MonoBehaviour
         tag = IsEnemy ? "EnemyAttack" : "PlayerAttack";
     }
 
-    public void Init_Explode(int Damage, Vector3 Dir, bool IsEnemy,int AfterDamage, Sprite Image, Sprite HitImage,
+    public void Init_Explode(BulletInfo After, Vector3 Dir, bool IsEnemy, Sprite Image, Sprite HitImage,
         BulletLine BL = null, RuntimeAnimatorController Anim = null)
     {
         if (BL == null) Line.enabled = false;
         else
         {
-            Line.enabled = true;
+            Line.enabled = true; 
             Line.startColor = BL.Start; Line.endColor = BL.End;
             Line.startWidth = BL.StartWidth; Line.endWidth = BL.EndWidth;
             Line.time = BL.Time;
@@ -70,7 +72,7 @@ public class Bullet : MonoBehaviour
         if (Anim == null) anim.enabled = false;
         else { anim.enabled = true; }
 
-        this.HitImage = HitImage; this.AfterDamage = AfterDamage;
+        this.HitImage = HitImage; this.AfterBull = After;
         rigid.simulated = true; coll.enabled = true; rigid.velocity = Dir; this.Penetrate = 0; sprite.sprite = Image; this.IsMeele = false; this.IsEnem = IsEnemy; IsBoom = true;
 
         if (Image != null) coll.size = sprite.bounds.size * 0.9f;
@@ -94,9 +96,7 @@ public class Bullet : MonoBehaviour
         if (Anim == null) anim.enabled = false;
         else { anim.enabled = true; anim.runtimeAnimatorController = Anim; }
 
-        rigid.simulated = true; rigid.velocity = Dir;
-        coll.enabled = false;
-        sprite.sprite = Image;
+        rigid.simulated = true; rigid.velocity = Dir; coll.enabled = false; sprite.sprite = Image;
         if (BL == null) Line.enabled = false;
 
         StartCoroutine(AfterImage(AfterTime));
@@ -118,19 +118,19 @@ public class Bullet : MonoBehaviour
         {
             if (HitImage != null)
             {
-                if (IsBoom) GameManager.instance.BM.MakeMeele(AfterDamage,0,0.3f, transform.position,Vector3.zero,0,HitImage,false);
-                else GameManager.instance.BM.MakeEffect(0.3f, transform.position, Vector3.zero, HitImage);
+                if (IsBoom) GameManager.instance.BM.MakeMeele(AfterBull, 0.3f, transform.position, Vector3.zero,0, true, HitImage);
+                else GameManager.instance.BM.MakeEffect(0.3f, transform.position, Vector3.zero,0, HitImage);
             }
             if (Penetrate-- <= 0) gameObject.SetActive(false);
         }
-        else if(collision.CompareTag("Player") && IsEnem)
+        else if((collision.CompareTag("Player")||collision.CompareTag("Player_Hide")) && IsEnem)
         {
-            if (Penetrate-- <= 0)
+            if (HitImage != null)
             {
-                if (IsBoom) GameManager.instance.BM.MakeMeele(AfterDamage, 0, 0.3f, transform.position, Vector3.zero, 0, HitImage, true);
-                else GameManager.instance.BM.MakeEffect(0.3f, transform.position, Vector3.zero, HitImage);
-                gameObject.SetActive(false);
+                if (IsBoom) GameManager.instance.BM.MakeMeele(AfterBull, 0.3f, transform.position, Vector3.zero, 0,true, HitImage);
+                else GameManager.instance.BM.MakeEffect(0.3f, transform.position, Vector3.zero, 0,HitImage);
             }
+            if (Penetrate-- <= 0) gameObject.SetActive(false);
         }
 
     }

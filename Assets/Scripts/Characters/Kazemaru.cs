@@ -38,8 +38,9 @@ public class Kazemaru : PlayerSetting
     {
         if (Vector3.Distance(TargetPos.position, transform.position) <= 2)
         {
-            GameManager.instance.BM.MakeMeele((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10),0,0.3f,
-                transform.position, -player.Dir,0,MeeleAttack,false);
+            GameManager.instance.BM.MakeMeele(
+                new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10),false,0),0.3f,
+                transform.position, -player.Dir,0,false,MeeleAttack);
         }
         if (ProjNum != 0)
         {
@@ -48,9 +49,10 @@ public class Kazemaru : PlayerSetting
             if (Sub.y < 0) rad = Mathf.PI * 2 - rad;
             for (int i = -ProjNum; i <= ProjNum; i++)
             {
-                GameManager.instance.BM.MakeBullet((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * SpecialRatio * 10), 0,0,
+                GameManager.instance.BM.MakeBullet(
+                    new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * SpecialRatio * 10),false,0), 0,
                 transform.position, new Vector3(Mathf.Cos(rad + 0.1f * i), Mathf.Sin(rad + 0.1f * i), 0),
-                15, bullet,false);
+                15, false,bullet);
             }
         }
 

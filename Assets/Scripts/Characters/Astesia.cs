@@ -35,21 +35,21 @@ public class Astesia : PlayerSetting
             
             if (IsTest)
             {
-                GameManager.instance.BM.MakeMeele((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10), 0, 0.3f,
-                    transform.position, -player.Dir, 0, Attack2, false);
+                GameManager.instance.BM.MakeMeele(
+                    new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10), false, 0), 0.3f,
+                    transform.position, -player.Dir, 0, false,im : AttackIm);
                 StartCoroutine(LateDamage(0.25f));
-                GameManager.instance.BM.MakeEffect(0.25f, TargetPos.position + DropGap, DropDir * 30, Bullet, BL: BL);
+                GameManager.instance.BM.MakeEffect(0.25f, TargetPos.position + DropGap, DropDir, 30, Bullet, BL: BL);
             }
-            else GameManager.instance.BM.MakeMeele((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10), 0, 0.3f,
-                    transform.position, -player.Dir, 0, Attack1, false);
         }
     }
 
     IEnumerator LateDamage(float Time)
     {
         yield return new WaitForSeconds(Time);
-        GameManager.instance.BM.MakeBullet((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * 10), 0, 0,
-                TargetPos.position, Vector3.zero, 0, null, false);
+        GameManager.instance.BM.MakeBullet(
+            new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10), false, 0),0,
+                TargetPos.position, Vector3.zero, 0, false);
     }
 
     float DamageRatio = 1f;

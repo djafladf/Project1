@@ -10,22 +10,24 @@ public class Cutter : PlayerSetting
     {
         if (TargetPos != null)
         {
+
             if (Vector3.Distance(TargetPos.position, transform.position) <= 2)
             {
-                
-                GameManager.instance.BM.MakeMeele((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10),0,0.3f,
-                    transform.position, -player.Dir,0,NormalAttack,false);
+                GameManager.instance.BM.MakeMeele(
+                    new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10), false, 0,ignoreDefense:0.2f), 0.3f,
+                    transform.position, -player.Dir, 0, false, NormalAttack);
             }
-            if(ProjNum != 0)
+            if (ProjNum != 0)
             {
                 Vector2 Sub = (TargetPos.position - transform.position).normalized;
                 float rad = Vector2.Angle(Vector2.right, Sub) * Mathf.Deg2Rad;
                 if (Sub.y < 0) rad = Mathf.PI * 2 - rad;
                 for (int i = -ProjNum; i <= ProjNum; i++)
                 {
-                    GameManager.instance.BM.MakeBullet((int)((1+GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * SpecialRatio * 10), 0,0,
+                    GameManager.instance.BM.MakeBullet(
+                        new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * SpecialRatio * 10), false, 0, ignoreDefense: 0.2f), 0,
                     transform.position, new Vector3(Mathf.Cos(rad + 0.1f * i), Mathf.Sin(rad + 0.1f * i), 0),
-                    15, Bullet, false);
+                    15, false, Bullet);
                 }
             }
         }

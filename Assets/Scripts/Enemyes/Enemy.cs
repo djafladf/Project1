@@ -74,9 +74,12 @@ public class Enemy : MonoBehaviour
 
     protected Vector3 AttackPos;
 
+
+    //[SerializeField] protected Sprite Bullet;
+
     protected virtual void AttackMethod()
     {
-        GameManager.instance.BM.MakeMeele(Damage, 0, 0.2f, AttackPos, Vector2.zero, 0, null, true);
+        GameManager.instance.BM.MakeMeele(new BulletInfo(Damage,false,0), 0.2f, AttackPos, Vector2.zero, 0, true);
     }
 
     bool CanHit = true;
@@ -94,7 +97,7 @@ public class Enemy : MonoBehaviour
         if (collision.CompareTag("PlayerAttack") && CanHit)
         {
             BulletInfo Info = GameManager.instance.BM.GetBulletInfo(GameManager.StringToInt(collision.name));
-            int GetDamage = (int)(Info.Damage * (100 - Defense) * 0.01);
+            int GetDamage = Info.ReturnDamage(Defense);
             GameManager.instance.DM.MakeDamage(GetDamage, transform);
             HP -= GetDamage;
             HPChange();     // For Boss

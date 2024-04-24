@@ -45,6 +45,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ab0ac6d6ab1c6d845b290552bdaadbb6, type: 2}
   - {fileID: 11400000, guid: 1f8659f37c5f56a489044b3f317d7363, type: 2}
   - {fileID: 11400000, guid: 7fcaf4a81497e444cb1e5a0a435cce04, type: 2}
+  - {fileID: 11400000, guid: 6d42e2c8c5a0d4340b7a98973ee8d1d3, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -88,6 +89,7 @@ MonoBehaviour:
     - default
     - Operator_Scriptable
     - Operator_Pref
+    - Json
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: e9e27c998b2766140840635f6d52756d, type: 2}

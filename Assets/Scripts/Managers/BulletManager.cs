@@ -7,7 +7,10 @@ using UnityEngine.InputSystem.LowLevel;
 public class BulletManager : MonoBehaviour
 {
     [SerializeField] GameObject Bullet;
+    [SerializeField] GameObject Warning;
     GameObject[] Bullets;
+    GameObject[] Warnings;
+    WarningBullet[] WarningScripts;
     Bullet[] BulletScripts;
     BulletInfo[] BulletInfos;
 
@@ -22,13 +25,21 @@ public class BulletManager : MonoBehaviour
         Bullets = new GameObject[100];
         BulletScripts = new Bullet[100];
         BulletInfos = new BulletInfo[100];
+        Warnings = new GameObject[20];
+        WarningScripts = new WarningBullet[20];
+        for(int i = 0; i < 20; i++)
+        {
+            Warnings[i] = Instantiate(Warning, transform);
+            Warnings[i].SetActive(false);
+            WarningScripts[i] = Warnings[i].GetComponent<WarningBullet>();
+        }
+
         for (int i = 0; i < 100; i++)
         {
             Bullets[i] = Instantiate(Bullet, transform);
             Bullets[i].gameObject.SetActive(false);
             Bullets[i].name = $"{i}";
             BulletScripts[i] = Bullets[i].GetComponent<Bullet>();
-            BulletInfos[i] = new BulletInfo(0,false,0);
         }
         GameManager.instance.StartLoading();
     }
@@ -36,8 +47,22 @@ public class BulletManager : MonoBehaviour
     DeBuff NoDeBuff = new DeBuff();
     Buff NoBuff = new Buff();
 
+    public void MakeWarning(Vector3 Pos, float time, Vector2 size, System.Action<Vector3> act)
+    {
+        for(int i = 0; i < 20; i++)
+        {
+            if (!Warnings[i].activeSelf)
+            {
+                Warnings[i].SetActive(true);
+                Warnings[i].transform.position = Pos;
+                WarningScripts[i].Init(time, size, act);
+                break;
+            }
+        }
+    }
+
     /// <summary>
-    /// 
+    /// 원거리
     /// </summary>
     /// <param name="Damage"> Dmg </param>
     /// <param name="Penetrate"> Penetration </param>
@@ -48,8 +73,8 @@ public class BulletManager : MonoBehaviour
     /// <param name="im"> Image Of Bullet </param>
     /// <param name="IsEnemy"> Is Enemy </param>
     /// <param name="debuffInfo"> About DeBuff </param>
-    public void MakeBullet(int Damage, int Penetrate,float Power, Vector3 Start, Vector3 Dir, float speed,Sprite im,bool IsEnemy,
-        DeBuff debuffInfo = null,BulletLine BL = null, RuntimeAnimatorController anim = null)
+    public void MakeBullet(BulletInfo Info, int Penetrate, Vector3 Start, Vector3 Dir, float speed, bool IsEnemy,
+        Sprite im = null, DeBuff debuffInfo = null,BulletLine BL = null, RuntimeAnimatorController anim = null)
     {
         for(int i = 0; i < 100; i++)
         {
@@ -57,27 +82,25 @@ public class BulletManager : MonoBehaviour
             {
                 Bullets[i].SetActive(true);
                 Bullets[i].transform.position = Start; Dir.z = 0;
-                Bullets[i].transform.rotation = Quaternion.FromToRotation(Vector3.up, Dir);
-                BulletInfos[i].Set(Damage, false, Power, debuffInfo);
-                BulletScripts[i].Init_Attack(Damage, Penetrate, Dir * speed,false,IsEnemy,0,im,BL,anim);
+                Bullets[i].transform.rotation = Quaternion.FromToRotation(Vector3.up, Dir * speed);
+                BulletScripts[i].Init_Attack(Penetrate, Dir * speed,false,IsEnemy,0,im,BL,anim);
+                BulletInfos[i] = Info;
                 break;
             }
         }
     }
 
     /// <summary>
-    /// 
+    /// 근거리
     /// </summary>
-    /// <param name="Damage"> Dmg </param>
-    /// <param name="Power"> KnockBack Power</param>
+    /// <param name="Info"> Info </param>
     /// <param name="AfterTime"> Last Time </param>
     /// <param name="Start"> Start Pos </param>
-    /// <param name="Dir"> Moving Dir(normalize) </param>
-    /// <param name="speed"> speed </param>
+    /// <param name="Dir"> Moving Dir(norm) </param>
     /// <param name="im"> Image Of Bullet(none = null) </param>
     /// <param name="IsEnemy"> Is Enemy </param>
     /// <param name="debuffInfo"> About DeBuff </param>
-    public void MakeMeele(int Damage, float Power, float AfterTime, Vector3 Start, Vector3 Dir,float speed, Sprite im, bool IsEnemy, DeBuff debuffInfo = null)
+    public void MakeMeele(BulletInfo Info, float AfterTime, Vector3 Start, Vector3 Dir, float speed, bool IsEnemy, Sprite im = null, RuntimeAnimatorController Anim = null, DeBuff debuffInfo = null)
     {
         for (int i = 0; i < 100; i++)
         {
@@ -86,14 +109,14 @@ public class BulletManager : MonoBehaviour
                 Bullets[i].SetActive(true);
                 Bullets[i].transform.position = Start; Dir.z = 0;
                 Bullets[i].transform.rotation = Quaternion.FromToRotation(Vector3.up, Dir);
-                BulletScripts[i].Init_Attack(Damage, -1, Dir * speed, true, IsEnemy, AfterTime, im);
-                BulletInfos[i].Set(Damage, false, Power, debuffInfo);
+                BulletInfos[i] = Info;
+                BulletScripts[i].Init_Attack(-1, Dir * speed, true, IsEnemy, AfterTime, im, Anim:Anim);
                 break;
             }
         }
     }
 
-    public void MakeBoom(int Damage, int AfterDamage, float Power,  Vector3 Start, Vector3 Dir, float speed, Sprite im, Sprite HitIm, bool IsEnemy, DeBuff debuffInfo = null)
+    public void MakeBoom(BulletInfo Info, BulletInfo After, Vector3 Start, Vector3 Dir, float Speed, Sprite im, Sprite HitIm, bool IsEnemy, DeBuff debuffInfo = null)
     {
         for (int i = 0; i < 100; i++)
         {
@@ -102,15 +125,15 @@ public class BulletManager : MonoBehaviour
                 Bullets[i].SetActive(true);
                 Bullets[i].transform.position = Start; Dir.z = 0;
                 Bullets[i].transform.rotation = Quaternion.FromToRotation(Vector3.up, Dir);
-                BulletInfos[i].Set(Damage, false, Power, debuffInfo);
-                BulletScripts[i].Init_Explode(Damage, Dir * speed,IsEnemy,AfterDamage, im,HitIm);
+                BulletInfos[i] = Info;
+                BulletScripts[i].Init_Explode(After, Dir * Speed,IsEnemy,im,HitIm);
                 break;
             }
         }
     }
 
 
-    public void MakeEffect(float AfterTime, Vector3 Start, Vector3 Dir, Sprite im,BulletLine BL = null, RuntimeAnimatorController Anim = null)
+    public void MakeEffect(float AfterTime, Vector3 Start, Vector3 Dir, float speed,Sprite im,BulletLine BL = null, RuntimeAnimatorController Anim = null)
     {
         for (int i = 0; i < 100; i++)
         {
@@ -119,7 +142,7 @@ public class BulletManager : MonoBehaviour
                 Bullets[i].SetActive(true);
                 Bullets[i].transform.position = Start; Dir.z = 0;
                 Bullets[i].transform.rotation = Quaternion.FromToRotation(Vector3.up, Dir);
-                BulletScripts[i].Init_Effect(AfterTime,im,Dir,BL,Anim);
+                BulletScripts[i].Init_Effect(AfterTime,im,Dir * speed,BL,Anim);
                 break;
             }
         }
@@ -134,7 +157,7 @@ public class BulletManager : MonoBehaviour
                 Bullets[i].SetActive(true);
                 Bullets[i].transform.position = Start;
                 BulletScripts[i].Init_Buff(im,IsEnemy);
-                BulletInfos[i].Set(0, false, 0, buffs : buffInfo);
+                BulletInfos[i].Buffs = buffInfo;
                 break;
             }
         }

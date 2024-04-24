@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1788775384281307603}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.3, y: 0, z: 0}
+  m_LocalPosition: {x: -8.4, y: 0.03, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -21155757, guid: aa3d771f1af276b4896443ee465b4a6e, type: 3}
+  m_Sprite: {fileID: 679797768, guid: b7e1685ee8fe116428e177e434db5308, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,7 +106,8 @@ MonoBehaviour:
   speed: 0
   AS: 0
   Damage: 0
-  Defense: 0
+  Defense: 100
+  ItemVal: 0
 --- !u!70 &1788775384281307614
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -189,7 +190,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5856835231089376059}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.05, y: -0.8, z: 0}
+  m_LocalPosition: {x: -0.14, y: -2.84, z: 0}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

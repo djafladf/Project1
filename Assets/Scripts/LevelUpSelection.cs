@@ -18,6 +18,7 @@ public class LevelUpSelection : Buttons
 
     [SerializeField] GameObject SelectionButtons;
     int ind;
+    bool IsWeapon;
 
     public void Init(Sprite Im, string nm, string desc, string ext,int ind,int Level,bool SetRating = false)
     {
@@ -25,7 +26,7 @@ public class LevelUpSelection : Buttons
         Name.text = nm;
         Description.text = desc;
         Extra.text = ext;
-        Rating.gameObject.SetActive(SetRating);
+        Rating.gameObject.SetActive(SetRating); IsWeapon = SetRating;
         Rating.text = $"LV.{Level+1}";
         this.ind = ind;
     }
@@ -39,7 +40,7 @@ public class LevelUpSelection : Buttons
         Description.color -= Sub;
         Extra.color -= Sub;
         GameManager.instance.SetTime(0, true);
-        GameManager.instance.UM.ApplySelection(ind);
+        GameManager.instance.UM.ApplySelection(ind,IsWeapon);
         transform.parent.parent.gameObject.SetActive(false);
     }
 

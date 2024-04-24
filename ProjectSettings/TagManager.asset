@@ -15,6 +15,7 @@ TagManager:
   - EnemyAttack
   - PlayerBuff
   - EnemyBuff
+  - Player_Hide
   layers:
   - Default
   - TransparentFX

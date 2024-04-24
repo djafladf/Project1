@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class Skulslr : Enemy
 {
@@ -18,7 +19,15 @@ public class Skulslr : Enemy
         base.Awake();
         particles = new ParticleSystem.Particle[pt.main.maxParticles];
         BLine = BPart.GetComponent<TrailRenderer>();
-        StartCoroutine(Line1());
+    }
+
+    private void Start()
+    {
+        /*GameManager.instance.ES.ExternalSpawnCall(2, -1, 10f);
+        GameManager.instance.ES.ExternalSpawnCall(4, -1, 10f);
+        GameManager.instance.ES.ExternalSpawnCall(3, -1, 10f);
+        GameManager.instance.ES.ExternalSpawnCall(5, -1, 10f);
+        GameManager.instance.ES.ExternalSpawnCall(6, -1, 10f);*/
     }
 
     private void Update()
@@ -49,19 +58,55 @@ public class Skulslr : Enemy
 
             if(!OnHit)rigid.MovePosition(rigid.position + Dir * speed * Time.fixedDeltaTime);
         }
+        if (IsSpecial)
+        {
+            MoveAble = false; anim.SetTrigger("Special"); StartCoroutine(Special1());
+        }
         if (BeginAttack && !anim.GetBool("IsAttack"))
         {
             AttackPos = Target.position;
             MoveAble = false;
-            anim.SetBool("IsRange",Vector2.Distance(AttackPos, transform.position) >= 3f);
+            anim.SetBool("IsRange", Vector2.Distance(AttackPos, transform.position) >= 3f);
             anim.SetBool("IsAttack", true);
         }
     }
 
     protected override void AttackMethod()
     {
-        GameManager.instance.BM.MakeBoom(10, 25, 0, transform.position, (AttackPos - transform.position).normalized, 10, Bullet, Boom, true);
+        GameManager.instance.BM.MakeBoom(
+            new BulletInfo(10,false,0),new BulletInfo(Damage,false,0,ignoreDefense:0.5f),
+            transform.position, (AttackPos - transform.position).normalized, 20, Bullet, Boom, true);
     }
+
+    void MeeleAttack()
+    {
+        GameManager.instance.BM.MakeMeele(new BulletInfo(Mathf.FloorToInt(Damage * 1.5f), false, 0), 0.3f, AttackPos, Vector3.zero, 0, true);
+    }
+
+    void SpecialAttack()
+    {
+        List<Vector3> Targets = new List<Vector3>();
+        foreach (var k in GameManager.instance.Prefs) if (k.activeSelf) Targets.Add(k.transform.position);
+        Vector3 cnt = Targets[Random.Range(0, Targets.Count)]
+            + new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0);
+        GameManager.instance.BM.MakeEffect(2, transform.position + Vector3.up, Vector3.up,20, Bullet);
+        GameManager.instance.BM.MakeWarning(cnt,1.5f,Boom.bounds.size * 0.8f,SpecialAttackSub);
+    }
+
+    void SpecialAttackSub(Vector3 pos)
+    {    
+        GameManager.instance.BM.MakeMeele(new BulletInfo(Damage,false,0,ignoreDefense:0.5f), 0.3f, pos, Vector3.zero, 0, true,Boom);
+    }
+    int SpecialCool = 20;
+    bool IsSpecial;
+
+    IEnumerator Special1()
+    {
+        IsSpecial = false;
+        yield return new WaitForSeconds(SpecialCool);
+        IsSpecial = true;
+    }
+
 
     protected override void AttackEnd()
     {
@@ -69,6 +114,9 @@ public class Skulslr : Enemy
         if (BeginAttack)
         {
             AttackPos = Target.position;
+            Vector2 Dir = (AttackPos - transform.position).normalized;
+            if (Dir.x > 0 && !spriteRenderer.flipX) spriteRenderer.flipX = true;
+            else if (Dir.x < 0 && spriteRenderer.flipX) spriteRenderer.flipX = false;
             anim.SetBool("IsRange", Vector2.Distance(AttackPos, transform.position) >= 3f);
         }
     }
@@ -86,7 +134,7 @@ public class Skulslr : Enemy
     
     protected override void OnEnable()
     {
-        base.OnEnable(); GameManager.instance.UM.BossName.text = "½ºÄÃ½´·¹´õ";
+        base.OnEnable(); GameManager.instance.UM.BossName.text = "½ºÄÃ½´·¹´õ"; IsSpecial = true;
     }
 
     bool jj = false;
@@ -100,6 +148,7 @@ public class Skulslr : Enemy
             MaxDamage = 40; Damage = Mathf.FloorToInt(MaxDamage * j);
             j = (float)Defense / MaxDefense;
             MaxDefense = 50; Defense = Mathf.FloorToInt(MaxDefense * j);
+            speed *= 1.5f;
             BPart.SetActive(true); StartCoroutine(Line1());
         }
     }

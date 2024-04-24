@@ -6,8 +6,7 @@ public class AttackRange_Enemy : MonoBehaviour
 {
     Enemy enemy;
 
-    int InCount = 0;
-
+    List<GameObject> Targets = new List<GameObject>();
 
     private void Awake()
     {
@@ -18,21 +17,30 @@ public class AttackRange_Enemy : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (InCount++ == 0) { enemy.BeginAttack = true; enemy.Target = collision.transform; }
+            if (!Targets.Contains(collision.gameObject))
+            {
+                Targets.Add(collision.gameObject);
+                enemy.BeginAttack = true;
+                if (enemy.Target == null) enemy.Target = collision.transform;
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") || collision.CompareTag("Player_Hide"))
         {
-            InCount--;
-            if(InCount == 0) enemy.BeginAttack = false;
+            if (Targets.Contains(collision.gameObject))
+            {
+                Targets.Remove(collision.gameObject);
+                if (Targets.Count == 0) { enemy.BeginAttack = false; enemy.Target = null; }
+                else enemy.Target = Targets[0].transform;
+            }
         }
     }
 
     private void OnEnable()
     {
-        InCount = 0;
+        Targets.Clear();
     }
 }

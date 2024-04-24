@@ -10,11 +10,13 @@ public class PlayerArea: MonoBehaviour
 
     Vector2 RU = new Vector2(1, 1);
 
-    [SerializeField] int Test;
+    [SerializeField] float Test;
 
     private void Start()
     {
         if (TryGetComponent(out CompositeCollider2D CD)) ColliderSize = CD.bounds.size;
+        ColliderSize.x = (int)ColliderSize.x;
+        ColliderSize.y = (int)ColliderSize.y;
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -23,22 +25,20 @@ public class PlayerArea: MonoBehaviour
             Vector3 PlayerPos = GameManager.instance.player.Self.transform.position;
             Vector3 MyPos = transform.position;
 
-
-            Vector3 Dir = GameManager.instance.player.Dir;
-            float diffX = MyPos.x - PlayerPos.x;
-            float diffY = MyPos.y - PlayerPos.y;
+            int diffX = Mathf.CeilToInt(MyPos.x - PlayerPos.x);
+            int diffY = Mathf.CeilToInt(MyPos.y - PlayerPos.y);
 
 
             Vector2 DirSub = Vector2.zero;
 
 
-            if (diffX + 1 >= ColliderSize.x) DirSub.x = -ColliderSize.x;
-            else if (diffX - 1 <= -ColliderSize.x) DirSub.x = ColliderSize.x;
+            if (diffX >= ColliderSize.x) DirSub.x = -ColliderSize.x;
+            else if (diffX <= -ColliderSize.x + 1) DirSub.x = ColliderSize.x;
 
-            if (diffY + 1 >= ColliderSize.y) DirSub.y = -ColliderSize.y;
-            else if (diffY - 1 <= -ColliderSize.y) DirSub.y = ColliderSize.y;
-            
-            if(!DirSub.Equals(Vector2.zero)) transform.Translate(DirSub * Test);
+            if (diffY >= ColliderSize.y) DirSub.y = -ColliderSize.y;
+            else if (diffY <= -ColliderSize.y + 1) DirSub.y = ColliderSize.y;
+
+            if (!DirSub.Equals(Vector2.zero)) transform.Translate(DirSub * Test);
         }
     }
 }
