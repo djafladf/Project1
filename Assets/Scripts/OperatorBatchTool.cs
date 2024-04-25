@@ -38,10 +38,12 @@ public class OperatorBatchTool : Buttons
         ObjectImage = BatchObject.GetComponent<SpriteRenderer>().sprite;
         face.sprite = Head; CanBatch = true;
     }
+    
 
     private void FixedUpdate()
     {
         if (BatchObject.activeSelf) return;
+
         if(GameManager.instance.UM.CurCost >= Cost && !CanBatch)
         {
             CanBatch = true;
@@ -82,7 +84,7 @@ public class OperatorBatchTool : Buttons
         {
 
         }
-        else
+        else if(CanBatch)
         {
             face.color = CCnt;
             pan.color = CCnt;
@@ -96,7 +98,7 @@ public class OperatorBatchTool : Buttons
         {
 
         }
-        else
+        else if(CanBatch)
         {
             face.color = Color.white;
             pan.color = Color.white;

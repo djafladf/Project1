@@ -23,7 +23,8 @@ public class PlayerSetting : MonoBehaviour
         player.rigid = GetComponent<Rigidbody2D>();
         player.anim = GetComponent<Animator>();
         player.sprite = GetComponent<SpriteRenderer>();
-        player.WeaponLevel = 1;
+        player.WeaponLevel = 1; 
+        player.AttackRatio = 0; player.DefenseRatio = 0; player.HPRatio = 0; player.SpeedRatio = 0; 
         CanMove = IsPlayer;
         player.CurHP = player.InitHP; player.MaxHP = player.InitHP;
 
@@ -41,7 +42,7 @@ public class PlayerSetting : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        if (player.ChangeOccur)
+        if (player.ChangeOccur && !IsSummon)
         {
             player.ChangeOccur = false;
             int cnt = player.MaxHP;
@@ -51,6 +52,7 @@ public class PlayerSetting : MonoBehaviour
                 player.CurHP += player.MaxHP - cnt;
                 HPBar.fillAmount = player.CurHP / (float)player.MaxHP;
                 if (!IsPlayer) player.MyBatch.HPBar.fillAmount = player.CurHP / (float)player.MaxHP;
+                else GameManager.instance.UM.HpChange();
             }
             player.anim.SetFloat("AttackSpeed", player.AttackSpeed + GameManager.instance.PlayerStatus.attackspeed);
         }
@@ -64,7 +66,7 @@ public class PlayerSetting : MonoBehaviour
                 {
                     TargetPos = GameManager.instance.Git.transform;
                     player.Dir = (TargetPos.position - transform.position).normalized;
-                    if (Vector3.Distance(transform.position, TargetPos.position) <= 1.5f) player.IsFollow = false;
+                    if (Vector3.Distance(transform.position, TargetPos.position) <= 2f) player.IsFollow = false;
                 }
                 else
                 {
@@ -121,7 +123,7 @@ public class PlayerSetting : MonoBehaviour
     [SerializeField] protected float scanRange;
     protected Transform TargetPos = null;
 
-    Transform GetNearest(float Range)
+    protected Transform GetNearest(float Range)
     {
         RaycastHit2D[] targets = Physics2D.CircleCastAll(transform.position, Range, Vector2.zero, 0, targetLayer);
         float diffs = scanRange + 10;
@@ -192,7 +194,7 @@ public class PlayerSetting : MonoBehaviour
 
     bool CanHit = true;
 
-    [SerializeField] Image HPBar;
+    [SerializeField] protected Image HPBar;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("EnemyAttack") && CanHit) GetDamage(GameManager.instance.BM.GetBulletInfo(GameManager.StringToInt(collision.name)));
@@ -269,5 +271,6 @@ public class PlayerSetting : MonoBehaviour
                 player.MyBatch.HPBar.fillAmount = 1;
             }
         }
+        else player.Dir = Vector2.zero;
     }
 }

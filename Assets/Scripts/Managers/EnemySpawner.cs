@@ -24,10 +24,16 @@ public class EnemySpawner : MonoBehaviour
     {
         public List<SpawnInfo> spawninfo;   
     }
+
+    public enum EnemyId
+    {
+        RedWorm, Yoma, FootMan, DualMan, ShieldMan, BowMan, Magician, Skulslr
+    }
+
     [System.Serializable]
     public class SpawnInfo
     {
-        public int id;
+        public EnemyId id;
         public int start;
         public int end;
         public float respawn;
@@ -77,9 +83,13 @@ public class EnemySpawner : MonoBehaviour
 
     public void StartStage()
     {
-        if (CurStage > Stages.Count) return;
-        foreach (SpawnInfo cnt in Stages[CurStage].spawninfo) StartCoroutine(Spawn(cnt));
-        CurStage++;
+        BossSet.SetActive(false);
+        if (CurStage >= Stages.Count) GameManager.instance.UM.GameClear();
+        else
+        {
+            foreach (SpawnInfo cnt in Stages[CurStage].spawninfo) StartCoroutine(Spawn(cnt));
+            CurStage++;
+        }
     }
 
     IEnumerator Spawn(SpawnInfo Info)
@@ -90,12 +100,12 @@ public class EnemySpawner : MonoBehaviour
         if (Info.IsBoss) { GameManager.instance.BossStage(); BossSet.SetActive(true); }
         for (int i = 0; i <= SpawnTimes; i++)
         {
-            for (int y = 0; y < PoolSize[Info.id]; y++)
+            for (int y = 0; y < PoolSize[(int)Info.id]; y++)
             {
-                if (!Pool[y, Info.id].activeSelf)
+                if (!Pool[y, (int)Info.id].activeSelf)
                 {
-                    Pool[y, Info.id].transform.position = SpawnArea[Random.Range(0, SpawnAreaSize - 1)] + GameManager.instance.player.Self.position;
-                    Pool[y, Info.id].SetActive(true);
+                    Pool[y, (int)Info.id].transform.position = SpawnArea[Random.Range(0, SpawnAreaSize - 1)] + GameManager.instance.player.Self.position;
+                    Pool[y, (int)Info.id].SetActive(true);
                     break;
                 }
             }

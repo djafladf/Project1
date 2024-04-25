@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 571106530a9ec824f9922cd607ef8cef
+guid: 70b8f2512f040dc47b201d49737208dc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 30
+  spritePixelsToUnits: 72
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
@@ -105,64 +105,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uACF5\uACA9_0"
+      name: Special3_0
       rect:
         serializedVersion: 2
-        x: 94
-        y: 283
-        width: 38
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 147
+        y: 145
+        width: 439
+        height: 419
+      alignment: 9
+      pivot: {x: 0.7, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9807ed4e225195545b8b39371f52aa8e
-      internalID: 1435702583
+      spriteID: 075b9192c0473a145be19bcde91a5735
+      internalID: -978135301
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uACF5\uACA9_1"
+      name: Special3_1
       rect:
         serializedVersion: 2
-        x: 227
-        y: 280
-        width: 44
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 691
+        y: 57
+        width: 498
+        height: 475
+      alignment: 9
+      pivot: {x: 0.732, y: 0.53}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 614b4b5fd6aa693439712a3d91981ee1
-      internalID: -1823433235
+      spriteID: f982c93ba5c2c3b419bdb2d6f09f36f0
+      internalID: -977350437
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uACF5\uACA9_2"
+      name: Special3_2
       rect:
         serializedVersion: 2
-        x: 30
-        y: 15
-        width: 304
-        height: 228
+        x: 1444
+        y: 109
+        width: 554
+        height: 456
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c3b7210508870374db7fb6572e12717e
-      internalID: 196045391
+      spriteID: 4fb3ee6fde69ed543a4714caa39eea38
+      internalID: 1322228708
       vertices: []
       indices: 
       edges: []
@@ -178,14 +178,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\uACF5\uACA9_0": 1435702583
-      "\uACF5\uACA9_1": -1823433235
-      "\uACF5\uACA9_4": 1397174465
-      "\uACF5\uACA9_5": -868835903
-      "\uACF5\uACA9_6": 1234376793
-      "\uACF5\uACA9_7": -130034050
-      "\uACF5\uACA9_2": 196045391
-      "\uACF5\uACA9_3": -2046476799
+      Special3_2: 1322228708
+      Special3_1: -977350437
+      Special3_0: -978135301
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

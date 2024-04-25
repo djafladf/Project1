@@ -7,6 +7,8 @@ public class OperatorInfos
 {
     public string name;
     public string name_e;
+    public string Inst_Weapon;
+    public string Inst_Prop;
     public int id;
     public bool IsLD;
     public Player player;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,24 +11,24 @@ public class Kazemaru : PlayerSetting
     [SerializeField] GameObject DollPref;
 
     GameObject Doll;
+    [HideInInspector] public Action Respawn;
 
     protected override void Awake()
     {
         
+
         if (!IsSummon)
         {
+            Doll = Instantiate(DollPref, transform.parent);
+            Doll.GetComponent<Kazemaru>().Respawn = RespawnAct;
             DamageRatio = 1f;
             SpecialRatio = 2f;
         }
         else
         {
-            DamageRatio = 0.5f;
-            SpecialRatio = 1f;
-        }
-
-        if (!IsSummon)
-        {
-            Doll = Instantiate(DollPref, transform.parent);
+            DamageRatio = 3.5f;
+            SpecialRatio = 2f;
+            ProjNum = 1;
         }
 
         base.Awake();
@@ -55,14 +56,17 @@ public class Kazemaru : PlayerSetting
                 15, false,bullet);
             }
         }
-
-
     }
 
-    protected override void FixedUpdate()
+    void RespawnAct()
     {
-        base.FixedUpdate();
-        if (!IsSummon) if(!Doll.activeSelf /*&& player.WeaponLevel > 6*/ && CanMove){ Doll.SetActive(true); Doll.transform.position = transform.position + Vector3.right; }
+        StartCoroutine(RespawnKaze());
+    }
+
+    IEnumerator RespawnKaze()
+    {
+        yield return new WaitForSeconds(30);
+        Doll.SetActive(true); Doll.transform.position = transform.position + Vector3.right;
     }
 
     float DamageRatio;
@@ -77,13 +81,21 @@ public class Kazemaru : PlayerSetting
             case 3: ProjNum++; AttackRange = 5; break;
             case 4: DamageRatio += 0.5f; break;
             case 5: DamageRatio += 0.75f; break;
-            case 6: player.anim.SetBool("IsSpecial",true); break;
+            case 6: if (gameObject.activeSelf) { Doll.SetActive(true); Doll.transform.position = transform.position + Vector3.right; } player.anim.SetBool("IsSpecial",true); break;
         }
         return player.WeaponLevel;
     }
 
+
+    protected override void EndBatch()
+    {
+        base.EndBatch();
+        if (!IsSummon && player.WeaponLevel == 7) { Doll.SetActive(true); Doll.transform.position = transform.position + Vector3.right; }
+        }
+
     private void OnDisable()
     {
-        if(!IsSummon) Doll.SetActive(false);
+        if (!IsSummon) Doll.SetActive(false);
+        else if(Respawn != null) Respawn();
     }
 }

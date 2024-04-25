@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class Skulslr : Enemy
 {
 
     [SerializeField] Sprite Boom;
     [SerializeField] Sprite Bullet;
+    [SerializeField] Sprite MeeleBul;
     [SerializeField] ParticleSystem pt;
     [SerializeField] GameObject BPart;
+    [SerializeField] AfterImMaker AfterIm;
     TrailRenderer BLine;
     ParticleSystem.Particle[] particles;
 
@@ -23,11 +23,11 @@ public class Skulslr : Enemy
 
     private void Start()
     {
-        /*GameManager.instance.ES.ExternalSpawnCall(2, -1, 10f);
-        GameManager.instance.ES.ExternalSpawnCall(4, -1, 10f);
-        GameManager.instance.ES.ExternalSpawnCall(3, -1, 10f);
-        GameManager.instance.ES.ExternalSpawnCall(5, -1, 10f);
-        GameManager.instance.ES.ExternalSpawnCall(6, -1, 10f);*/
+        /*GameManager.instance.ES.ExternalSpawnCall(2, -1, 5f);
+        GameManager.instance.ES.ExternalSpawnCall(4, -1, 5f);
+        GameManager.instance.ES.ExternalSpawnCall(3, -1, 5f);
+        GameManager.instance.ES.ExternalSpawnCall(5, -1, 5f);
+        GameManager.instance.ES.ExternalSpawnCall(6, -1, 5f);*/
     }
 
     private void Update()
@@ -45,11 +45,31 @@ public class Skulslr : Enemy
         }
     }
 
+    bool IsRush = false;
+    Transform RushTarget;
+    int l = 0;
+
     protected override void FixedUpdate()
     {
         if (!IsLive) return;
 
         if (OnIce) return;
+        if (IsRush)
+        {
+            Vector2 Dir = (RushTarget.position - transform.position).normalized;
+            if (Dir.x > 0 && !spriteRenderer.flipX) spriteRenderer.flipX = true;
+            else if (Dir.x < 0 && spriteRenderer.flipX) spriteRenderer.flipX = false;
+            if (Vector2.Distance(transform.position, RushTarget.position) <= 2)
+            { 
+                AfterIm.StopMaking();
+                anim.SetTrigger("Special2_End");
+                AttackPos = RushTarget.position;
+                IsRush = false;
+            }
+            rigid.MovePosition(rigid.position + Dir * speed * 15 * Time.fixedDeltaTime);
+            return;
+        }
+
         if (MoveAble && !anim.GetBool("IsAttack"))
         {
             Vector2 Dir = (GameManager.instance.player.Self.position - transform.position).normalized;
@@ -57,10 +77,6 @@ public class Skulslr : Enemy
             else if (Dir.x < 0 && spriteRenderer.flipX) spriteRenderer.flipX = false;
 
             if(!OnHit)rigid.MovePosition(rigid.position + Dir * speed * Time.fixedDeltaTime);
-        }
-        if (IsSpecial)
-        {
-            MoveAble = false; anim.SetTrigger("Special"); StartCoroutine(Special1());
         }
         if (BeginAttack && !anim.GetBool("IsAttack"))
         {
@@ -74,22 +90,28 @@ public class Skulslr : Enemy
     protected override void AttackMethod()
     {
         GameManager.instance.BM.MakeBoom(
-            new BulletInfo(10,false,0),new BulletInfo(Damage,false,0,ignoreDefense:0.5f),
+            new BulletInfo(Damage,false,0),new BulletInfo(Damage,false,0,ignoreDefense:0.5f),
             transform.position, (AttackPos - transform.position).normalized, 20, Bullet, Boom, true);
     }
 
     void MeeleAttack()
     {
-        GameManager.instance.BM.MakeMeele(new BulletInfo(Mathf.FloorToInt(Damage * 1.5f), false, 0), 0.3f, AttackPos, Vector3.zero, 0, true);
+        GameManager.instance.BM.MakeMeele(new BulletInfo(Mathf.FloorToInt(Damage * 1.5f), false, 0), 0.3f, transform.position, Vector3.zero, 0, true,MeeleBul);
+    }
+
+    Transform ReturnRandomPlayer()
+    {
+        List<Transform> Targets = new List<Transform>();
+        foreach (var k in GameManager.instance.Prefs) if (k.activeSelf && k.tag == "Player") Targets.Add(k.transform);
+        if (Targets.Count == 0) return null;
+        else return Targets[Random.Range(0, Targets.Count)];
     }
 
     void SpecialAttack()
     {
-        List<Vector3> Targets = new List<Vector3>();
-        foreach (var k in GameManager.instance.Prefs) if (k.activeSelf) Targets.Add(k.transform.position);
-        Vector3 cnt = Targets[Random.Range(0, Targets.Count)]
+        Vector3 cnt = ReturnRandomPlayer().position
             + new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0);
-        GameManager.instance.BM.MakeEffect(2, transform.position + Vector3.up, Vector3.up,20, Bullet);
+        GameManager.instance.BM.MakeEffect(jj ? 0.5f : 1f, transform.position + Vector3.up, Vector3.up,jj? 60 : 40, Bullet);
         GameManager.instance.BM.MakeWarning(cnt,1.5f,Boom.bounds.size * 0.8f,SpecialAttackSub);
     }
 
@@ -98,16 +120,59 @@ public class Skulslr : Enemy
         GameManager.instance.BM.MakeMeele(new BulletInfo(Damage,false,0,ignoreDefense:0.5f), 0.3f, pos, Vector3.zero, 0, true,Boom);
     }
     int SpecialCool = 20;
-    bool IsSpecial;
 
-    IEnumerator Special1()
+
+    int Count = 0;
+    float SpecialRad;
+    public void SpecialAttack3()
     {
-        IsSpecial = false;
-        yield return new WaitForSeconds(SpecialCool);
-        IsSpecial = true;
+        
+        GameManager.instance.BM.MakeMeele(new BulletInfo(Damage, false, 0, ignoreDefense: 0.5f), 0.3f,
+            transform.position + new Vector3(6 * Mathf.Cos(SpecialRad + 0.75f * Count),6 * Mathf.Sin(SpecialRad + 0.75f * Count),0), 
+            Vector3.zero, 0, true, Boom);
+        GameManager.instance.BM.MakeMeele(new BulletInfo(Damage, false, 0, ignoreDefense: 0.5f), 0.3f,
+            transform.position + new Vector3(6 * Mathf.Cos(SpecialRad - 0.75f * Count),6 * Mathf.Sin(SpecialRad - 0.75f * Count), 0),
+            Vector3.zero, 0, true, Boom);
+        Count++;
     }
 
+    IEnumerator SpecialCoolDown()
+    {
+        if (!GameManager.instance.Prefs[0].activeSelf) StopAllCoroutines();
+        MoveAble = false;
 
+        if (Target != null)
+        {
+            if (Vector2.Distance(Target.position, transform.position) <= 6f)
+            {
+                anim.SetTrigger("Special3");
+                Vector2 Sub = (Target.position - transform.position).normalized;
+                SpecialRad = Vector2.Angle(Vector2.right, Sub) * Mathf.Deg2Rad;
+                if (Sub.y < 0) SpecialRad = Mathf.PI * 2 - SpecialRad; Count = 0;
+            }
+            else
+                switch (Random.Range(0, 2))
+                {
+                    case 0:
+                        anim.SetTrigger("Special"); break;
+                    case 1:
+                        anim.SetTrigger("Special2"); anim.SetBool("IsAttack", false); yield return GameManager.OneSec; RushTarget = ReturnRandomPlayer(); l = 0; IsRush = true; AfterIm.StartMaking(); break;
+                }
+        }
+
+        else
+            switch (Random.Range(0, 2))
+            {
+                case 0:
+                    anim.SetTrigger("Special"); break;
+                case 1:
+                    anim.SetTrigger("Special2"); anim.SetBool("IsAttack", false); yield return GameManager.OneSec; RushTarget = ReturnRandomPlayer(); IsRush = true; AfterIm.StartMaking(); break;
+            }
+        yield return new WaitForSeconds(SpecialCool);
+        StartCoroutine(SpecialCoolDown());
+    }
+
+    
     protected override void AttackEnd()
     {
         base.AttackEnd();
@@ -119,8 +184,9 @@ public class Skulslr : Enemy
             else if (Dir.x < 0 && spriteRenderer.flipX) spriteRenderer.flipX = false;
             anim.SetBool("IsRange", Vector2.Distance(AttackPos, transform.position) >= 3f);
         }
+        
     }
-
+    bool IsMisya = false;
     protected override void Dead()
     {
         gameObject.SetActive(false);
@@ -129,12 +195,37 @@ public class Skulslr : Enemy
             GameManager.instance.IM.MakeItem(transform.position + 
                 new Vector3(Random.Range(-10, 10) * 0.3f, Random.Range(-10, 10) * 0.3f, 0),true);
         }
+        if (!IsMisya) 
+        {
+            GameManager.instance.UM.ShowDialog(new List<string>() { "¹Ì..»þ..." },
+                () => { GameManager.instance.BossEnd();  }
+                );
+            MaxDamage = MaxDamage / 2;
+            MaxHP = MaxHP / 2;
+            MaxDefense = MaxDefense / 2;
+            MaxSpeed = 2;
+            jj = false; pt.gameObject.SetActive(false); BPart.SetActive(false);
+            IsMisya = true; IsRush = false;
+            spriteRenderer.color = Color.white;
+        }
+        else
+        {
+            GameManager.instance.UM.ShowDialog(new List<string>() { "ÀÌ°É·Î..." },
+                () => { GameManager.instance.BossEnd(); }
+                );
+        }
+
     }
 
-    
+    bool StartEn = true;
     protected override void OnEnable()
     {
-        base.OnEnable(); GameManager.instance.UM.BossName.text = "½ºÄÃ½´·¹´õ"; IsSpecial = true;
+        base.OnEnable();
+        
+        if (StartEn) { StartEn = false; return; }
+        GameManager.instance.UM.BossName.text = IsMisya? "½ºÄÃ½´·¹´õ?" : "½ºÄÃ½´·¹´õ";
+        GameManager.instance.UM.BossHP.fillAmount = 1;
+        if (!IsMisya) StartCoroutine(SpecialCoolDown());
     }
 
     bool jj = false;
@@ -148,7 +239,8 @@ public class Skulslr : Enemy
             MaxDamage = 40; Damage = Mathf.FloorToInt(MaxDamage * j);
             j = (float)Defense / MaxDefense;
             MaxDefense = 50; Defense = Mathf.FloorToInt(MaxDefense * j);
-            speed *= 1.5f;
+            j = (float)speed / MaxSpeed;
+            MaxSpeed = speed * 1.5f; speed = Mathf.FloorToInt(MaxSpeed * j);
             BPart.SetActive(true); StartCoroutine(Line1());
         }
     }

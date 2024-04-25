@@ -30,6 +30,4 @@ public class WarningBullet : MonoBehaviour
         AfterAct(transform.position);
         gameObject.SetActive(false);
     }
-
-    bool First = true;
 }

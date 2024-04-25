@@ -650,6 +650,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Relic_26
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 126
+        width: 14
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e41c50b19aab3fd4681ebc3aa0ddd9ca
+      internalID: -142223269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -669,6 +690,7 @@ TextureImporter:
       Relic_0: -397090658
       Relic_20: -1689662322
       Relic_1: 2051444606
+      Relic_26: -142223269
       Relic_10: 1360136005
       Relic_8: -1362669851
       Relic_15: -136236407

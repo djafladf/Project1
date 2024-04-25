@@ -38,10 +38,10 @@ public abstract class Buttons: MonoBehaviour
         ButtonInit(ET, OnPointer, OutPointer, Click);
     }
 
-    SerializedProperty OnPointerProp;
+
     protected virtual void OnPointer(PointerEventData data) { }
-    SerializedProperty OutPointerProp;
+
     protected virtual void OutPointer(PointerEventData data) { }
-    SerializedProperty ClickProp;
+
     protected virtual void Click(PointerEventData Data) { }
 }

@@ -26,6 +26,8 @@ public class BatchSet : MonoBehaviour
     [SerializeField] TMP_Text ReBatch;
     [SerializeField] Image Image;
     [SerializeField] Image Weapon;
+    [SerializeField] TMP_Text Inf_Main;
+    [SerializeField] TMP_Text Inf_Prop;
 
     private void Start()
     {
@@ -56,6 +58,7 @@ public class BatchSet : MonoBehaviour
             if (k == -1) continue;
             BatchIms[j++].sprite = GameManager.instance.Data.Infos[k].Standing2;
         }
+        ChangePan(0, BatchPref.transform);
     }
     
     public void ChangePan(int ind, Transform TR)
@@ -65,6 +68,7 @@ public class BatchSet : MonoBehaviour
         Name.text = cnt.name; HP.text = $"{cnt.player.InitHP}"; Defense.text = $"{cnt.player.InitDefense}";
         Cost.text = $"{cnt.player.Cost}"; ReBatch.text = $"{cnt.player.ReBatchTime}s";
         Image.sprite = cnt.Standing; Weapon.sprite = GameManager.instance.Data.WeaponSub[ind].sprite;
+        Inf_Main.text = cnt.Inst_Weapon; Inf_Prop.text = cnt.Inst_Prop;
     }
 
     public void SelectOper(int ind,bool IsLeader)

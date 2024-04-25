@@ -102,11 +102,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02537fbf858b4da419514d7451e1123f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 75
+  HP: 125
   speed: 2
   AS: 1
   Damage: 3
   Defense: 10
+  ItemVal: 0
 --- !u!70 &1788775384281307614
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

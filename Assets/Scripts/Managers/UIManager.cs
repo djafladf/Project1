@@ -40,7 +40,7 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         GameManager.instance.UM = this;
-        CurCost = GameManager.instance.gameStatus.Stat[6] * 2;
+        CurCost = GameManager.instance.gameStatus.Stat[6] * 5;
         GameManager.instance.StartLoading();
     }
 
@@ -82,12 +82,14 @@ public class UIManager : MonoBehaviour
     }
 
 
+    int CurMinute = 0;
     private void FixedUpdate()
     {
         if (!GameManager.instance.IsBoss)
         {
             CurTime += Time.fixedDeltaTime;
-            Timer.text = string.Format("{0:00}:{1:00}", Mathf.FloorToInt(CurTime * 0.017f), Mathf.FloorToInt(CurTime % 60));
+            if (CurTime >= 60) { CurMinute++; CurTime = 0; }
+            Timer.text = string.Format("{0:00}:{1:00}", CurMinute, Mathf.FloorToInt(CurTime));
         }
         if (CurCost < 99) CurCost += Time.fixedDeltaTime * GameManager.instance.PlayerStatus.cost;
         Cost.text = $"{(int)CurCost}";
@@ -315,6 +317,10 @@ public class UIManager : MonoBehaviour
                             AttackStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.attack * 100)}%";
                         }));
                         break;
+                    case 3:
+                        Player sub = GameManager.instance.Players[UnityEngine.Random.Range(0,GameManager.instance.Players.Length)];
+                        sub.HPRatio += 0.3f; sub.AttackRatio += 0.3f; sub.ChangeOccur = true;
+                        break;
                 }
             }
         }
@@ -428,7 +434,8 @@ public class UIManager : MonoBehaviour
         entry.eventID = EventTriggerType.PointerClick;
         entry.callback.AddListener((data) => { GameManager.instance.EndGame(); });
         Ending.GetComponent<EventTrigger>().triggers.Add(entry);
-        Ending.gameObject.SetActive(true);
+        Ending.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+        Ending.gameObject.SetActive(true); 
         for (int i = 0; i < 3; i++) GameManager.instance.gameStatus.Objects[i] += GoodsCount[i];
     }
     public void GameFail()
@@ -441,5 +448,34 @@ public class UIManager : MonoBehaviour
         EndingSprite.sprite = FailEnding;
         Ending.gameObject.SetActive(true);
         for (int i = 0; i < 3; i++) GameManager.instance.gameStatus.Objects[i] += GoodsCount[i];
+    }
+
+    //ETC
+    [SerializeField] TMP_Text Dialog;
+
+    public void ShowDialog(List<string> text, Action After = null)
+    {
+        StartCoroutine(MakeDialog(text,After));
+    }
+
+    IEnumerator MakeDialog(List<string> text,Action After)
+    {
+        WaitForSeconds wfs = new WaitForSeconds(0.1f);
+        foreach(var k in text)
+        {
+            foreach (var j in k)
+            {
+                if(j != ' ') Dialog.text += j;
+                yield return wfs;
+            }
+            yield return GameManager.OneSec;
+            for (int i = Dialog.text.Length - 1; i >= 0; i--)
+            {
+                Dialog.text = Dialog.text.Remove(i);
+                yield return wfs;
+            }
+            yield return GameManager.OneSec;
+        }
+        if (After != null) After();
     }
 }

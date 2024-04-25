@@ -21,6 +21,32 @@ public class GameManager : MonoBehaviour
         return outValue;
     }
 
+    public static List<Transform> GetNearest(float scanRange, int count, Vector3 Position, LayerMask targetLayer)
+    {
+        RaycastHit2D[] targets = Physics2D.CircleCastAll(Position, scanRange, Vector2.zero, 0, targetLayer);
+        List<Transform> res = new List<Transform>(count);
+        List<float> diffs = new List<float>(count);
+        for (int i = 0; i < count; i++) { diffs.Add(scanRange + 10); res.Add(null); }
+        foreach (RaycastHit2D target in targets)
+        {
+            float curDiff = Vector3.Distance(Position, target.transform.position);
+            for (int i = 0; i < count; i++)
+            {
+                if (curDiff < diffs[i])
+                {
+                    res.Insert(i, target.transform);
+                    res.RemoveAt(count);
+                    diffs.Insert(i, curDiff);
+                    diffs.RemoveAt(count);
+                    break;
+                }
+            }
+        }
+        for (int i = res.Count - 1; i >= 0; i--) if (res[i] == null) res.RemoveAt(i);
+
+        return res;
+    }
+
     // On Loby
     [HideInInspector] public DataManager Data;
     [HideInInspector] public ShopManager Shop;
@@ -89,6 +115,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Image LoadedImage;
     public void StartGame()
     {
+        if (CurPlayerID[0] == -1) return;
         FirstLoading = 6; LastLoading = 7;
         TimeSet.Clear(); Time.timeScale = 1;
         StartCoroutine(LoadingAct("MainGame", LoadingSprites[1],false));
@@ -218,7 +245,6 @@ public class GameManager : MonoBehaviour
     {
         ES.StartStage();
         IsBoss = false;
-
     }
 
     // --------------------------------------------------------------------------------------------

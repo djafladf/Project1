@@ -130,14 +130,20 @@ MonoBehaviour:
   HasWeapon: 1
   targetLayer:
     serializedVersion: 2
-    m_Bits: 0
-  scanRange: 0
+    m_Bits: 64
+  scanRange: 15
   AttackRange: 0
   HPBar: {fileID: 6742022308176172255}
   Bullet1: {fileID: 460339736, guid: 3984b5283fed96042ba7d23b68de06f2, type: 3}
   Bullet2: {fileID: 1781649026, guid: 3984b5283fed96042ba7d23b68de06f2, type: 3}
   Weapon: {fileID: 3772359834302012534}
   Weapon2: {fileID: 3772359834561876204}
+  BL:
+    Start: {r: 0.41960788, g: 0.027450982, b: 0.027450982, a: 1}
+    End: {r: 0.16470589, g: 0.16470589, b: 0.16078432, a: 0.101960786}
+    StartWidth: 0.2
+    EndWidth: 0.2
+    Time: 0.2
 --- !u!114 &3772359833279883307
 MonoBehaviour:
   m_ObjectHideFlags: 0

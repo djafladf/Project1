@@ -194,7 +194,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   scanRange: 10
-  AttackRange: 1.5
+  AttackRange: 2
   HPBar: {fileID: 6591888774103275800}
   Spec: {fileID: 21300000, guid: dced088caf0d61140b82163cba80c4aa, type: 3}
 --- !u!70 &1539120915725065941

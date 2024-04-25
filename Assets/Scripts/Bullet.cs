@@ -34,17 +34,14 @@ public class Bullet : MonoBehaviour
         bool IsMeele, bool IsEnemy, float AfterTime, Sprite Image = null, 
         BulletLine BL = null, RuntimeAnimatorController Anim = null,Sprite HitImage = null)
     {
-        if (BL == null) Line.enabled = false;
-        else 
+        if (BL != null)
         {
             Line.enabled = true;
             Line.startColor = BL.Start; Line.endColor = BL.End;
             Line.startWidth = BL.StartWidth; Line.endWidth = BL.EndWidth;
-            Line.time = BL.Time;  
+            Line.time = BL.Time;
         }
-
-        if (Anim == null) anim.enabled = false;
-        else { anim.enabled = true; }
+        if (Anim != null) { anim.enabled = true; anim.runtimeAnimatorController = Anim; }
 
         this.HitImage = HitImage;
         rigid.simulated = true; coll.enabled = true;rigid.velocity = Dir; this.Penetrate = Penetrate; sprite.sprite = Image; this.IsMeele = IsMeele; this.IsEnem = IsEnemy; IsBoom = false;
@@ -60,17 +57,14 @@ public class Bullet : MonoBehaviour
     public void Init_Explode(BulletInfo After, Vector3 Dir, bool IsEnemy, Sprite Image, Sprite HitImage,
         BulletLine BL = null, RuntimeAnimatorController Anim = null)
     {
-        if (BL == null) Line.enabled = false;
-        else
+        if (BL != null)
         {
-            Line.enabled = true; 
+            Line.enabled = true;
             Line.startColor = BL.Start; Line.endColor = BL.End;
             Line.startWidth = BL.StartWidth; Line.endWidth = BL.EndWidth;
             Line.time = BL.Time;
         }
-
-        if (Anim == null) anim.enabled = false;
-        else { anim.enabled = true; }
+        if (Anim != null) { anim.enabled = true; anim.runtimeAnimatorController = Anim; }
 
         this.HitImage = HitImage; this.AfterBull = After;
         rigid.simulated = true; coll.enabled = true; rigid.velocity = Dir; this.Penetrate = 0; sprite.sprite = Image; this.IsMeele = false; this.IsEnem = IsEnemy; IsBoom = true;
@@ -84,19 +78,16 @@ public class Bullet : MonoBehaviour
 
     public void Init_Effect(float AfterTime, Sprite Image,Vector3 Dir, BulletLine BL = null,RuntimeAnimatorController Anim = null)
     {
-        if (BL == null) Line.enabled = false;
-        else
+        if (BL != null)
         {
             Line.enabled = true;
             Line.startColor = BL.Start; Line.endColor = BL.End;
             Line.startWidth = BL.StartWidth; Line.endWidth = BL.EndWidth;
             Line.time = BL.Time;
-
         }
-        if (Anim == null) anim.enabled = false;
-        else { anim.enabled = true; anim.runtimeAnimatorController = Anim; }
+        if (Anim != null){ anim.enabled = true; anim.runtimeAnimatorController = Anim; }
 
-        rigid.simulated = true; rigid.velocity = Dir; coll.enabled = false; sprite.sprite = Image;
+        rigid.simulated = true; rigid.velocity = Dir; sprite.sprite = Image;
         if (BL == null) Line.enabled = false;
 
         StartCoroutine(AfterImage(AfterTime));
@@ -109,6 +100,12 @@ public class Bullet : MonoBehaviour
         sprite.sprite = Im;
         IsMeele = false;
         tag = IsEnemy ? "EnemyBuff" : "PlayerBuff";
+    }
+
+    public void OnDisable()
+    {
+        Line.Clear(); Line.enabled = false;
+        anim.enabled = false; rigid.simulated = false; coll.enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

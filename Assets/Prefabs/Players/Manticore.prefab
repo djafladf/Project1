@@ -255,11 +255,10 @@ MonoBehaviour:
   AttackRange: 3
   HPBar: {fileID: 6591888774103275800}
   HideObj: {fileID: 66780581242045876}
-  type: 0
   Bullets:
-  - {fileID: -1823433235, guid: 032406b740669ec4a9b7b54b3003b9cb, type: 3}
   - {fileID: 1435702583, guid: 571106530a9ec824f9922cd607ef8cef, type: 3}
   - {fileID: 196045391, guid: 571106530a9ec824f9922cd607ef8cef, type: 3}
+  - {fileID: 196045391, guid: 032406b740669ec4a9b7b54b3003b9cb, type: 3}
 --- !u!1 &4654947515689188312
 GameObject:
   m_ObjectHideFlags: 0

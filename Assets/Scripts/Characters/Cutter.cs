@@ -11,7 +11,7 @@ public class Cutter : PlayerSetting
         if (TargetPos != null)
         {
 
-            if (Vector3.Distance(TargetPos.position, transform.position) <= 2)
+            if (Vector3.Distance(TargetPos.position, transform.position) <= 2.5f)
             {
                 GameManager.instance.BM.MakeMeele(
                     new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10), false, 0,ignoreDefense:0.2f), 0.3f,

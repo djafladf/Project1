@@ -104,6 +104,7 @@ public class Enemy : MonoBehaviour
             if (HP <= 0)
             {
                 anim.SetTrigger("Dead");
+                StopAllCoroutines();
                 spriteRenderer.sortingOrder = 1;
                 IsLive = false; CanHit = false; rigid.simulated = false; coll.enabled = false;
                 GameManager.instance.UM.KillCountUp(1); GameManager.instance.ES.CurActive--;
@@ -229,7 +230,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator Friction()
     {
-        while (rigid.velocity.magnitude > 0.1f)
+        while (rigid.velocity.magnitude >= 0.2f)
         {
             rigid.velocity = Vector2.Lerp(rigid.velocity, Vector2.zero, 0.5f);
             yield return new WaitForSeconds(0.1f);
@@ -256,7 +257,7 @@ public class Enemy : MonoBehaviour
                 DeBuffObj[i].SetActive(false); DeBuffObj[i].transform.parent = GameManager.instance.BFM.transform; DeBuffObj[i] = null;
             }
         }
-        MoveAble = true;
+        MoveAble = true; OnHit = false; Fric = null;
         
         anim.enabled = true;
         anim.SetBool("IsAttack", false);

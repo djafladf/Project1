@@ -37,16 +37,4 @@ public class RangeAttack : MonoBehaviour
 
         return res;
     }
-
-    public void Fire(int count, int Damage, int Penetrate, Vector3 Position, float speed, Sprite Im,bool IsEnemey)
-    {
-        List<Transform> Target = GetNearest(count,Position);
-        foreach(var k in Target)
-        {
-            if (k == null) break;
-            GameManager.instance.BM.MakeBullet
-                (
-                new BulletInfo(Damage,false,0), Penetrate, Position, (k.position - Position).normalized, speed,false,Im);
-        }
-    }
 }

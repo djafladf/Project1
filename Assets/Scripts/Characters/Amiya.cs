@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Amiya : PlayerSetting
 {
@@ -9,7 +10,7 @@ public class Amiya : PlayerSetting
     [SerializeField] GameObject Weapon;
 
     [SerializeField] GameObject Weapon2;
-
+    [SerializeField] BulletLine BL;
 
 
 
@@ -34,27 +35,27 @@ public class Amiya : PlayerSetting
     {
         while(true){
             int Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10);
+            var Targets = GameManager.GetNearest(scanRange, ProjNum, transform.position, targetLayer);
+            Transform j;
+            if(Targets.Count != 0)
             for (int i = 0; i < ProjNum * ProjRatio; i++)
             {
                 Vector3 RandomSub = new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 1f));
-                MyAttack.Fire
-                    (1, Damage,
-                    Penetrate,
-                    transform.position + RandomSub,10,
-                    BulletIm,false);
+                j = Targets[Random.Range(0,Targets.Count)];
+                GameManager.instance.BM.MakeBullet(new BulletInfo(Damage, false, 0), Penetrate, transform.position + RandomSub,
+                    (j.position - transform.position).normalized, BulletSpeed, false, BulletIm,
+                    BL:BL);
                 yield return new WaitForSeconds(0.1f);
             }
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.5f * (1 - GameManager.instance.PlayerStatus.attackspeed));
         }
     }
-
-    Vector3 RotateSub = new Vector3(30f, 60f, 90f);
-
 
     int ProjNum = 1;
     int ProjRatio = 1;
     float DamageRatio = 2f;
     int Penetrate = 0;
+    float BulletSpeed = 15;
 
 
     protected override int WeaponLevelUp()
@@ -67,9 +68,7 @@ public class Amiya : PlayerSetting
             case 4: Penetrate+=2; break;
             case 5: DamageRatio += 1f; break;
             case 6:
-                ProjRatio = 3;
-                BulletIm = Bullet2;
-                Weapon2.SetActive(true);
+                ProjRatio = 3;BulletIm = Bullet2; BulletSpeed = 20; Weapon2.SetActive(true);
                 break;
         }
         return player.WeaponLevel;

@@ -202,8 +202,8 @@ MonoBehaviour:
   Attack2: {fileID: -753386821, guid: 1a79d51cd29cf9f4db0d4da791cca88f, type: 3}
   Bullet: {fileID: -1852874453, guid: 1a79d51cd29cf9f4db0d4da791cca88f, type: 3}
   BL:
-    Start: {r: 0.14117648, g: 0.16862746, b: 0.58431375, a: 0.5019608}
-    End: {r: 0.8, g: 0.8745098, b: 0.99215686, a: 0.5019608}
+    Start: {r: 0.14117648, g: 0.16862746, b: 0.58431375, a: 0.8}
+    End: {r: 0.8, g: 0.8745098, b: 0.99215686, a: 0.2}
     StartWidth: 0.8
     EndWidth: 0.1
     Time: 0.25
