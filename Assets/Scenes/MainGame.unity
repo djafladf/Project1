@@ -31212,6 +31212,7 @@ MonoBehaviour:
   ToolField: {fileID: 2034442019628052815}
   GetAreaPref: {fileID: 3714769644453056571, guid: d7c9dd770438f0e4692776adfa881e27, type: 3}
   PauseObj: {fileID: 1176065429}
+  CurMinute: 0
   LevelUP: {fileID: 2034442018475622274}
   Selections:
   - {fileID: 2034442018789102637}
@@ -31316,7 +31317,7 @@ MonoBehaviour:
     sprite: {fileID: -1820372992, guid: 7f33ab6931fd55a4b8e33fafce2b1962, type: 3}
     attributes:
       attack: 0
-      attackspeed: 1
+      attackspeed: 0.01
       defense: 0
       speed: 0
       power: 0
