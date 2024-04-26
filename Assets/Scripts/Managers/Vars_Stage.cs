@@ -68,7 +68,7 @@ public class BulletInfo
     public int ReturnDamage(float defense)
     {
         if (IsFix) return Damage;
-        return (int)(Damage * (100 + IgnoreDefense - defense) * 0.01);
+        return Mathf.CeilToInt(Damage * (100 + IgnoreDefense - defense) * 0.01f);
     }
 }
 

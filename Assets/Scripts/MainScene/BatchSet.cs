@@ -87,13 +87,7 @@ public class BatchSet : MonoBehaviour
     }
     public void RemoveOper(int ind)
     {
-        if(ind == 0)
-        {
-            GameManager.instance.CurPlayerID[0] = -1;
-            BatchIms[0].sprite = NormalBatch;
-
-        }
-        else if(ind < GameManager.instance.CurPlayerID.Count)
+        if(ind < GameManager.instance.CurPlayerID.Count && ind !=0)
         {
             GameManager.instance.CurPlayerID.RemoveAt(ind);
             for(int i = 1; i < GameManager.instance.CurPlayerID.Count;i++) BatchIms[i].sprite = GameManager.instance.Data.Infos[GameManager.instance.CurPlayerID[i]].Standing2;

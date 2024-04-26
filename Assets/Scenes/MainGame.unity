@@ -31533,6 +31533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyTypes:
+  - {fileID: 1788775384281307603, guid: ed5b30722274c34448b59fa1feae0150, type: 3}
   - {fileID: 1788775384281307603, guid: edbb7e7256290fb4b97b4499b962062c, type: 3}
   - {fileID: 1788775384281307603, guid: 62b65bcf29424ab4ca5781f913de5b1b, type: 3}
   - {fileID: 1788775384281307603, guid: 0d63a82667f612848a01e854902711b7, type: 3}
@@ -31542,7 +31543,7 @@ MonoBehaviour:
   - {fileID: 1788775384281307603, guid: 70482419b928f4946a2760d6b9746932, type: 3}
   - {fileID: 1788775384281307603, guid: 3ada53c83a29c4a4cba2675fefdb6798, type: 3}
   BossSet: {fileID: 981838648}
-  PoolSize: 3200000032000000140000001400000014000000140000001400000001000000
+  PoolSize: 3c0000003c0000003c0000001e0000001e0000001e0000001e0000001e00000001000000
   CurActive: 0
   Stages:
   - spawninfo:
@@ -31558,30 +31559,35 @@ MonoBehaviour:
       IsBoss: 0
     - id: 2
       start: 120
-      end: 540
-      respawn: 1
+      end: 480
+      respawn: 0.5
       IsBoss: 0
     - id: 3
-      start: 240
+      start: 180
       end: 540
-      respawn: 1.5
+      respawn: 1
       IsBoss: 0
     - id: 4
       start: 240
       end: 540
       respawn: 1
       IsBoss: 0
-    - id: 5
-      start: 300
-      end: 540
-      respawn: 2
-      IsBoss: 0
     - id: 6
       start: 300
       end: 540
       respawn: 2
       IsBoss: 0
+    - id: 5
+      start: 360
+      end: 540
+      respawn: 2
+      IsBoss: 0
     - id: 7
+      start: 420
+      end: 540
+      respawn: 2
+      IsBoss: 0
+    - id: 8
       start: 540
       end: 540
       respawn: 1
@@ -31590,9 +31596,14 @@ MonoBehaviour:
     - id: 2
       start: 0
       end: 60
-      respawn: 1
+      respawn: 0.5
       IsBoss: 0
     - id: 3
+      start: 0
+      end: 60
+      respawn: 1
+      IsBoss: 0
+    - id: 4
       start: 0
       end: 60
       respawn: 1.5
@@ -31602,17 +31613,17 @@ MonoBehaviour:
       end: 60
       respawn: 1.5
       IsBoss: 0
-    - id: 4
-      start: 0
-      end: 60
-      respawn: 2
-      IsBoss: 0
     - id: 6
       start: 0
       end: 60
       respawn: 2
       IsBoss: 0
     - id: 7
+      start: 0
+      end: 60
+      respawn: 2
+      IsBoss: 0
+    - id: 8
       start: 60
       end: 60
       respawn: 1

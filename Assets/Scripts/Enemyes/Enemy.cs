@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float AS;
     [SerializeField] protected int Damage;
     [SerializeField] protected int Defense;
+    [SerializeField] protected int Weight;
     [SerializeField] protected int ItemVal;
     protected int MaxDefense;
     protected int MaxDamage;
@@ -76,10 +77,19 @@ public class Enemy : MonoBehaviour
 
 
     //[SerializeField] protected Sprite Bullet;
+    [SerializeField] bool IsRange;
+    [SerializeField] bool MakeLine;
+    [SerializeField] BulletInfo BI;
+    [SerializeField] Sprite Bull;
+    [SerializeField] BulletLine BL;
 
     protected virtual void AttackMethod()
     {
-        GameManager.instance.BM.MakeMeele(new BulletInfo(Damage,false,0), 0.2f, AttackPos, Vector2.zero, 0, true);
+
+        if (IsRange) 
+            GameManager.instance.BM.MakeBullet(BI, 0, transform.position, (AttackPos-transform.position).normalized, 8, true,Bull,BL :MakeLine ? BL : null);
+        else
+            GameManager.instance.BM.MakeMeele(new BulletInfo(Damage, false, 0), 0.2f, AttackPos, Vector2.zero, 0, true);
     }
 
     bool CanHit = true;
@@ -217,7 +227,7 @@ public class Enemy : MonoBehaviour
     {
         CanHit = false; OnHit = true;
         spriteRenderer.color = Color.gray;
-        Power += GameManager.instance.PlayerStatus.power;
+        Power += GameManager.instance.PlayerStatus.power - Weight;
         if (Power > 0) 
         {
             rigid.AddForce(Dir.normalized * (Power), ForceMode2D.Impulse);

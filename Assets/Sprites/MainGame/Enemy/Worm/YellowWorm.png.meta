@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 032406b740669ec4a9b7b54b3003b9cb
+guid: 5f66ae7633685ba49a174bcba9a160ff
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 15
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uACF5\uACA9_0"
+      name: YellowWorm_0
       rect:
         serializedVersion: 2
-        x: 94
-        y: 283
-        width: 38
-        height: 38
+        x: 0
+        y: 78
+        width: 36
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9807ed4e225195545b8b39371f52aa8e
-      internalID: 1435702583
+      spriteID: f1c8c67b330c47e46922c16054f9b0d0
+      internalID: -84547077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uACF5\uACA9_1"
+      name: YellowWorm_1
       rect:
         serializedVersion: 2
-        x: 227
-        y: 280
-        width: 44
-        height: 30
+        x: 37
+        y: 78
+        width: 36
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +140,125 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 614b4b5fd6aa693439712a3d91981ee1
-      internalID: -1823433235
+      spriteID: cf50fbf9c542db441b5b8fb0bc02e5f8
+      internalID: -1949977818
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uACF5\uACA9_2"
+      name: YellowWorm_2
       rect:
         serializedVersion: 2
-        x: 30
+        x: 74
+        y: 78
+        width: 36
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb1591cf513a16148a13c2e54c81a267
+      internalID: 1717142534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowWorm_3
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 51
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27c49d6401ea6b245a5bccf50ff24763
+      internalID: -1146933445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowWorm_4
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 51
+        width: 36
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0a5b6259f0b5d346b783bd93f150574
+      internalID: -137372222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowWorm_7
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 18
+        width: 36
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a13bd1cdcf78e04ba78e90c71bb0c66
+      internalID: 798190210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowWorm_8
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 17
+        width: 36
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c971fb17ef423840bb990d3a17a5e4b
+      internalID: -1328176938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowWorm_10
+      rect:
+        serializedVersion: 2
+        x: 82
         y: 15
-        width: 304
-        height: 228
+        width: 28
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,8 +266,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c3b7210508870374db7fb6572e12717e
-      internalID: 196045391
+      spriteID: d7224186072b64f42b4ba25d9437b27a
+      internalID: 1200502450
       vertices: []
       indices: 
       edges: []
@@ -178,14 +283,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\uACF5\uACA9_0": 1435702583
-      "\uACF5\uACA9_1": -1823433235
-      "\uACF5\uACA9_4": 1397174465
-      "\uACF5\uACA9_5": -868835903
-      "\uACF5\uACA9_6": 1234376793
-      "\uACF5\uACA9_7": -130034050
-      "\uACF5\uACA9_2": 196045391
-      "\uACF5\uACA9_3": -2046476799
+      YellowWorm_6: 616137993
+      YellowWorm_7: 798190210
+      YellowWorm_10: 1200502450
+      YellowWorm_5: -946314302
+      YellowWorm_3: -1146933445
+      YellowWorm_8: -1328176938
+      YellowWorm_9: 1358818614
+      YellowWorm_1: -1949977818
+      YellowWorm_4: -137372222
+      YellowWorm_0: -84547077
+      YellowWorm_2: 1717142534
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

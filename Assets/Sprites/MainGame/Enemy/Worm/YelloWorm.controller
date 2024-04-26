@@ -60,7 +60,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WormAnim
+  m_Name: YelloWorm
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: IsAttack
@@ -109,7 +109,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 3d06739c913f4e541aafd79be6e52079, type: 2}
+  m_Motion: {fileID: 7400000, guid: 0f6ced70c285b824681b10c97c423dca, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -185,7 +185,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 5afdcaa6887b2384fba3b2b39d83263b, type: 2}
+  m_Motion: {fileID: 7400000, guid: c7b9f552074cac84192917489869b3e0, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -212,7 +212,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 121b8baa57441b246a724ecd274b6c73, type: 2}
+  m_Motion: {fileID: 7400000, guid: d80b2e2739afaa44d92453c93e400542, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

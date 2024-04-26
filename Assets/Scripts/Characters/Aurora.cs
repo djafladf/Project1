@@ -21,7 +21,7 @@ public class Aurora : PlayerSetting
             if (s >= 1)
             {
                 s = 0;
-                Heal((int)(player.MaxHP * 0.01f));
+                Heal((int)(player.MaxHP * (1 + GameManager.instance.PlayerStatus.heal) * 0.01f));
             }
         }
     }
@@ -42,7 +42,7 @@ public class Aurora : PlayerSetting
             case 1: player.InitDefense += 5; player.InitDefense += 5; break;
             case 2: player.InitDefense += 5; player.InitDefense += 5; break;
             case 3: ice = 1; break;
-            case 4: player.InitDefense += 5; player.InitDefense += 5; break;
+            case 4: player.InitDefense += 10; player.InitDefense += 10; break;
             case 5: IsHeal = true; break;
             case 6: IceField.SetActive(true); IceOn = true; StartCoroutine(FieldAct()); break;
         }

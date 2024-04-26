@@ -201,12 +201,12 @@ public class PlayerSetting : MonoBehaviour
         else if (collision.CompareTag("PlayerBuff"))
         {
             Buff Info = GameManager.instance.BM.GetBulletInfo(GameManager.StringToInt(collision.name)).Buffs;
-            if (Info.Heal != 0) Heal(Info.Heal);
+            int Amount = (int)(Info.Heal * (1 + GameManager.instance.PlayerStatus.heal));
+            if (Amount != 0) Heal(Amount);
         }
     }
     protected void Heal(int Amount)
     {
-        Amount = (int)(Amount * GameManager.instance.PlayerStatus.heal);
         int LeftHP = player.MaxHP - player.CurHP;
         if (Amount > LeftHP) Amount = LeftHP;
         if (LeftHP != 0)

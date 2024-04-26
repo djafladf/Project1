@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Wafarin_Special : MonoBehaviour
@@ -9,53 +11,53 @@ public class Wafarin_Special : MonoBehaviour
     WaitForSeconds ZeroDotFive = new WaitForSeconds(1f);
     [SerializeField] LayerMask[] Layers;
     [SerializeField] GameObject Particle;
-    ParticleSystem[] Particles;
+    List<ParticleSystem> Particles;
 
     private void Awake()
     {
-        Particles = new ParticleSystem[6];
-        for(int i = 0;i < 6; i++)
+        Particles = new List<ParticleSystem>() { Particle.GetComponent<ParticleSystem>()};
+
+        int i = 0;
+        foreach(var k in GameManager.instance.Prefs)
         {
-            Particles[i] = Instantiate(Particle, transform).GetComponent<ParticleSystem>();
+            if (i != 0) Particles.Add(Instantiate(Particle, transform).GetComponent<ParticleSystem>());
+            Particles[i].transform.parent = k.transform; Particles[i].transform.localPosition = Vector3.zero;
+            Particles[i].transform.localScale = Vector3.one;
             Particles[i].Stop();
-            Particles[i].gameObject.SetActive(false);
-        }
-        Destroy(Particle);
+            i++;
+        }       
     }
 
     private void OnEnable()
     {
         StartCoroutine(Attack());
     }
-
-    Vector3 SubUp = new Vector3(0, 0.5f, 0);
     IEnumerator Attack()
     {
+        
         yield return ZeroDotFive;
         for(int i = 0; i < 20; i++)
         {
-            RaycastHit2D[] targets = Physics2D.CircleCastAll(transform.position, 2f, Vector2.zero, 0, Layers[0]);
+            RaycastHit2D[] targets = Physics2D.CircleCastAll(transform.position, 5f, Vector2.zero, 0, Layers[0]);
             foreach(RaycastHit2D t in targets)
             {
                 Transform cnt = t.transform;
                 GameManager.instance.BM.MakeMeele(
-                    new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack) * 30f),false,0),0.3f,
+                    new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack) * 45f),false,0),0.3f,
                     cnt.position,Vector3.zero,0,false,Bullet);
             }
-            RaycastHit2D[] targetss = Physics2D.CircleCastAll(transform.position, 2f, Vector2.zero, 0, Layers[1]);
-            for (int x = 0; x < 6; x++) { Particles[x].gameObject.SetActive(false); Particles[x].Stop(); }
-            for (int x = 0; x < targetss.Length; x++)
+            for(int x = 0; x < Particles.Count; x++)
             {
-                Transform cnt = targetss[x].transform;
-                GameManager.instance.BM.MakeBuff(cnt.position, null,  new Buff(heal: (int)((1+GameManager.instance.PlayerStatus.attack) * 0.2f)),false);
-                Particles[x].gameObject.SetActive(true);
-                Particles[x].transform.position = cnt.position;
-                Particles[x].Play();
+                Vector3 CntPos = GameManager.instance.Prefs[x].transform.position;
+                if (Vector2.Distance(transform.position, GameManager.instance.Prefs[x].transform.position) <= 5f)
+                {
+                    Particles[x].Play(); GameManager.instance.BM.MakeBuff(new BulletInfo(0, false, 0, buffs: new Buff(heal: (int)((1 + GameManager.instance.PlayerStatus.attack * 0.1f)))), CntPos, null, false);
+                }
+                else Particles[x].Stop();
             }
-            
-
             yield return ZeroDotFive;
         }
+        foreach (var k in Particles) k.Stop();
         gameObject.SetActive(false);
     }
 }

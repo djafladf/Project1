@@ -30,4 +30,9 @@ public class DataManager : MonoBehaviour
     {
         GameManager.instance.StartGame();
     }
+
+    public void GoUrl(string Url)
+    {
+        Application.OpenURL(Url);
+    }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Wafarin :PlayerSetting
 {
     [SerializeField] Sprite Bullet;
+    [SerializeField] BulletLine BL;
     [SerializeField] GameObject Pond;
     [SerializeField] bool Test = false;
 
@@ -24,17 +25,25 @@ public class Wafarin :PlayerSetting
             {
                 GameManager.instance.BM.MakeBullet(
                     new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10),false,0),
-                    Penetrate, transform.position, new Vector3(Mathf.Cos(rad + 0.25f * i), Mathf.Sin(rad + 0.25f * i)),10, false,Bullet);
+                    Penetrate, transform.position, new Vector3(Mathf.Cos(rad + 0.25f * i), Mathf.Sin(rad + 0.25f * i)),10, false,Bullet,BL:BL);
             }
-            if (player.WeaponLevel == 7 || Test)
+            if (player.WeaponLevel == 7 && !Pond.activeSelf)
             {
-                if (!Pond.activeSelf) { Pond.SetActive(true); Pond.transform.position = TargetPos.position; }
+                Vector3 cnt = TargetPos.position; cnt.z = 2; Pond.transform.position = cnt;
+                Pond.SetActive(true);
             }
         }
     }
-    float DamageRatio = 5f;
+    float DamageRatio = 3f;
     int Penetrate = 0;
     int ProjNum = 1;
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        Pond.SetActive(false);
+    }
+
 
     protected override int WeaponLevelUp()
     {

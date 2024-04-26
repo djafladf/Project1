@@ -272,6 +272,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Bow_0
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 1429
+        width: 12
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cbc452b52b6276488bb333899876636
+      internalID: 1466224041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -303,15 +324,15 @@ TextureImporter:
       Bow_34: 1610768155
       Bow_50: -2003778959
       Bow_30: 1681666717
-      Bow_33: 716173650
-      Bow_10: -2061098386
-      Bow_4: -2083010605
-      Bow_27: 1887776593
-      Bow_11: 2032552510
-      Bow_37: -489516959
       Bow_32: -1381673537
-      Bow_13: 1309342759
+      Bow_33: 716173650
       Bow_44: -494460287
+      Bow_10: -2061098386
+      Bow_13: 1309342759
+      Bow_11: 2032552510
+      Bow_27: 1887776593
+      Bow_4: -2083010605
+      Bow_37: -489516959
       Bow_8: -2090217144
       Bow_35: 1320209940
       Bow_42: 281029730

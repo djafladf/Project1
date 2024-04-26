@@ -78,6 +78,7 @@ public class GameManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
+        gameStatus.LastBatch = CurPlayerID;
         string json = JsonConvert.SerializeObject(gameStatus);
         File.WriteAllText(Path.Combine(Application.persistentDataPath, "Status.json"), json);
     }
@@ -89,8 +90,15 @@ public class GameManager : MonoBehaviour
             instance = this; 
             DontDestroyOnLoad(gameObject);
             string path = Path.Combine(Application.persistentDataPath, "Status.json");
-            if (File.Exists(path)) gameStatus = JsonConvert.DeserializeObject<GameStatus>(File.ReadAllText(path));
-            else gameStatus = new GameStatus();
+            if (File.Exists(path))
+            {
+                gameStatus = JsonConvert.DeserializeObject<GameStatus>(File.ReadAllText(path));
+            }
+            else
+            {
+                gameStatus = new GameStatus(); gameStatus.LastBatch.Add(0);
+            }
+            CurPlayerID = gameStatus.LastBatch;
         }
         else if (instance != this) Destroy(gameObject);
         //else Destroy(gameObject);
@@ -246,6 +254,8 @@ public class GameManager : MonoBehaviour
         ES.StartStage();
         IsBoss = false;
     }
+
+    
 
     // --------------------------------------------------------------------------------------------
 

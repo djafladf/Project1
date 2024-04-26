@@ -149,14 +149,15 @@ public class Skulslr : Enemy
                 Vector2 Sub = (Target.position - transform.position).normalized;
                 SpecialRad = Vector2.Angle(Vector2.right, Sub) * Mathf.Deg2Rad;
                 if (Sub.y < 0) SpecialRad = Mathf.PI * 2 - SpecialRad; Count = 0;
+                yield return new WaitForSeconds(SpecialCool * 0.4f);
             }
             else
                 switch (Random.Range(0, 2))
                 {
                     case 0:
-                        anim.SetTrigger("Special"); break;
+                        anim.SetTrigger("Special"); yield return new WaitForSeconds(SpecialCool * 0.5f); break;
                     case 1:
-                        anim.SetTrigger("Special2"); anim.SetBool("IsAttack", false); yield return GameManager.OneSec; RushTarget = ReturnRandomPlayer(); l = 0; IsRush = true; AfterIm.StartMaking(); break;
+                        anim.SetTrigger("Special2"); anim.SetBool("IsAttack", false); yield return GameManager.OneSec; RushTarget = ReturnRandomPlayer(); l = 0; IsRush = true; AfterIm.StartMaking(); yield return new WaitForSeconds(SpecialCool * 0.5f); break;
                 }
         }
 
@@ -164,11 +165,10 @@ public class Skulslr : Enemy
             switch (Random.Range(0, 2))
             {
                 case 0:
-                    anim.SetTrigger("Special"); break;
+                    anim.SetTrigger("Special"); yield return new WaitForSeconds(SpecialCool * 0.5f); break;
                 case 1:
-                    anim.SetTrigger("Special2"); anim.SetBool("IsAttack", false); yield return GameManager.OneSec; RushTarget = ReturnRandomPlayer(); IsRush = true; AfterIm.StartMaking(); break;
+                    anim.SetTrigger("Special2"); anim.SetBool("IsAttack", false); yield return GameManager.OneSec; RushTarget = ReturnRandomPlayer(); IsRush = true; AfterIm.StartMaking(); yield return new WaitForSeconds(SpecialCool * 0.5f); break;
             }
-        yield return new WaitForSeconds(SpecialCool);
         StartCoroutine(SpecialCoolDown());
     }
 

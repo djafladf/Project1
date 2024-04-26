@@ -64,6 +64,7 @@ public class OperatorBatchTool : Buttons
         if (BatchObject.activeSelf)
         {
             BatchObject.SetActive(false);
+            state.color = Black;
             StartCoroutine(ReBatchAble());
         }
         else if(CanBatch)
@@ -82,7 +83,7 @@ public class OperatorBatchTool : Buttons
     {
         if (BatchObject.activeSelf)
         {
-
+            state.color = Red;
         }
         else if(CanBatch)
         {
@@ -96,7 +97,7 @@ public class OperatorBatchTool : Buttons
     {
         if (BatchObject.activeSelf)
         {
-
+            state.color = Black;
         }
         else if(CanBatch)
         {
@@ -109,6 +110,7 @@ public class OperatorBatchTool : Buttons
     {
         BatchObject.SetActive(true);
         Vector3 newPos = Camera.main.ScreenToWorldPoint(Input.mousePosition); newPos.z = 1;
+        Cost = Mathf.FloorToInt(Cost * 1.2f); cost.text = $"{Cost}";
         BatchObject.transform.position = newPos;
         state.gameObject.SetActive(true);
         ReBatchIm.gameObject.SetActive(false);
@@ -123,9 +125,9 @@ public class OperatorBatchTool : Buttons
 
     IEnumerator ReBatchAble()
     {
-        state.gameObject.SetActive(true); ReBatchIm.gameObject.SetActive(true); ReBatchText.gameObject.SetActive(true); state.color = Red;
+        state.gameObject.SetActive(true); ReBatchIm.gameObject.SetActive(true); ReBatchText.gameObject.SetActive(true); 
         LeftReBatchTime = ReBatchTime;
-        ReBatchIm.fillAmount = 1; float a = 1 / (float)ReBatchTime; ReBatchText.text = $"{ReBatchTime}";
+        ReBatchIm.fillAmount = 1; float a = 1 / (float)ReBatchTime; ReBatchText.text = $"{ReBatchTime}"; state.color = Red;
         ET.enabled = false;
         while (LeftReBatchTime > 0)
         {

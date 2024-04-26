@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -27,7 +28,7 @@ public class EnemySpawner : MonoBehaviour
 
     public enum EnemyId
     {
-        RedWorm, Yoma, FootMan, DualMan, ShieldMan, BowMan, Magician, Skulslr
+        YellowWorm,RedWorm, Yoma, FootMan, DualMan, ShieldMan, BowMan, Magician, Skulslr
     }
 
     [System.Serializable]
@@ -55,15 +56,15 @@ public class EnemySpawner : MonoBehaviour
 
 
         // Set Spawn Area
-        SpawnArea = new Vector3[68];
-        SpawnAreaSize = SpawnArea.Length;
+        SpawnArea = new Vector3[100];
+        
         int i = 0;
-        for (int x = -20; x <= 20; x+=2) SpawnArea[i++] = new Vector3(x, 12,0);
-        for (int x = 12; x >= -12; x-=2) { SpawnArea[i++] = new Vector3(-20, x,0); SpawnArea[i++] = new Vector3(20, x,0); }
-        for (int x = -20; x <= 20; x+=2) SpawnArea[i++] = new Vector3(x, -12,0);
-
-        EnemyScripts = new Enemy[50, EnemyTypes.Length];
-        Pool = new GameObject[50, EnemyTypes.Length];
+        for (int x = -25; x <= 25; x+=2) SpawnArea[i++] = new Vector3(x, 15,0);
+        for (int x = 15; x >= -15; x-=2) { SpawnArea[i++] = new Vector3(-25, x,0); SpawnArea[i++] = new Vector3(25, x,0); }
+        for (int x = -25; x <= 25; x+=2) SpawnArea[i++] = new Vector3(x, -15,0);
+        SpawnAreaSize = i;
+        EnemyScripts = new Enemy[PoolSize.Max(), EnemyTypes.Length];
+        Pool = new GameObject[PoolSize.Max(), EnemyTypes.Length];
         for(i = 0; i < EnemyTypes.Length; i++)
         {
             for(int y = 0; y < PoolSize[i]; y++)
@@ -104,7 +105,8 @@ public class EnemySpawner : MonoBehaviour
             {
                 if (!Pool[y, (int)Info.id].activeSelf)
                 {
-                    Pool[y, (int)Info.id].transform.position = SpawnArea[Random.Range(0, SpawnAreaSize - 1)] + GameManager.instance.player.Self.position;
+                    Vector3 cnt = SpawnArea[Random.Range(0, SpawnAreaSize - 1)] + GameManager.instance.player.Self.position; cnt.z = 1;
+                    Pool[y, (int)Info.id].transform.position = cnt;
                     Pool[y, (int)Info.id].SetActive(true);
                     break;
                 }
@@ -128,7 +130,8 @@ public class EnemySpawner : MonoBehaviour
             {
                 if (!Pool[i, ind].activeSelf)
                 {
-                    Pool[i, ind].transform.position = SpawnArea[Random.Range(0, SpawnAreaSize - 1)] + GameManager.instance.player.Self.position;
+                    Vector3 cnt = SpawnArea[Random.Range(0, SpawnAreaSize - 1)] + GameManager.instance.player.Self.position; cnt.z = 1;
+                    Pool[i, ind].transform.position = cnt;
                     Pool[i, ind].SetActive(true);
                     break;
                 }
@@ -161,7 +164,6 @@ public class EnemySpawner : MonoBehaviour
     int BatchCall = 0;
     public Vector3 ReBatchCall()
     {
-        if (BatchCall >= SpawnArea.Length) BatchCall = 0;
-        return SpawnArea[BatchCall++];
+        return SpawnArea[Random.Range(0,SpawnAreaSize)];
     }
 }

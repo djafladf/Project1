@@ -5,6 +5,7 @@ using UnityEngine;
 public class Platinum :PlayerSetting
 {
     [SerializeField] Sprite Bullet;
+    [SerializeField] BulletLine BL;
 
     protected override void FixedUpdate()
     {
@@ -26,11 +27,11 @@ public class Platinum :PlayerSetting
                 GameManager.instance.BM.MakeBullet(
                     new BulletInfo(Damage,false,0,ignoreDefense : DefenseIgnore),Penetrate,
                 transform.position, new Vector3(Mathf.Cos(rad + 0.25f * i), Mathf.Sin(rad + 0.25f * i)),
-                10, false,Bullet);
+                15, false,Bullet,BL:BL);
             }
         }
     }
-    float DamageRatio = 5f;
+    float DamageRatio = 3f;
     float DefenseIgnore = 0;
     int Penetrate = 0;
     int ProjNum = 1;

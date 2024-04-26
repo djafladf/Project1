@@ -5,12 +5,14 @@ using UnityEngine;
 public class FEater : PlayerSetting
 {
     [SerializeField] Sprite Spec;
+    [SerializeField] ParticleSystem HitEffect;
     int Power = 1;
 
     protected override void AttackMethod()
     {
         Vector3 Gap = (transform.position - TargetPos.position).normalized * 0.2f;
-
+        HitEffect.gameObject.transform.position = TargetPos.position;
+        HitEffect.Play();
         GameManager.instance.BM.MakeMeele(
             new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10),false,Power), 0.2f, 
             TargetPos.position + Gap, -player.Dir, 0, false);
@@ -21,6 +23,8 @@ public class FEater : PlayerSetting
     public void SpecialAttack()
     {
         Vector3 Gap = (transform.position - TargetPos.position).normalized * 0.2f;
+        HitEffect.gameObject.transform.position = TargetPos.position;
+        HitEffect.Play();
         GameManager.instance.BM.MakeMeele(
             new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10), false, Power), 0.2f,
             TargetPos.position + Gap, -player.Dir, 0, false,Spec);

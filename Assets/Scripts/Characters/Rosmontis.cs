@@ -18,7 +18,7 @@ public class Rosmontis : PlayerSetting
 
     List<Transform> Targets;
 
-    bool IsDouble = true;
+    bool IsDouble = false;
 
     protected override void Awake()
     {
@@ -168,6 +168,7 @@ public class Rosmontis : PlayerSetting
         {
             SubWeapons[0].SetActive(true);
             if (!IsDouble) AttackPos = TargetPos.position; else AttackPos = Targets[0].position;
+            if (Vector2.Distance(AttackPos, transform.position) > 15f) AttackPos = transform.position + new Vector3(Random.Range(4,10),Random.Range(4, 10), 0);
             SubWeapons[0].transform.position = AttackPos + Vector3.up * 10f;
             WeaponTrail[0].Clear();
             for (int i = 0; i < 5; i++)
@@ -181,6 +182,7 @@ public class Rosmontis : PlayerSetting
         {
             SubWeapons[1].SetActive(true);
             if (!IsDouble) AttackPos = TargetPos.position; else if (Targets.Count == 2) AttackPos = Targets[1].position; else AttackPos = Targets[0].position;
+            if (Vector2.Distance(AttackPos, transform.position) > 15f) AttackPos = transform.position + new Vector3(Random.Range(4, 10), Random.Range(4, 10), 0);
             SubWeapons[1].transform.position = AttackPos + Vector3.up * 10f;
             WeaponTrail[1].Clear();
             for (int i = 0; i < 5; i++)
@@ -220,7 +222,7 @@ public class Rosmontis : PlayerSetting
         base.AttackEnd();
     }
 
-    float DamageRatio = 7.5f;
+    float DamageRatio = 6f;
     float defenseRatio = 0.3f;
 
     protected override int WeaponLevelUp()

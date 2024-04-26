@@ -82,7 +82,7 @@ public class UIManager : MonoBehaviour
     }
 
 
-    int CurMinute = 0;
+    public int CurMinute = 0;
     private void FixedUpdate()
     {
         if (!GameManager.instance.IsBoss)
@@ -119,7 +119,7 @@ public class UIManager : MonoBehaviour
 
     public void GoodsUp(int type, int value)
     {
-        GoodsCount[type] += value;
+        GoodsCount[type] += (int)(value * GameManager.instance.PlayerStatus.GoodsEarn);
         Goods[type].text = $"{GoodsCount[type]}";
     }
 
@@ -173,7 +173,7 @@ public class UIManager : MonoBehaviour
         }
 
         LV.text = $"LV.{++CurLevel}";
-        ExpSub = ExpSub * 0.9f;
+        ExpSub = ExpSub * 0.95f;
 
 
         LevelUP.gameObject.SetActive(true);

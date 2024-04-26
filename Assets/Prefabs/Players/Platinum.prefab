@@ -234,6 +234,12 @@ MonoBehaviour:
   AttackRange: 10
   HPBar: {fileID: 8779761122903462783}
   Bullet: {fileID: -795090753, guid: be71ba11fdd30ef4a8cdedfbee810110, type: 3}
+  BL:
+    Start: {r: 1, g: 1, b: 1, a: 0.8}
+    End: {r: 1, g: 1, b: 1, a: 0}
+    StartWidth: 0.2
+    EndWidth: 0
+    Time: 0.2
 --- !u!95 &2093236535252301168
 Animator:
   serializedVersion: 4
