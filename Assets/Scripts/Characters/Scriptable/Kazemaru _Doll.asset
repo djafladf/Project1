@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Kazemaru _Doll
   m_EditorClassIdentifier: 
   speed: 5
-  InitHP: 100
+  InitHP: 250
   InitSP: 30
-  InitDefense: 5
+  InitDefense: 20
+  Cost: 0
+  ReBatchTime: 0

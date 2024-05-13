@@ -171,10 +171,10 @@ TextureImporter:
       name: Effects_4
       rect:
         serializedVersion: 2
-        x: 354
-        y: 493
-        width: 220
-        height: 140
+        x: 374
+        y: 500
+        width: 177
+        height: 133
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,12 +192,12 @@ TextureImporter:
       name: Effects_5
       rect:
         serializedVersion: 2
-        x: 643
+        x: 645
         y: 568
-        width: 188
+        width: 186
         height: 180
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.6}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

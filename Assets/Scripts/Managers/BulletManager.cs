@@ -74,7 +74,7 @@ public class BulletManager : MonoBehaviour
     /// <param name="IsEnemy"> Is Enemy </param>
     /// <param name="debuffInfo"> About DeBuff </param>
     public void MakeBullet(BulletInfo Info, int Penetrate, Vector3 Start, Vector3 Dir, float speed, bool IsEnemy,
-        Sprite im = null, DeBuff debuffInfo = null,BulletLine BL = null, RuntimeAnimatorController anim = null)
+        Sprite im = null, DeBuff debuffInfo = null,BulletLine BL = null, RuntimeAnimatorController anim = null, float delay = 0)
     {
         for(int i = 0; i < 200; i++)
         {
@@ -83,7 +83,7 @@ public class BulletManager : MonoBehaviour
                 Bullets[i].SetActive(true);
                 Bullets[i].transform.position = Start; Dir.z = 0;
                 Bullets[i].transform.rotation = Quaternion.FromToRotation(Vector3.up, Dir * speed);
-                BulletScripts[i].Init_Attack(Penetrate, Dir * speed,false,IsEnemy,0,im,BL,anim);
+                BulletScripts[i].Init_Attack(Penetrate, Dir * speed,false,IsEnemy,0,Info.ScaleFactor,im,BL,anim,delay:delay);
                 BulletInfos[i] = Info;
                 break;
             }
@@ -110,13 +110,13 @@ public class BulletManager : MonoBehaviour
                 Bullets[i].transform.position = Start; Dir.z = 0;
                 Bullets[i].transform.rotation = Quaternion.FromToRotation(Vector3.up, Dir);
                 BulletInfos[i] = Info;
-                BulletScripts[i].Init_Attack(-1, Dir * speed, true, IsEnemy, AfterTime, im, Anim:Anim);
+                BulletScripts[i].Init_Attack(-1, Dir * speed, true, IsEnemy, AfterTime, Info.ScaleFactor, im, Anim:Anim);
                 break;
             }
         }
     }
 
-    public void MakeBoom(BulletInfo Info, BulletInfo After, Vector3 Start, Vector3 Dir, float Speed, Sprite im, Sprite HitIm, bool IsEnemy, DeBuff debuffInfo = null)
+    public void MakeBoom(BulletInfo Info, BulletInfo After, Vector3 Start, Vector3 Dir, float Speed, Sprite im, Sprite HitIm, bool IsEnemy, DeBuff debuffInfo = null,BulletLine BL = null,float delay = 0)
     {
         for (int i = 0; i < 200; i++)
         {
@@ -126,7 +126,7 @@ public class BulletManager : MonoBehaviour
                 Bullets[i].transform.position = Start; Dir.z = 0;
                 Bullets[i].transform.rotation = Quaternion.FromToRotation(Vector3.up, Dir);
                 BulletInfos[i] = Info;
-                BulletScripts[i].Init_Explode(After, Dir * Speed,IsEnemy,im,HitIm);
+                BulletScripts[i].Init_Explode(After, Dir * Speed,IsEnemy,im,HitIm,BL : BL,delay:delay);
                 break;
             }
         }

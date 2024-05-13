@@ -5864,7 +5864,7 @@ RectTransform:
   m_Children:
   - {fileID: 8712970481818257480}
   m_Father: {fileID: 2608859501639022098}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -16570,6 +16570,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 641901507}
   m_CullTransparentMesh: 1
+--- !u!1 &655613209
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 655613210}
+  - component: {fileID: 655613211}
+  m_Layer: 0
+  m_Name: EM_Test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &655613210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655613209}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2608859501639022098}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &655613211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655613209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d46787ec06292047a638c0f17c95db7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyTypes:
+  - {fileID: 1788775384281307603, guid: fac04da8f4aef134cb2cafd0eb5dcaa6, type: 3}
+  BossSet: {fileID: 981838648}
+  PoolSize: 01000000
+  CurActive: 0
+  Stages:
+  - spawninfo:
+    - id: 0
+      start: 0
+      end: 1000
+      respawn: 1000
+      IsBoss: 0
 --- !u!1 &684812035
 GameObject:
   m_ObjectHideFlags: 0
@@ -25363,7 +25419,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2608859501639022098}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1639744322
 MonoBehaviour:
@@ -28199,7 +28255,7 @@ RectTransform:
   - {fileID: 1176065430}
   - {fileID: 684812036}
   m_Father: {fileID: 2608859501639022098}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -31145,6 +31201,7 @@ Transform:
   - {fileID: 2730933774040156899}
   - {fileID: 8712970480672412367}
   - {fileID: 8712970481732150842}
+  - {fileID: 655613210}
   - {fileID: 217345456}
   - {fileID: 2034442018311823064}
   - {fileID: 8712970480357911307}
@@ -31242,6 +31299,21 @@ MonoBehaviour:
       dragons: 0
       special: -1
       hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   - name: "\uBC29\uC5B4\uB825 \uC99D\uAC00"
     operatorid: 0
     lv: 1
@@ -31263,6 +31335,21 @@ MonoBehaviour:
       GoodsEarn: 0
       dragons: 0
       special: -1
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
       hp: 0
   - name: "\uCCB4\uB825 \uC99D\uAC00"
     operatorid: 0
@@ -31286,6 +31373,21 @@ MonoBehaviour:
       dragons: 0
       special: -1
       hp: 0.01
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   - name: "\uC774\uB3D9\uC18D\uB3C4 \uC99D\uAC00"
     operatorid: 0
     lv: 1
@@ -31308,6 +31410,21 @@ MonoBehaviour:
       dragons: 0
       special: -1
       hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   - name: "\uACF5\uACA9\uC18D\uB3C4 \uC99D\uAC00"
     operatorid: 0
     lv: 1
@@ -31329,6 +31446,21 @@ MonoBehaviour:
       GoodsEarn: 0
       dragons: 0
       special: -1
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
       hp: 0
   AttackStat: {fileID: 20471348}
   HealthStat: {fileID: 1356746248}
@@ -31380,7 +31512,7 @@ RectTransform:
   - {fileID: 1569629502}
   - {fileID: 8712970482044691818}
   m_Father: {fileID: 2608859501639022098}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -31500,8 +31632,8 @@ MonoBehaviour:
   - {fileID: 1326594187, guid: da89a1d9caa361e4da2d7a39ab6c0cc8, type: 3}
   - {fileID: 622535322, guid: da89a1d9caa361e4da2d7a39ab6c0cc8, type: 3}
   Money: {fileID: -1722404935, guid: da89a1d9caa361e4da2d7a39ab6c0cc8, type: 3}
-  Stone: {fileID: -2059946933, guid: da89a1d9caa361e4da2d7a39ab6c0cc8, type: 3}
-  RefinedStone: {fileID: 1954973654, guid: da89a1d9caa361e4da2d7a39ab6c0cc8, type: 3}
+  Stone: {fileID: 1954973654, guid: da89a1d9caa361e4da2d7a39ab6c0cc8, type: 3}
+  RefinedStone: {fileID: -2059946933, guid: da89a1d9caa361e4da2d7a39ab6c0cc8, type: 3}
   ItemPref: {fileID: 5943220708961367044, guid: 658e3d021b4353444a1107be67fe738f, type: 3}
   MaxItem: 250
 --- !u!1 &8712970480672412401

@@ -33,7 +33,7 @@ public class ShopManager : MonoBehaviour
         for(int i = 0; i < GameManager.instance.gameStatus.Stat.Length; i++)
         {
             int cnt = GameManager.instance.gameStatus.Stat[i];
-            UpLevels[i].text = $"LV.{(cnt == 10 ? "MAX" : cnt)}";
+            UpLevels[i].text = cnt == 10 ? "<color=red>MAX</color>" : $"{cnt} / <color=red>10</color>";
             UpCosts[i].text = $"{Costs[cnt]}";
             SoldOut[i].SetActive(cnt == 10);
             UpBTs[i].enabled = !(cnt == 10);
@@ -49,7 +49,7 @@ public class ShopManager : MonoBehaviour
             GameManager.instance.gameStatus.Objects[0] -= Costs[cnt++];
             Objects[0].text = $"{GameManager.instance.gameStatus.Objects[0]}";
             GameManager.instance.gameStatus.Stat[ind]++;
-            UpLevels[ind].text = $"LV.{(cnt == 10 ? "MAX" : cnt)}";
+            UpLevels[ind].text = cnt == 10 ? "<color=red>MAX</color>" : $"{cnt} / <color=red>10</color>";
             UpCosts[ind].text = $"{Costs[cnt]}";
             SoldOut[ind].SetActive(cnt == 10);
             UpBTs[ind].enabled = !(cnt == 10);

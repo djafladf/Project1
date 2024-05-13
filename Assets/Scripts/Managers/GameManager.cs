@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
 
     [NonSerialized] public string PlayerName = "Amiya";
     public attribute PlayerStatus;
+    public attribute EnemyStatus;
     attribute InitPlayerStatus;
 
     public GameStatus gameStatus;

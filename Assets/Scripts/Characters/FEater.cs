@@ -6,7 +6,9 @@ public class FEater : PlayerSetting
 {
     [SerializeField] Sprite Spec;
     [SerializeField] ParticleSystem HitEffect;
-    int Power = 1;
+    int Power = 5;
+
+    float ScaleF = 2;
 
     protected override void AttackMethod()
     {
@@ -14,7 +16,7 @@ public class FEater : PlayerSetting
         HitEffect.gameObject.transform.position = TargetPos.position;
         HitEffect.Play();
         GameManager.instance.BM.MakeMeele(
-            new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10),false,Power), 0.2f, 
+            new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10),false,Power,scalefactor:ScaleF), 0.2f, 
             TargetPos.position + Gap, -player.Dir, 0, false);
     }
 
@@ -33,15 +35,17 @@ public class FEater : PlayerSetting
     float DamageRatio = 2f;
 
 
+
+
     protected override int WeaponLevelUp()
     {
         switch (player.WeaponLevel++)
         {
-            case 1: DamageRatio += 0.5f; break;
-            case 2: Power++; break;
-            case 3: DamageRatio ++; break;
-            case 4: Power++; break;
-            case 5: DamageRatio ++; break;
+            case 1: DamageRatio += 1f; break;
+            case 2: Power+=5; break;
+            case 3: ScaleF = 3; HitEffect.transform.localScale = Vector3.one; AttackRange = 3; break;
+            case 4: Power+=5; break;
+            case 5: DamageRatio += 1.5f; break;
             case 6: player.anim.SetBool("IsSpecial",true); break;
         }
         return player.WeaponLevel;

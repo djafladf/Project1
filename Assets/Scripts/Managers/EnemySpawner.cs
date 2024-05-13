@@ -161,7 +161,6 @@ public class EnemySpawner : MonoBehaviour
         }
     }*/
 
-    int BatchCall = 0;
     public Vector3 ReBatchCall()
     {
         return SpawnArea[Random.Range(0,SpawnAreaSize)];

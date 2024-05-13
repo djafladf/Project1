@@ -7,7 +7,6 @@ public class Wafarin :PlayerSetting
     [SerializeField] Sprite Bullet;
     [SerializeField] BulletLine BL;
     [SerializeField] GameObject Pond;
-    [SerializeField] bool Test = false;
 
     protected override void Awake()
     {

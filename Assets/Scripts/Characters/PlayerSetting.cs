@@ -261,10 +261,10 @@ public class PlayerSetting : MonoBehaviour
         HPBar.fillAmount = 1;
         player.AttackSpeed = player.MaxAttackSpeed;
         player.anim.SetFloat("AttackSpeed", player.MaxAttackSpeed + GameManager.instance.PlayerStatus.attackspeed);
-
+        CanMove = false;
         if (!IsPlayer)
         {
-            CanMove = false;
+            
             player.anim.SetBool("IsAttack", false);
             if (!IsSummon)
             {

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Manticore
   m_EditorClassIdentifier: 
   speed: 2
-  InitHP: 150
+  InitHP: 250
   InitSP: 30
-  InitDefense: 0
+  InitDefense: 15
   Cost: 15
   ReBatchTime: 70

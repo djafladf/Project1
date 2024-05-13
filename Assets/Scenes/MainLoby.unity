@@ -354,10 +354,10 @@ RectTransform:
   m_Father: {fileID: 520549332}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 2275, y: -275}
-  m_SizeDelta: {x: 400, y: 400}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &57922326
 MonoBehaviour:
@@ -513,8 +513,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -577,7 +577,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &71240786
@@ -1030,8 +1030,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 50000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1055,10 +1055,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 100
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 60
   m_fontSizeMax: 100
   m_fontStyle: 0
@@ -1332,8 +1332,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 50000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1357,12 +1357,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 100
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 1
-  m_fontSizeMin: 60
-  m_fontSizeMax: 100
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 45
+  m_fontSizeMax: 50
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1619,8 +1619,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 5000000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1644,12 +1644,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 75
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
-  m_fontSizeMax: 75
+  m_fontSizeMax: 60
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1754,8 +1754,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: LV.MAX
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2552,8 +2552,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 5000000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2577,12 +2577,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 75
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
-  m_fontSizeMax: 75
+  m_fontSizeMax: 60
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -2935,7 +2935,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2999,7 +2999,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &260579908
@@ -3070,8 +3070,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3134,7 +3134,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &261520106
@@ -3653,10 +3653,10 @@ RectTransform:
   m_Father: {fileID: 520549332}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 775, y: -275}
-  m_SizeDelta: {x: 400, y: 400}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &307347090
 MonoBehaviour:
@@ -3812,8 +3812,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uBC29\uC5B4\uB825 \uC99D\uAC00"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3927,10 +3927,10 @@ RectTransform:
   m_Father: {fileID: 520549332}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1775, y: -725}
-  m_SizeDelta: {x: 400, y: 400}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &342494640
 MonoBehaviour:
@@ -4313,6 +4313,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 364311075}
   m_CullTransparentMesh: 1
+--- !u!1001 &368653006
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7529310201199820977, guid: b4a0eaaa920696c4a8f99be05f411517, type: 3}
+      propertyPath: m_Name
+      value: Sora
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529310201199820977, guid: b4a0eaaa920696c4a8f99be05f411517, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529310201199820989, guid: b4a0eaaa920696c4a8f99be05f411517, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529310201199820989, guid: b4a0eaaa920696c4a8f99be05f411517, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1249.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529310201199820989, guid: b4a0eaaa920696c4a8f99be05f411517, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -723.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529310201199820989, guid: b4a0eaaa920696c4a8f99be05f411517, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529310201199820989, guid: b4a0eaaa920696c4a8f99be05f411517, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529310201199820989, guid: b4a0eaaa920696c4a8f99be05f411517, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529310201199820989, guid: b4a0eaaa920696c4a8f99be05f411517, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529310201199820989, guid: b4a0eaaa920696c4a8f99be05f411517, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529310201199820989, guid: b4a0eaaa920696c4a8f99be05f411517, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529310201199820989, guid: b4a0eaaa920696c4a8f99be05f411517, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529310201199820989, guid: b4a0eaaa920696c4a8f99be05f411517, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b4a0eaaa920696c4a8f99be05f411517, type: 3}
 --- !u!1 &370108738
 GameObject:
   m_ObjectHideFlags: 0
@@ -4424,10 +4485,10 @@ RectTransform:
   m_Father: {fileID: 1736766727}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 2133.3333, y: -237.5}
-  m_SizeDelta: {x: 853.3333, y: 125}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &373571418
 MonoBehaviour:
@@ -4628,10 +4689,10 @@ RectTransform:
   m_Father: {fileID: 520549332}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 775, y: -725}
-  m_SizeDelta: {x: 400, y: 400}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &386444133
 MonoBehaviour:
@@ -4787,8 +4848,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC7AC\uBC30\uCE58\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4851,7 +4912,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &404821015
@@ -5091,8 +5152,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: <
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bb1b648ca2f7a3447abecc94dfd8f201, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: bb1b648ca2f7a3447abecc94dfd8f201, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5226,8 +5287,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 50000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5251,10 +5312,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 100
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 60
   m_fontSizeMax: 100
   m_fontStyle: 0
@@ -5491,7 +5552,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: -105}
+  m_AnchoredPosition: {x: 200, y: -120}
   m_SizeDelta: {x: 650, y: 91.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &457047706
@@ -5514,10 +5575,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u3141"
+  m_text: "\uC778\n\uB0E5"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5738,6 +5799,7 @@ MonoBehaviour:
   - Platinum
   - Rosmontis
   - Wafarin
+  - Sora
   PlayerStatus:
     attack: 0
     attackspeed: 0
@@ -5748,6 +5810,21 @@ MonoBehaviour:
     pickup: 1
     selection: 3
     exp: 1
+    heal: 0
+    GoodsEarn: 0
+    dragons: 0
+    special: 0
+    hp: 0
+  EnemyStatus:
+    attack: 0
+    attackspeed: 0
+    defense: 0
+    speed: 0
+    power: 0
+    cost: 0
+    pickup: 0
+    selection: 0
+    exp: 0
     heal: 0
     GoodsEarn: 0
     dragons: 0
@@ -6534,8 +6611,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: LV.MAX
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6803,7 +6880,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uBB34\uAE30"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -6867,7 +6944,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &597580782
@@ -7007,7 +7084,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &637486955
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7157,8 +7234,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 50000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7182,10 +7259,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 100
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 60
   m_fontSizeMax: 100
   m_fontStyle: 0
@@ -7521,8 +7598,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC2B5\uB4DD\uBC94\uC704 \uC99D\uAC00"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7868,8 +7945,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uCCB4\uB825 \uC99D\uAC00"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7983,10 +8060,10 @@ RectTransform:
   m_Father: {fileID: 520549332}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1775, y: -275}
-  m_SizeDelta: {x: 400, y: 400}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &804983306
 MonoBehaviour:
@@ -8767,7 +8844,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: 45.75}
+  m_AnchoredPosition: {x: 200, y: 47.5}
   m_SizeDelta: {x: 650, y: 91.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &888132728
@@ -8790,10 +8867,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u3141"
+  m_text: "\uC548\n\uB155\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9543,7 +9620,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: -29.5}
+  m_AnchoredPosition: {x: 180, y: -32.5}
   m_SizeDelta: {x: 650, y: 57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1040982398
@@ -9593,8 +9670,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
-  m_fontSizeBase: 70
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9915,10 +9992,10 @@ RectTransform:
   m_Father: {fileID: 520549332}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 275, y: -725}
-  m_SizeDelta: {x: 400, y: 400}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1069454325
 MonoBehaviour:
@@ -10074,8 +10151,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uCF54\uC2A4\uD2B8 \uD68C\uBCF5\uC18D\uB3C4 \uC99D\uAC00"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10209,8 +10286,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 50000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10234,10 +10311,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 100
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 60
   m_fontSizeMax: 100
   m_fontStyle: 0
@@ -10421,8 +10498,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 50000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10446,10 +10523,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 100
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 60
   m_fontSizeMax: 100
   m_fontStyle: 0
@@ -10556,8 +10633,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC7AC\uD654 \uC2B5\uB4DD\uB7C9 \uC99D\uAC00"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10769,8 +10846,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: LV.MAX
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11206,8 +11283,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 50000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11231,10 +11308,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 100
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 60
   m_fontSizeMax: 100
   m_fontStyle: 0
@@ -11339,10 +11416,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LV.MAX
+  m_text: 9/10
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11552,8 +11629,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 50000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11577,10 +11654,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 100
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 60
   m_fontSizeMax: 100
   m_fontStyle: 0
@@ -11822,8 +11899,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC774\uB3D9\uC18D\uB3C4 \uC99D\uAC00"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -12439,8 +12516,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -12631,10 +12708,10 @@ RectTransform:
   m_Father: {fileID: 520549332}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 275, y: -275}
-  m_SizeDelta: {x: 400, y: 400}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1392447470
 MonoBehaviour:
@@ -12790,8 +12867,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uCD08\uAE30 \uCF54\uC2A4\uD2B8 \uC99D\uAC00"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13335,10 +13412,10 @@ RectTransform:
   m_Father: {fileID: 520549332}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1275, y: -275}
-  m_SizeDelta: {x: 400, y: 400}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1447431626
 MonoBehaviour:
@@ -13905,8 +13982,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13969,7 +14046,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1473818448
@@ -13997,7 +14074,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1500418716
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14192,8 +14269,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC624\uD37C\uB808\uC774\uD130 \uAC15\uD654"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bb1b648ca2f7a3447abecc94dfd8f201, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: bb1b648ca2f7a3447abecc94dfd8f201, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14307,10 +14384,10 @@ RectTransform:
   m_Father: {fileID: 520549332}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1275, y: -725}
-  m_SizeDelta: {x: 400, y: 400}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1515082540
 MonoBehaviour:
@@ -14593,10 +14670,10 @@ RectTransform:
   m_Father: {fileID: 1736766727}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 426.66666, y: -237.5}
-  m_SizeDelta: {x: 853.3333, y: 125}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1550335101
 MonoBehaviour:
@@ -15027,8 +15104,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: LV.MAX
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -15162,8 +15239,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 50000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -15187,10 +15264,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 100
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 60
   m_fontSizeMax: 100
   m_fontStyle: 0
@@ -15297,8 +15374,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 5000000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -15322,12 +15399,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 75
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
-  m_fontSizeMax: 75
+  m_fontSizeMax: 60
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -15916,8 +15993,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uACF5\uACA9\uB825 \uC99D\uAC00"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -16575,7 +16652,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC2A4\uD14C\uC774\uD130\uC2A4"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -16639,7 +16716,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1785842583
@@ -16708,10 +16785,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LV.MAX
+  m_text: MAX
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -16845,8 +16922,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 50000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -16870,10 +16947,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 100
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 60
   m_fontSizeMax: 100
   m_fontStyle: 0
@@ -16980,8 +17057,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC2A4\uD0EF \uC5C5\uADF8\uB808\uC774\uB4DC"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bb1b648ca2f7a3447abecc94dfd8f201, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: bb1b648ca2f7a3447abecc94dfd8f201, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -17090,10 +17167,10 @@ RectTransform:
   m_Father: {fileID: 1736766727}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1280, y: -237.5}
-  m_SizeDelta: {x: 853.3333, y: 125}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1816518557
 MonoBehaviour:
@@ -17412,8 +17489,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: LV.MAX
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -17584,8 +17661,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uACBD\uD5D8\uCE58 \uD68D\uB4DD\uB7C9 \uC99D\uAC00"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -17928,8 +18005,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: LV.MAX
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -18139,8 +18216,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC624\uB85C\uB77C\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bb1b648ca2f7a3447abecc94dfd8f201, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: bb1b648ca2f7a3447abecc94dfd8f201, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -18203,7 +18280,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1908305901
@@ -18325,7 +18402,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: 120}
+  m_AnchoredPosition: {x: 180, y: 130}
   m_SizeDelta: {x: 650, y: 57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1919288955
@@ -18375,8 +18452,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
-  m_fontSizeBase: 70
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -18638,8 +18715,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: LV.MAX
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -18773,8 +18850,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC624\uB9AC\uC9C0\uB284"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bb1b648ca2f7a3447abecc94dfd8f201, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: bb1b648ca2f7a3447abecc94dfd8f201, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -19381,8 +19458,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: LV.MAX
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -20194,8 +20271,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uACF5\uACA9\uC18D\uB3C4 \uC99D\uAC00"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: 520253664ed33d44a96ea76667ff02d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -20329,8 +20406,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC624\uB85C\uB77C\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
-  m_sharedMaterial: {fileID: -7958904625790601858, guid: 8018f79c9429b2c43bcf1e06da7f1674, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bb1b648ca2f7a3447abecc94dfd8f201, type: 2}
+  m_sharedMaterial: {fileID: -7579918979784517446, guid: bb1b648ca2f7a3447abecc94dfd8f201, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -20393,7 +20470,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2094844863
@@ -20658,10 +20735,10 @@ RectTransform:
   m_Father: {fileID: 520549332}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 2275, y: -725}
-  m_SizeDelta: {x: 400, y: 400}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2122484705
 MonoBehaviour:
@@ -21076,12 +21153,13 @@ MonoBehaviour:
   - Platinum
   - Rosmontis
   - Wafarin
+  - Sora
   Items:
   - name: "\uB9C1\uACE0\uC9F1"
     operatorid: 0
     lv: 1
     description:
-    - "\uCF54\uC2A4\uD2B8 \uD68C\uBCF5 \uC18D\uB3C4 25% \uC99D\uAC00"
+    - "\uCF54\uC2A4\uD2B8 \uD68C\uBCF5 \uC18D\uB3C4 15% \uC99D\uAC00"
     extra: "\uBAA8\uB4E0 \uC18C\uC6D0\uC744 \uC774\uB904\uC900\uB2E4\uB294 \uC804\uC124\uC758
       \uC0AC\uACFC.. \uC77C\uC9C0\uB3C4?"
     sprite: {fileID: -397090658, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
@@ -21092,6 +21170,21 @@ MonoBehaviour:
       speed: 0
       power: 0
       cost: 0.25
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
       pickup: 0
       selection: 0
       exp: 0
@@ -21123,14 +21216,30 @@ MonoBehaviour:
       dragons: 0
       special: 0
       hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   - name: "\uC758\uB8CC \uD658\uACBD \uBD84\uC11D \uC7A5\uCE58"
     operatorid: 0
     lv: 1
     description:
-    - "\uBAA8\uB4E0 \uD68C\uBCF5\uB7C9 20% \uC99D\uAC00"
+    - "\uBAA8\uB4E0 \uD68C\uBCF5\uB7C9 10% \uC99D\uAC00"
     extra: "\uC624\uB9AC\uC9C0\uB284 \uC548\uC5D0\uB294 \uBC29\uB300\uD55C \uC591\uC758
       \uC815\uBCF4\uAC00 \uC788\uB2E4\uACE0 \uD55C\uB2E4.\n\uADF8 \uC815\uBCF4\uB97C
-      \uC0AC\uB78C\uC758 \uB450\uB1CC\uC5D0 \uB123\uB294\uB2E4\uBA74 \uC5B4\uB5A8\uAEBC\uAC19\uC544?"
+      \uC0AC\uB78C\uC758 \uB450\uB1CC\uC5D0 \uB123\uB294\uB2E4\uBA74 \uC5B4\uB5A8\uAEBC
+      \uAC19\uB098?"
     sprite: {fileID: 678453624, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
     attributes:
       attack: 0
@@ -21142,7 +21251,22 @@ MonoBehaviour:
       pickup: 0
       selection: 0
       exp: 0
-      heal: 0.2
+      heal: 1
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
       GoodsEarn: 0
       dragons: 0
       special: 0
@@ -21163,6 +21287,21 @@ MonoBehaviour:
       power: 0
       cost: 0
       pickup: 0.3
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
       selection: 0
       exp: 0
       heal: 0
@@ -21194,6 +21333,21 @@ MonoBehaviour:
       dragons: 0
       special: 0
       hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   - name: "\uB4DC\uB798\uACE4 \uBC84\uBE14 \uC778\uD615(\uC2DC)"
     operatorid: 0
     lv: 1
@@ -21216,6 +21370,21 @@ MonoBehaviour:
       heal: 0
       GoodsEarn: 0
       dragons: 1
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
       special: 0
       hp: 0
   - name: "\uB4DC\uB798\uACE4 \uBC84\uBE14 \uC778\uD615(\uB2C8\uC5D4)"
@@ -21242,6 +21411,21 @@ MonoBehaviour:
       dragons: 2
       special: 0
       hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   - name: "\uB4DC\uB798\uACE4 \uBC84\uBE14 \uC778\uD615(\uB9C1)"
     operatorid: 0
     lv: 1
@@ -21266,6 +21450,21 @@ MonoBehaviour:
       dragons: 3
       special: 0
       hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   - name: "\uB4DC\uB798\uACE4 \uBC84\uBE14 \uC778\uD615(\uCD1D\uC6E8)"
     operatorid: 0
     lv: 1
@@ -21287,6 +21486,21 @@ MonoBehaviour:
       heal: 0
       GoodsEarn: 0
       dragons: 4
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
       special: 0
       hp: 0
   - name: "\uB4DC\uB798\uACE4 \uBC84\uBE14 \uC778\uD615(\uC288)"
@@ -21313,6 +21527,21 @@ MonoBehaviour:
       dragons: 5
       special: 0
       hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   - name: "\uB204\uAD70\uAC00\uC758 \uC218\uCCA9"
     operatorid: 0
     lv: 1
@@ -21337,17 +21566,47 @@ MonoBehaviour:
       dragons: 0
       special: 1
       hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   - name: "\uAE30\uC0AC\uACC4\uC728-\uC2E0\uD310"
     operatorid: 0
     lv: 1
     description:
-    - "\uACF5\uACA9\uC18D\uB3C4\uAC00 15% \uC99D\uAC00\uD55C\uB2E4."
+    - "\uACF5\uACA9\uC18D\uB3C4 10% \uC99D\uAC00"
     extra: "\uBA85\uC608\uB85C\uC6B4 \uAE30\uC0AC\uAC00 \uB418\uC2E0 \uAC83\uC744
       \uD658\uC601\uD569\uB2C8\uB2E4."
     sprite: {fileID: -828106274, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
     attributes:
       attack: 0
-      attackspeed: 0.15
+      attackspeed: 0.1
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
       defense: 0
       speed: 0
       power: 0
@@ -21369,9 +21628,24 @@ MonoBehaviour:
     sprite: {fileID: 1269430726, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
     attributes:
       attack: 0.1
-      attackspeed: 0.05
+      attackspeed: 0
       defense: 0
       speed: 0.1
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
       power: 0
       cost: 0
       pickup: 0
@@ -21404,11 +21678,26 @@ MonoBehaviour:
       dragons: 0
       special: 2
       hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   - name: "\uCD5C\uC2E0\uC2DD \uC11C\uBC84 \uC7A5\uBE44 MK.1"
     operatorid: 0
     lv: 1
     description:
-    - "\uACBD\uD5D8\uCE58 \uD68D\uB4DD\uB7C9 20% \uC99D\uAC00"
+    - "\uACBD\uD5D8\uCE58 \uD68D\uB4DD\uB7C9 10% \uC99D\uAC00"
     extra: "\uD55C \uB54C \uC138\uACC4\uB97C \uC8FC\uB984\uC7A1\uB358 \uCD5C\uC2E0\uC2DD
       \uC11C\uBC84\uC7A5\uBE44!\n<\uCDE8\uAE09 \uC8FC\uC758> \uC808\uB300 \uC12D\uCDE8\uD558\uC9C0
       \uB9D0 \uAC83"
@@ -21422,7 +21711,22 @@ MonoBehaviour:
       cost: 0
       pickup: 0
       selection: 0
-      exp: 0.2
+      exp: 0.1
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
       heal: 0
       GoodsEarn: 0
       dragons: 0
@@ -21432,7 +21736,7 @@ MonoBehaviour:
     operatorid: 0
     lv: 1
     description:
-    - "\uACBD\uD5D8\uCE58 \uD68D\uB4DD\uB7C9 25% \uC99D\uAC00"
+    - "\uACBD\uD5D8\uCE58 \uD68D\uB4DD\uB7C9 15% \uC99D\uAC00"
     extra: "\uAE30\uC874\uC758 \uC11C\uBC84 \uC7A5\uBE44\uBCF4\uB2E4 \uB354\uC6B1\uB354
       \uD5A5\uC0C1\uB41C \uC11C\uBC84 \uC7A5\uBE44!\n<\uCDE8\uAE09 \uC8FC\uC758>
       \uC808\uB300 \uC12D\uCDE8\uD558\uC9C0 \uB9D0 \uAC83"
@@ -21446,7 +21750,22 @@ MonoBehaviour:
       cost: 0
       pickup: 0
       selection: 0
-      exp: 0.25
+      exp: 0.15
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
       heal: 0
       GoodsEarn: 0
       dragons: 0
@@ -21476,19 +21795,49 @@ MonoBehaviour:
       dragons: 0
       special: 0
       hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   - name: "\uC6D0\uC554 \uD050\uBE0C"
     operatorid: 0
     lv: 1
     description:
     - "\uBC29\uC5B4\uB825 10% \uC99D\uAC00"
-    extra: "\uD14C\uB77C\uC5D0\uC11C \uAC00\uC7A5 \uC778\uAE30\uAC00 \uB9CE\uB2E4\uB294
-      \uBA39\uAC70\uB9AC \uC911 \uD558\uB098!\n\uB108\uBB34 \uC778\uAE30\uAC00 \uB9CE\uC544\uC11C
+    extra: "\uD14C\uB77C\uC5D0\uC11C \uAC00\uC7A5 \uC778\uAE30\uAC00 \uB9CE\uC740
+      \uC601\uC591 \uAC04\uC2DD!\n\uB108\uBB34 \uC778\uAE30\uAC00 \uB9CE\uC544\uC11C
       \uD56D\uC0C1 \uBD80\uC871\uD558\uB2E4\uACE0 \uD55C\uB2E4."
     sprite: {fileID: 241251011, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
     attributes:
       attack: 0
       attackspeed: 0
       defense: 0.1
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
       speed: 0
       power: 0
       cost: 0
@@ -21507,7 +21856,7 @@ MonoBehaviour:
     - "\uCCB4\uB825 10% \uC99D\uAC00"
     extra: "\uC815\uB9D0 \uB9DB\uC788\uC5B4\uBCF4\uC774\uB294 \uB85C\uB3C4\uC2A4
       \uD2B9\uC81C \uD30C\uB974\uD398\n\uD55C \uC785 \uBA39\uB294 \uC21C\uAC04 \uB204\uAD70\uAC00\uC758
-      \uAC15\uB82C\uD55C \uC2DC\uC120\uC774 \uB290\uAEF4\uC9C4\uB2E4"
+      \uAC15\uB82C\uD55C \uC2DC\uC120\uC774 \uB290\uAEF4\uC9C4\uB2E4\uACE0"
     sprite: {fileID: -421338576, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
     attributes:
       attack: 0
@@ -21524,6 +21873,21 @@ MonoBehaviour:
       dragons: 0
       special: 0
       hp: 0.1
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   - name: "\uB3CC\uACE0\uB798 \uC778\uD615"
     operatorid: 0
     lv: 1
@@ -21535,6 +21899,21 @@ MonoBehaviour:
     sprite: {fileID: -1689662322, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
     attributes:
       attack: 0.15
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
       attackspeed: 0
       defense: 0
       speed: 0
@@ -21571,6 +21950,21 @@ MonoBehaviour:
       dragons: 0
       special: 3
       hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   - name: "\uBD80\uD45C"
     operatorid: 0
     lv: 1
@@ -21581,6 +21975,21 @@ MonoBehaviour:
     sprite: {fileID: -2116539596, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
     attributes:
       attack: 0.2
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
       attackspeed: 0
       defense: 0
       speed: 0
@@ -21617,6 +22026,21 @@ MonoBehaviour:
       dragons: 0
       special: 0
       hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   - name: "\uC2DC\uC81C\uD488 \uCD08\uCF5C\uB9BF"
     operatorid: 0
     lv: 1
@@ -21640,18 +22064,920 @@ MonoBehaviour:
       dragons: 0
       special: 0
       hp: 0.1
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   - name: "\uB0B4\uAC00 \uB9CC\uB4E0 \uCE7C!"
     operatorid: 0
     lv: 1
     description:
-    - "\uACF5\uACA9\uC18D\uB3C4 15% \uC99D\uAC00"
+    - "\uACF5\uACA9\uC18D\uB3C4 10% \uC99D\uAC00"
     extra: "\"\uB0B4\uAC00 \uB9CC\uB4E0 \uB450\uAECD\uACE0 \uB2E8\uB2E8\uD55C \uCE7C!
       \uC5B4\uB9C8\uBB34\uC2DC\uD55C \uBC88\uAC1C\uB3C4 \uB0B4\uBFDC\uB294\uB2E4\uAD6C?\"\n\uB77C\uACE0
       \uD55C\uB2E4"
     sprite: {fileID: -142223269, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
     attributes:
       attack: 0
-      attackspeed: 0.15
+      attackspeed: 0.1
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uBE45\uD1A0\uB9AC\uC544\uC758 \uAE43\uBC1C"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uCF54\uC2A4\uD2B8 \uD68C\uBCF5 \uC18D\uB3C4 15% \uC99D\uAC00"
+    extra: "\uBE45\uD1A0\uB9AC\uC544\uB294 \uC774 \uAE43\uBC1C \uC544\uB798 \uC601\uC6D0\uD558\uB9AC\n<\uCE74\uC988\uB378
+      \uB18D\uB2F4>"
+    sprite: {fileID: 1694148135, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0.15
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uAE34\uAE09 \uD1B5\uC2E0\uAE30"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uCF54\uC2A4\uD2B8 \uD68C\uBCF5 \uC18D\uB3C4 15% \uC99D\uAC00"
+    extra: "\uAE34\uAE09 \uC0C1\uD669\uC5D0 \uC0AC\uC6A9\uD558\uB294 \uD1B5\uC2E0\uAE30\uC9C0\uB9CC..\n\uC5B4\uB290
+      \uC624\uD37C\uB808\uC774\uD130\uAC00 \uC7A5\uB09C\uC6A9\uC73C\uB85C \uC4F4\uB2E4\uACE0
+      \uD55C\uB2E4"
+    sprite: {fileID: 267255935, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0.15
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uB2EB\uD78C \uD76C\uB9DD"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uBAA8\uB4E0 \uD68C\uBCF5\uB7C9 10% \uC99D\uAC00"
+    extra: "\uC5B8\uC820\uAC00 \uB098\uB3C4 \uC800 \uC0C8\uCC98\uB7FC \uB0A0\uAC1C\uB97C
+      \uD3B4\uACE0 \uB0A0\uC544\uAC08 \uC218 \uC788\uC744\uAE4C?"
+    sprite: {fileID: -1352427184, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0.1
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uC804\uAE30 \uC8FC\uC804\uC790"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uCCB4\uB825 10% \uC99D\uAC00"
+    extra: "\uD55C\uBC24\uC911\uC5D0 \uB77C\uBA74\uC744 \uB053\uC5EC\uBA39\uAE30\uC5D0
+      \uC88B\uC740 \uC8FC\uC804\uC790\uB2E4"
+    sprite: {fileID: -229812222, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0.1
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uC624\uB798\uB41C \uC9C0\uB3C4"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uC544\uC774\uD15C \uD68D\uB4DD \uBC94\uC704 30% \uC99D\uAC00"
+    extra: "\uAF64 \uC624\uB798 \uB3FC \uBCF4\uC774\uB294 \uC218\uC81C \uC9C0\uB3C4\n\uC624\uB798\uC804\uC758
+      \uC9C0\uB3C4\uB77C \uAC70\uC758 \uB9DE\uC9C0 \uC54A\uB294\uB2E4"
+    sprite: {fileID: -1829655119, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0.3
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uCC9C\uAD6C"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uC544\uC774\uD15C \uD68D\uB4DD \uBC94\uC704 30% \uC99D\uAC00"
+    extra: "\uAC70\uC9D3\uB41C \uD558\uB298\uACFC \uC9C4\uC2E4\uB41C \uC758\uC9C0"
+    sprite: {fileID: 1692782664, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0.3
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uD638\uC2E0 \uBD80\uC801"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uBC29\uC5B4\uB825 10% \uC99D\uAC00"
+    extra: "\uBC18\uB4DC\uC2DC \uC0B4\uC544\uB0A8\uC544"
+    sprite: {fileID: -1439309640, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0.1
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uBCF4\uBB3C \uBC18\uC9C0"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uC7AC\uD654 \uC2B5\uB4DD\uB7C9 20% \uC99D\uAC00"
+    extra: "\uBAA8\uB4E0 \uBD80\uC640 \uC7AC\uBB3C\uC744 \uB204\uB9AC\uB294 \uC790\uB294
+      \uACB0\uAD6D \uD30C\uBA78\uD558\uB9AC\uB77C"
+    sprite: {fileID: 206012150, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0.2
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uAE08\uBF08 \uC8FC\uC0AC\uC704"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uC801 \uCCB4\uB825 15% \uAC10\uC18C"
+    extra: "\uB2E8 \uD55C\uAC00\uC9C0 \uC5FC\uC6D0\uC744 \uB2F4\uC544 \uC8FC\uC0AC\uC704\uB97C
+      \uB358\uC838\uBD10"
+    sprite: {fileID: -199039970, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: -0.15
+  - name: "\uAC80\uC740 \uC790\uBB3C\uC1E0\uC640 \uD770 \uC5F4\uC1E0"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uC801 \uC774\uB3D9\uC18D\uB3C4 10% \uAC10\uC18C"
+    extra: "\uBAA8\uB4E0 \uC774\uCE58\uB97C \uC7A0\uADF8\uB294 \uAC80\uC740 \uC790\uBB3C\uC1E0\uC640\n\uBAA8\uB4E0
+      \uC9C4\uB9AC\uB97C \uC5EC\uB294 \uC5F4\uC1E0 \uC5F4\uC1E0"
+    sprite: {fileID: -1468707239, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: -0.1
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uB85C\uC988\uBAAC\uD2F0\uC2A4\uC758 \uD3EC\uC639"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uC801 \uBC29\uC5B4\uB825 10% \uAC10\uC18C"
+    extra: "\uC8C4\uC778\uC740 \uD558\uB098 \uC2EC\uD310\uC790\uB294 \uC5EC\uB7FF\n\uB204\uAC00
+      \uADF8\uB97C \uC2EC\uD310\uD560 \uAC83\uC778\uAC00?"
+    sprite: {fileID: 1393431114, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: -0.1
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uB300\uBAA8\uC758 \uC99D\uD45C"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uC801 \uACF5\uACA9\uB825 10% \uAC10\uC18C"
+    extra: "\uADF8\uB140\uC758 \uC55E\uC5D0 \uBB34\uC5C7\uC774\uB4E0 \uBB34\uB98E\uC744
+      \uAFC7\uC73C\uB9AC\uB77C"
+    sprite: {fileID: 485356169, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: -0.1
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uC0C1\uC5B4 \uC778\uD615"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uACF5\uACA9\uC18D\uB3C4 10% \uC99D\uAC00"
+    extra: "\uAE30\uC5B5\uC744 \uC783\uB294 \uC0C1\uC5B4\uC640 \uC0C1\uB0E5\uD55C
+      \uC5EC\uC6B0\uC758 \uC774\uC57C\uAE30"
+    sprite: {fileID: -940125002, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0.1
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uC911\uB825 \uAD50\uC815 \uBAA8\uB4C8"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uC774\uB3D9\uC18D\uB3C4 15% \uC99D\uAC00"
+    extra: "\uD669\uC57C\uC758 \uBA3C\uC9C0\uAC00 \uBA40\uC5B4\uC9C0\uACE0 \uD558\uB298\uC5D0
+      \uB5A0 \uC788\uB294 \uBCC4\uC774 \uC190\uC5D0 \uC7A1\uD790 \uB4EF \uD588\uB2E4"
+    sprite: {fileID: -2064872313, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0.15
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uB3C4\uC11C\uAD00"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uC774\uB3D9\uC18D\uB3C4 15% \uC99D\uAC00"
+    extra: "\uBAA8\uB4E0 \uAC83\uC740 \uADF8\uB4E4\uC758 \uBD80\uB2F4\uC774\uC790
+      \uAE0D\uC9C0\uC774\uB2E4"
+    sprite: {fileID: -748543273, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0.15
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uBB38\uBA85\uC758 \uC874\uC18D"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uACF5\uACA9\uC18D\uB3C4 10% \uC99D\uAC00"
+    extra: "\uB9C8\uC655\uC740 \uBB38\uBA85\uC758 \uC885\uB9D0\uACFC \uBD80\uD765\uC744
+      \uAC00\uC838\uC654\uB2E4\n<\uD2B9\uC815 \uC624\uD37C\uB808\uC774\uD130 \uAC15\uD654>"
+    sprite: {fileID: -807682092, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0.1
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uAE30\uACC4 \uC7A5\uCE58"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uACBD\uD5D8\uCE58 \uD68D\uB4DD\uB7C9 10% \uC99D\uAC00"
+    extra: "\uB300\uB7C9\uC758 \uC804\uC790\uBD80\uD488\uC73C\uB85C \uB9CC\uB4E4\uC5B4\uC9C4
+      \uC7A5\uCE58.\n\uC124\uB9C8 \uC774\uAC78 \uBA39\uC73C\uB824\uB294 \uC0AC\uB78C\uC740
+      \uC5C6\uACA0\uC9C0?"
+    sprite: {fileID: -807682092, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0.1
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uBC8C\uAFC0 \uCFE0\uD0A4"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uCCB4\uB825 10% \uC99D\uAC00"
+    extra: "\uC5B4\uB290 \uC624\uD37C\uB808\uC774\uD130\uAC00 \uAC00\uC7A5 \uC88B\uC544\uD558\uB294
+      \uAC04\uC2DD!\n<size=50%>\uC5EC\uB2F4\uC73C\uB85C \uC778\uAC04\uC0AC\uB8CC\uB77C
+      \uBD88\uB9B0\uB2E4\uACE0 \uD55C\uB2E4..</size>"
+    sprite: {fileID: -1315334508, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0.1
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uB204\uAD70\uAC00\uC758 \uC120\uAE00\uB77C\uC2A4"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uBC29\uC5B4\uB825 10% \uC99D\uAC00"
+    extra: "\uADF8\uC758 \uC720\uC9C0\uB97C \uC78A\uC9C0 \uB9D0\uC790"
+    sprite: {fileID: -2052506085, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0.1
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uD310\uB370\uBAA8\uB2C8\uC5C4"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uACF5\uACA9\uB825 15% \uC99D\uAC00"
+    extra: "\uC9C0\uAE08 \uBA85\uBC29\uC774 \uD3ED! \uBC1C! \uD55C! \uB2E4!"
+    sprite: {fileID: 39370511, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0.15
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uAC15\uC544\uC9C0 \uC778\uD615"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uACBD\uD5D8\uCE58 \uD68D\uB4DD\uB7C9 10% \uC99D\uAC00"
+    extra: "\uC5B4\uB290 \uAE30\uACC4\uB97C \uBCF8\uB534 \uADC0\uC5EC\uC6B4 \uC778\uD615\uC774\uB2E4.\nW\uAC00
+      \uC88B\uC544\uD55C\uB2E4\uB294 \uC18C\uBB38\uC774?"
+    sprite: {fileID: -1872316709, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0.1
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: Mirai
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uACBD\uD5D8\uCE58 \uD68D\uB4DD\uB7C9 15% \uC99D\uAC00"
+    extra: "\uB204\uAD70\uAC00\uC640\uC758 \uC18C\uC911\uD55C \uCD94\uC5B5\uC774
+      \uAE43 \uC778\uD615"
+    sprite: {fileID: -559564423, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0.15
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uD3ED\uB0E5\uC774"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uACBD\uD5D8\uCE58 \uD68D\uB4DD\uB7C9 10% \uC99D\uAC00"
+    extra: "\uD3ED\uD0C4\uC744 \uB2EE\uC740 \uACE0\uC591\uC774 \uC778\uD615"
+    sprite: {fileID: -559564423, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0.1
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
       defense: 0
       speed: 0
       power: 0
@@ -21687,6 +23013,21 @@ MonoBehaviour:
       dragons: 0
       special: 0
       hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   - name: "\uB9E4\uC6B4 \uC0AC\uD0D5"
     operatorid: 0
     lv: 1
@@ -21699,6 +23040,21 @@ MonoBehaviour:
       attack: 0
       attackspeed: 0
       defense: 0.3
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
       speed: 0
       power: 0
       cost: 0
@@ -21740,6 +23096,21 @@ MonoBehaviour:
       dragons: 0
       special: 0
       hp: 1
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   - name: "\uC544\uC2A4\uD14C\uC2DC\uC544\uC758 \uAC80"
     operatorid: 0
     lv: 1
@@ -21767,6 +23138,21 @@ MonoBehaviour:
       dragons: 0
       special: 0
       hp: 1
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   - name: "\uC624\uB85C\uB77C\uC758 \uBC29\uD328"
     operatorid: 0
     lv: 1
@@ -21794,6 +23180,21 @@ MonoBehaviour:
       dragons: 0
       special: 0
       hp: 1
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   - name: "\uCEE4\uD130\uC758 \uB3C4\uAC80"
     operatorid: 0
     lv: 1
@@ -21823,15 +23224,30 @@ MonoBehaviour:
       dragons: 0
       special: 0
       hp: 1
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   - name: "\uC5D0\uD504\uC774\uD130\uC758 \uAC74\uD2C0\uB9BF"
     operatorid: 0
     lv: 1
     description:
-    - "\uB300\uBBF8\uC9C0 50%p \uCD94\uAC00"
-    - "\uBBF8\uB294 \uD798 \uC57D\uAC04 \uC99D\uAC00"
     - "\uB300\uBBF8\uC9C0 100%p \uCD94\uAC00"
     - "\uBBF8\uB294 \uD798 \uC57D\uAC04 \uC99D\uAC00"
-    - "\uB300\uBBF8\uC9C0 100%p \uCD94\uAC00"
+    - "\uACF5\uACA9 \uBC94\uC704 \uC99D\uAC00"
+    - "\uBBF8\uB294 \uD798 \uC57D\uAC04 \uC99D\uAC00"
+    - "\uB300\uBBF8\uC9C0 150%p \uCD94\uAC00"
     - "\uACF5\uACA9 \uD615\uD0DC \uBCC0\uD658"
     extra: "\uADF8 \uBB34\uC5C7\uBCF4\uB2E4 \uB2E8\uB2E8\uD55C \uAC74\uD2C0\uB9BF\uC740\n\uB2E8\uB2E8\uD55C
       \uB9C8\uC74C\uC744 \uB098\uD0C0\uB0B4\uB294 \uAC83 \uC77C\uC9C0\uB3C4"
@@ -21851,6 +23267,21 @@ MonoBehaviour:
       dragons: 0
       special: 0
       hp: 1
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   - name: "\uB9E8\uD2F0\uCF54\uC5B4\uC758 \uAF2C\uB9AC"
     operatorid: 0
     lv: 1
@@ -21878,6 +23309,21 @@ MonoBehaviour:
       dragons: 0
       special: 0
       hp: 1
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   - name: "\uCE74\uC81C\uB9C8\uB8E8\uC758 \uB3C4\uAC80"
     operatorid: 0
     lv: 1
@@ -21905,6 +23351,21 @@ MonoBehaviour:
       dragons: 0
       special: 0
       hp: 1
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   - name: "\uD50C\uB798\uD2F0\uB118\uC758 \uD65C"
     operatorid: 0
     lv: 1
@@ -21934,17 +23395,32 @@ MonoBehaviour:
       dragons: 0
       special: 0
       hp: 1
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   - name: "\uB85C\uC988\uBAAC\uD2F0\uC2A4\uC758 \uC544\uCE20 \uC6D0\uACA9 \uC870\uC791\uD615
       \uC7A5\uCE58"
     operatorid: 0
     lv: 1
     description:
-    - "\uB300\uBBF8\uC9C0 100%p \uCD94\uAC00"
-    - "\uC5EC\uC9C4 \uBC94\uC704 25%p \uC99D\uAC00"
-    - "\uACF5\uACA9 \uB51C\uB808\uC774 \uC57D\uAC04 \uAC10\uC18C"
-    - "\uB300\uBBF8\uC9C0 150%p \uCD94\uAC00"
-    - "\uBC29\uC5B4\uAD6C \uAC10\uC18C\uB7C9 20%p \uC99D\uAC00"
-    - "\uB3D9\uC2DC\uC5D0 \uB450 \uBA85\uC758 \uC801 \uACF5\uACA9"
+    - "\uD22C\uC0AC\uCCB4 \uC218 1 \uC99D\uAC00"
+    - "\uB300\uBBF8\uC9C0 75%p \uCD94\uAC00"
+    - "\uBC29\uC5B4\uAD6C \uAC10\uC18C\uB7C9 20% \uC99D\uAC00"
+    - "\uD22C\uC0AC\uCCB4 \uC218 1 \uC99D\uAC00"
+    - "\uB300\uBBF8\uC9C0 125%p \uCD94\uAC00"
+    - "\uCD94\uAC00 \uBB34\uAE30 \uC18C\uD658"
     extra: "\uACF5\uC911\uC5D0\uC11C \uB0B4\uB824\uCC0D\uB294\uB370 \uB300\uACF5
       \uBD88\uAC00\uB2A5\uD55C \uBB34\uAE30\uAC00 \uC788\uB098\uC694?"
     sprite: {fileID: 643932704, guid: cb87e0f4884fbd24d8d2360be61eafdd, type: 3}
@@ -21963,6 +23439,21 @@ MonoBehaviour:
       dragons: 0
       special: 0
       hp: 1
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   - name: "\uC640\uD30C\uB9B0\uC758 \uC544\uCE20 \uC2A4\uD0DC\uD504"
     operatorid: 0
     lv: 1
@@ -21991,6 +23482,64 @@ MonoBehaviour:
       dragons: 0
       special: 0
       hp: 1
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
+  - name: "\uC18C\uB77C \uC544\uCE20 \uC2A4\uD0DC\uD504"
+    operatorid: 0
+    lv: 1
+    description:
+    - "\uAD00\uD1B5\uB825 1 \uC99D\uAC00"
+    - "\uB300\uBBF8\uC9C0 50%p \uCD94\uAC00"
+    - "\uD22C\uC0AC\uCCB4 \uC218 2 \uC99D\uAC00"
+    - "\uAD00\uD1B5\uB825 2 \uC99D\uAC00"
+    - "\uB300\uBBF8\uC9C0 75%p \uC99D\uAC00"
+    - "\uACF5\uACA9\uC2DC \uB9C8\uBC95\uC9C4 \uC0DD\uC131"
+    extra: "\uC774 \uD761\uD608\uADC0\uB294 \uC0AC\uB78C\uC744 \uBB3C\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.
+      \uC544\uB9C8\uB3C4\uC694?"
+    sprite: {fileID: -499433692, guid: cb87e0f4884fbd24d8d2360be61eafdd, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 1
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   Infos:
   - name: "\uC544\uBBF8\uC57C"
     name_e: Amiya
@@ -22082,12 +23631,23 @@ MonoBehaviour:
       \uACF5\uACA9\uD55C\uB2E4"
     Inst_Prop: "\uACF5\uACA9\uC2DC \uC801\uC758 \uBC29\uC5B4\uB825\uC744 \uAC10\uC18C\uC2DC\uD0A8\uB2E4"
     id: 8
-    IsLD: 0
+    IsLD: 1
     player: {fileID: 11400000, guid: d90cfe6717ab5824d86b1bb6407c4206, type: 2}
     Head: {fileID: 2003934751, guid: 8f431041ae472024aae12403bffc4645, type: 3}
     Standing: {fileID: -554728584, guid: f0a1e2122dd60fc46a9592ebbbb59067, type: 3}
     Standing2: {fileID: 922643873, guid: 6f26af5e459faee4ba780c338335ad37, type: 3}
   - name: "\uC640\uD30C\uB9B0"
+    name_e: Wafarin
+    Inst_Weapon: "\uC544\uAD70\uC744 \uCE58\uC720\uD558\uBA70 \uC801\uC744 \uACF5\uACA9\uD558\uB294
+      \uB9C8\uBC95\uC9C4\uC744 \uC0DD\uC131\uD55C\uB2E4"
+    Inst_Prop: "\uC5C6\uC74C"
+    id: 9
+    IsLD: 0
+    player: {fileID: 11400000, guid: 0fad72ddab4b9c84382513dae0336576, type: 2}
+    Head: {fileID: 194690983, guid: 8f431041ae472024aae12403bffc4645, type: 3}
+    Standing: {fileID: 2113799533, guid: 7a6cbe43cef067c46946e10eb9c865d3, type: 3}
+    Standing2: {fileID: -1298633637, guid: 6f26af5e459faee4ba780c338335ad37, type: 3}
+  - name: "\uC18C\uB77C"
     name_e: Wafarin
     Inst_Weapon: "\uC544\uAD70\uC744 \uCE58\uC720\uD558\uBA70 \uC801\uC744 \uACF5\uACA9\uD558\uB294
       \uB9C8\uBC95\uC9C4\uC744 \uC0DD\uC131\uD55C\uB2E4"

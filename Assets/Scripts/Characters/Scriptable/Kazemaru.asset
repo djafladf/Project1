@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Kazemaru
   m_EditorClassIdentifier: 
   speed: 5
-  InitHP: 150
+  InitHP: 250
   InitSP: 30
-  InitDefense: 10
+  InitDefense: 25
   Cost: 13
   ReBatchTime: 70

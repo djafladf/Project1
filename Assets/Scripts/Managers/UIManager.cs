@@ -95,7 +95,7 @@ public class UIManager : MonoBehaviour
         Cost.text = $"{(int)CurCost}";
     }
 
-    float ExpSub = 0.1f;
+    float ExpSub = 0.2f;
     public void ExpUp(int value)
     {
         if (NonSelected.Count == 0) return;
@@ -173,7 +173,7 @@ public class UIManager : MonoBehaviour
         }
 
         LV.text = $"LV.{++CurLevel}";
-        ExpSub = ExpSub * 0.95f;
+        ExpSub = ExpSub * 0.9f;
 
 
         LevelUP.gameObject.SetActive(true);
@@ -204,6 +204,17 @@ public class UIManager : MonoBehaviour
             cntRelic.transform.GetChild(0).GetComponent<Image>().sprite = cnt.sprite;
 
             attribute cntatt = cnt.attributes;
+            attribute enem = cnt.attribute_Enem;
+
+
+            if(cntatt.GoodsEarn != 0)GameManager.instance.PlayerStatus.GoodsEarn += cntatt.GoodsEarn;
+            if(cntatt.heal != 0) GameManager.instance.PlayerStatus.heal += cntatt.heal;
+            if(cntatt.power != 0) GameManager.instance.PlayerStatus.power += cntatt.power;
+            if (enem.attack != 0) GameManager.instance.EnemyStatus.attack += enem.attack;
+            if (enem.defense != 0) GameManager.instance.EnemyStatus.defense += enem.defense;
+            if (enem.speed != 0) GameManager.instance.EnemyStatus.speed += enem.speed;
+            if (enem.hp != 0) GameManager.instance.EnemyStatus.hp += enem.hp;
+
             if (cntatt.special != -1) { Selected.Add(cnt); NonSelected.RemoveAt(ind); }
             
             if (cntatt.attack != 0)
@@ -215,7 +226,7 @@ public class UIManager : MonoBehaviour
             if (cntatt.cost != 0)
             {
                 GameManager.instance.PlayerStatus.cost += cntatt.cost;
-                CostStat.text = $"{Mathf.FloorToInt((cntatt.cost-1) * 100)}%";
+                CostStat.text = $"{Mathf.FloorToInt((GameManager.instance.PlayerStatus.cost - 1) * 100)}%";
             }
 
             if (cntatt.defense != 0)
@@ -230,12 +241,10 @@ public class UIManager : MonoBehaviour
                 SpeedStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.speed * 100)}%";
             }
 
-            if (cntatt.power != 0) GameManager.instance.PlayerStatus.power += cntatt.power;
-
             if (cntatt.pickup != 0) 
             { 
                 GameManager.instance.PlayerStatus.pickup += cntatt.pickup; 
-                GetArea.localScale *= GameManager.instance.PlayerStatus.pickup;
+                GetArea.localScale = new Vector3(1.5f,1.5f,1) * GameManager.instance.PlayerStatus.pickup;
                 GainStat.text = $"{Mathf.FloorToInt((GameManager.instance.PlayerStatus.pickup-1) * 100)}%";
             }
             if (cntatt.exp != 0)
@@ -443,6 +452,7 @@ public class UIManager : MonoBehaviour
         EventTrigger.Entry entry = new EventTrigger.Entry();
         entry.eventID = EventTriggerType.PointerClick;
         entry.callback.AddListener((data) => { GameManager.instance.EndGame(); });
+        ExpSub = 0;
         Ending.GetComponent<EventTrigger>().triggers.Add(entry);
         Ending.color = new Color(1, 0, 0, 0.4f);
         EndingSprite.sprite = FailEnding;

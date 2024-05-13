@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Astesia
   m_EditorClassIdentifier: 
   speed: 3.5
-  InitHP: 350
+  InitHP: 400
   InitSP: 30
-  InitDefense: 15
+  InitDefense: 35
   Cost: 18
   ReBatchTime: 70

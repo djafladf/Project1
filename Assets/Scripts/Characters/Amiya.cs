@@ -47,7 +47,7 @@ public class Amiya : PlayerSetting
                     BL:BL);
                 yield return new WaitForSeconds(0.1f);
             }
-            yield return new WaitForSeconds(0.5f * (1 - GameManager.instance.PlayerStatus.attackspeed));
+            yield return new WaitForSeconds(0.25f * (2 - GameManager.instance.PlayerStatus.attackspeed));
         }
     }
 

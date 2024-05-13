@@ -21,6 +21,7 @@ public class DataManager : MonoBehaviour
     [SerializeField]
     public List<OperatorInfos> Infos;
 
+
     [SerializeField] TMP_Text Resolution;
 
 

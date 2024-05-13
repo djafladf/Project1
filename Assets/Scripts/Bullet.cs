@@ -31,43 +31,47 @@ public class Bullet : MonoBehaviour
     }
 
     public void Init_Attack(int Penetrate, Vector3 Dir,
-        bool IsMeele, bool IsEnemy, float AfterTime, Sprite Image = null, 
-        BulletLine BL = null, RuntimeAnimatorController Anim = null,Sprite HitImage = null)
+        bool IsMeele, bool IsEnemy, float AfterTime, float ScaleFactor = 1, Sprite Image = null, 
+        BulletLine BL = null, RuntimeAnimatorController Anim = null,Sprite HitImage = null, float delay = 0)
     {
         if (BL != null)
         {
-            Line.enabled = true;
-            Line.startColor = BL.Start; Line.endColor = BL.End;
-            Line.startWidth = BL.StartWidth; Line.endWidth = BL.EndWidth;
-            Line.time = BL.Time;
+            Line.enabled = true;Line.colorGradient = BL.Color;Line.widthCurve = BL.Width;Line.time = BL.Time;
         }
         if (Anim != null) { anim.enabled = true; anim.runtimeAnimatorController = Anim; }
 
         this.HitImage = HitImage;
-        rigid.simulated = true; coll.enabled = true;rigid.velocity = Dir; this.Penetrate = Penetrate; sprite.sprite = Image; this.IsMeele = IsMeele; this.IsEnem = IsEnemy; IsBoom = false;
+        rigid.simulated = true; rigid.velocity = Dir; this.Penetrate = Penetrate; sprite.sprite = Image; this.IsMeele = IsMeele; this.IsEnem = IsEnemy; IsBoom = false;
+
+        StartCoroutine(AttackDelay(delay));
+
+        if (Image != null) coll.size = sprite.bounds.size * ScaleFactor;
+        else coll.size = Vector2.one * ScaleFactor;
         
-        if (Image != null) coll.size = sprite.bounds.size * 0.9f;
-        else coll.size = Vector2.one;
-        
-        if (IsMeele) StartCoroutine(AfterImage(AfterTime));
+        if (IsMeele) StartCoroutine(AfterImage(AfterTime,true));
         
         tag = IsEnemy ? "EnemyAttack" : "PlayerAttack";
     }
 
+    IEnumerator AttackDelay(float time)
+    {
+        yield return new WaitForSeconds(time);
+        coll.enabled = true;
+    }
+
     public void Init_Explode(BulletInfo After, Vector3 Dir, bool IsEnemy, Sprite Image, Sprite HitImage,
-        BulletLine BL = null, RuntimeAnimatorController Anim = null)
+        BulletLine BL = null, RuntimeAnimatorController Anim = null,float delay = 0)
     {
         if (BL != null)
         {
-            Line.enabled = true;
-            Line.startColor = BL.Start; Line.endColor = BL.End;
-            Line.startWidth = BL.StartWidth; Line.endWidth = BL.EndWidth;
-            Line.time = BL.Time;
+            Line.enabled = true; Line.colorGradient = BL.Color; Line.widthCurve = BL.Width; Line.time = BL.Time;
         }
         if (Anim != null) { anim.enabled = true; anim.runtimeAnimatorController = Anim; }
 
         this.HitImage = HitImage; this.AfterBull = After;
-        rigid.simulated = true; coll.enabled = true; rigid.velocity = Dir; this.Penetrate = 0; sprite.sprite = Image; this.IsMeele = false; this.IsEnem = IsEnemy; IsBoom = true;
+        rigid.simulated = true; rigid.velocity = Dir; this.Penetrate = 0; sprite.sprite = Image; this.IsMeele = false; this.IsEnem = IsEnemy; IsBoom = true;
+        StartCoroutine(AttackDelay(delay));
+        
 
         if (Image != null) coll.size = sprite.bounds.size * 0.9f;
         else coll.size = Vector2.one;
@@ -80,10 +84,7 @@ public class Bullet : MonoBehaviour
     {
         if (BL != null)
         {
-            Line.enabled = true;
-            Line.startColor = BL.Start; Line.endColor = BL.End;
-            Line.startWidth = BL.StartWidth; Line.endWidth = BL.EndWidth;
-            Line.time = BL.Time;
+            Line.enabled = true; Line.colorGradient = BL.Color; Line.widthCurve = BL.Width; Line.time = BL.Time;
         }
         if (Anim != null){ anim.enabled = true; anim.runtimeAnimatorController = Anim; }
 
@@ -106,6 +107,7 @@ public class Bullet : MonoBehaviour
     {
         Line.Clear(); Line.enabled = false;
         anim.enabled = false; rigid.simulated = false; coll.enabled = false;
+        sprite.color = Color.white;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -115,26 +117,42 @@ public class Bullet : MonoBehaviour
         {
             if (HitImage != null)
             {
-                if (IsBoom) GameManager.instance.BM.MakeMeele(AfterBull, 0.3f, transform.position, Vector3.zero,0, true, HitImage);
+                if (IsBoom) GameManager.instance.BM.MakeMeele(AfterBull, 0.3f, transform.position, Vector3.zero,0, IsEnem, HitImage);
                 else GameManager.instance.BM.MakeEffect(0.3f, transform.position, Vector3.zero,0, HitImage);
             }
-            if (Penetrate-- <= 0) gameObject.SetActive(false);
+            if (Penetrate-- <= 0) { gameObject.SetActive(false); StartCoroutine(ForLine()); }
         }
         else if((collision.CompareTag("Player")||collision.CompareTag("Player_Hide")) && IsEnem)
         {
             if (HitImage != null)
             {
-                if (IsBoom) GameManager.instance.BM.MakeMeele(AfterBull, 0.3f, transform.position, Vector3.zero, 0,true, HitImage);
+                if (IsBoom) GameManager.instance.BM.MakeMeele(AfterBull, 0.3f, transform.position, Vector3.zero, 0,IsEnem, HitImage);
                 else GameManager.instance.BM.MakeEffect(0.3f, transform.position, Vector3.zero, 0,HitImage);
             }
-            if (Penetrate-- <= 0) gameObject.SetActive(false);
+            if (Penetrate-- <= 0) { gameObject.SetActive(false); StartCoroutine(ForLine()); }
         }
 
     }
 
-    IEnumerator AfterImage(float AfterTime) 
+    IEnumerator AfterImage(float AfterTime,bool SizeChange = false) 
     {
-        yield return new WaitForSeconds(AfterTime);
+        float j = AfterTime * 0.2f;
+        Color D = new Color(0, 0, 0, 0.2f);
+        yield return new WaitForSeconds(j);
+        coll.enabled = false;
+        for (int i = 0; i < 5; i++)
+        {
+            yield return new WaitForSeconds(j);
+            if (SizeChange) { sprite.color -= D; }
+        }
+        
+        StartCoroutine(ForLine());
+    }
+
+    IEnumerator ForLine()
+    {
+        coll.enabled = false; rigid.simulated = false; sprite.sprite = null;
+        yield return new WaitForSeconds(Line.time);
         gameObject.SetActive(false);
     }
 

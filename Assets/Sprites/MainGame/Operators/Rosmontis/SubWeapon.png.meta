@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 18
+  spritePixelsToUnits: 30
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -108,12 +108,12 @@ TextureImporter:
       name: SubWeapon_0
       rect:
         serializedVersion: 2
-        x: 19
-        y: 158
+        x: 9
+        y: 146
         width: 27
         height: 79
-      alignment: 9
-      pivot: {x: 1, y: 0.2}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -129,12 +129,12 @@ TextureImporter:
       name: SubWeapon_1
       rect:
         serializedVersion: 2
-        x: 70
-        y: 156
+        x: 59
+        y: 145
         width: 40
         height: 94
-      alignment: 9
-      pivot: {x: 0, y: 0.3}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -150,19 +150,19 @@ TextureImporter:
       name: SubWeapon_2
       rect:
         serializedVersion: 2
-        x: 16
-        y: 51
-        width: 42
-        height: 96
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 11
+        y: 29
+        width: 27
+        height: 79
+      alignment: 9
+      pivot: {x: 1.2, y: 0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28e4f17cd5b543c42bebd92d69d13132
-      internalID: 1327570947
+      spriteID: 8c0791bccd303d349b37af1373a083f1
+      internalID: 1022825614
       vertices: []
       indices: 
       edges: []
@@ -171,19 +171,19 @@ TextureImporter:
       name: SubWeapon_3
       rect:
         serializedVersion: 2
-        x: 78
-        y: 58
-        width: 41
-        height: 81
+        x: 57
+        y: 24
+        width: 40
+        height: 94
       alignment: 9
-      pivot: {x: 0.6931106, y: 0.5107613}
+      pivot: {x: -0.2, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3b6ccef2f9bf5a0459f3cc5879286f2b
-      internalID: 1156548046
+      spriteID: c81d7164b6dafb944a4a83237aecd38c
+      internalID: -1112649404
       vertices: []
       indices: 
       edges: []
@@ -199,8 +199,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SubWeapon_3: 1156548046
-      SubWeapon_2: 1327570947
+      SubWeapon_3: -1112649404
+      SubWeapon_2: 1022825614
       SubWeapon_0: -1102088085
       SubWeapon_1: -1621243750
   spritePackingTag: 

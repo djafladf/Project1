@@ -23,11 +23,11 @@ public class Skulslr : Enemy
 
     private void Start()
     {
-        /*GameManager.instance.ES.ExternalSpawnCall(2, -1, 5f);
+        GameManager.instance.ES.ExternalSpawnCall(2, -1, 5f);
         GameManager.instance.ES.ExternalSpawnCall(4, -1, 5f);
         GameManager.instance.ES.ExternalSpawnCall(3, -1, 5f);
         GameManager.instance.ES.ExternalSpawnCall(5, -1, 5f);
-        GameManager.instance.ES.ExternalSpawnCall(6, -1, 5f);*/
+        GameManager.instance.ES.ExternalSpawnCall(6, -1, 5f);
     }
 
     private void Update()

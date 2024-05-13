@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Cutter
   m_EditorClassIdentifier: 
   speed: 5
-  InitHP: 200
+  InitHP: 250
   InitSP: 30
-  InitDefense: 10
+  InitDefense: 25
   Cost: 18
   ReBatchTime: 70

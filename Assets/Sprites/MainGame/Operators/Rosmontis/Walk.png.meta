@@ -108,10 +108,10 @@ TextureImporter:
       name: Walk_0
       rect:
         serializedVersion: 2
-        x: 104
-        y: 28
+        x: 96
+        y: 65
         width: 376
-        height: 492
+        height: 526
       alignment: 9
       pivot: {x: 0.5, y: 0.35}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -129,12 +129,12 @@ TextureImporter:
       name: Walk_1
       rect:
         serializedVersion: 2
-        x: 708
-        y: 32
+        x: 756
+        y: 70
         width: 376
-        height: 484
+        height: 516
       alignment: 9
-      pivot: {x: 0.5, y: 0.35}
+      pivot: {x: 0.5, y: 0.32}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

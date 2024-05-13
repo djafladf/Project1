@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour
             if (Dir.x > 0 && !spriteRenderer.flipX) spriteRenderer.flipX = true;
             else if (Dir.x < 0 && spriteRenderer.flipX) spriteRenderer.flipX = false;
 
-            if (!OnHit) rigid.MovePosition(rigid.position + Dir * speed * Time.fixedDeltaTime);
+            if (!OnHit) rigid.MovePosition(rigid.position + Dir * speed * Time.fixedDeltaTime * (1 + GameManager.instance.EnemyStatus.speed));
         }
         if (BeginAttack && !anim.GetBool("IsAttack"))
         {
@@ -86,10 +86,16 @@ public class Enemy : MonoBehaviour
     protected virtual void AttackMethod()
     {
 
-        if (IsRange) 
-            GameManager.instance.BM.MakeBullet(BI, 0, transform.position, (AttackPos-transform.position).normalized, 8, true,Bull,BL :MakeLine ? BL : null);
+        if (IsRange)
+        {
+            BI.Damage = Mathf.FloorToInt(Damage * (1 + GameManager.instance.EnemyStatus.attack));
+            GameManager.instance.BM.MakeBullet(BI, 0, transform.position, (AttackPos - transform.position).normalized, 8, true, Bull, BL: MakeLine ? BL : null);
+        }
         else
-            GameManager.instance.BM.MakeMeele(new BulletInfo(Damage, false, 0), 0.2f, AttackPos, Vector2.zero, 0, true);
+        {
+            int CurDm = Mathf.FloorToInt(Damage * (1 + GameManager.instance.EnemyStatus.attack));
+            GameManager.instance.BM.MakeMeele(new BulletInfo(CurDm, false, 0), 0.2f, AttackPos, Vector2.zero, 0, true);
+        }
     }
 
     bool CanHit = true;
@@ -107,7 +113,7 @@ public class Enemy : MonoBehaviour
         if (collision.CompareTag("PlayerAttack") && CanHit)
         {
             BulletInfo Info = GameManager.instance.BM.GetBulletInfo(GameManager.StringToInt(collision.name));
-            int GetDamage = Info.ReturnDamage(Defense);
+            int GetDamage = Info.ReturnDamage(Defense * (1 + GameManager.instance.EnemyStatus.defense));
             GameManager.instance.DM.MakeDamage(GetDamage, transform);
             HP -= GetDamage;
             HPChange();     // For Boss
@@ -115,6 +121,7 @@ public class Enemy : MonoBehaviour
             {
                 anim.SetTrigger("Dead");
                 StopAllCoroutines();
+                tag = "Untagged";
                 spriteRenderer.sortingOrder = 1;
                 IsLive = false; CanHit = false; rigid.simulated = false; coll.enabled = false;
                 GameManager.instance.UM.KillCountUp(1); GameManager.instance.ES.CurActive--;
@@ -225,9 +232,10 @@ public class Enemy : MonoBehaviour
 
     IEnumerator NockBack_Enemy(float Power,Vector2 Dir)
     {
-        CanHit = false; OnHit = true;
+        CanHit = false; 
         spriteRenderer.color = Color.gray;
         Power += GameManager.instance.PlayerStatus.power - Weight;
+        OnHit = Power != 0;
         if (Power > 0) 
         {
             rigid.AddForce(Dir.normalized * (Power), ForceMode2D.Impulse);
@@ -235,7 +243,7 @@ public class Enemy : MonoBehaviour
         }
         yield return new WaitForSeconds(0.1f);
         spriteRenderer.color = Color.white;
-        CanHit = true;  if(Power == 0) OnHit = false;
+        CanHit = true;
     }
 
     IEnumerator Friction()
@@ -275,7 +283,7 @@ public class Enemy : MonoBehaviour
         CanHit = true;
         rigid.simulated = true;
         coll.enabled = true;
-        HP = MaxHP;
+        HP = Mathf.FloorToInt(MaxHP * (1 + GameManager.instance.EnemyStatus.hp));
 
         IsLive = true;
 
@@ -283,5 +291,7 @@ public class Enemy : MonoBehaviour
         Defense = MaxDefense; speed = MaxSpeed; Damage = MaxDamage;
 
         spriteRenderer.sortingOrder = 2;
+
+        tag = "Enemy";
     }
 }

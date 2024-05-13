@@ -21,6 +21,7 @@ public class ItemSub
     public string extra;
     public Sprite sprite;
     public attribute attributes;
+    public attribute attribute_Enem;
 }
 
 [System.Serializable]
@@ -40,6 +41,11 @@ public class attribute
     public int dragons;
     public int special;
     public float hp;
+
+    public attribute()
+    {
+        attack = 0; attackspeed = 0; defense = 0; speed = 0; hp = 0;
+    }
 }
 
 [System.Serializable]
@@ -50,16 +56,17 @@ public class BulletInfo
     public bool IsFix;
     public float KnockBack;
     public float IgnoreDefense;
+    public float ScaleFactor;
 
     public DeBuff DeBuffs;
 
     public Buff Buffs;
 
-    public BulletInfo(int damage, bool isEffect,float knockBack, bool isFix = false, float ignoreDefense = 0,
+    public BulletInfo(int damage, bool isEffect,float knockBack, float scalefactor = 1, bool isFix = false, float ignoreDefense = 0,
         DeBuff debuffs = null, Buff buffs = null)
     {
         Damage = damage;
-        IsEffect = isEffect; IsFix = isFix;
+        IsEffect = isEffect; IsFix = isFix; ScaleFactor = scalefactor;
         KnockBack = knockBack; IgnoreDefense = ignoreDefense;
         DeBuffs = debuffs;
         Buffs = buffs;
@@ -118,19 +125,8 @@ public class DeBuff
 [System.Serializable]
 public class BulletLine
 {
-    public Color Start;
-    public Color End;
-    public float StartWidth;
-    public float EndWidth;
+    public Gradient Color;
+    public AnimationCurve Width;
     public float Time;
-
-    public BulletLine(Color start, Color end, float startWidth, float endWidth,float time)
-    {
-        Start = start;
-        End = end;
-        StartWidth = startWidth;
-        EndWidth = endWidth;
-        Time = time;
-    }
 }
 
