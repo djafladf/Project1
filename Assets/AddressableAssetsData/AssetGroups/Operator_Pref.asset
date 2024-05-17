@@ -71,7 +71,8 @@ MonoBehaviour:
   - m_GUID: b4a0eaaa920696c4a8f99be05f411517
     m_Address: Sora
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Operator_Pref
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: cc440d98b8634f3449b1aae4fa894063, type: 2}
   m_SchemaSet:

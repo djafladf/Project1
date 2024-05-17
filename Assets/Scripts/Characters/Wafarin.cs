@@ -7,10 +7,13 @@ public class Wafarin :PlayerSetting
     [SerializeField] Sprite Bullet;
     [SerializeField] BulletLine BL;
     [SerializeField] GameObject Pond;
+    [SerializeField] GameObject Wing;
 
     protected override void Awake()
     {
         base.Awake();
+        player.SubEffects.Add(Wing.transform.GetChild(0).GetComponent<SpriteRenderer>());
+        player.SubEffects.Add(Wing.transform.GetChild(1).GetComponent<SpriteRenderer>());
     }
 
     protected override void AttackMethod()
@@ -26,9 +29,9 @@ public class Wafarin :PlayerSetting
                     new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10),false,0),
                     Penetrate, transform.position, new Vector3(Mathf.Cos(rad + 0.25f * i), Mathf.Sin(rad + 0.25f * i)),10, false,Bullet,BL:BL);
             }
-            if (player.WeaponLevel == 7 && !Pond.activeSelf)
+            if (player.WeaponLevel >= 7 && !Pond.activeSelf)
             {
-                Vector3 cnt = TargetPos.position; cnt.z = 2; Pond.transform.position = cnt;
+                Vector3 cnt = TargetPos.position; cnt.z = 20; Pond.transform.position = cnt;
                 Pond.SetActive(true);
             }
         }
@@ -37,10 +40,17 @@ public class Wafarin :PlayerSetting
     int Penetrate = 0;
     int ProjNum = 1;
 
+    protected override void EndBatch()
+    {
+        base.EndBatch();
+        if (player.WeaponLevel >= 7) Wing.SetActive(true);
+    }
+
     protected override void OnEnable()
     {
         base.OnEnable();
         Pond.SetActive(false);
+        Wing.SetActive(false);
     }
 
 
@@ -55,7 +65,7 @@ public class Wafarin :PlayerSetting
                 case 3: ProjNum += 1; break;
                 case 4: Penetrate += 2; break;
                 case 5: DamageRatio += 0.75f; break;
-                case 6: break;
+                case 6: Wing.gameObject.SetActive(true); break;
             }
         }
         return player.WeaponLevel;

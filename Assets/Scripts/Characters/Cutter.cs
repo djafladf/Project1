@@ -1,21 +1,39 @@
-using System.Collections;
 using UnityEngine;
 
 public class Cutter : PlayerSetting
 {
     [SerializeField] Sprite NormalAttack;
     [SerializeField] Sprite Bullet;
+    [SerializeField] ParticleSystem pt;
+    [SerializeField] ParticleMy PM;
+
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
+    private void Start()
+    {
+        for (int i = 0; i < PM.StartSize.Count; i++)
+        {
+            PM.StartSize[i] = Random.Range(8, 12);
+            PM.StartRotations[i] = Quaternion.Euler(0, 0, -i * 60);
+        }
+
+    }
 
     protected override void AttackMethod()
     {
         if (TargetPos != null)
         {
-
+            
             if (Vector3.Distance(TargetPos.position, transform.position) <= 2.5f)
             {
                 GameManager.instance.BM.MakeMeele(
-                    new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10), false, 0,ignoreDefense:0.2f), 0.3f,
+                    new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10), false, 0, ignoreDefense: 0.2f), 0.3f,
                     transform.position, -player.Dir, 0, false, NormalAttack);
+
+                if (player.WeaponLevel >= 0) MakeSpec = true;
             }
             if (ProjNum != 0)
             {
@@ -30,8 +48,17 @@ public class Cutter : PlayerSetting
                     15, false, Bullet);
                 }
             }
+            
         }
     }
+
+
+    void MakeSpecialAttack()
+    {
+        PM.StartMaking();
+        MakeSpec = false;
+    }
+
     protected override void EndBatch()
     {
         base.EndBatch();
@@ -40,6 +67,8 @@ public class Cutter : PlayerSetting
     float DamageRatio = 1f;
     float SpecialRatio = 2f;
     int ProjNum = 0;
+
+    bool MakeSpec = false;
     protected override int WeaponLevelUp()
     {
         switch (player.WeaponLevel++)
@@ -49,9 +78,15 @@ public class Cutter : PlayerSetting
             case 3: ProjNum++; AttackRange = 5; break;
             case 4: DamageRatio += 0.5f; break;
             case 5: DamageRatio += 0.75f; break;
-            case 6: SpecialRatio = 3f; ProjNum++; break;
+            case 6: SpecialRatio = 3f; ProjNum++; MakeSpec = true; break;
         }
         return player.WeaponLevel;
+    }
+
+    protected override void AttackEnd()
+    {
+        if (MakeSpec) player.anim.SetTrigger("Spec");
+        else base.AttackEnd();
     }
 
     /*IEnumerator Special()

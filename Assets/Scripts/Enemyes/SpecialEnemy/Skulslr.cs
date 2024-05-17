@@ -18,6 +18,9 @@ public class Skulslr : Enemy
     {
         base.Awake();
         particles = new ParticleSystem.Particle[pt.main.maxParticles];
+        MaxHP = Mathf.FloorToInt(MaxHP * (1 + GameManager.instance.EnemyStatus.boss * 0.05f));
+        MaxDefense = Mathf.FloorToInt(MaxDefense * (1 + GameManager.instance.EnemyStatus.boss * 0.05f));
+        MaxDamage = Mathf.FloorToInt(MaxDamage * (1 + GameManager.instance.EnemyStatus.boss * 0.05f));
         BLine = BPart.GetComponent<TrailRenderer>();
     }
 
@@ -76,7 +79,7 @@ public class Skulslr : Enemy
             if (Dir.x > 0 && !spriteRenderer.flipX) spriteRenderer.flipX = true;
             else if (Dir.x < 0 && spriteRenderer.flipX) spriteRenderer.flipX = false;
 
-            if(!OnHit)rigid.MovePosition(rigid.position + Dir * speed * Time.fixedDeltaTime);
+            if (!OnHit) rigid.MovePosition(rigid.position + Dir * speed * Time.fixedDeltaTime * (1 + GameManager.instance.EnemyStatus.speed));
         }
         if (BeginAttack && !anim.GetBool("IsAttack"))
         {
@@ -138,38 +141,40 @@ public class Skulslr : Enemy
 
     IEnumerator SpecialCoolDown()
     {
-        if (!GameManager.instance.Prefs[0].activeSelf) StopAllCoroutines();
-        MoveAble = false;
-
-        if (Target != null)
+        if (GameManager.instance.Prefs[0].activeSelf)
         {
-            if (Vector2.Distance(Target.position, transform.position) <= 6f)
+            MoveAble = false;
+
+            if (Target != null)
             {
-                anim.SetTrigger("Special3");
-                Vector2 Sub = (Target.position - transform.position).normalized;
-                SpecialRad = Vector2.Angle(Vector2.right, Sub) * Mathf.Deg2Rad;
-                if (Sub.y < 0) SpecialRad = Mathf.PI * 2 - SpecialRad; Count = 0;
-                yield return new WaitForSeconds(SpecialCool * 0.4f);
+                if (Vector2.Distance(Target.position, transform.position) <= 6f)
+                {
+                    anim.SetTrigger("Special3");
+                    Vector2 Sub = (Target.position - transform.position).normalized;
+                    SpecialRad = Vector2.Angle(Vector2.right, Sub) * Mathf.Deg2Rad;
+                    if (Sub.y < 0) SpecialRad = Mathf.PI * 2 - SpecialRad; Count = 0;
+                    yield return new WaitForSeconds(SpecialCool * 0.4f);
+                }
+                else
+                    switch (Random.Range(0, 2))
+                    {
+                        case 0:
+                            anim.SetTrigger("Special"); yield return new WaitForSeconds(SpecialCool * 0.5f); break;
+                        case 1:
+                            anim.SetTrigger("Special2"); anim.SetBool("IsAttack", false); yield return GameManager.OneSec; RushTarget = ReturnRandomPlayer(); l = 0; IsRush = true; AfterIm.StartMaking(); yield return new WaitForSeconds(SpecialCool * 0.5f); break;
+                    }
             }
+
             else
                 switch (Random.Range(0, 2))
                 {
                     case 0:
                         anim.SetTrigger("Special"); yield return new WaitForSeconds(SpecialCool * 0.5f); break;
                     case 1:
-                        anim.SetTrigger("Special2"); anim.SetBool("IsAttack", false); yield return GameManager.OneSec; RushTarget = ReturnRandomPlayer(); l = 0; IsRush = true; AfterIm.StartMaking(); yield return new WaitForSeconds(SpecialCool * 0.5f); break;
+                        anim.SetTrigger("Special2"); anim.SetBool("IsAttack", false); yield return GameManager.OneSec; RushTarget = ReturnRandomPlayer(); IsRush = true; AfterIm.StartMaking(); yield return new WaitForSeconds(SpecialCool * 0.5f); break;
                 }
+            StartCoroutine(SpecialCoolDown());
         }
-
-        else
-            switch (Random.Range(0, 2))
-            {
-                case 0:
-                    anim.SetTrigger("Special"); yield return new WaitForSeconds(SpecialCool * 0.5f); break;
-                case 1:
-                    anim.SetTrigger("Special2"); anim.SetBool("IsAttack", false); yield return GameManager.OneSec; RushTarget = ReturnRandomPlayer(); IsRush = true; AfterIm.StartMaking(); yield return new WaitForSeconds(SpecialCool * 0.5f); break;
-            }
-        StartCoroutine(SpecialCoolDown());
     }
 
     
@@ -236,11 +241,9 @@ public class Skulslr : Enemy
         {
             jj = true; pt.gameObject.SetActive(true);
             float j = (float)Damage / MaxDamage;
-            MaxDamage = 40; Damage = Mathf.FloorToInt(MaxDamage * j);
-            j = (float)Defense / MaxDefense;
-            MaxDefense = 50; Defense = Mathf.FloorToInt(MaxDefense * j);
+            MaxDamage *= 2; Damage = Mathf.FloorToInt(MaxDamage * j);
             j = (float)speed / MaxSpeed;
-            MaxSpeed = speed * 1.5f; speed = Mathf.FloorToInt(MaxSpeed * j);
+            MaxSpeed = MaxSpeed * 1.5f; speed = Mathf.FloorToInt(MaxSpeed * j);
             BPart.SetActive(true); StartCoroutine(Line1());
         }
     }

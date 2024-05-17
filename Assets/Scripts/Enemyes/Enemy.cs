@@ -234,7 +234,7 @@ public class Enemy : MonoBehaviour
     {
         CanHit = false; 
         spriteRenderer.color = Color.gray;
-        Power += GameManager.instance.PlayerStatus.power - Weight;
+        Power += GameManager.instance.PlayerStatus.power - Weight * 5;
         OnHit = Power != 0;
         if (Power > 0) 
         {

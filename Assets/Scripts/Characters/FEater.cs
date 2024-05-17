@@ -6,9 +6,20 @@ public class FEater : PlayerSetting
 {
     [SerializeField] Sprite Spec;
     [SerializeField] ParticleSystem HitEffect;
+    [SerializeField] AfterImMaker AIM;
     int Power = 5;
 
     float ScaleF = 2;
+
+    void MakeIm()
+    {
+        AIM.StartMaking();
+    }
+
+    void StopIm()
+    {
+        AIM.StopMaking();
+    }
 
     protected override void AttackMethod()
     {
@@ -34,7 +45,11 @@ public class FEater : PlayerSetting
 
     float DamageRatio = 2f;
 
-
+    protected override void EndBatch()
+    {
+        base.EndBatch();
+        MakeIm();
+    }
 
 
     protected override int WeaponLevelUp()

@@ -12,6 +12,12 @@ public class Aurora : PlayerSetting
 
     float s = 0;
 
+    protected override void Awake()
+    {
+        player.InitDefense = 50;
+        base.Awake();
+    }
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -39,10 +45,10 @@ public class Aurora : PlayerSetting
     {
         switch (player.WeaponLevel++)
         {
-            case 1: player.InitDefense += 5; player.InitDefense += 5; break;
-            case 2: player.InitDefense += 5; player.InitDefense += 5; break;
+            case 1: player.InitDefense += 5; break;
+            case 2: player.InitDefense += 5; break;
             case 3: ice = 1; break;
-            case 4: player.InitDefense += 10; player.InitDefense += 10; break;
+            case 4: player.InitDefense += 10; break;
             case 5: IsHeal = true; break;
             case 6: IceField.SetActive(true); IceOn = true; StartCoroutine(FieldAct()); break;
         }
@@ -53,12 +59,12 @@ public class Aurora : PlayerSetting
     {
         while (true)
         {
-            RaycastHit2D[] targets = Physics2D.CircleCastAll(transform.position, 2f, Vector2.zero, 0, targetLayer);
+            RaycastHit2D[] targets = Physics2D.CircleCastAll(transform.position, 3f, Vector2.zero, 0, targetLayer);
             foreach (RaycastHit2D t in targets)
             {
                 Transform cnt = t.transform;
                 GameManager.instance.BM.MakeMeele(
-                    new BulletInfo((int)(player.InitDefense * (1 + player.DefenseRatio + GameManager.instance.PlayerStatus.defense) * 1.5f),false,0,debuffs: new DeBuff(ice: 1)) ,
+                    new BulletInfo((int)(player.InitDefense * (1 + player.DefenseRatio + GameManager.instance.PlayerStatus.defense)),false,0,debuffs: new DeBuff(ice: 1)) ,
                     0.2f, cnt.position, Vector3.zero, 0, false,null);
             }
             yield return GameManager.OneSec;

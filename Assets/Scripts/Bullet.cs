@@ -120,7 +120,7 @@ public class Bullet : MonoBehaviour
                 if (IsBoom) GameManager.instance.BM.MakeMeele(AfterBull, 0.3f, transform.position, Vector3.zero,0, IsEnem, HitImage);
                 else GameManager.instance.BM.MakeEffect(0.3f, transform.position, Vector3.zero,0, HitImage);
             }
-            if (Penetrate-- <= 0) { gameObject.SetActive(false); StartCoroutine(ForLine()); }
+            if (Penetrate-- <= 0) { if (Line.enabled) StartCoroutine(ForLine());  else gameObject.SetActive(false);  }
         }
         else if((collision.CompareTag("Player")||collision.CompareTag("Player_Hide")) && IsEnem)
         {
@@ -129,7 +129,7 @@ public class Bullet : MonoBehaviour
                 if (IsBoom) GameManager.instance.BM.MakeMeele(AfterBull, 0.3f, transform.position, Vector3.zero, 0,IsEnem, HitImage);
                 else GameManager.instance.BM.MakeEffect(0.3f, transform.position, Vector3.zero, 0,HitImage);
             }
-            if (Penetrate-- <= 0) { gameObject.SetActive(false); StartCoroutine(ForLine()); }
+            if (Penetrate-- <= 0) { if (Line.enabled) StartCoroutine(ForLine()); else gameObject.SetActive(false); }
         }
 
     }

@@ -17,6 +17,7 @@ public class Astesia : PlayerSetting
 
     protected override void Awake()
     {
+        player.InitDefense = 40;
         base.Awake();
         AttackIm = Attack1;
         player.SubEffects.AddRange(Weapon.transform.GetComponentsInChildren<SpriteRenderer>());

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,6 +29,88 @@ public class Sora : PlayerSetting
     {
         base.OnEnable();
         foreach (var k in Synthe) k.gameObject.SetActive(false);
+    }
+
+    new protected void FixedUpdate()
+    {
+        if (player.ChangeOccur && !IsSummon)
+        {
+            player.ChangeOccur = false;
+            int cnt = player.MaxHP;
+            player.MaxHP = Mathf.FloorToInt(player.InitHP * (1 + player.HPRatio + GameManager.instance.PlayerStatus.hp));
+            if (cnt - player.MaxHP != 0)
+            {
+                player.CurHP += player.MaxHP - cnt;
+                HPBar.fillAmount = player.CurHP / (float)player.MaxHP;
+                if (!IsPlayer) player.MyBatch.HPBar.fillAmount = player.CurHP / (float)player.MaxHP;
+                else GameManager.instance.UM.HpChange();
+            }
+            player.anim.SetFloat("AttackSpeed", player.AttackSpeed + GameManager.instance.PlayerStatus.attackspeed);
+        }
+
+        player.rigid.velocity = Vector2.zero;
+        if (CanMove)
+        {
+            if (!IsPlayer)
+            {
+                if (player.IsFollow)
+                {
+                    TargetPos = GameManager.instance.Git.transform;
+                    player.Dir = (TargetPos.position - transform.position).normalized;
+                    if (Vector3.Distance(transform.position, TargetPos.position) <= 2f) player.IsFollow = false;
+                }
+                else
+                {
+                    var Test = GameManager.GetNearest(scanRange, 2, transform.position, targetLayer);
+                    TargetPos = null;
+                    foreach (var k in Test) if (k != transform) TargetPos = k;
+                    if (TargetPos != null)
+                    {
+                        float ChangeRange = AttackRange;
+                        if (TargetPos.position.y > transform.position.y)
+                        {
+                            float xgap = Mathf.Abs(TargetPos.position.x - transform.position.x);
+                            if (xgap < 2) ChangeRange = AttackRange * 0.5f;
+                            else if (xgap < 4) ChangeRange = AttackRange * 0.8f;
+                        }
+                        if (Vector3.Distance(transform.position, TargetPos.position) <= ChangeRange) CanMove = false;
+                        player.Dir = (TargetPos.position - transform.position).normalized;
+                    }
+                    else player.Dir = Vector2.zero;
+                }
+            }
+            Vector2 nextVec = player.Dir * player.speed * (1 + player.SpeedRatio + GameManager.instance.PlayerStatus.speed) * Time.fixedDeltaTime;
+            if (nextVec.Equals(Vector2.zero))
+            {
+                player.anim.SetBool("IsWalk", false);
+            }
+            else
+            {
+                if (player.Dir.x > 0 && !player.sprite.flipX)
+                {
+                    player.sprite.flipX = true;
+                    foreach (var k in player.SubEffects) k.flipX = true;
+                }
+                else if (player.Dir.x < 0 && player.sprite.flipX)
+                {
+                    player.sprite.flipX = false;
+                    foreach (var k in player.SubEffects) k.flipX = false;
+                }
+                player.anim.SetBool("IsWalk", true);
+                player.rigid.MovePosition(player.rigid.position + nextVec);
+            }
+        }
+        else if (TargetPos != null)
+        {
+            float ChangeRange = AttackRange;
+            if (TargetPos.position.y > transform.position.y)
+            {
+                float xgap = Mathf.Abs(TargetPos.position.x - transform.position.x);
+                if (xgap < 2) ChangeRange = AttackRange * 0.5f;
+                else if (xgap < 4) ChangeRange = AttackRange * 0.8f;
+            }
+            if (Vector3.Distance(transform.position, TargetPos.position) > ChangeRange) CanMove = true;
+        }
     }
 
 

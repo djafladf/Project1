@@ -302,7 +302,7 @@ TextureImporter:
         width: 300
         height: 354
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -310,6 +310,27 @@ TextureImporter:
       bones: []
       spriteID: 962058561fcf49c43b3b1c1ef3b5899c
       internalID: 1596115076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Standings_10
+      rect:
+        serializedVersion: 2
+        x: 2392
+        y: 325
+        width: 216
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 445e5ed90cda8d3498723cf63797fe59
+      internalID: 349488186
       vertices: []
       indices: 
       edges: []
@@ -334,6 +355,7 @@ TextureImporter:
       Standings_3: 794098961
       Standings_8: -1298633637
       Standings_1: -1421310069
+      Standings_10: 349488186
       Standings_5: 1152281158
   spritePackingTag: 
   pSDRemoveMatte: 0

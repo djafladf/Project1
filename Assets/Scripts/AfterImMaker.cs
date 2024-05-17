@@ -55,7 +55,7 @@ public class AfterImMaker : MonoBehaviour
         Images[CurIm].SetActive(true); Images[CurIm].transform.position = TargetPos.position; Renderers[CurIm].sprite = TargetSprite.sprite; Renderers[CurIm].flipX = TargetSprite.flipX;
         Renderers[CurIm].color = StartColor;
         Renderers[CurIm].transform.rotation = TargetPos.rotation;
-        Renderers[CurIm].transform.localScale = TargetPos.localScale;
+        if(IsChangeSize) Renderers[CurIm].transform.localScale = TargetPos.localScale;
         for(int i = 0; i < LastTime * 10; i++)
         {
             yield return WFS;
@@ -90,5 +90,10 @@ public class AfterImMaker : MonoBehaviour
     {
         foreach (var k in Images) k.SetActive(false);
         LastIm = 0;
+    }
+
+    private void OnDisable()
+    {
+        StopMaking();
     }
 }

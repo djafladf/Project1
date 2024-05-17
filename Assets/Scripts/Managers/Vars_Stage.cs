@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -49,6 +50,17 @@ public class attribute
 }
 
 [System.Serializable]
+public class EnemStat
+{
+    public float attack;
+    public float speed;
+    public float defense;
+    public float spawn;
+    public float hp;
+    public float boss;
+}
+
+[System.Serializable]
 public class BulletInfo
 {
     public int Damage;
@@ -74,6 +86,10 @@ public class BulletInfo
 
     public int ReturnDamage(float defense)
     {
+        if (defense < 70) { }
+        else if (defense < 80) defense = 80 + (defense - 80) * 0.5f;
+        else if (defense < 90) defense = 85 + (defense - 90) * 0.2f;
+
         if (IsFix) return Damage;
         return Mathf.CeilToInt(Damage * (100 + IgnoreDefense - defense) * 0.01f);
     }

@@ -285,6 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67523cfe149039646aa57662a9b97b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Astesia: {fileID: 11400000, guid: ccaefb4d44e1a9340ad6da80bfebc00d, type: 2}
 --- !u!1 &1539120915633731631
 GameObject:
   m_ObjectHideFlags: 0
@@ -901,6 +902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67523cfe149039646aa57662a9b97b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Astesia: {fileID: 11400000, guid: ccaefb4d44e1a9340ad6da80bfebc00d, type: 2}
 --- !u!1 &6728541956983157724
 GameObject:
   m_ObjectHideFlags: 0

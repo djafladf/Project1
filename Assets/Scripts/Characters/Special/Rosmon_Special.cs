@@ -6,6 +6,7 @@ using UnityEngine;
 public class Rosmon_Special : MonoBehaviour
 {
     [SerializeField] LayerMask TargetLay;
+    [SerializeField] Player Rosmon;
     Rigidbody2D rigid;
     Transform Target = null;
     AfterImMaker AIM;
@@ -82,7 +83,7 @@ public class Rosmon_Special : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            GameManager.instance.BM.MakeBullet(new BulletInfo(Mathf.FloorToInt((1 + GameManager.instance.PlayerStatus.attack) * 25), false, 0),0,collision.transform.position,Vector3.zero,0,false);
+            GameManager.instance.BM.MakeBullet(new BulletInfo(Mathf.FloorToInt((1 + GameManager.instance.PlayerStatus.attack + Rosmon.AttackRatio) * 25), false, 0),0,collision.transform.position,Vector3.zero,0,false);
             if (collision.transform == Target && !tmp) { tmp = true; rigid.AddForce(Vector2.right); }
         }
     }

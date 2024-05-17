@@ -197,7 +197,7 @@ public class PlayerSetting : MonoBehaviour
     [SerializeField] protected Image HPBar;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("EnemyAttack") && CanHit) GetDamage(GameManager.instance.BM.GetBulletInfo(GameManager.StringToInt(collision.name)));
+        if (collision.CompareTag("EnemyAttack") && CanHit) GetDamage(GameManager.instance.BM.GetBulletInfo(GameManager.StringToInt(collision.name)),collision.transform);
         else if (collision.CompareTag("PlayerBuff"))
         {
             Buff Info = GameManager.instance.BM.GetBulletInfo(GameManager.StringToInt(collision.name)).Buffs;
@@ -219,7 +219,7 @@ public class PlayerSetting : MonoBehaviour
         }
     }
 
-    protected virtual void GetDamage(BulletInfo Info)
+    protected virtual void GetDamage(BulletInfo Info,Transform DamageFrom)
     {
         int GetDamage = Info.ReturnDamage(player.InitDefense * (1 + player.DefenseRatio + GameManager.instance.PlayerStatus.defense));
         player.CurHP -= GetDamage;
@@ -228,8 +228,8 @@ public class PlayerSetting : MonoBehaviour
         {
             player.CurHP = 0;
             gameObject.SetActive(false);
-            if (!IsPlayer) player.MyBatch.ReBatch();
-            else GameManager.instance.UM.GameFail();
+            if(IsPlayer) GameManager.instance.UM.GameFail();
+            else if (!IsSummon) player.MyBatch.ReBatch();
         }
 
         HPBar.fillAmount = player.CurHP / (float)player.MaxHP;
@@ -251,7 +251,7 @@ public class PlayerSetting : MonoBehaviour
     {
         if (collision.CompareTag("Area"))
         {
-            transform.position = GameManager.instance.player.Self.transform.position * 1.5f - transform.position * 0.5f;
+            player.rigid.MovePosition(GameManager.instance.player.Self.transform.position * 1.5f - transform.position * 0.5f);
         }
     }
 

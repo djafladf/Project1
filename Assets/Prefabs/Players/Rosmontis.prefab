@@ -124,6 +124,7 @@ MonoBehaviour:
   TargetLay:
     serializedVersion: 2
     m_Bits: 64
+  Rosmon: {fileID: 11400000, guid: d90cfe6717ab5824d86b1bb6407c4206, type: 2}
   AttackGap: 0.2
 --- !u!61 &8250645182473582092
 BoxCollider2D:
@@ -202,7 +203,7 @@ MonoBehaviour:
   StartColor: {r: 1, g: 1, b: 1, a: 1}
   EndColor: {r: 1, g: 1, b: 1, a: 0.2}
   Test: 1
-  IsChangeSize: 0
+  IsChangeSize: 1
 --- !u!1 &1272103528448970141
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,7 +255,7 @@ MonoBehaviour:
   StartColor: {r: 1, g: 1, b: 1, a: 1}
   EndColor: {r: 1, g: 1, b: 1, a: 0.2}
   Test: 1
-  IsChangeSize: 0
+  IsChangeSize: 1
 --- !u!1 &1539120915633731631
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,27 +494,27 @@ MonoBehaviour:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
-        inSlope: -2.5
-        outSlope: -2.5
+        value: 0.8
+        inSlope: 0.99999994
+        outSlope: 0.99999994
         tangentMode: 34
         weightedMode: 0
         inWeight: 0
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.2
-        value: 0.5
-        inSlope: -1.0726831
-        outSlope: -1.0726831
+        value: 1
+        inSlope: 0
+        outSlope: 0
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.068449534
+        inWeight: 0.71884066
         outWeight: 0.10214315
       - serializedVersion: 3
         time: 1
         value: 0.2
-        inSlope: -0.375
-        outSlope: -0.375
+        inSlope: -1
+        outSlope: -1
         tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
@@ -521,7 +522,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    Time: 0.6
+    Time: 0.3
   FloatWeapon: {fileID: 7240816116103637556}
 --- !u!70 &1539120915725065941
 CapsuleCollider2D:
@@ -621,7 +622,7 @@ GameObject:
   - component: {fileID: 2388021706861370153}
   - component: {fileID: 192610789785419214}
   - component: {fileID: 1703766617230332664}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1140,6 +1141,7 @@ MonoBehaviour:
   TargetLay:
     serializedVersion: 2
     m_Bits: 64
+  Rosmon: {fileID: 11400000, guid: d90cfe6717ab5824d86b1bb6407c4206, type: 2}
   AttackGap: 0.2
 --- !u!61 &4211073251426949286
 BoxCollider2D:

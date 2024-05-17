@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Amiya
   m_EditorClassIdentifier: 
   speed: 5
-  InitHP: 150
+  InitHP: 200
   InitSP: 30
-  InitDefense: 0
+  InitDefense: 10
+  Cost: 0
+  ReBatchTime: 0

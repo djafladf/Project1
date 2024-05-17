@@ -8,56 +8,64 @@ using UnityEngine;
 public class Wafarin_Special : MonoBehaviour
 {
     [SerializeField] Sprite Bullet;
-    WaitForSeconds ZeroDotFive = new WaitForSeconds(1f);
+    WaitForSeconds ZeroDotFive = new WaitForSeconds(0.5f);
     [SerializeField] LayerMask[] Layers;
     [SerializeField] GameObject Particle;
-    List<ParticleSystem> Particles;
+    [SerializeField] Player Wafarin;
+
+    Dictionary<Transform, ParticleSystem> Particles;
+    BoxCollider2D Coll;
 
     private void Awake()
     {
-        Particles = new List<ParticleSystem>() { Particle.GetComponent<ParticleSystem>()};
+        Particles = new Dictionary<Transform, ParticleSystem>();
+        Particles[transform] = Particle.GetComponent<ParticleSystem>();
+        Coll = GetComponent<BoxCollider2D>();
 
-        int i = 0;
         foreach(var k in GameManager.instance.Prefs)
         {
-            if (i != 0) Particles.Add(Instantiate(Particle, transform).GetComponent<ParticleSystem>());
-            Particles[i].transform.parent = k.transform; Particles[i].transform.localPosition = Vector3.zero;
-            Particles[i].transform.localScale = Vector3.one;
-            Particles[i].Stop();
-            i++;
+            if (k != gameObject)
+            {
+                var j = Instantiate(Particle, transform).GetComponent<ParticleSystem>();
+                j.transform.parent = k.transform; j.transform.localPosition = Vector3.zero;
+                j.transform.localScale = Vector3.one;
+                j.Stop();
+                Particles[k.transform] = j;
+            }
         }       
     }
 
     private void OnEnable()
     {
         StartCoroutine(Attack());
+        foreach(var k in Particles.Values) k.Stop();
     }
     IEnumerator Attack()
     {
-        
+        Coll.enabled = true;
         yield return ZeroDotFive;
-        for(int i = 0; i < 20; i++)
+        for(int i = 0; i < 10; i++)
         {
-            RaycastHit2D[] targets = Physics2D.CircleCastAll(transform.position, 5f, Vector2.zero, 0, Layers[0]);
-            foreach(RaycastHit2D t in targets)
-            {
-                Transform cnt = t.transform;
-                GameManager.instance.BM.MakeMeele(
-                    new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack) * 45f),false,0),0.3f,
-                    cnt.position,Vector3.zero,0,false,Bullet);
-            }
-            for(int x = 0; x < Particles.Count; x++)
-            {
-                Vector3 CntPos = GameManager.instance.Prefs[x].transform.position;
-                if (Vector2.Distance(transform.position, GameManager.instance.Prefs[x].transform.position) <= 5f)
-                {
-                    Particles[x].Play(); GameManager.instance.BM.MakeBuff(new BulletInfo(0, false, 0, buffs: new Buff(heal: (int)((1 + GameManager.instance.PlayerStatus.attack * 0.1f)))), CntPos, null, false);
-                }
-                else Particles[x].Stop();
-            }
+            Coll.enabled = false;
+            yield return ZeroDotFive;
+            Coll.enabled = true;
             yield return ZeroDotFive;
         }
-        foreach (var k in Particles) k.Stop();
         gameObject.SetActive(false);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") || collision.CompareTag("Player_Hide"))
+        {
+            Particles[collision.transform].Play(); GameManager.instance.BM.MakeBuff(new BulletInfo(0, false, 0, buffs: new Buff(heal: (int)((1 + GameManager.instance.PlayerStatus.attack * 0.1f))),scalefactor:0.1f), collision.transform.position, null, false);
+        }
+        if (collision.CompareTag("Enemy"))
+        {
+            Transform cnt = collision.transform;
+            GameManager.instance.BM.MakeMeele(
+                new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + Wafarin.AttackRatio) * 35f), false, 0), 0.6f,
+                cnt.position, Vector3.zero, 0, false, Bullet);
+        }
     }
 }

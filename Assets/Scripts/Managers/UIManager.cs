@@ -95,13 +95,16 @@ public class UIManager : MonoBehaviour
         Cost.text = $"{(int)CurCost}";
     }
 
-    float ExpSub = 0.2f;
+    float ExpSub = 0.125f;
     public void ExpUp(int value)
     {
         if (NonSelected.Count == 0) return;
         float cnt = ExpBar.fillAmount + ExpSub * value * GameManager.instance.PlayerStatus.exp;
         if (cnt < 0) cnt = 0;
-        if (cnt > 1) { LevelUpEvent(); cnt -= 1; }
+        if (cnt > 1) { 
+            LevelUpEvent(); cnt -= 1; LV.text = $"LV.{++CurLevel}";
+            ExpSub *= 0.92f;
+        }
         ExpBar.fillAmount = cnt;
     }
 
@@ -141,6 +144,14 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] List<ItemSub> StatItem;
 
+
+    public void ReRoll()
+    {
+        ReRollCount--;
+        ReRollBT.interactable = ReRollCount != 0;
+        ReRollCountText.text = $"³²Àº È½¼ö : <color=red>{ReRollCount}</color>";
+        LevelUpEvent();
+    }
     void LevelUpEvent()
     {
         if (NonSelected.Count< GameManager.instance.PlayerStatus.selection) NonSelected.AddRange(StatItem);
@@ -172,12 +183,11 @@ public class UIManager : MonoBehaviour
             }
         }
 
-        LV.text = $"LV.{++CurLevel}";
-        ExpSub = ExpSub * 0.9f;
-
-
-        LevelUP.gameObject.SetActive(true);
-        GameManager.instance.SetTime(0, false);
+        if (!LevelUP.gameObject.activeSelf)
+        {
+            LevelUP.gameObject.SetActive(true);
+            GameManager.instance.SetTime(0, false);
+        }
     }
 
     [SerializeField] TMP_Text AttackStat;
@@ -191,6 +201,10 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] Transform RelicList;
     [SerializeField] GameObject RelicObj;
+    [SerializeField] Button ReRollBT;
+    TMP_Text ReRollCountText;
+
+    int ReRollCount;
 
 
     bool[] Dragons = { false, false, false, false, false };
@@ -404,6 +418,10 @@ public class UIManager : MonoBehaviour
         ExpStat.text = $"{Mathf.FloorToInt((GameManager.instance.PlayerStatus.exp - 1) * 100)}%";
         HasteStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.attackspeed * 100)}%";
         HealthStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.hp * 100)}%";
+        ReRollCount = GameManager.instance.gameStatus.Stat[9] - 1;
+        ReRollCountText = ReRollBT.transform.GetChild(1).GetComponent<TMP_Text>();
+        ReRollBT.interactable = ReRollCount != 0;
+        ReRollCountText.text = $"³²Àº È½¼ö : <color=red>{ReRollCount}</color>";
 
         GameManager.instance.StartLoading();
     }

@@ -108,10 +108,10 @@ TextureImporter:
       name: Heads_0
       rect:
         serializedVersion: 2
-        x: 135
-        y: 878
-        width: 178
-        height: 204
+        x: 133
+        y: 880
+        width: 195
+        height: 227
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,10 +150,10 @@ TextureImporter:
       name: Heads_2
       rect:
         serializedVersion: 2
-        x: 718
-        y: 894
-        width: 163
-        height: 163
+        x: 691
+        y: 882
+        width: 202
+        height: 205
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -314,6 +314,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Heads_10
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 601
+        width: 222
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d44fa9d10344de4ea67735336384521
+      internalID: 391191481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -326,6 +347,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Heads_2: -1076361438
+      Heads_10: 391191481
       Heads_4: 1371356227
       Heads_3: 1414688245
       Heads_9: 194690983

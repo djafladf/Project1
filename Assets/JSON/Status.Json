@@ -2,7 +2,8 @@
   "Money": 0,
   "RefineStone": 0,
   "Stone": 0,
-  "Stat": [1,1,1,1,1,1,1,1,1,1],
+  "Stat": [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ],
+  "Test": [ 0, 0, 0, 0, 0, 0,0],
   "Unlock_Char": [],
   "Unlock_Item": []
 }

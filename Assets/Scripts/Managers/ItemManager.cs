@@ -51,34 +51,34 @@ public class ItemManager : MonoBehaviour
         {
             // If Over MaxItem Num. FIFO
             int First = CreatedTiming[0]; CreatedTiming.RemoveAt(0);
-            if (MustMake) Ran = Random.Range(0, 73);
+            if (MustMake) Ran = Random.Range(0, 63);
             else Ran = Random.Range(0, 101);
-            if (Ran < 90)
+            if (Ran < 62)
             {
                 CreatedTiming.Add(First);
                 Items[First].SetActive(true);
                 Items[First].transform.position = pos;
             }
-            if (Ran < 65)
+            if (Ran < 55)
             {
                 int CurExp = Mathf.FloorToInt(GameManager.instance.UM.CurMinute * 0.125f); if (CurExp > 3) CurExp = 3;
                 ItemsSprite[First].sprite = EXPs[CurExp];
                 ItemsScript[First].Init(0, (int)Mathf.Pow(2 ,CurExp));
             }
-            else if (Ran < 88)
+            else if (Ran < 60)
             {
                 ItemsSprite[First].sprite = Money;
-                ItemsScript[First].Init(1, 10);
+                ItemsScript[First].Init(1, 5);
             }
-            else if (Ran < 89)
+            else if (Ran < 61)
             {
                 ItemsSprite[First].sprite = Stone;
                 ItemsScript[First].Init(2, 1);
             }
-            else if (Ran < 90)
+            else if (Ran < 62)
             {
                 ItemsSprite[First].sprite = RefinedStone;
-                ItemsScript[First].Init(3, 10);
+                ItemsScript[First].Init(3, 5);
             }
         }
         else
@@ -86,34 +86,34 @@ public class ItemManager : MonoBehaviour
             {
                 if (!Items[i].activeSelf)
                 {
-                    if (MustMake) Ran = Random.Range(0, 73);
+                    if (MustMake) Ran = Random.Range(0, 63);
                     else Ran = Random.Range(0, 101);
-                    if (Ran < 90)
+                    if (Ran < 62)
                     {
                         CreatedTiming.Add(i);
                         Items[i].SetActive(true);
                         Items[i].transform.position = pos;
                     }
-                    if (Ran < 65)
+                    if (Ran < 55)
                     {
                         int CurExp = Mathf.FloorToInt(GameManager.instance.UM.CurMinute * 0.125f); if (CurExp > 3) CurExp = 3;
                         ItemsSprite[i].sprite = EXPs[CurExp];
                         ItemsScript[i].Init(0, (int)Mathf.Pow(2, CurExp));
                     }
-                    else if (Ran < 88)
+                    else if (Ran < 60)
                     {
                         ItemsSprite[i].sprite = Money;
-                        ItemsScript[i].Init(1, 10);
+                        ItemsScript[i].Init(1, 5);
                     }
-                    else if (Ran < 89)
+                    else if (Ran < 61)
                     {
                         ItemsSprite[i].sprite = Stone;
                         ItemsScript[i].Init(2, 1);
                     }
-                    else if (Ran < 90)
+                    else if (Ran < 62)
                     {
                         ItemsSprite[i].sprite = RefinedStone;
-                        ItemsScript[i].Init(3, 10);
+                        ItemsScript[i].Init(3, 5);
                     }
 
                     break;

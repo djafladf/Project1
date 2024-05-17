@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Astesia_Special : MonoBehaviour
 {
+    [SerializeField] Player Astesia;
     SpriteRenderer Sprite;
     Coroutine color = null;
     Color Sub = new Color(0.75f, 0.75f, 1);
