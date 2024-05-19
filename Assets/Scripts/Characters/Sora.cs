@@ -12,17 +12,22 @@ public class Sora : PlayerSetting
     [SerializeField] Transform ForceField;
     [SerializeField] AfterImMaker AIM_Force;
 
+    [SerializeField] GameObject FlyOne;
+    [SerializeField] GameObject FlyTwo;
+
     [SerializeField] List<Sprite> ETC;
 
 
     bool SpecO = false;
 
-    int MaxScale = 15;
+    int MaxScale = 20;
 
     protected override void Awake()
     {
         base.Awake();
         player.SubEffects.Add(transform.GetChild(1).GetComponent<SpriteRenderer>());
+        player.SubEffects.Add(FlyOne.GetComponent<SpriteRenderer>());
+        player.SubEffects.Add(FlyTwo.GetComponent<SpriteRenderer>());
     }
 
     protected override void OnEnable()

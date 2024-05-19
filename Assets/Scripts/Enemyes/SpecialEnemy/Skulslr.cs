@@ -115,7 +115,7 @@ public class Skulslr : Enemy
         Vector3 cnt = ReturnRandomPlayer().position
             + new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0);
         GameManager.instance.BM.MakeEffect(jj ? 0.5f : 1f, transform.position + Vector3.up, Vector3.up,jj? 60 : 40, Bullet);
-        GameManager.instance.BM.MakeWarning(cnt,1.5f,Boom.bounds.size * 0.8f,SpecialAttackSub);
+        GameManager.instance.BM.MakeWarning(cnt,1.5f,Boom.bounds.size * 0.8f,Color.red, SpecialAttackSub);
     }
 
     void SpecialAttackSub(Vector3 pos)

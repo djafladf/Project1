@@ -6,11 +6,11 @@ public class FEater : PlayerSetting
 {
     [SerializeField] Sprite Spec;
     [SerializeField] ParticleSystem HitEffect;
+    [SerializeField] ParticleSystem SteamEffect;
     [SerializeField] AfterImMaker AIM;
     int Power = 5;
 
     float ScaleF = 2;
-
     void MakeIm()
     {
         AIM.StartMaking();
@@ -31,6 +31,13 @@ public class FEater : PlayerSetting
             TargetPos.position + Gap, -player.Dir, 0, false);
     }
 
+    Vector3 St1 = new Vector3(1.5f, 0.15f, 0);
+    Vector3 St2 = new Vector3(-1.5f, 0.15f, 0);
+    void MakeSteam()
+    {
+        SteamEffect.transform.localPosition = player.sprite.flipX ?  St2 : St1;
+        SteamEffect.Play();
+    }
 
 
     public void SpecialAttack()

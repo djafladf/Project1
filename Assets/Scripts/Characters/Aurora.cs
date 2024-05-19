@@ -50,12 +50,12 @@ public class Aurora : PlayerSetting
             case 3: ice = 1; break;
             case 4: player.InitDefense += 10; break;
             case 5: IsHeal = true; break;
-            case 6: IceField.SetActive(true); IceOn = true; StartCoroutine(FieldAct()); break;
+            case 6: IceField.SetActive(true); IceOn = true; /*StartCoroutine(FieldAct());*/ break;
         }
         return player.WeaponLevel;
     }
 
-    IEnumerator FieldAct()
+    /*IEnumerator FieldAct()
     {
         while (true)
         {
@@ -69,7 +69,7 @@ public class Aurora : PlayerSetting
             }
             yield return GameManager.OneSec;
         }
-    }
+    }*/
 
     protected override void EndBatch()
     {
@@ -77,7 +77,7 @@ public class Aurora : PlayerSetting
         if (IceOn)
         {
             IceField.gameObject.SetActive(true);
-            StartCoroutine(FieldAct());
+            /*StartCoroutine(FieldAct());*/
         }
     }
 

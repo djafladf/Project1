@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: be71ba11fdd30ef4a8cdedfbee810110
+guid: ace898a3d6a753b4f8e5bb76eef3ecb4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -44,12 +44,12 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 15
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Weapons_0
+      name: FlyingSora_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 26
-        width: 35
-        height: 46
+        x: 5
+        y: 244
+        width: 99
+        height: 43
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,41 +119,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e86025bd73d58a14c86fef491ea6a3d0
-      internalID: -1535813268
+      spriteID: 544e78b87b2fa5143b702e2ad94716aa
+      internalID: 200686132
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Weapons_1
+      name: FlyingSora_1
       rect:
         serializedVersion: 2
-        x: 71
-        y: 39
-        width: 3
-        height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 160
+        y: 30
+        width: 152
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.97}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 723b2c17a896596408707a4f62e5421e
-      internalID: -795090753
+      spriteID: 4cb5a1f1092787c40a8fadd88ec38e84
+      internalID: -1149282612
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Weapons_2
+      name: FlyingSora_2
       rect:
         serializedVersion: 2
-        x: 91
-        y: 27
-        width: 7
-        height: 24
+        x: 368
+        y: 184
+        width: 152
+        height: 28
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,50 +161,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 602d3c6c5f0aa8b43b9650de3f32a82c
-      internalID: 299962671
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Weapons_3
-      rect:
-        serializedVersion: 2
-        x: 115
-        y: 58
-        width: 25
-        height: 9
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 480626cbb4d33b940ba3016f8d198c23
-      internalID: -391198273
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Weapons_4
-      rect:
-        serializedVersion: 2
-        x: 233
-        y: 20
-        width: 62
-        height: 120
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 16ae85c1367ad75409160bce92c74522
-      internalID: -685517881
+      spriteID: c264d679ad0cf514e9a6841fa9d05021
+      internalID: 1841697770
       vertices: []
       indices: 
       edges: []
@@ -220,11 +178,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Weapons_0: -1535813268
-      Weapons_1: -795090753
-      Weapons_4: -685517881
-      Weapons_2: 299962671
-      Weapons_3: -391198273
+      FlyingSora_1: -1149282612
+      FlyingSora_0: 200686132
+      FlyingSora_2: 1841697770
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

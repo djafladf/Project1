@@ -168,3 +168,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   My: {fileID: 2881917522911814511}
   Area: {fileID: 2881917521828918615}
+  P1: {fileID: 2881917522911814509}
+  P2: {fileID: 2881917521828918614}

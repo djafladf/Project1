@@ -33,7 +33,7 @@ public class Cutter : PlayerSetting
                     new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10), false, 0, ignoreDefense: 0.2f), 0.3f,
                     transform.position, -player.Dir, 0, false, NormalAttack);
 
-                if (player.WeaponLevel >= 0) MakeSpec = true;
+                if (player.WeaponLevel >= 7) MakeSpec = true;
             }
             if (ProjNum != 0)
             {

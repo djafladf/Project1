@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: be71ba11fdd30ef4a8cdedfbee810110
+guid: eb02c682a3111324d8c1d37f07c4c901
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -44,12 +44,12 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 15
+  spritePixelsToUnits: 65
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -105,13 +105,34 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Weapons_0
+      name: Spec_1
       rect:
         serializedVersion: 2
-        x: 13
+        x: 65
+        y: 25
+        width: 338
+        height: 306
+      alignment: 9
+      pivot: {x: 0.517, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8741b24f8770b54fab99ea841de4427
+      internalID: -104888212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spec_2
+      rect:
+        serializedVersion: 2
+        x: 503
         y: 26
-        width: 35
-        height: 46
+        width: 329
+        height: 306
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,41 +140,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e86025bd73d58a14c86fef491ea6a3d0
-      internalID: -1535813268
+      spriteID: a4c914725ef49e649a686dd6a18eebc0
+      internalID: 414822576
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Weapons_1
+      name: Spec_4
       rect:
         serializedVersion: 2
-        x: 71
-        y: 39
-        width: 3
-        height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 932
+        y: 28
+        width: 526
+        height: 346
+      alignment: 9
+      pivot: {x: 0.689, y: 0.46}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 723b2c17a896596408707a4f62e5421e
-      internalID: -795090753
+      spriteID: 7412effd783ccbd48b54fd2839ef1a46
+      internalID: 643055831
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Weapons_2
+      name: Spec_5
       rect:
         serializedVersion: 2
-        x: 91
-        y: 27
-        width: 7
-        height: 24
+        x: 1621
+        y: 28
+        width: 325
+        height: 312
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,20 +182,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 602d3c6c5f0aa8b43b9650de3f32a82c
-      internalID: 299962671
+      spriteID: 55d4434d90f739045be445d09d562a5c
+      internalID: -940252240
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Weapons_3
+      name: Spec_0
       rect:
         serializedVersion: 2
-        x: 115
-        y: 58
-        width: 25
-        height: 9
+        x: 90
+        y: 366
+        width: 29
+        height: 28
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,29 +203,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 480626cbb4d33b940ba3016f8d198c23
-      internalID: -391198273
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Weapons_4
-      rect:
-        serializedVersion: 2
-        x: 233
-        y: 20
-        width: 62
-        height: 120
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 16ae85c1367ad75409160bce92c74522
-      internalID: -685517881
+      spriteID: f32b716bc4ef2d84ca3e56cc1ce30d0e
+      internalID: -1671166198
       vertices: []
       indices: 
       edges: []
@@ -220,11 +220,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Weapons_0: -1535813268
-      Weapons_1: -795090753
-      Weapons_4: -685517881
-      Weapons_2: 299962671
-      Weapons_3: -391198273
+      Spec_5: -940252240
+      Spec_4: 643055831
+      Spec_0: -1671166198
+      Spec_3: -2137257445
+      Spec_1: -104888212
+      Spec_2: 414822576
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -43,12 +43,13 @@ public class Bullet : MonoBehaviour
         this.HitImage = HitImage;
         rigid.simulated = true; rigid.velocity = Dir; this.Penetrate = Penetrate; sprite.sprite = Image; this.IsMeele = IsMeele; this.IsEnem = IsEnemy; IsBoom = false;
 
-        StartCoroutine(AttackDelay(delay));
+        if (delay != 0) StartCoroutine(AttackDelay(delay));
+        else coll.enabled = true;
 
         if (Image != null) coll.size = sprite.bounds.size * ScaleFactor;
         else coll.size = Vector2.one * ScaleFactor;
         
-        if (IsMeele) StartCoroutine(AfterImage(AfterTime,true));
+        if (IsMeele) StartCoroutine(AfterImage(AfterTime,delay == 0));
         
         tag = IsEnemy ? "EnemyAttack" : "PlayerAttack";
     }
@@ -91,7 +92,7 @@ public class Bullet : MonoBehaviour
         rigid.simulated = true; rigid.velocity = Dir; sprite.sprite = Image;
         if (BL == null) Line.enabled = false;
 
-        StartCoroutine(AfterImage(AfterTime));
+        StartCoroutine(AfterImage(AfterTime,true));
     }
 
     public void Init_Buff(Sprite Im,  bool IsEnemy)
@@ -112,9 +113,9 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (IsMeele) { coll.enabled = false; return; }
         if (collision.CompareTag("Enemy") && !IsEnem)
         {
+            if (IsMeele) { coll.enabled = false; return; }
             if (HitImage != null)
             {
                 if (IsBoom) GameManager.instance.BM.MakeMeele(AfterBull, 0.3f, transform.position, Vector3.zero,0, IsEnem, HitImage);
@@ -124,6 +125,7 @@ public class Bullet : MonoBehaviour
         }
         else if((collision.CompareTag("Player")||collision.CompareTag("Player_Hide")) && IsEnem)
         {
+            if (IsMeele) { coll.enabled = false; return; }
             if (HitImage != null)
             {
                 if (IsBoom) GameManager.instance.BM.MakeMeele(AfterBull, 0.3f, transform.position, Vector3.zero, 0,IsEnem, HitImage);
@@ -139,7 +141,6 @@ public class Bullet : MonoBehaviour
         float j = AfterTime * 0.2f;
         Color D = new Color(0, 0, 0, 0.2f);
         yield return new WaitForSeconds(j);
-        coll.enabled = false;
         for (int i = 0; i < 5; i++)
         {
             yield return new WaitForSeconds(j);
@@ -151,6 +152,7 @@ public class Bullet : MonoBehaviour
 
     IEnumerator ForLine()
     {
+        IsMeele = true;
         coll.enabled = false; rigid.simulated = false; sprite.sprite = null;
         yield return new WaitForSeconds(Line.time);
         gameObject.SetActive(false);
@@ -158,6 +160,6 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Area") && !IsMeele) gameObject.SetActive(false);
+        if (collision.CompareTag("Area") && !IsMeele) { if (Line.enabled) StartCoroutine(ForLine()); else gameObject.SetActive(false); }
     }
 }

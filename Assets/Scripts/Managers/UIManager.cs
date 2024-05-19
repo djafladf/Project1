@@ -168,7 +168,7 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < GameManager.instance.PlayerStatus.selection;i++)
         {
             Selections[i].gameObject.SetActive(true);
-            int l = UnityEngine.Random.Range(0,2);
+            int l = UnityEngine.Random.Range(0,3);
             if(l == 0 && _pickedElements.Count > 0)
             {
                 int Ind = _pickedElements[0]; _pickedElements.RemoveAt(0);

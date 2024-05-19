@@ -107,6 +107,13 @@ public class Enemy : MonoBehaviour
         
     }
 
+    IEnumerator DeadLater()
+    {
+        yield return GameManager.DotOneSec;
+        tag = "Untagged";
+        StopAllCoroutines();
+    }
+
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (!IsLive) return;
@@ -120,8 +127,7 @@ public class Enemy : MonoBehaviour
             if (HP <= 0)
             {
                 anim.SetTrigger("Dead");
-                StopAllCoroutines();
-                tag = "Untagged";
+                StartCoroutine(DeadLater());
                 spriteRenderer.sortingOrder = 1;
                 IsLive = false; CanHit = false; rigid.simulated = false; coll.enabled = false;
                 GameManager.instance.UM.KillCountUp(1); GameManager.instance.ES.CurActive--;
@@ -290,6 +296,7 @@ public class Enemy : MonoBehaviour
         OnIce = false; IceRatio = 1; Cheeled = 0;
         Defense = MaxDefense; speed = MaxSpeed; Damage = MaxDamage;
 
+        spriteRenderer.color = Color.white;
         spriteRenderer.sortingOrder = 2;
 
         tag = "Enemy";

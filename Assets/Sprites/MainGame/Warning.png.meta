@@ -109,7 +109,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 1
         width: 100
         height: 61
       alignment: 0
@@ -129,7 +129,7 @@ TextureImporter:
       name: Warning_1
       rect:
         serializedVersion: 2
-        x: 126
+        x: 120
         y: 0
         width: 100
         height: 61

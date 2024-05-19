@@ -10,11 +10,14 @@ public class AfterImMaker : MonoBehaviour
     [SerializeField] int MaxIm;
     [SerializeField] float LastTime;
     [SerializeField] float MakeGap;
+    [SerializeField] Gradient GradColor;
     [SerializeField] Color StartColor;
     [SerializeField] Color EndColor;
+    [SerializeField] bool MakeOnStart = false;
 
     [SerializeField] bool Test = false;
     [SerializeField] bool IsChangeSize = false;
+    [SerializeField] bool IsMakeGrad = false;
 
     Color ColorGap;
 
@@ -45,6 +48,8 @@ public class AfterImMaker : MonoBehaviour
             transform.position = TargetPos.transform.position;
             foreach (var k in Renderers) k.sortingOrder = j;
         }
+
+        if (MakeOnStart) StartMaking();
     }
 
     WaitForSeconds WFS = new WaitForSeconds(0.1f);

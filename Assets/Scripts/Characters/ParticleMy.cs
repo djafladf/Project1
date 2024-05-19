@@ -13,7 +13,7 @@ public class ParticleMy : MonoBehaviour
     [SerializeField] int MakeTime;
     [SerializeField] Gradient ColorGrad;
     [SerializeField] AnimationCurve Width;
-
+    [SerializeField] bool MakeOnStart = false;
     
     public List<Quaternion> RotationsByTime = new List<Quaternion>();
     public List<Color> Colors = new List<Color>();
@@ -44,6 +44,7 @@ public class ParticleMy : MonoBehaviour
             Colors.Add(ColorGrad.Evaluate(1 / LastTime * 0.1f * i));
             SizeByTime.Add(Width.Evaluate(1 / LastTime * 0.1f * i));
         }
+        if (MakeOnStart) StartMaking();
     }
 
     WaitForSeconds WFS = new WaitForSeconds(0.1f);
@@ -67,12 +68,18 @@ public class ParticleMy : MonoBehaviour
 
     IEnumerator Maker()
     {
-        yield return WFS;
+        if(MakeTime > 0)
         for (int i = 0; i < MakeTime; i++)
         {
             StartCoroutine(MakeIm());
             yield return MakerGap;
         }
+        else
+            while (true)
+            {
+                StartCoroutine(MakeIm());
+                yield return MakerGap;
+            }
     }
 
     Coroutine Making = null;
