@@ -18,6 +18,7 @@ public class WarningBullet : MonoBehaviour
 
     public void Init(float time,Vector2 size, Action<Vector3> act, Color S)
     {
+        S.a = 0.5f;
         this.time = time; AfterAct = act; this.size = size / (time * 10);
         P1.color = S; P2.color = S;
         My.sizeDelta = size;

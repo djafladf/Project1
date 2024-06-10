@@ -5066,7 +5066,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   scanRange: 10
-  AttackRange: 2
+  AttackRange: 2.5
   HPBar: {fileID: 7179887085173252187}
   MeeleAttack: {fileID: 532797201, guid: 2efe221169a83be40b7c8a7316947a3b, type: 3}
   bullet: {fileID: -563814421, guid: 2efe221169a83be40b7c8a7316947a3b, type: 3}

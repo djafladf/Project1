@@ -1,9 +1,9 @@
-using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -28,7 +28,8 @@ public class EnemySpawner : MonoBehaviour
 
     public enum EnemyId
     {
-        YellowWorm,RedWorm, Yoma, FootMan, DualMan, ShieldMan, BowMan, Magician, Skulslr
+        YellowWorm,RedWorm, Yoma, FootMan, DualMan, ShieldMan, BowMan, Magician, Skulslr, Parat,Cannon, Revenger,
+        BoomSpider,HeavyAr
     }
 
     [System.Serializable]
@@ -39,6 +40,7 @@ public class EnemySpawner : MonoBehaviour
         public int end;
         public float respawn;
         public bool IsBoss = false;
+        public bool IsLast = false;
     }
 
     [SerializeField] List<StageInfo> Stages;
@@ -51,10 +53,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
     public void Init(int Stage)
-    {
-        //Enems EnemSpawn = JsonConvert.DeserializeObject<Enems>(File.ReadAllText($"{Directory.GetCurrentDirectory()}\\Assets\\JSON\\Stage\\{Stage}.Json"));
-
-
+    { 
         // Set Spawn Area
         SpawnArea = new Vector3[100];
         
@@ -65,21 +64,23 @@ public class EnemySpawner : MonoBehaviour
         SpawnAreaSize = i;
         EnemyScripts = new Enemy[PoolSize.Max(), EnemyTypes.Length];
         Pool = new GameObject[PoolSize.Max(), EnemyTypes.Length];
-        for(i = 0; i < EnemyTypes.Length; i++)
-        {
-            for(int y = 0; y < PoolSize[i]; y++)
+        MakeNewPref(0, StageInits[0]);
+        GameManager.instance.StartLoading();
+    }
+    [SerializeField] int InitRange;
+
+    [SerializeField]
+    List<int> StageInits;
+
+    public void MakeNewPref(int st, int ed)
+    {
+        if (st == ed && st != 0) return;
+        for (int i = st; i <= ed; i++)  for (int y = 0; y < PoolSize[i]; y++)
             {
                 Pool[y, i] = Instantiate(EnemyTypes[i], transform);
                 EnemyScripts[y, i] = Pool[y, i].GetComponent<Enemy>();
                 Pool[y, i].SetActive(false);
             }
-        }
-        GameManager.instance.StartLoading();
-        //StartStage();
-        /*for(i = 0; i < EnemyTypes.Length; i++)
-        {
-            StartCoroutine(Spawn(EnemSpawn.spawninfo[i]));
-        }*/
     }
 
     public void StartStage()
@@ -88,6 +89,7 @@ public class EnemySpawner : MonoBehaviour
         if (CurStage >= Stages.Count) GameManager.instance.UM.GameClear();
         else
         {
+            if(CurStage != 0)MakeNewPref(StageInits[CurStage]+1, StageInits[CurStage+1]);
             foreach (SpawnInfo cnt in Stages[CurStage].spawninfo) StartCoroutine(Spawn(cnt));
             CurStage++;
         }
@@ -105,7 +107,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 if (!Pool[y, (int)Info.id].activeSelf)
                 {
-                    Vector3 cnt = SpawnArea[Random.Range(0, SpawnAreaSize - 1)] + GameManager.instance.player.Self.position; cnt.z = 1;
+                    Vector3 cnt = SpawnArea[UnityEngine.Random.Range(0, SpawnAreaSize - 1)] + GameManager.instance.player.Self.position; cnt.z = 1;
                     Pool[y, (int)Info.id].transform.position = cnt;
                     Pool[y, (int)Info.id].SetActive(true);
                     break;
@@ -113,6 +115,13 @@ public class EnemySpawner : MonoBehaviour
             }
             if (Info.IsBoss) break;
             yield return SpawnGap;
+        }
+        if (Info.IsLast)
+        {
+            for(int i = 0; i < PoolSize[(int)Info.id]; i++)
+            {
+                Destroy(Pool[i, (int)Info.id]); Pool[i, (int)Info.id] = null;
+            }
         }
     }
 

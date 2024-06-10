@@ -99,7 +99,7 @@ public class Skulslr : Enemy
 
     void MeeleAttack()
     {
-        GameManager.instance.BM.MakeMeele(new BulletInfo(Mathf.FloorToInt(Damage * 1.5f), false, 0), 0.3f, transform.position, Vector3.zero, 0, true,MeeleBul);
+        GameManager.instance.BM.MakeMeele(new BulletInfo(Mathf.FloorToInt(Damage * 1.5f), false, 0), 0.3f, transform.position, spriteRenderer.flipX ? Vector2.left:Vector2.zero, 0, true,MeeleBul);
     }
 
     Transform ReturnRandomPlayer()
@@ -115,7 +115,7 @@ public class Skulslr : Enemy
         Vector3 cnt = ReturnRandomPlayer().position
             + new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0);
         GameManager.instance.BM.MakeEffect(jj ? 0.5f : 1f, transform.position + Vector3.up, Vector3.up,jj? 60 : 40, Bullet);
-        GameManager.instance.BM.MakeWarning(cnt,1.5f,Boom.bounds.size * 0.8f,Color.red, SpecialAttackSub);
+        GameManager.instance.BM.MakeWarning(cnt,1f,Boom.bounds.size * 0.8f,Color.red, SpecialAttackSub);
     }
 
     void SpecialAttackSub(Vector3 pos)

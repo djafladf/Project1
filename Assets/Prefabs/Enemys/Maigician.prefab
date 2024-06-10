@@ -103,8 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 80
-  speed: 1.5
-  AS: 1
+  speed: 2
   Damage: 8
   Defense: 0
   Weight: 0

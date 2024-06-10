@@ -17,7 +17,6 @@ public class AfterImMaker : MonoBehaviour
 
     [SerializeField] bool Test = false;
     [SerializeField] bool IsChangeSize = false;
-    [SerializeField] bool IsMakeGrad = false;
 
     Color ColorGap;
 

@@ -481,7 +481,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   scanRange: 10
-  AttackRange: 2
+  AttackRange: 2.5
   HPBar: {fileID: 7179887085173252187}
   Weapon: {fileID: 5897009699863296267}
   Attack1: {fileID: -1135966676, guid: 1a79d51cd29cf9f4db0d4da791cca88f, type: 3}

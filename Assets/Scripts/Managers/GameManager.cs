@@ -208,7 +208,8 @@ public class GameManager : MonoBehaviour
         PlayerStatus.attackspeed = gameStatus.Stat[5] * 0.02f - 0.02f;
         PlayerStatus.cost = gameStatus.Stat[7] * 0.05f + 0.95f;
         PlayerStatus.exp = gameStatus.Stat[8] * 0.05f + 0.95f;
-        
+        PlayerStatus.power = 0;
+        PlayerStatus.heal = 0;
         PlayerStatus.selection = 3;
 
         EnemyStatus.attack = gameStatus.Enem[0] * 0.1f;

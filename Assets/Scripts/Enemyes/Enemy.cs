@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] protected int HP;
     [SerializeField] protected float speed;
-    [SerializeField] protected float AS;
     [SerializeField] protected int Damage;
     [SerializeField] protected int Defense;
     [SerializeField] protected int Weight;
@@ -79,8 +78,8 @@ public class Enemy : MonoBehaviour
     //[SerializeField] protected Sprite Bullet;
     [SerializeField] bool IsRange;
     [SerializeField] bool MakeLine;
-    [SerializeField] BulletInfo BI;
-    [SerializeField] Sprite Bull;
+    [SerializeField] protected BulletInfo BI;
+    [SerializeField] protected Sprite Bull;
     [SerializeField] BulletLine BL;
 
     protected virtual void AttackMethod()
@@ -107,7 +106,7 @@ public class Enemy : MonoBehaviour
         
     }
 
-    IEnumerator DeadLater()
+    protected virtual IEnumerator DeadLater()
     {
         yield return GameManager.DotOneSec;
         tag = "Untagged";
@@ -241,7 +240,7 @@ public class Enemy : MonoBehaviour
         CanHit = false; 
         spriteRenderer.color = Color.gray;
         Power += GameManager.instance.PlayerStatus.power - Weight * 5;
-        OnHit = Power != 0;
+        OnHit = Power > 0;
         if (Power > 0) 
         {
             rigid.AddForce(Dir.normalized * (Power), ForceMode2D.Impulse);

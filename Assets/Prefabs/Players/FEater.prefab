@@ -5137,7 +5137,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   scanRange: 10
-  AttackRange: 2
+  AttackRange: 2.5
   HPBar: {fileID: 6591888774103275800}
   Spec: {fileID: 21300000, guid: dced088caf0d61140b82163cba80c4aa, type: 3}
   HitEffect: {fileID: 4584099351077619593}
@@ -5443,7 +5443,6 @@ MonoBehaviour:
   MakeOnStart: 0
   Test: 0
   IsChangeSize: 0
-  IsMakeGrad: 0
 --- !u!1 &7621660551919305498
 GameObject:
   m_ObjectHideFlags: 0
