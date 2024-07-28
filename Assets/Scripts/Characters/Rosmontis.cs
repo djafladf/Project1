@@ -35,7 +35,7 @@ public class Rosmontis : PlayerSetting
                     j = Targets[Random.Range(0, Targets.Count)];
 
 
-                    GameManager.instance.BM.MakeEffect(0.4f, j.position + VectorSub, DirSub, 25, Sprites[0], BL: BL);
+                    GameManager.instance.BM.MakeEffect(0.4f, j.position + VectorSub, DirSub, 25, Sprites[0], AlphaChange:false,BL: BL);
                     StartCoroutine(LateDamage(0.5f, j.position));
                     yield return new WaitForSeconds(0.1f);
                 }

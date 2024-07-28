@@ -249,11 +249,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 4000
   speed: 2
-  AS: 1
   Damage: 25
   Defense: 30
   Weight: 1
-  ItemVal: 0
+  EnemyType: 8
   IsRange: 0
   MakeLine: 0
   BI:
@@ -262,6 +261,7 @@ MonoBehaviour:
     IsFix: 0
     KnockBack: 0
     IgnoreDefense: 0
+    ScaleFactor: 0
     DeBuffs:
       Last: 0
       Speed: 0
@@ -278,10 +278,41 @@ MonoBehaviour:
       Heal: 0
   Bull: {fileID: 0}
   BL:
-    Start: {r: 0, g: 0, b: 0, a: 0}
-    End: {r: 0, g: 0, b: 0, a: 0}
-    StartWidth: 0
-    EndWidth: 0
+    Color:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    Width:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
     Time: 0
   Boom: {fileID: 73736912, guid: a44353736215ac04bad2860efd551c15, type: 3}
   Bullet: {fileID: -2057400732, guid: a44353736215ac04bad2860efd551c15, type: 3}
@@ -337,8 +368,40 @@ MonoBehaviour:
   MaxIm: 10
   LastTime: 1
   MakeGap: 0.1
+  GradColor:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
   StartColor: {r: 0.45, g: 0, b: 0, a: 1}
   EndColor: {r: 0, g: 0, b: 0, a: 0.101960786}
+  MakeOnStart: 0
+  Test: 0
+  IsChangeSize: 0
 --- !u!1 &2646644495222147949
 GameObject:
   m_ObjectHideFlags: 0

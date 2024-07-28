@@ -46,6 +46,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] List<StageInfo> Stages;
     int CurStage = 0;
 
+    int[] AliveCount;
+    bool[] IsLast;
+
     private void Awake()
     {
         GameManager.instance.ES = this;
@@ -65,6 +68,13 @@ public class EnemySpawner : MonoBehaviour
         EnemyScripts = new Enemy[PoolSize.Max(), EnemyTypes.Length];
         Pool = new GameObject[PoolSize.Max(), EnemyTypes.Length];
         MakeNewPref(0, StageInits[0]);
+
+        int EnemyCount = Enum.GetValues(typeof(EnemyId)).Length;
+
+        AliveCount = new int[EnemyCount];
+        IsLast = new bool[EnemyCount];
+        for (i = 0; i < EnemyCount; i++) { AliveCount[i] = 0; IsLast[i] = false; }
+
         GameManager.instance.StartLoading();
     }
     [SerializeField] int InitRange;
@@ -110,20 +120,28 @@ public class EnemySpawner : MonoBehaviour
                     Vector3 cnt = SpawnArea[UnityEngine.Random.Range(0, SpawnAreaSize - 1)] + GameManager.instance.player.Self.position; cnt.z = 1;
                     Pool[y, (int)Info.id].transform.position = cnt;
                     Pool[y, (int)Info.id].SetActive(true);
+                    AliveCount[(int)Info.id]++;
                     break;
                 }
             }
             if (Info.IsBoss) break;
             yield return SpawnGap;
         }
-        if (Info.IsLast)
+        if (Info.IsLast) IsLast[(int)Info.id] = true;
+    }
+
+    public void DeadCount(int type)
+    {
+        AliveCount[type]--;
+        if (AliveCount[type] == 0 && IsLast[type])
         {
-            for(int i = 0; i < PoolSize[(int)Info.id]; i++)
+            for (int i = 0; i < PoolSize[type]; i++)
             {
-                Destroy(Pool[i, (int)Info.id]); Pool[i, (int)Info.id] = null;
+                Destroy(Pool[i, type]); Pool[i, type] = null;
             }
         }
     }
+
 
     public void ExternalSpawnCall(int ind,int Times, float Gap)
     {

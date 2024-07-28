@@ -104,11 +104,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 80
   speed: 1.5
-  AS: 1
   Damage: 5
   Defense: 0
   Weight: 0
-  ItemVal: 0
+  EnemyType: 6
   IsRange: 1
   MakeLine: 1
   BI:

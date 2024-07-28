@@ -162,11 +162,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 175
   speed: 2.5
-  AS: 1
   Damage: 5
   Defense: 10
   Weight: 0
-  ItemVal: 0
+  EnemyType: 9
   IsRange: 0
   MakeLine: 0
   BI:

@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected int Damage;
     [SerializeField] protected int Defense;
     [SerializeField] protected int Weight;
-    [SerializeField] protected int ItemVal;
+    [SerializeField] protected int EnemyType;
     protected int MaxDefense;
     protected int MaxDamage;
     protected float MaxSpeed;
@@ -129,7 +129,8 @@ public class Enemy : MonoBehaviour
                 StartCoroutine(DeadLater());
                 spriteRenderer.sortingOrder = 1;
                 IsLive = false; CanHit = false; rigid.simulated = false; coll.enabled = false;
-                GameManager.instance.UM.KillCountUp(1); GameManager.instance.ES.CurActive--;
+                GameManager.instance.UM.KillCountUp(1);
+                GameManager.instance.ES.DeadCount(EnemyType);
             }
             else if (Info.DeBuffs != null)
             {

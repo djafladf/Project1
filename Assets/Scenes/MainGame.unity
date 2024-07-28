@@ -411,6 +411,10 @@ MonoBehaviour:
   Rating: {fileID: 1565698710}
   Image: {fileID: 1241863874}
   SelectionButtons: {fileID: 0}
+  RarityColor:
+  - {r: 0, g: 0, b: 0, a: 1}
+  - {r: 0.16470589, g: 0.7725491, b: 0.78823537, a: 1}
+  - {r: 0.75294125, g: 0.054901965, b: 0.24705884, a: 1}
 --- !u!1 &85885523
 GameObject:
   m_ObjectHideFlags: 0
@@ -5972,6 +5976,10 @@ MonoBehaviour:
   Rating: {fileID: 209415112}
   Image: {fileID: 879384851}
   SelectionButtons: {fileID: 0}
+  RarityColor:
+  - {r: 0, g: 0, b: 0, a: 1}
+  - {r: 0.16470589, g: 0.7725491, b: 0.78823537, a: 1}
+  - {r: 0.75294125, g: 0.054901965, b: 0.24705884, a: 1}
 --- !u!224 &220584596
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16662,7 +16670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &655613210
 Transform:
   m_ObjectHideFlags: 0
@@ -18765,6 +18773,10 @@ MonoBehaviour:
   Rating: {fileID: 996214765}
   Image: {fileID: 2028269469}
   SelectionButtons: {fileID: 0}
+  RarityColor:
+  - {r: 0, g: 0, b: 0, a: 1}
+  - {r: 0.16470589, g: 0.7725491, b: 0.78823537, a: 1}
+  - {r: 0.75294125, g: 0.054901965, b: 0.24705884, a: 1}
 --- !u!1 &1130673787
 GameObject:
   m_ObjectHideFlags: 0
@@ -29781,6 +29793,10 @@ MonoBehaviour:
   Rating: {fileID: 2034442018834175051}
   Image: {fileID: 2034442019457209505}
   SelectionButtons: {fileID: 0}
+  RarityColor:
+  - {r: 0, g: 0, b: 0, a: 1}
+  - {r: 0.16470589, g: 0.7725491, b: 0.78823537, a: 1}
+  - {r: 0.75294125, g: 0.054901965, b: 0.24705884, a: 1}
 --- !u!114 &2034442018789102638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31630,6 +31646,8 @@ MonoBehaviour:
   - name: "\uACF5\uACA9\uB825 \uC99D\uAC00"
     operatorid: 0
     lv: 1
+    rarity: 0
+    Islocked: 0
     description:
     - "\uACF5\uACA9\uB825 1% \uC99D\uAC00"
     extra: "\uAC15\uD568\uC5D0\uB294 \uB05D\uC774 \uC5C6\uB2E4"
@@ -31667,6 +31685,8 @@ MonoBehaviour:
   - name: "\uBC29\uC5B4\uB825 \uC99D\uAC00"
     operatorid: 0
     lv: 1
+    rarity: 0
+    Islocked: 0
     description:
     - "\uBC29\uC5B4\uB825 0.5% \uC99D\uAC00"
     extra: "\uAC15\uD568\uC5D0\uB294 \uB05D\uC774 \uC5C6\uB2E4"
@@ -31704,6 +31724,8 @@ MonoBehaviour:
   - name: "\uCCB4\uB825 \uC99D\uAC00"
     operatorid: 0
     lv: 1
+    rarity: 0
+    Islocked: 0
     description:
     - "\uCCB4\uB825 1% \uC99D\uAC00"
     extra: "\uAC15\uD568\uC5D0\uB294 \uB05D\uC774 \uC5C6\uB2E4"
@@ -31741,6 +31763,8 @@ MonoBehaviour:
   - name: "\uC774\uB3D9\uC18D\uB3C4 \uC99D\uAC00"
     operatorid: 0
     lv: 1
+    rarity: 0
+    Islocked: 0
     description:
     - "\uC774\uB3D9\uC18D\uB3C4 1% \uC99D\uAC00"
     extra: "\uAC15\uD568\uC5D0\uB294 \uB05D\uC774 \uC5C6\uB2E4"
@@ -31778,6 +31802,8 @@ MonoBehaviour:
   - name: "\uACF5\uACA9\uC18D\uB3C4 \uC99D\uAC00"
     operatorid: 0
     lv: 1
+    rarity: 0
+    Islocked: 0
     description:
     - "\uACF5\uACA9\uC18D\uB3C4 1% \uC99D\uAC00"
     extra: "\uAC15\uD568\uC5D0\uB294 \uB05D\uC774 \uC5C6\uB2E4"
@@ -31985,6 +32011,7 @@ MonoBehaviour:
   Money: {fileID: -1722404935, guid: da89a1d9caa361e4da2d7a39ab6c0cc8, type: 3}
   Stone: {fileID: 1954973654, guid: da89a1d9caa361e4da2d7a39ab6c0cc8, type: 3}
   RefinedStone: {fileID: -2059946933, guid: da89a1d9caa361e4da2d7a39ab6c0cc8, type: 3}
+  BlackHole: {fileID: -1577278615, guid: da89a1d9caa361e4da2d7a39ab6c0cc8, type: 3}
   ItemPref: {fileID: 5943220708961367044, guid: 658e3d021b4353444a1107be67fe738f, type: 3}
   MaxItem: 250
 --- !u!1 &8712970480672412401
@@ -32169,7 +32196,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &8712970481818257479
 MonoBehaviour:
   m_ObjectHideFlags: 0

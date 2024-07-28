@@ -18,17 +18,20 @@ public class LevelUpSelection : Buttons
 
     [SerializeField] GameObject SelectionButtons;
     int ind;
+    int rarity;
     bool IsWeapon;
 
-    public void Init(Sprite Im, string nm, string desc, string ext,int ind,int Level,bool SetRating = false)
+    [SerializeField] List<Color> RarityColor;
+
+    public void Init(Sprite Im, string nm,int Rarity, string desc, string ext,int ind,int Level,bool SetRating = false)
     {
         Image.sprite = Im;
-        Name.text = nm;
+        Name.text = nm; Name.color = RarityColor[Rarity];
         Description.text = desc;
         Extra.text = ext;
         Rating.gameObject.SetActive(SetRating); IsWeapon = SetRating;
         Rating.text = $"LV.{Level+1}";
-        this.ind = ind;
+        this.ind = ind; rarity = Rarity;
     }
 
     Color Sub = new Color(0.25f, 0.25f, 0.25f,0);
@@ -40,7 +43,7 @@ public class LevelUpSelection : Buttons
         Description.color -= Sub;
         Extra.color -= Sub;
         GameManager.instance.SetTime(0, true);
-        GameManager.instance.UM.ApplySelection(ind,IsWeapon);
+        GameManager.instance.UM.ApplySelection(ind,IsWeapon,rarity);
         transform.parent.parent.gameObject.SetActive(false);
     }
 

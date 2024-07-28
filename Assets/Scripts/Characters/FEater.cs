@@ -55,9 +55,8 @@ public class FEater : PlayerSetting
     protected override void EndBatch()
     {
         base.EndBatch();
-        MakeIm();
+        if(player.WeaponLevel>6) MakeIm();
     }
-
 
     protected override int WeaponLevelUp()
     {

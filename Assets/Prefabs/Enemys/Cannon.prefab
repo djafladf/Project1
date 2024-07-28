@@ -4868,7 +4868,7 @@ MonoBehaviour:
   Damage: 10
   Defense: 0
   Weight: 0
-  ItemVal: 0
+  EnemyType: 10
   IsRange: 0
   MakeLine: 0
   BI:

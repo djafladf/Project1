@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using static UnityEditor.PlayerSettings;
+using static UnityEngine.ParticleSystem;
 
 public class ItemManager : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class ItemManager : MonoBehaviour
     [SerializeField] Sprite Money;
     [SerializeField] Sprite Stone;
     [SerializeField] Sprite RefinedStone;
+    [SerializeField] Sprite BlackHole;
 
     [SerializeField] GameObject ItemPref;
 
@@ -44,6 +47,7 @@ public class ItemManager : MonoBehaviour
         GameManager.instance.StartLoading();
     }
 
+
     public void MakeItem(Vector3 pos, bool MustMake = false)
     {
         int Ran;
@@ -51,34 +55,39 @@ public class ItemManager : MonoBehaviour
         {
             // If Over MaxItem Num. FIFO
             int First = CreatedTiming[0]; CreatedTiming.RemoveAt(0);
-            if (MustMake) Ran = Random.Range(0, 63);
-            else Ran = Random.Range(0, 101);
-            if (Ran < 62)
+            if (MustMake) Ran = Random.Range(0, 149);
+            else Ran = Random.Range(0, 200);
+            if (Ran < 149)
             {
                 CreatedTiming.Add(First);
                 Items[First].SetActive(true);
                 Items[First].transform.position = pos;
             }
-            if (Ran < 55)
+            if (Ran < 120)
             {
                 int CurExp = Mathf.FloorToInt(GameManager.instance.UM.CurMinute * 0.125f); if (CurExp > 3) CurExp = 3;
                 ItemsSprite[First].sprite = EXPs[CurExp];
                 ItemsScript[First].Init(0, (int)Mathf.Pow(2 ,CurExp));
             }
-            else if (Ran < 60)
+            else if (Ran < 140)
             {
                 ItemsSprite[First].sprite = Money;
                 ItemsScript[First].Init(1, 5);
             }
-            else if (Ran < 61)
+            else if (Ran < 144)
             {
                 ItemsSprite[First].sprite = Stone;
                 ItemsScript[First].Init(2, 1);
             }
-            else if (Ran < 62)
+            else if (Ran < 148)
             {
                 ItemsSprite[First].sprite = RefinedStone;
                 ItemsScript[First].Init(3, 5);
+            }
+            else if (Ran < 149)
+            {
+                ItemsSprite[First].sprite = BlackHole;
+                ItemsScript[First].Init(4, 0);
             }
         }
         else
@@ -86,34 +95,40 @@ public class ItemManager : MonoBehaviour
             {
                 if (!Items[i].activeSelf)
                 {
-                    if (MustMake) Ran = Random.Range(0, 63);
-                    else Ran = Random.Range(0, 101);
-                    if (Ran < 62)
+                    if (MustMake) Ran = Random.Range(0, 149);
+                    else Ran = Random.Range(0, 200);
+                    if (Ran < 149)
                     {
                         CreatedTiming.Add(i);
                         Items[i].SetActive(true);
                         Items[i].transform.position = pos;
                     }
-                    if (Ran < 55)
+
+                    if (Ran < 120)
                     {
                         int CurExp = Mathf.FloorToInt(GameManager.instance.UM.CurMinute * 0.125f); if (CurExp > 3) CurExp = 3;
                         ItemsSprite[i].sprite = EXPs[CurExp];
                         ItemsScript[i].Init(0, (int)Mathf.Pow(2, CurExp));
                     }
-                    else if (Ran < 60)
+                    else if (Ran < 140)
                     {
                         ItemsSprite[i].sprite = Money;
                         ItemsScript[i].Init(1, 5);
                     }
-                    else if (Ran < 61)
+                    else if (Ran < 144)
                     {
                         ItemsSprite[i].sprite = Stone;
                         ItemsScript[i].Init(2, 1);
                     }
-                    else if (Ran < 62)
+                    else if (Ran < 148)
                     {
                         ItemsSprite[i].sprite = RefinedStone;
                         ItemsScript[i].Init(3, 5);
+                    }
+                    else if (Ran < 149)
+                    {
+                        ItemsSprite[i].sprite = BlackHole;
+                        ItemsScript[i].Init(4, 0);
                     }
 
                     break;
@@ -126,5 +141,22 @@ public class ItemManager : MonoBehaviour
         if(CreatedTiming.Contains(ind)) CreatedTiming.RemoveAt(CreatedTiming.IndexOf(ind));
     }
 
+    public int MagTime = 0;
+    Coroutine Mag = null;
+
+    public void MagStart()
+    {
+        MagTime = 5;
+        if (Mag == null) Mag = StartCoroutine(MagCount());
+    }
     
+    IEnumerator MagCount()
+    {
+        while(MagTime > 0)
+        {
+            MagTime--;
+            yield return GameManager.OneSec;
+        }
+        Mag = null;
+    }
 }

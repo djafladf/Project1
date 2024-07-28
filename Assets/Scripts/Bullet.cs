@@ -81,7 +81,7 @@ public class Bullet : MonoBehaviour
     }
 
 
-    public void Init_Effect(float AfterTime, Sprite Image,Vector3 Dir, BulletLine BL = null,RuntimeAnimatorController Anim = null)
+    public void Init_Effect(float AfterTime, Sprite Image,Vector3 Dir, bool AlphaChange = true, BulletLine BL = null,RuntimeAnimatorController Anim = null)
     {
         if (BL != null)
         {
@@ -92,7 +92,7 @@ public class Bullet : MonoBehaviour
         rigid.simulated = true; rigid.velocity = Dir; sprite.sprite = Image;
         if (BL == null) Line.enabled = false;
 
-        StartCoroutine(AfterImage(AfterTime,true));
+        StartCoroutine(AfterImage(AfterTime,AlphaChange));
     }
 
     public void Init_Buff(Sprite Im,  bool IsEnemy)

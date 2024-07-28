@@ -133,7 +133,7 @@ public class BulletManager : MonoBehaviour
     }
 
 
-    public void MakeEffect(float AfterTime, Vector3 Start, Vector3 Dir, float speed,Sprite im,BulletLine BL = null, RuntimeAnimatorController Anim = null)
+    public void MakeEffect(float AfterTime, Vector3 Start, Vector3 Dir, float speed,Sprite im, bool AlphaChange=true,BulletLine BL = null, RuntimeAnimatorController Anim = null)
     {
         for (int i = 0; i < 200; i++)
         {
@@ -142,7 +142,7 @@ public class BulletManager : MonoBehaviour
                 Bullets[i].SetActive(true);
                 Bullets[i].transform.position = Start; Dir.z = 0;
                 Bullets[i].transform.rotation = Quaternion.FromToRotation(Vector3.up, Dir);
-                BulletScripts[i].Init_Effect(AfterTime,im,Dir * speed,BL,Anim);
+                BulletScripts[i].Init_Effect(AfterTime,im,Dir * speed,AlphaChange,BL,Anim);
                 break;
             }
         }

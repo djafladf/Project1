@@ -17,6 +17,8 @@ public class ItemSub
     public string name;
     public int operatorid;
     public int lv;
+    public int rarity;
+    public bool Islocked;
     public List<string> description;
     [Multiline(2)]
     public string extra;

@@ -98,7 +98,6 @@ public class UIManager : MonoBehaviour
     float ExpSub = 0.125f;
     public void ExpUp(int value)
     {
-        if (NonSelected.Count == 0) return;
         float cnt = ExpBar.fillAmount + ExpSub * value * GameManager.instance.PlayerStatus.exp;
         if (cnt < 0) cnt = 0;
         if (cnt > 1) { 
@@ -140,6 +139,12 @@ public class UIManager : MonoBehaviour
 
     List<ItemSub> NonSelected;
     List<ItemSub> WeaponSelection;
+
+
+    List<ItemSub> NormalItem;
+    List<ItemSub> RareItem;
+    List<ItemSub> LegendItem;
+
     List<ItemSub> Selected;
 
     [SerializeField] List<ItemSub> StatItem;
@@ -152,14 +157,22 @@ public class UIManager : MonoBehaviour
         ReRollCountText.text = $"³²Àº È½¼ö : <color=red>{ReRollCount}</color>";
         LevelUpEvent();
     }
-    void LevelUpEvent()
+    public void LevelUpEvent()
     {
-        if (NonSelected.Count< GameManager.instance.PlayerStatus.selection) NonSelected.AddRange(StatItem);
+        if (NormalItem.Count + RareItem.Count + LegendItem.Count < GameManager.instance.PlayerStatus.selection) NormalItem.AddRange(StatItem);
         foreach (var k in Selections) k.gameObject.SetActive(false);
 
-        int[] array = new int[NonSelected.Count]; for (int i = 0; i < array.Length; i++) array[i] = i;
+        int[] array = new int[NormalItem.Count]; for (int i = 0; i < array.Length; i++) array[i] = i;
         array = array.OrderBy(x => Guid.NewGuid()).ToArray();
-        List<int> pickedElements = array.Take(GameManager.instance.PlayerStatus.selection).ToList();
+        List<int> pickedElements_Normal = array.Take(GameManager.instance.PlayerStatus.selection).ToList();
+
+        array = new int[RareItem.Count]; for (int i = 0; i < array.Length; i++) array[i] = i;
+        array = array.OrderBy(x => Guid.NewGuid()).ToArray();
+        List<int> pickedElements_Rare = array.Take(GameManager.instance.PlayerStatus.selection).ToList();
+
+        array = new int[LegendItem.Count]; for (int i = 0; i < array.Length; i++) array[i] = i;
+        array = array.OrderBy(x => Guid.NewGuid()).ToArray();
+        List<int> pickedElements_Legend = array.Take(GameManager.instance.PlayerStatus.selection).ToList();
 
         int[] _array = new int[WeaponSelection.Count]; for (int i = 0; i < _array.Length; i++) _array[i] = i;
         _array = _array.OrderBy(x => Guid.NewGuid()).ToArray();
@@ -173,13 +186,33 @@ public class UIManager : MonoBehaviour
             {
                 int Ind = _pickedElements[0]; _pickedElements.RemoveAt(0);
                 ItemSub cnt = WeaponSelection[Ind]; 
-                Selections[i].Init(cnt.sprite, cnt.name, cnt.description[cnt.lv - 1], cnt.extra, Ind, cnt.lv,true);
+                Selections[i].Init(cnt.sprite, cnt.name, 0,cnt.description[cnt.lv - 1], cnt.extra, Ind, cnt.lv,true);
             }
             else
             {
-                int Ind = pickedElements[0]; pickedElements.RemoveAt(0);
-                ItemSub cnt = NonSelected[Ind];
-                Selections[i].Init(cnt.sprite, cnt.name, cnt.description[cnt.lv - 1], cnt.extra, Ind, cnt.lv);
+                int Ind = 0;
+
+                ItemSub cnt = null;
+                while (cnt == null)
+                {
+                    int RarityPick = UnityEngine.Random.Range(0, 100);
+                    if (RarityPick < 85 && pickedElements_Normal.Count != 0)
+                    {
+                        Ind = pickedElements_Normal[0]; pickedElements_Normal.RemoveAt(0);
+                        cnt = NormalItem[Ind % NormalItem.Count];
+                    }
+                    else if (RarityPick < 95 && pickedElements_Rare.Count != 0)
+                    {
+                        Ind = pickedElements_Rare[0]; pickedElements_Rare.RemoveAt(0);
+                        cnt = RareItem[Ind % RareItem.Count];
+                    }
+                    else if(pickedElements_Legend.Count != 0)
+                    {
+                        Ind = pickedElements_Legend[0]; pickedElements_Legend.RemoveAt(0);
+                        cnt = LegendItem[Ind % LegendItem.Count];
+                    }
+                }
+                Selections[i].Init(cnt.sprite, cnt.name, cnt.rarity,cnt.description[cnt.lv - 1], cnt.extra, Ind, cnt.lv);
             }
         }
 
@@ -209,11 +242,26 @@ public class UIManager : MonoBehaviour
 
     bool[] Dragons = { false, false, false, false, false };
     int DragonCount = 0;
-    public void ApplySelection(int ind,bool IsWeapon)
+    public void ApplySelection(int ind,bool IsWeapon,int rarity)
     {
         if (!IsWeapon)
         {
-            ItemSub cnt = NonSelected[ind];
+            ItemSub cnt;
+            switch (rarity)
+            {
+                case 0: 
+                    cnt = NormalItem[ind];
+                    if (cnt.attributes.special != -1) { Selected.Add(cnt); NormalItem.RemoveAt(ind); }
+                    break;
+                case 1: 
+                    cnt = RareItem[ind];
+                    if (cnt.attributes.special != -1) { Selected.Add(cnt); RareItem.RemoveAt(ind); }
+                    break;
+                default: 
+                    cnt = LegendItem[ind];
+                    if (cnt.attributes.special != -1) { Selected.Add(cnt); LegendItem.RemoveAt(ind); }
+                    break;
+            }
             GameObject cntRelic = Instantiate(RelicObj,RelicList);
             cntRelic.transform.GetChild(0).GetComponent<Image>().sprite = cnt.sprite;
 
@@ -229,7 +277,7 @@ public class UIManager : MonoBehaviour
             if (enem.speed != 0) GameManager.instance.EnemyStatus.speed += enem.speed;
             if (enem.hp != 0) GameManager.instance.EnemyStatus.hp += enem.hp;
 
-            if (cntatt.special != -1) { Selected.Add(cnt); NonSelected.RemoveAt(ind); }
+            //if (cntatt.special != -1) { Selected.Add(cnt); NonSelected.RemoveAt(ind); }
             
             if (cntatt.attack != 0)
             {
@@ -353,8 +401,6 @@ public class UIManager : MonoBehaviour
             WeaponLevelUps[cnt.operatorid]();
             cnt.lv++; if (cnt.lv == 7) WeaponSelection.RemoveAt(ind);
         }
-
-        if (NonSelected.Count == 0) GameManager.instance.PlayerStatus.exp = 0;
     }
 
     IEnumerator SpecialAct(int Count, Action act)
@@ -371,61 +417,7 @@ public class UIManager : MonoBehaviour
     public OperatorBatchTool CurRequest;
     public Image BatchImage;
     [SerializeField] RectTransform BatchRect;
-
-    
-
-
-    public void Init(int Count, List<ItemSub> Weapons, Player[] Players, GameObject[] Prefs, OperatorInfos[] Opers, int PlayerInd)
-    {
-        NonSelected = new List<ItemSub>(); Selected = new List<ItemSub>(); WeaponSelection = new List<ItemSub>();
-        NonSelected.AddRange(GameManager.instance.Data.Items);
-        Vector3 StartPos = new Vector3(100, 840, 0); Vector3 Cnt = new Vector3(0, 280, 0);
-        int batchl = 0;
-
-        for (int i = 0; i < Count; i++)
-        {
-            // Add Weapon To Item
-            ItemSub j = Weapons[i];
-            j.operatorid = i;
-            WeaponSelection.Add(j);
-            // Init BatchTool;
-            if (i != PlayerInd)
-            {
-                int ind = i;
-                GameObject Tool = Instantiate(BatchTool, ToolField);
-                var k = Tool.GetComponent<OperatorBatchTool>();
-                Players[i].MyBatch = k;
-                k.Init(Prefs[i], Opers[i].Head, Players[i].Cost, Players[i].ReBatchTime);
-                Tool.GetComponent<RectTransform>().anchoredPosition = StartPos - Cnt * batchl++;
-                Tool.SetActive(true);
-            }
-            else
-            {
-                GetArea = Instantiate(GetAreaPref, Prefs[i].transform).transform.GetChild(0);
-                GetArea.localScale *= GameManager.instance.PlayerStatus.pickup;
-            }
-        }
-
-        HpChange();
-        GameManager.instance.VC.Follow = Prefs[PlayerInd].transform;
-        Prefs[PlayerInd].transform.position = Vector2.zero;
-
-        AttackStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.attack * 100)}%";
-        CostStat.text = $"{Mathf.FloorToInt((GameManager.instance.PlayerStatus.cost - 1) * 100)}%";
-        DefenseStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.defense * 100)}%";
-        SpeedStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.speed * 100)}%";
-        GainStat.text = $"{Mathf.FloorToInt((GameManager.instance.PlayerStatus.pickup - 1) * 100)}%";
-        ExpStat.text = $"{Mathf.FloorToInt((GameManager.instance.PlayerStatus.exp - 1) * 100)}%";
-        HasteStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.attackspeed * 100)}%";
-        HealthStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.hp * 100)}%";
-        ReRollCount = GameManager.instance.gameStatus.Stat[9] - 1;
-        ReRollCountText = ReRollBT.transform.GetChild(1).GetComponent<TMP_Text>();
-        ReRollBT.interactable = ReRollCount != 0;
-        ReRollCountText.text = $"³²Àº È½¼ö : <color=red>{ReRollCount}</color>";
-
-        GameManager.instance.StartLoading();
-    }
-
+    GameObject BatchArea;
 
     public bool BatchRequest(Sprite image, OperatorBatchTool req)
     {
@@ -435,6 +427,7 @@ public class UIManager : MonoBehaviour
 
         BatchRect.localScale = image.bounds.size * 0.15f;
         BatchObj.gameObject.SetActive(true);
+        BatchArea.SetActive(true);
         return true;
     }
 
@@ -442,6 +435,7 @@ public class UIManager : MonoBehaviour
     {
         CurRequest = null;
         CurCost -= Cost;
+        BatchArea.SetActive(false);
     }
 
 
@@ -479,6 +473,74 @@ public class UIManager : MonoBehaviour
     }
 
     //ETC
+
+    public void Init(int Count, List<ItemSub> Weapons, Player[] Players, GameObject[] Prefs, OperatorInfos[] Opers, int PlayerInd)
+    {
+        NormalItem = new List<ItemSub>(); RareItem = new List<ItemSub>(); LegendItem = new List<ItemSub>();
+
+        foreach (var k in GameManager.instance.Data.Items)
+        {
+            if (k.Islocked) continue;
+            switch (k.rarity)
+            {
+                case 0: NormalItem.Add(k); break;
+                case 1: RareItem.Add(k); break;
+                default: LegendItem.Add(k); break;
+            }
+        }
+
+
+        Selected = new List<ItemSub>(); WeaponSelection = new List<ItemSub>();
+        //NonSelected.AddRange(GameManager.instance.Data.Items);
+        Vector3 StartPos = new Vector3(100, 840, 0); Vector3 Cnt = new Vector3(0, 280, 0);
+        int batchl = 0;
+
+        for (int i = 0; i < Count; i++)
+        {
+            // Add Weapon To Item
+            ItemSub j = Weapons[i];
+            j.operatorid = i;
+            WeaponSelection.Add(j);
+            // Init BatchTool;
+            if (i != PlayerInd)
+            {
+                int ind = i;
+                GameObject Tool = Instantiate(BatchTool, ToolField);
+                var k = Tool.GetComponent<OperatorBatchTool>();
+                Players[i].MyBatch = k;
+                k.Init(Prefs[i], Opers[i].Head, Players[i].Cost, Players[i].ReBatchTime);
+                Tool.GetComponent<RectTransform>().anchoredPosition = StartPos - Cnt * batchl++;
+                Tool.SetActive(true);
+            }
+            else
+            {
+                GetArea = Instantiate(GetAreaPref, Prefs[i].transform).transform.GetChild(0);
+                GetArea.localScale *= GameManager.instance.PlayerStatus.pickup;
+                BatchArea = GetArea.transform.parent.GetChild(2).gameObject;
+            }
+        }
+
+        HpChange();
+        GameManager.instance.VC.Follow = Prefs[PlayerInd].transform;
+        Prefs[PlayerInd].transform.position = Vector2.zero;
+
+        AttackStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.attack * 100)}%";
+        CostStat.text = $"{Mathf.FloorToInt((GameManager.instance.PlayerStatus.cost - 1) * 100)}%";
+        DefenseStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.defense * 100)}%";
+        SpeedStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.speed * 100)}%";
+        GainStat.text = $"{Mathf.FloorToInt((GameManager.instance.PlayerStatus.pickup - 1) * 100)}%";
+        ExpStat.text = $"{Mathf.FloorToInt((GameManager.instance.PlayerStatus.exp - 1) * 100)}%";
+        HasteStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.attackspeed * 100)}%";
+        HealthStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.hp * 100)}%";
+        ReRollCount = GameManager.instance.gameStatus.Stat[9] - 1;
+        ReRollCountText = ReRollBT.transform.GetChild(1).GetComponent<TMP_Text>();
+        ReRollBT.interactable = ReRollCount != 0;
+        ReRollCountText.text = $"³²Àº È½¼ö : <color=red>{ReRollCount}</color>";
+
+        GameManager.instance.StartLoading();
+    }
+
+
     [SerializeField] TMP_Text Dialog;
 
     public void ShowDialog(List<string> text, Action After = null)
