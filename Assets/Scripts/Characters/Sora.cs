@@ -127,6 +127,7 @@ public class Sora : PlayerSetting
         StartCoroutine(FieldEffect());
         Norm.Play();
         foreach (var k in Synthe) k.gameObject.SetActive(true);
+        if (player.WeaponLevel >= 7) { FlyOne.SetActive(true); FlyTwo.SetActive(true); }
     }
 
     void Emit()
@@ -137,14 +138,15 @@ public class Sora : PlayerSetting
         Spec.Play();
     }
 
+    Vector3 SizeSub;
     IEnumerator FieldEffect()
     {
-        Vector3 Ones = new Vector3(2f, 2f, 0);
+        SizeSub = new Vector3(2f, 2f, 0);
         ForceField.localScale = new Vector3(0, 0, 1);
         AIM_Force.StartMaking();
         while (true)
         {
-            ForceField.localScale += Ones;
+            ForceField.localScale += SizeSub;
             if (ForceField.localScale.x >= MaxScale)
             {
                 yield return GameManager.DotOneSec;
@@ -169,11 +171,28 @@ public class Sora : PlayerSetting
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
-        {
-            GameManager.instance.BM.MakeBuff(new BulletInfo(0, false, 0, buffs: new Buff(heal: (int)((1 + GameManager.instance.PlayerStatus.attack * 0.1f)))), collision.transform.position, null, false);
-        }
+        base.OnTriggerEnter2D(collision);
+        if (collision.CompareTag("Player"))if(collision.gameObject != gameObject) GameManager.instance.BM.MakeBuff(new BulletInfo(0, false, 0, buffs: new Buff(last:0.5f,heal: (int)((1 + GameManager.instance.PlayerStatus.attack * HealRatio)),attack:ReinforceRatio,defense:ReinforceRatio)), collision.transform.position, null, false);
     }
+
+
+    float HealRatio = 0.1f;
+    float ReinforceRatio = 0.1f;
+
+    protected override int WeaponLevelUp()
+    {
+        switch (player.WeaponLevel++)
+        {
+            case 1: HealRatio += 0.05f; break;
+            case 2: MaxScale = 24; SizeSub = new Vector3(2.4f, 2.4f); break;
+            case 3: HealRatio += 0.1f; break;
+            case 4: MaxScale = 30; SizeSub = new Vector3(3f, 3f); break;
+            case 5: ReinforceRatio = 0.15f; break;
+            case 6: FlyOne.SetActive(true); FlyTwo.SetActive(true); break;
+        }
+        return player.WeaponLevel;
+    }
+
 }

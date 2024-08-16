@@ -35,7 +35,7 @@ public class Aurora : PlayerSetting
     protected override void AttackMethod()
     {
         GameManager.instance.BM.MakeMeele(
-            new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * 10),false,0,debuffs: new DeBuff(ice: this.ice)),
+            new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * 10),false,0,debuffs: new DeBuff(ice: this.ice)),
             0.2f, TargetPos.position, Vector3.zero, 0, false,null);
     }
 

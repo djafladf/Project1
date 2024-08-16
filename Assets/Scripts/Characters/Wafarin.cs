@@ -26,7 +26,7 @@ public class Wafarin :PlayerSetting
             for (int i = -ProjNum+1; i <= ProjNum-1; i++)
             {
                 GameManager.instance.BM.MakeBullet(
-                    new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10),false,0),
+                    new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 10),false,0),
                     Penetrate, transform.position, new Vector3(Mathf.Cos(rad + 0.25f * i), Mathf.Sin(rad + 0.25f * i)),10, false,Bullet,BL:BL);
             }
             if (player.WeaponLevel >= 7 && !Pond.activeSelf)

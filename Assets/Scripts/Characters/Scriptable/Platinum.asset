@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Platinum
   m_EditorClassIdentifier: 
   speed: 3
-  InitHP: 150
+  InitHP: 200
   InitSP: 0
   InitDefense: 0
   Cost: 12
-  ReBatchTime: 70
+  ReBatchTime: 50

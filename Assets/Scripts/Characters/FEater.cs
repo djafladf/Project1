@@ -27,7 +27,7 @@ public class FEater : PlayerSetting
         HitEffect.gameObject.transform.position = TargetPos.position;
         HitEffect.Play();
         GameManager.instance.BM.MakeMeele(
-            new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10),false,Power,scalefactor:ScaleF), 0.2f, 
+            new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 10),false,Power,scalefactor:ScaleF), 0.2f, 
             TargetPos.position + Gap, -player.Dir, 0, false);
     }
 
@@ -46,7 +46,7 @@ public class FEater : PlayerSetting
         HitEffect.gameObject.transform.position = TargetPos.position;
         HitEffect.Play();
         GameManager.instance.BM.MakeMeele(
-            new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10), false, Power), 0.2f,
+            new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 10), false, Power), 0.2f,
             TargetPos.position + Gap, -player.Dir, 0, false,Spec);
     }
 

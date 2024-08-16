@@ -95,11 +95,16 @@ public class Bullet : MonoBehaviour
         StartCoroutine(AfterImage(AfterTime,AlphaChange));
     }
 
-    public void Init_Buff(Sprite Im,  bool IsEnemy)
+    public void Init_Buff(float ScaleFactor, Sprite Im,  bool IsEnemy)
     {
         rigid.simulated = true;
         coll.enabled = true;
+        
         sprite.sprite = Im;
+        if (ScaleFactor == 0) ScaleFactor = 1;
+        if (Im != null) coll.size = sprite.bounds.size * ScaleFactor;
+        else coll.size = Vector2.one * ScaleFactor;
+
         IsMeele = false;
         tag = IsEnemy ? "EnemyBuff" : "PlayerBuff";
     }

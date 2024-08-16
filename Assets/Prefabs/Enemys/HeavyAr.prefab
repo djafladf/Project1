@@ -117,6 +117,7 @@ MonoBehaviour:
     KnockBack: 0
     IgnoreDefense: 0
     ScaleFactor: 0
+    SpeedFactor: 0
     DeBuffs:
       Last: 0
       Speed: 0

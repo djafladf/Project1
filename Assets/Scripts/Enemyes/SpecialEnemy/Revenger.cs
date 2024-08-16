@@ -72,7 +72,7 @@ public class Revenger : Enemy
         if(HP <= MaxHP * 0.5f)
         {
             FireSys.Play();
-            MaxDamage *= 2; Damage = MaxDamage; BI.IgnoreDefense = 0.2f;
+            Damage *=2 ; BI.IgnoreDefense = 0.2f;
             spec = true;
         }
     }
@@ -80,7 +80,7 @@ public class Revenger : Enemy
     protected override IEnumerator DeadLater()
     {
         FireSys.Stop();
-        MaxDamage = Mathf.FloorToInt(MaxDamage * 0.5f); spec = false; BI.IgnoreDefense = 0;
+        spec = false; BI.IgnoreDefense = 0;
         return base.DeadLater();
     }
 }

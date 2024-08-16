@@ -36,7 +36,7 @@ public class Amiya : PlayerSetting
     {
         while (true)
         {
-            int Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10);
+            int Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 10);
             var Targets = GameManager.GetNearest(scanRange, ProjNum, transform.position, targetLayer);
             Transform j;
             if (Targets.Count != 0)

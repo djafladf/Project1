@@ -18,9 +18,9 @@ public class Skulslr : Enemy
     {
         base.Awake();
         particles = new ParticleSystem.Particle[pt.main.maxParticles];
-        MaxHP = Mathf.FloorToInt(MaxHP * (1 + GameManager.instance.EnemyStatus.boss * 0.05f));
-        MaxDefense = Mathf.FloorToInt(MaxDefense * (1 + GameManager.instance.EnemyStatus.boss * 0.05f));
-        MaxDamage = Mathf.FloorToInt(MaxDamage * (1 + GameManager.instance.EnemyStatus.boss * 0.05f));
+        MaxHP = Mathf.FloorToInt(MaxHP * (1 + GameManager.instance.EnemyStatus.boss * 0.05f)); HP = MaxHP;
+        MaxDefense = Mathf.FloorToInt(MaxDefense * (1 + GameManager.instance.EnemyStatus.boss * 0.05f)); Defense = MaxDefense;
+        MaxDamage = Mathf.FloorToInt(MaxDamage * (1 + GameManager.instance.EnemyStatus.boss * 0.05f));  Damage = MaxDamage;
         BLine = BPart.GetComponent<TrailRenderer>();
     }
 
@@ -79,7 +79,7 @@ public class Skulslr : Enemy
             if (Dir.x > 0 && !spriteRenderer.flipX) spriteRenderer.flipX = true;
             else if (Dir.x < 0 && spriteRenderer.flipX) spriteRenderer.flipX = false;
 
-            if (!OnHit) rigid.MovePosition(rigid.position + Dir * speed * Time.fixedDeltaTime * (1 + GameManager.instance.EnemyStatus.speed));
+            if (!OnHit) rigid.MovePosition(rigid.position + Dir * speed * Time.fixedDeltaTime * (1 + GameManager.instance.EnemyStatus.speed - DeBuffVar[0]));
         }
         if (BeginAttack && !anim.GetBool("IsAttack"))
         {
@@ -93,13 +93,13 @@ public class Skulslr : Enemy
     protected override void AttackMethod()
     {
         GameManager.instance.BM.MakeBoom(
-            new BulletInfo(Damage,false,0),new BulletInfo(Damage,false,0,ignoreDefense:0.5f),
+            new BulletInfo(Mathf.FloorToInt(Damage * (1 + GameManager.instance.EnemyStatus.attack - DeBuffVar[1])), false,0),new BulletInfo(Mathf.FloorToInt(Damage * (1 + GameManager.instance.EnemyStatus.attack - DeBuffVar[1])), false,0,ignoreDefense:0.5f),
             transform.position, (AttackPos - transform.position).normalized, 20, Bullet, Boom, true);
     }
 
     void MeeleAttack()
     {
-        GameManager.instance.BM.MakeMeele(new BulletInfo(Mathf.FloorToInt(Damage * 1.5f), false, 0), 0.3f, transform.position, spriteRenderer.flipX ? Vector2.left:Vector2.zero, 0, true,MeeleBul);
+        GameManager.instance.BM.MakeMeele(new BulletInfo(Mathf.FloorToInt(Damage * 1.5f * (1 + GameManager.instance.EnemyStatus.attack - DeBuffVar[1])), false, 0), 0.3f, transform.position, spriteRenderer.flipX ? Vector2.left:Vector2.zero, 0, true,MeeleBul);
     }
 
     Transform ReturnRandomPlayer()
@@ -120,7 +120,7 @@ public class Skulslr : Enemy
 
     void SpecialAttackSub(Vector3 pos)
     {    
-        GameManager.instance.BM.MakeMeele(new BulletInfo(Damage,false,0,ignoreDefense:0.5f), 0.3f, pos, Vector3.zero, 0, true,Boom);
+        GameManager.instance.BM.MakeMeele(new BulletInfo(Mathf.FloorToInt(Damage * (1 + GameManager.instance.EnemyStatus.attack - DeBuffVar[1])), false,0,ignoreDefense:0.5f), 0.3f, pos, Vector3.zero, 0, true,Boom);
     }
     int SpecialCool = 20;
 
@@ -130,10 +130,10 @@ public class Skulslr : Enemy
     public void SpecialAttack3()
     {
         
-        GameManager.instance.BM.MakeMeele(new BulletInfo(Damage, false, 0, ignoreDefense: 0.5f), 0.3f,
+        GameManager.instance.BM.MakeMeele(new BulletInfo(Mathf.FloorToInt(Damage * (1 + GameManager.instance.EnemyStatus.attack - DeBuffVar[1])), false, 0, ignoreDefense: 0.5f), 0.3f,
             transform.position + new Vector3(6 * Mathf.Cos(SpecialRad + 0.75f * Count),6 * Mathf.Sin(SpecialRad + 0.75f * Count),0), 
             Vector3.zero, 0, true, Boom);
-        GameManager.instance.BM.MakeMeele(new BulletInfo(Damage, false, 0, ignoreDefense: 0.5f), 0.3f,
+        GameManager.instance.BM.MakeMeele(new BulletInfo(Mathf.FloorToInt(Damage * (1 + GameManager.instance.EnemyStatus.attack - DeBuffVar[1])), false, 0, ignoreDefense: 0.5f), 0.3f,
             transform.position + new Vector3(6 * Mathf.Cos(SpecialRad - 0.75f * Count),6 * Mathf.Sin(SpecialRad - 0.75f * Count), 0),
             Vector3.zero, 0, true, Boom);
         Count++;
@@ -240,10 +240,8 @@ public class Skulslr : Enemy
         if(!jj && HP <= Mathf.FloorToInt(MaxHP * 0.5f))
         {
             jj = true; pt.gameObject.SetActive(true);
-            float j = (float)Damage / MaxDamage;
-            MaxDamage *= 2; Damage = Mathf.FloorToInt(MaxDamage * j);
-            j = (float)speed / MaxSpeed;
-            MaxSpeed = MaxSpeed * 1.5f; speed = Mathf.FloorToInt(MaxSpeed * j);
+            Damage *= 2;
+            speed *= 1.5f;
             BPart.SetActive(true); StartCoroutine(Line1());
         }
     }

@@ -71,16 +71,17 @@ public class BulletInfo
     public float KnockBack;
     public float IgnoreDefense;
     public float ScaleFactor;
+    public float SpeedFactor;
 
     public DeBuff DeBuffs;
 
     public Buff Buffs;
 
-    public BulletInfo(int damage, bool isEffect,float knockBack, float scalefactor = 1, bool isFix = false, float ignoreDefense = 0,
+    public BulletInfo(int damage, bool isEffect,float knockBack, float scalefactor = 1, float speedfactor = 1,bool isFix = false, float ignoreDefense = 0,
         DeBuff debuffs = null, Buff buffs = null)
     {
         Damage = damage;
-        IsEffect = isEffect; IsFix = isFix; ScaleFactor = scalefactor;
+        IsEffect = isEffect; IsFix = isFix; ScaleFactor = scalefactor; SpeedFactor = speedfactor;
         KnockBack = knockBack; IgnoreDefense = ignoreDefense;
         DeBuffs = debuffs;
         Buffs = buffs;
@@ -93,7 +94,7 @@ public class BulletInfo
         else if (defense < 90) defense = 85 + (defense - 90) * 0.2f;
 
         if (IsFix) return Damage;
-        return Mathf.CeilToInt(Damage * (100 + IgnoreDefense - defense) * 0.01f);
+        else return Mathf.CeilToInt(Damage * (100 + IgnoreDefense - defense) * 0.01f);
     }
 }
 
@@ -104,16 +105,16 @@ public class Buff
     public float Speed;
     public float Attack;
     public float Defense;
-    public float Fragility;
+    public float AttackSpeed;
     public int Heal;
 
-    public Buff(float last = 0, float speed = 1, float attack = 1, float defense = 1,float fragility = 0, int heal = 0)
+    public Buff(float last = 0, float speed = 0, float attack = 0, float defense = 0,float attackspeed = 0, int heal = 0)
     {
         Last = last;
         Speed = speed;
         Attack = attack;
         Defense = defense;
-        Fragility = fragility;
+        AttackSpeed = attackspeed;
         Heal = heal;
     }
 }
@@ -128,7 +129,7 @@ public class DeBuff
     public float Ice;
     public float Fragility;
 
-    public DeBuff(float last = 0, float speed = 1, float attack = 1, float defense = 1, float ice = 0, float fragility = 0)
+    public DeBuff(float last = 0, float speed = 0, float attack = 0, float defense = 0, float ice = 0, float fragility = 0)
     {
         Last = last;
         Speed = speed;

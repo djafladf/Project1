@@ -19,6 +19,6 @@ public class Cannon : Enemy
 
     void SpecialAttackSub(Vector3 pos)
     {
-        GameManager.instance.BM.MakeMeele(new BulletInfo(Damage, false, 0, ignoreDefense: 0.25f), 0.3f, pos, Vector3.zero, 0, true, Boom);
+        GameManager.instance.BM.MakeMeele(new BulletInfo((int)(Damage * (1 + GameManager.instance.EnemyStatus.attack - DeBuffVar[1])), false, 0, ignoreDefense: 0.25f), 0.3f, pos, Vector3.zero, 0, true, Boom);
     }
 }

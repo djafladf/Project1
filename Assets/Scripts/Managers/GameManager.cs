@@ -25,27 +25,18 @@ public class GameManager : MonoBehaviour
     public static List<Transform> GetNearest(float scanRange, int count, Vector3 Position, LayerMask targetLayer)
     {
         RaycastHit2D[] targets = Physics2D.CircleCastAll(Position, scanRange, Vector2.zero, 0, targetLayer);
-        List<Transform> res = new List<Transform>(count);
-        List<float> diffs = new List<float>(count);
-        for (int i = 0; i < count; i++) { diffs.Add(scanRange + 10); res.Add(null); }
+        Dictionary<Transform, float> Set = new Dictionary<Transform, float>();
         foreach (RaycastHit2D target in targets)
         {
             float curDiff = Vector3.Distance(Position, target.transform.position);
-            for (int i = 0; i < count; i++)
+            Set.Add(target.transform,curDiff);
+            if (Set.Count > count)
             {
-                if (curDiff < diffs[i])
-                {
-                    res.Insert(i, target.transform);
-                    res.RemoveAt(count);
-                    diffs.Insert(i, curDiff);
-                    diffs.RemoveAt(count);
-                    break;
-                }
+                var cnt = Set.OrderBy(x => x.Value).ToList();cnt.RemoveAt(count);
+                Set = cnt.ToDictionary(x => x.Key, x => x.Value);
             }
         }
-        for (int i = res.Count - 1; i >= 0; i--) if (res[i] == null) res.RemoveAt(i);
-
-        return res;
+        return Set.Keys.ToList();
     }
 
     // On Loby

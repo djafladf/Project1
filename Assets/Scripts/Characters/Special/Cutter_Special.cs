@@ -10,6 +10,6 @@ public class Cutter_Special : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
-            GameManager.instance.BM.MakeBullet(new BulletInfo(Mathf.FloorToInt((1 + GameManager.instance.PlayerStatus.attack + Cutter.AttackRatio) * 15), false, 0), 0, collision.transform.position, Vector3.zero, 0, false);
+            GameManager.instance.BM.MakeBullet(new BulletInfo(Mathf.FloorToInt((1 + GameManager.instance.PlayerStatus.attack + Cutter.AttackRatio + Cutter.ReinforceAmount[0]) * 15), false, 0), 0, collision.transform.position, Vector3.zero, 0, false);
     }
 }

@@ -42,14 +42,14 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -103,7 +103,280 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Host_Throw_0
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 2620
+        width: 513
+        height: 438
+      alignment: 9
+      pivot: {x: 0.3, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c29dd7bfb7ce4ff4a8bee776bea04363
+      internalID: -413090250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Host_Throw_1
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 2601
+        width: 464
+        height: 457
+      alignment: 9
+      pivot: {x: 0.28, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3da54fc5907230c47a7f6a23af4f8fc3
+      internalID: 2002170359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Host_Throw_2
+      rect:
+        serializedVersion: 2
+        x: 1610
+        y: 2599
+        width: 452
+        height: 466
+      alignment: 9
+      pivot: {x: 0.3, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 281a565f7a5f32849baec2de6590261b
+      internalID: -712155658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Host_Throw_3
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 2000
+        width: 479
+        height: 444
+      alignment: 9
+      pivot: {x: 0.28, y: 0.53}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20df1d1340001e54d9e00e43efff14f9
+      internalID: 58921505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Host_Throw_4
+      rect:
+        serializedVersion: 2
+        x: 859
+        y: 1996
+        width: 490
+        height: 444
+      alignment: 9
+      pivot: {x: 0.4, y: 0.53}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15361eb9d14cfb74db7d1e09ff37ba34
+      internalID: 2016381030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Host_Throw_5
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 2009
+        width: 492
+        height: 421
+      alignment: 9
+      pivot: {x: 0.5374411, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47c7542ff9cce0549b0fa2a535db56ed
+      internalID: -1221273827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Host_Throw_6
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 1336
+        width: 436
+        height: 500
+      alignment: 9
+      pivot: {x: 0.35, y: 0.46}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ef3fb69e6c635c4894e470eac916b43
+      internalID: 1522773916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Host_Throw_7
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 1371
+        width: 357
+        height: 433
+      alignment: 9
+      pivot: {x: 0.5515995, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8beb5b332b8093e43980e064af808440
+      internalID: -762338105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Host_Throw_8
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 782
+        width: 480
+        height: 444
+      alignment: 9
+      pivot: {x: 0.5575655, y: 0.5000003}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adc8db5b284399641866a9da00b2214d
+      internalID: 1830470685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Host_Throw_9
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 801
+        width: 491
+        height: 387
+      alignment: 9
+      pivot: {x: 0.53751713, y: 0.5000003}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7250528eb92d2cd4db1dea5af6286710
+      internalID: -189039658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Host_Throw_10
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 181
+        width: 493
+        height: 398
+      alignment: 9
+      pivot: {x: 0.35, y: 0.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07acd09624f9c0a47bd3f851febf0183
+      internalID: 1199251894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Host_Throw_11
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 211
+        width: 495
+        height: 419
+      alignment: 9
+      pivot: {x: 0.35, y: 0.565}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 172803b52e7a1a94fab5f64b2111bfb1
+      internalID: 1493988702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Host_Throw_12
+      rect:
+        serializedVersion: 2
+        x: 1543
+        y: 239
+        width: 498
+        height: 446
+      alignment: 9
+      pivot: {x: 0.35, y: 0.54}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bba201355b6ae8842b6033dd6e47be52
+      internalID: -1697068458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -114,7 +387,20 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Host_Throw_3: 58921505
+      Host_Throw_7: -762338105
+      Host_Throw_2: -712155658
+      Host_Throw_5: -1221273827
+      Host_Throw_11: 1493988702
+      Host_Throw_8: 1830470685
+      Host_Throw_6: 1522773916
+      Host_Throw_12: -1697068458
+      Host_Throw_4: 2016381030
+      Host_Throw_1: 2002170359
+      Host_Throw_0: -413090250
+      Host_Throw_10: 1199251894
+      Host_Throw_9: -189039658
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

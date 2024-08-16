@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class Kazemaru : PlayerSetting
@@ -20,14 +21,16 @@ public class Kazemaru : PlayerSetting
         {
             Doll = Instantiate(DollPref, transform.parent);
             Doll.GetComponent<Kazemaru>().Respawn = RespawnAct;
-            DamageRatio = 1f;
+            DamageRatio = 1.5f;
             SpecialRatio = 2f;
         }
         else
         {
-            DamageRatio = 3.5f;
+            DamageRatio = 3f;
             SpecialRatio = 2f;
             ProjNum = 1;
+            player.WeaponLevel = 7;
+            CanEvade = true; CanAssasin = true;
         }
         Coll = GetComponent<CapsuleCollider2D>();
         base.Awake();
@@ -117,7 +120,7 @@ public class Kazemaru : PlayerSetting
         for (int i = -2; i <= 2; i++)
         {
             GameManager.instance.BM.MakeBullet(
-                new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * SpecialRatio * 10), false, 0), 0,
+                new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * SpecialRatio * 10), false, 0), 0,
             Attackfrom, new Vector3(Mathf.Cos(rad + 0.05f * i), Mathf.Sin(rad + 0.05f * i), 0),
             15, false, bullet, delay: 0.1f);
         }
@@ -140,17 +143,18 @@ public class Kazemaru : PlayerSetting
     bool IsAssasin = false;
     protected override void AttackMethod()
     {
+        float DamageSub = (1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]);
         if (IsAssasin)
         {
             GameManager.instance.BM.MakeMeele(
-            new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 20), false, 0, isFix: true), 0.3f,
+            new BulletInfo((int)(DamageSub * DamageRatio * 20), false, 0, isFix: true), 0.3f,
             transform.position, -player.Dir, 0, false, MeeleAttack);
             IsAssasin = false;
         }
         else
         {
             GameManager.instance.BM.MakeMeele(
-            new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10), false, 0), 0.3f,
+            new BulletInfo((int)(DamageSub * DamageRatio * 10), false, 0), 0.3f,
             transform.position, -player.Dir, 0, false, MeeleAttack);
             if (ProjNum != 0)
             {
@@ -160,7 +164,7 @@ public class Kazemaru : PlayerSetting
                 for (int i = -ProjNum; i <= ProjNum; i++)
                 {
                     GameManager.instance.BM.MakeBullet(
-                        new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * SpecialRatio * 10), false, 0), 0,
+                        new BulletInfo((int)(DamageSub * SpecialRatio * 10), false, 0), 0,
                     transform.position, new Vector3(Mathf.Cos(rad + 0.1f * i), Mathf.Sin(rad + 0.1f * i), 0),
                     15, false, bullet);
                 }
@@ -170,7 +174,14 @@ public class Kazemaru : PlayerSetting
 
     void RespawnAct()
     {
-        StartCoroutine(RespawnKaze());
+        try
+        {
+            StartCoroutine(RespawnKaze());
+        }
+        catch
+        {
+
+        }
     }
 
     IEnumerator RespawnKaze()
@@ -187,10 +198,10 @@ public class Kazemaru : PlayerSetting
         switch (player.WeaponLevel++)
         {
             case 1: DamageRatio += 0.5f; break;
-            case 2: DamageRatio += 0.75f; break;
-            case 3: ProjNum++; AttackRange = 5; break;
-            case 4: DamageRatio += 0.5f; break;
-            case 5: DamageRatio += 0.75f; break;
+            case 2: ProjNum = 1; break;
+            case 3: CanEvade = true; break;
+            case 4: DamageRatio += 1f; break;
+            case 5: CanAssasin = true; break;
             case 6: if (gameObject.activeSelf) { Doll.SetActive(true); Doll.transform.position = transform.position + Vector3.right; } break;
         }
         return player.WeaponLevel;
@@ -219,7 +230,7 @@ public class Kazemaru : PlayerSetting
     {
         base.EndBatch();
         if (!IsSummon && player.WeaponLevel == 7) { Doll.SetActive(true); Doll.transform.position = transform.position + Vector3.right; }
-        CanEvade = true; CanAssasin = true;
+        CanEvade = player.WeaponLevel >= 3; CanAssasin = player.WeaponLevel >= 5;
     }
 
     private void OnDisable()

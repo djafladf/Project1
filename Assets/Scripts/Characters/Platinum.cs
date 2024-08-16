@@ -12,7 +12,7 @@ public class Platinum :PlayerSetting
     [SerializeField] BulletLine BL;
     [SerializeField] BulletLine BL2;
 
-    bool MakeSpec = false;
+    bool SpecAble = false;
 
 
     protected override void AttackMethod()
@@ -22,7 +22,7 @@ public class Platinum :PlayerSetting
             Vector2 Sub = (TargetPos.position - transform.position).normalized;
             float rad = Vector2.Angle(Vector2.right, Sub) * Mathf.Deg2Rad;
             if (Sub.y < 0) rad = Mathf.PI * 2 - rad;
-            int Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10);
+            int Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 10);
             for (int i = -ProjNum+1; i <= ProjNum-1; i++)
             {
                 GameManager.instance.BM.MakeBullet(
@@ -31,25 +31,25 @@ public class Platinum :PlayerSetting
                 15, false,Bullet,BL:BL);
             }
 
-            MakeSpec = true;
+            if (SpecAble) { Target = TargetPos.transform.position; player.anim.SetTrigger("Spec"); if(SpecTime == 0) SpecTime = 5; }
         }
     }
 
+    int SpecTime = 0;
     protected override void AttackEnd()
     {
-        if (MakeSpec) { player.anim.SetTrigger("Spec"); Target = TargetPos; }
-        else base.AttackEnd();
+        base.AttackEnd();
+
+        if(TargetPos != null && SpecTime>0) player.anim.SetTrigger("Spec");
     }
 
-    Transform Target;
+    Vector3 Target;
 
     void ShowerSetting()
     {
-        MakeSpec = true;
-
         if (player.sprite.flipX) GameManager.instance.BM.MakeEffect(0.3f, transform.position, new Vector3(1, 1, 0), 25, SpecBul, BL: BL2);
         else GameManager.instance.BM.MakeEffect(0.5f, transform.position, new Vector3(-1, 1, 0), 25, SpecBul, BL: BL2);
-        StartCoroutine(RainSub(Target.position));
+        StartCoroutine(RainSub());
     }
     
 
@@ -62,8 +62,8 @@ public class Platinum :PlayerSetting
         else OneGi.gameObject.transform.localPosition = OneO;
 
         Mark.gameObject.SetActive(true);
-        if (Target.gameObject.activeSelf) { Mark.transform.parent = Target; Mark.transform.localPosition = Vector3.up * 2; }
-        else Target.transform.position = Target.position + Vector3.up * 2;
+        
+        Mark.transform.parent = TargetPos; Mark.transform.localPosition = Vector3.up * 2;
 
         OneGi.Play();
     }
@@ -74,10 +74,10 @@ public class Platinum :PlayerSetting
     }
     
 
-    IEnumerator RainSub(Vector3 Target)
+    IEnumerator RainSub()
     {
         yield return new WaitForSeconds(0.3f);
-        int Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10);
+        int Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 10);
         var cnt = GameManager.GetNearest(5, 7, Target, targetLayer);
         Vector3 Gap = new Vector3(0, 15, 0);
         for (int i = 0; i < 7; i++)
@@ -88,13 +88,20 @@ public class Platinum :PlayerSetting
             yield return GameManager.DotOneSec;
         }
         Mark.gameObject.SetActive(false);
-        MakeSpec = false;
+
+        if (--SpecTime == 0)
+        {
+            SpecAble = false;
+            yield return new WaitForSeconds(10);
+            SpecAble = true;
+        }
     }
 
 
     protected override void OnEnable()
     {
         base.OnEnable();
+        SpecAble = player.WeaponLevel >= 0;
         Mark.gameObject.SetActive(false);
         OneGi.Stop();
     }
@@ -116,6 +123,7 @@ public class Platinum :PlayerSetting
             case 6:
                 Penetrate = 100;
                 DefenseIgnore = 0.5f;
+                SpecAble = true;
                 break;
         }
         return player.WeaponLevel;

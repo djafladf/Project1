@@ -29,17 +29,17 @@ public class Manticore : PlayerSetting
 
         for(int i = 1; i < 6; i++)
         {
-            GameManager.instance.BM.MakeMeele(new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10), false, 0),
+            GameManager.instance.BM.MakeMeele(new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 10), false, 0),
                     0.5f, transform.position + z * i, Vector3.zero, 0, false, Bullets[0]);
             yield return new WaitForSeconds(0.1f);
         }
     }
     IEnumerator UpLocker()
     {
-        GameManager.instance.BM.MakeMeele(new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10), false, 0),
+        GameManager.instance.BM.MakeMeele(new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 10), false, 0),
                     0.5f, transform.position, Vector3.zero, 0, false, Bullets[2]);
         yield return new WaitForSeconds(0.2f);
-        GameManager.instance.BM.MakeMeele(new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 15), false, 0),
+        GameManager.instance.BM.MakeMeele(new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 15), false, 0),
                     0.5f, transform.position, Vector3.zero, 0, false, Bullets[1]);
     }
 
@@ -72,7 +72,7 @@ public class Manticore : PlayerSetting
         {
             case 1: DamageRatio += 0.5f; break;
             case 2: DamageRatio += 0.5f; break;
-            case 3: player.AttackSpeed *= 1.2f; player.anim.SetFloat("AttackSpeed", player.AttackSpeed); break;
+            case 3: player.AttackSpeed *= 1.2f; player.ChangeOccur = true; break;
             case 4: DamageRatio += 0.75f; break;
             case 5: DamageRatio += 0.75f; break;
             case 6: break;

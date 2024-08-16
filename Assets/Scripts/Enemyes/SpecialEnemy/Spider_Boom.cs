@@ -12,6 +12,6 @@ public class Spider_Boom : Enemy
 
     void SpecialAttackSub(Vector3 pos)
     {
-        GameManager.instance.BM.MakeMeele(new BulletInfo(Mathf.FloorToInt(Damage * 5 * (1 + GameManager.instance.EnemyStatus.attack)), false, 0, ignoreDefense: 0.25f), 0.3f, pos, Vector3.zero, 0, true, Boom);
+        GameManager.instance.BM.MakeMeele(new BulletInfo(Mathf.FloorToInt(Damage * (1 + GameManager.instance.EnemyStatus.attack - DeBuffVar[1])), false, 0, ignoreDefense: 0.25f), 0.3f, pos, Vector3.zero, 0, true, Boom);
     }
 }

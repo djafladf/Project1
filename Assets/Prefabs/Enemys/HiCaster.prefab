@@ -102,14 +102,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02537fbf858b4da419514d7451e1123f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 200
+  HP: 350
   speed: 2
-  Damage: 8
+  Damage: 15
   Defense: 0
   Weight: 0
-  ItemVal: 0
-  IsRange: 1
-  MakeLine: 1
+  EnemyType: 14
+  IsRange: 0
+  MakeLine: 0
   BI:
     Damage: 15
     IsEffect: 0
@@ -117,6 +117,7 @@ MonoBehaviour:
     KnockBack: 0
     IgnoreDefense: 0
     ScaleFactor: 1
+    SpeedFactor: 0
     DeBuffs:
       Last: 0
       Speed: 0
@@ -131,12 +132,12 @@ MonoBehaviour:
       Defense: 0
       Fragility: 0
       Heal: 0
-  Bull: {fileID: 21300000, guid: 892bef214f30e4d46b119a9ab36aa916, type: 3}
+  Bull: {fileID: 1691559163, guid: 835a90f47c6ee224c82237bcdf05170b, type: 3}
   BL:
     Color:
       serializedVersion: 2
       key0: {r: 0.88305813, g: 0.8349056, b: 1, a: 1}
-      key1: {r: 0.59131366, g: 0.60068136, b: 0.8301887, a: 0.19607843}
+      key1: {r: 0.88305813, g: 0.8349056, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -168,34 +169,16 @@ MonoBehaviour:
       - serializedVersion: 3
         time: 0
         value: 0.2
-        inSlope: 1.3333333
-        outSlope: 1.3333333
+        inSlope: -0.2
+        outSlope: -0.2
         tangentMode: 34
         weightedMode: 0
         inWeight: 0
         outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.15
-        value: 0.4
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: -0.47058824
-        outSlope: -0.47058824
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    Time: 0.2
+    Time: 0
 --- !u!70 &1788775384281307614
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

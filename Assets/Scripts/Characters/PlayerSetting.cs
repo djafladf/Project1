@@ -54,7 +54,7 @@ public class PlayerSetting : MonoBehaviour
                 if (!IsPlayer) player.MyBatch.HPBar.fillAmount = player.CurHP / (float)player.MaxHP;
                 else GameManager.instance.UM.HpChange();
             }
-            player.anim.SetFloat("AttackSpeed", player.AttackSpeed + GameManager.instance.PlayerStatus.attackspeed);
+            player.anim.SetFloat("AttackSpeed", player.AttackSpeed + GameManager.instance.PlayerStatus.attackspeed + player.ReinforceAmount[3]);
         }
 
         player.rigid.velocity = Vector2.zero;
@@ -79,7 +79,7 @@ public class PlayerSetting : MonoBehaviour
                     else player.Dir = Vector2.zero;
                 }
             }
-            Vector2 nextVec = player.Dir * player.speed * (1 + player.SpeedRatio + GameManager.instance.PlayerStatus.speed) *  Time.fixedDeltaTime;
+            Vector2 nextVec = player.Dir * player.speed * (1 + player.SpeedRatio + GameManager.instance.PlayerStatus.speed + player.ReinforceAmount[2]) *  Time.fixedDeltaTime;
             if (nextVec.Equals(Vector2.zero))
             {
                 player.anim.SetBool("IsWalk", false);
@@ -195,16 +195,71 @@ public class PlayerSetting : MonoBehaviour
     bool CanHit = true;
 
     [SerializeField] protected Image HPBar;
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("EnemyAttack") && CanHit) GetDamage(GameManager.instance.BM.GetBulletInfo(GameManager.StringToInt(collision.name)),collision.transform);
         else if (collision.CompareTag("PlayerBuff"))
         {
             Buff Info = GameManager.instance.BM.GetBulletInfo(GameManager.StringToInt(collision.name)).Buffs;
-            int Amount = (int)(Info.Heal * (1 + GameManager.instance.PlayerStatus.heal));
-            if (Amount != 0) Heal(Amount);
+            int Amount;
+            if (Info.Heal != 0)
+            {
+                Amount = (int)(Info.Heal * (1 + GameManager.instance.PlayerStatus.heal));
+                if (Amount != 0) Heal(Amount);
+            }
+            if (player.ReinforceAmount[0] <= Info.Attack && Info.Attack != 0)
+            {
+                if (player.ReinforceAmount[0] == Info.Attack) player.ReinForceLast[0] = Mathf.Max(player.ReinforceAmount[0], Info.Last);
+                else player.ReinForceLast[0] = Info.Last;
+                player.ReinforceAmount[0] = Info.Attack;
+            }
+            if (player.ReinforceAmount[1] <= Info.Defense && Info.Defense != 0)
+            {
+                if (player.ReinforceAmount[1] == Info.Defense) player.ReinForceLast[1] = Mathf.Max(player.ReinforceAmount[1], Info.Last);
+                else player.ReinForceLast[1] = Info.Last;
+                player.ReinforceAmount[1] = Info.Defense;
+            }
+            if (player.ReinforceAmount[2] <= Info.Speed && Info.Speed != 0)
+            {
+                if (player.ReinforceAmount[2] == Info.Speed) player.ReinForceLast[2] = Mathf.Max(player.ReinforceAmount[2], Info.Last);
+                else player.ReinForceLast[2] = Info.Last;
+                player.ReinforceAmount[2] = Info.Speed;
+            }
+            if (player.ReinforceAmount[3] <= Info.AttackSpeed && Info.AttackSpeed != 0)
+            {
+                if (player.ReinforceAmount[3] == Info.AttackSpeed) player.ReinForceLast[3] = Mathf.Max(player.ReinforceAmount[3], Info.Last);
+                else player.ReinForceLast[3] = Info.Last;
+                player.ReinforceAmount[3] = Info.AttackSpeed;
+            }
+
         }
     }
+
+    string[] BFTest = { "공","방","속","공속"};
+    IEnumerator BuffCheck()
+    {
+        int i;
+
+        for (i = 0; i < 4; i++) { player.ReinforceAmount[i] = 0; player.ReinForceLast[i] = 0; }
+
+        while (true)
+        {
+            // Buff Check
+            for (i = 0; i < 4; i++)
+            {
+                if (player.ReinForceLast[i] == 0) continue;
+                player.ReinForceLast[i] -= 0.1f;
+                if (player.ReinForceLast[i] <= 0) { player.ReinForceLast[i] = 0; player.ReinforceAmount[i] = 0; if (i == 3) player.ChangeOccur = true; }
+            }
+
+            // DeBuff Check
+
+            yield return GameManager.DotOneSec;
+        }
+    }
+
     protected void Heal(int Amount)
     {
         int LeftHP = player.MaxHP - player.CurHP;
@@ -221,7 +276,7 @@ public class PlayerSetting : MonoBehaviour
 
     protected virtual void GetDamage(BulletInfo Info,Transform DamageFrom)
     {
-        int GetDamage = Info.ReturnDamage(player.InitDefense * (1 + player.DefenseRatio + GameManager.instance.PlayerStatus.defense));
+        int GetDamage = Info.ReturnDamage(player.InitDefense * (1 + player.DefenseRatio + GameManager.instance.PlayerStatus.defense + player.ReinforceAmount[1]));
         player.CurHP -= GetDamage;
         if (player.CurHP > player.MaxHP) player.CurHP = player.MaxHP;
         else if (player.CurHP <= 0)
@@ -272,5 +327,6 @@ public class PlayerSetting : MonoBehaviour
             }
         }
         else player.Dir = Vector2.zero;
+        StartCoroutine(BuffCheck());
     }
 }

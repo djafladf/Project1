@@ -34,7 +34,7 @@ public class Astesia : PlayerSetting
         if (TargetPos != null)
         {
             GameManager.instance.BM.MakeMeele(
-                    new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10), false, 0), 0.3f,
+                    new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 10), false, 0), 0.3f,
                     transform.position, -player.Dir, 0, false, im: AttackIm);
             if (player.WeaponLevel == 7)
             {
@@ -48,7 +48,7 @@ public class Astesia : PlayerSetting
     {
         yield return new WaitForSeconds(Time);
         GameManager.instance.BM.MakeBullet(
-            new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10), false, 0),0,
+            new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio+player.ReinforceAmount[0]) * DamageRatio * 10), false, 0),0,
                 TargetPos.position, Vector3.zero, 0, false);
     }
 
@@ -72,7 +72,7 @@ public class Astesia : PlayerSetting
         {
             case 1: DamageRatio += 0.5f; break;
             case 2: player.InitDefense += 5; break;
-            case 3: player.AttackSpeed *= 1.2f; player.anim.SetFloat("AttackSpeed", player.AttackSpeed); break;
+            case 3: player.AttackSpeed *= 1.2f; player.ChangeOccur = true; break;
             case 4: DamageRatio += 1f; break;
             case 5: player.InitDefense += 10; break;
             case 6: DamageRatio += 1.5f; Weapon.SetActive(true); AttackIm = Attack2; break;

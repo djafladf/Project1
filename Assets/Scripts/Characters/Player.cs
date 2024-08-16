@@ -47,5 +47,10 @@ public class Player : ScriptableObject
     [NonSerialized] public bool IsFollow = false;
     [NonSerialized] public bool ChangeOccur = false;
     [NonSerialized] public OperatorBatchTool MyBatch;
+
+
+    // 공, 방, 속, 공속
+    [NonSerialized]public float[] ReinforceAmount = { 0, 0, 0, 0 };
+    [NonSerialized]public float[] ReinForceLast = { 0, 0, 0, 0 };
 }
 

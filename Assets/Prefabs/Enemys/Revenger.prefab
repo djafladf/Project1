@@ -51,8 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f38cfefc20e314abae913decc71623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 250
-  speed: 1.5
+  HP: 500
+  speed: 2
   Damage: 10
   Defense: 15
   Weight: 0
@@ -66,6 +66,7 @@ MonoBehaviour:
     KnockBack: 0
     IgnoreDefense: 0
     ScaleFactor: 0
+    SpeedFactor: 0
     DeBuffs:
       Last: 0
       Speed: 0

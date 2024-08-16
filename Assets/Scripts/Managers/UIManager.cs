@@ -95,16 +95,18 @@ public class UIManager : MonoBehaviour
         Cost.text = $"{(int)CurCost}";
     }
 
-    float ExpSub = 0.125f;
+    float ExpSub = 0.07f;
+    float CurExpVar = 0;
     public void ExpUp(int value)
     {
-        float cnt = ExpBar.fillAmount + ExpSub * value * GameManager.instance.PlayerStatus.exp;
-        if (cnt < 0) cnt = 0;
-        if (cnt > 1) { 
-            LevelUpEvent(); cnt -= 1; LV.text = $"LV.{++CurLevel}";
+        CurExpVar += ExpSub * value * GameManager.instance.PlayerStatus.exp;
+        if (CurExpVar >= 1) {
+            CurExpVar--;
+            LV.text = $"LV.{++CurLevel}";
             ExpSub *= 0.92f;
+            LevelUpEvent();
         }
-        ExpBar.fillAmount = cnt;
+        ExpBar.fillAmount =  Mathf.Min(CurExpVar,1);
     }
 
     public void HpChange()
@@ -196,12 +198,12 @@ public class UIManager : MonoBehaviour
                 while (cnt == null)
                 {
                     int RarityPick = UnityEngine.Random.Range(0, 100);
-                    if (RarityPick < 85 && pickedElements_Normal.Count != 0)
+                    if (RarityPick < 80 && pickedElements_Normal.Count != 0)
                     {
                         Ind = pickedElements_Normal[0]; pickedElements_Normal.RemoveAt(0);
                         cnt = NormalItem[Ind % NormalItem.Count];
                     }
-                    else if (RarityPick < 95 && pickedElements_Rare.Count != 0)
+                    else if (RarityPick < 99 && pickedElements_Rare.Count != 0)
                     {
                         Ind = pickedElements_Rare[0]; pickedElements_Rare.RemoveAt(0);
                         cnt = RareItem[Ind % RareItem.Count];
@@ -400,6 +402,13 @@ public class UIManager : MonoBehaviour
             ItemSub cnt = WeaponSelection[ind];
             WeaponLevelUps[cnt.operatorid]();
             cnt.lv++; if (cnt.lv == 7) WeaponSelection.RemoveAt(ind);
+        }
+
+        if (CurExpVar>=1) ExpUp(0);
+        else
+        {
+            LevelUP.SetActive(false);
+            GameManager.instance.SetTime(0, true);
         }
     }
 

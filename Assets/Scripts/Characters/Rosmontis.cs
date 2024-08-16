@@ -46,7 +46,7 @@ public class Rosmontis : PlayerSetting
 
     IEnumerator LateDamage(float Time,Vector3 pos)
     {
-        int Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10);
+        int Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 10);
         yield return new WaitForSeconds(Time);
         GameManager.instance.BM.MakeMeele(
             new BulletInfo(Damage, false, 0, debuffs: new DeBuff(last: 5, defense: defenseRatio)), 0.4f,

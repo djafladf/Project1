@@ -14,7 +14,7 @@ AnimatorStateMachine:
     m_Position: {x: 240, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1451962023561786842}
-    m_Position: {x: 240, y: 210, z: 0}
+    m_Position: {x: 240, y: 230, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8352818079017310205}
     m_Position: {x: 250, y: 10, z: 0}
@@ -100,7 +100,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 8fff5e33b97796148ac52accd9d1c1a5, type: 2}
+  m_Motion: {fileID: 7400000, guid: c6ae27807033d6c479bf9b71c6c8487a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -161,7 +161,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 2c6409701a8629f4aa64619806b55415, type: 2}
+  m_Motion: {fileID: 7400000, guid: 2be3d809719abdc4caffeac7a1f0454e, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -200,7 +200,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Dead
-  m_Speed: 0.2
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -212,7 +212,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 5041b092091041d4999b5b6e162efa6c, type: 2}
+  m_Motion: {fileID: 7400000, guid: ab13fbac969460d40bc8afdb19003367, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

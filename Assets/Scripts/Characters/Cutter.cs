@@ -26,11 +26,11 @@ public class Cutter : PlayerSetting
     {
         if (TargetPos != null)
         {
-            
+            float DamageSub = (1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]);
             if (Vector3.Distance(TargetPos.position, transform.position) <= 2.5f)
             {
                 GameManager.instance.BM.MakeMeele(
-                    new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * DamageRatio * 10), false, 0, ignoreDefense: 0.2f), 0.3f,
+                    new BulletInfo((int)(DamageSub * DamageRatio * 10), false, 0, ignoreDefense: 0.2f), 0.3f,
                     transform.position, -player.Dir, 0, false, NormalAttack);
 
                 if (player.WeaponLevel >= 7) MakeSpec = true;
@@ -43,7 +43,7 @@ public class Cutter : PlayerSetting
                 for (int i = -ProjNum; i <= ProjNum; i++)
                 {
                     GameManager.instance.BM.MakeBullet(
-                        new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio) * SpecialRatio * 10), false, 0, ignoreDefense: 0.2f), 0,
+                        new BulletInfo((int)(DamageSub * SpecialRatio * 10), false, 0, ignoreDefense: 0.2f), 0,
                     transform.position, new Vector3(Mathf.Cos(rad + 0.1f * i), Mathf.Sin(rad + 0.1f * i), 0),
                     15, false, Bullet);
                 }

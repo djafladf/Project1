@@ -42,14 +42,14 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -103,7 +103,217 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: HostMan_0
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 1892
+        width: 364
+        height: 455
+      alignment: 9
+      pivot: {x: 0.5, y: 0.52}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 727db024ae4d448468a72e4ca303ee9b
+      internalID: 511886885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HostMan_1
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 1896
+        width: 348
+        height: 445
+      alignment: 9
+      pivot: {x: 0.47, y: 0.52}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c4fe8af7872d7d499a930664d356730
+      internalID: -212168257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HostMan_2
+      rect:
+        serializedVersion: 2
+        x: 1288
+        y: 1894
+        width: 311
+        height: 465
+      alignment: 9
+      pivot: {x: 0.4, y: 0.52}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca34397235fe32147b0967cee0ca52ba
+      internalID: 502254346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HostMan_3
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 1411
+        width: 376
+        height: 357
+      alignment: 9
+      pivot: {x: 0.6, y: 0.65}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59794e13269e4de47a59ce69c3f429de
+      internalID: -1417230580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HostMan_4
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1351
+        width: 330
+        height: 432
+      alignment: 9
+      pivot: {x: 0.5, y: 0.52}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b32dcf29ee8dd04c847e778e148efaf
+      internalID: -1530433117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HostMan_5
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 820
+        width: 328
+        height: 444
+      alignment: 9
+      pivot: {x: 0.4, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92547a672c168054393d9f590b976707
+      internalID: -1435245656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HostMan_6
+      rect:
+        serializedVersion: 2
+        x: 1194
+        y: 836
+        width: 349
+        height: 385
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dcde491ebc63594d8916c3434678a48
+      internalID: 97540463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HostMan_7
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 199
+        width: 357
+        height: 471
+      alignment: 9
+      pivot: {x: 0.4, y: 0.52}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf7bfb31b77cb8f4281f86bfacf51842
+      internalID: -586530380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HostMan_8
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 192
+        width: 353
+        height: 449
+      alignment: 9
+      pivot: {x: 0.4, y: 0.54}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4d2f29f594d2754fbb8d4c5c438627c
+      internalID: 15220488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HostMan_9
+      rect:
+        serializedVersion: 2
+        x: 1196
+        y: 190
+        width: 351
+        height: 401
+      alignment: 9
+      pivot: {x: 0.4, y: 0.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b1e4dc815328ac44867762ab440b35e
+      internalID: 756936725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -114,7 +324,17 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      HostMan_9: 756936725
+      HostMan_8: 15220488
+      HostMan_7: -586530380
+      HostMan_1: -212168257
+      HostMan_5: -1435245656
+      HostMan_0: 511886885
+      HostMan_4: -1530433117
+      HostMan_3: -1417230580
+      HostMan_2: 502254346
+      HostMan_6: 97540463
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

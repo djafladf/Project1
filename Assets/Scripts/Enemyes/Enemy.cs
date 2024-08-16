@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
             if (Dir.x > 0 && !spriteRenderer.flipX) spriteRenderer.flipX = true;
             else if (Dir.x < 0 && spriteRenderer.flipX) spriteRenderer.flipX = false;
 
-            if (!OnHit) rigid.MovePosition(rigid.position + Dir * speed * Time.fixedDeltaTime * (1 + GameManager.instance.EnemyStatus.speed));
+            if (!OnHit) rigid.MovePosition(rigid.position + Dir * speed * Time.fixedDeltaTime * (1 + GameManager.instance.EnemyStatus.speed - DeBuffVar[0]));
         }
         if (BeginAttack && !anim.GetBool("IsAttack"))
         {
@@ -76,8 +76,8 @@ public class Enemy : MonoBehaviour
 
 
     //[SerializeField] protected Sprite Bullet;
-    [SerializeField] bool IsRange;
-    [SerializeField] bool MakeLine;
+    [SerializeField] protected bool IsRange;
+    [SerializeField] protected bool MakeLine;
     [SerializeField] protected BulletInfo BI;
     [SerializeField] protected Sprite Bull;
     [SerializeField] BulletLine BL;
@@ -87,19 +87,22 @@ public class Enemy : MonoBehaviour
 
         if (IsRange)
         {
-            BI.Damage = Mathf.FloorToInt(Damage * (1 + GameManager.instance.EnemyStatus.attack));
+            BI.Damage = Mathf.FloorToInt(Damage * (1 + GameManager.instance.EnemyStatus.attack - DeBuffVar[1]));
             GameManager.instance.BM.MakeBullet(BI, 0, transform.position, (AttackPos - transform.position).normalized, 8, true, Bull, BL: MakeLine ? BL : null);
         }
         else
         {
-            int CurDm = Mathf.FloorToInt(Damage * (1 + GameManager.instance.EnemyStatus.attack));
-            GameManager.instance.BM.MakeMeele(new BulletInfo(CurDm, false, 0), 0.2f, AttackPos, Vector2.zero, 0, true);
+            int CurDm = Mathf.FloorToInt(Damage * (1 + GameManager.instance.EnemyStatus.attack - DeBuffVar[1]));
+            GameManager.instance.BM.MakeMeele(new BulletInfo(CurDm, false, 0), 0.2f, AttackPos, Vector2.zero, 0, true,im:Bull);
         }
     }
 
     bool CanHit = true;
-    float[] LeftTime = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-    float[] DeBuffVar = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+    protected float[] LeftTime = { 0,0,0,0,0};
+    // 속, 공, 방, 을, 피증
+    protected float[] DeBuffVar = { 0,0,0,0,0 };
+
+    protected GameObject[] DeBuffObj = new GameObject[5];
 
     protected virtual void HPChange()
     {
@@ -119,7 +122,8 @@ public class Enemy : MonoBehaviour
         if (collision.CompareTag("PlayerAttack") && CanHit)
         {
             BulletInfo Info = GameManager.instance.BM.GetBulletInfo(GameManager.StringToInt(collision.name));
-            int GetDamage = Info.ReturnDamage(Defense * (1 + GameManager.instance.EnemyStatus.defense));
+            int GetDamage = Info.ReturnDamage(Defense * (1 + GameManager.instance.EnemyStatus.defense - DeBuffVar[2]));
+            if (GetDamage < 0) GetDamage = 0;
             GameManager.instance.DM.MakeDamage(GetDamage, transform);
             HP -= GetDamage;
             HPChange();     // For Boss
@@ -134,58 +138,47 @@ public class Enemy : MonoBehaviour
             }
             else if (Info.DeBuffs != null)
             {
-
-                if (Info.DeBuffs.Speed != 1)
+                if (Info.DeBuffs.Speed != 0)
                 {
 
                 }
-                if (Info.DeBuffs.Attack != 1)
+                if (Info.DeBuffs.Attack != 0)
                 {
 
                 }
-                if (Info.DeBuffs.Defense != 1)
+                if (Info.DeBuffs.Defense != 0 && DeBuffVar[2] <= Info.DeBuffs.Defense)
                 {
-                    if (DeBuffVar[2] > Info.DeBuffs.Defense)
+                    if (DeBuffVar[2] == 0)
                     {
-                        Defense = (int)(MaxDefense * Info.DeBuffs.Defense);
-                        DeBuffVar[2] = Info.DeBuffs.Defense;
+                        DeBuffObj[2] = GameManager.instance.BFM.RequestForDebuff(3);
+                        DeBuffObj[2].transform.parent = transform;
+                        DeBuffObj[2].transform.localPosition = spriteRenderer.sprite.bounds.size * 0.5f;
+                        DeBuffObj[2].gameObject.SetActive(true);
                     }
-
-                    if (LeftTime[2] < Info.DeBuffs.Last)
-                    {
-                        if (LeftTime[2] <= 0)
-                        {
-                            DeBuffObj[2] = GameManager.instance.BFM.RequestForDebuff(3);
-                            DeBuffObj[2].transform.parent = transform;
-                            DeBuffObj[2].transform.localPosition = spriteRenderer.sprite.bounds.size * 0.5f;
-                            DeBuffObj[2].gameObject.SetActive(true);
-                            LeftTime[2] = Info.DeBuffs.Last;
-                            StartCoroutine(DefenseChange());
-                        }
-                        else LeftTime[2] = Info.DeBuffs.Last;
-                    }
-
+                    if (DeBuffVar[2] == Info.DeBuffs.Defense) LeftTime[2] = Mathf.Max(LeftTime[2], Info.DeBuffs.Last);
+                    else LeftTime[2] = Info.DeBuffs.Last;
+                    DeBuffVar[2] = Info.DeBuffs.Defense;
                 }
                 if (Info.DeBuffs.Ice != 0 && !OnIce)
                 {
                     Cheeled += Info.DeBuffs.Ice * IceRatio;
-                    if (DeBuffObj[3] == null)
+                    if (DeBuffObj[4] == null)
                     {
-                        DeBuffObj[3] = GameManager.instance.BFM.RequestForDebuff(0);
-                        DeBuffObj[3].transform.parent = transform;
-                        DeBuffObj[3].transform.localPosition = new Vector3(0, spriteRenderer.sprite.bounds.size.y * 0.6f, 0);
-                        DeBuffObj[3].gameObject.SetActive(true);
-                        speed *= 0.7f;
+                        DeBuffObj[4] = GameManager.instance.BFM.RequestForDebuff(0);
+                        DeBuffObj[4].transform.parent = transform;
+                        DeBuffObj[4].transform.localPosition = new Vector3(0, spriteRenderer.sprite.bounds.size.y * 0.6f, 0);
+                        DeBuffObj[4].gameObject.SetActive(true);
+                        DeBuffVar[0] += 0.3f;
                     }
                     if (Cheeled >= 5)
                     {
-                        DeBuffObj[3].SetActive(false); DeBuffObj[3].transform.parent = GameManager.instance.BFM.transform;
-                        DeBuffObj[3] = null;
+                        DeBuffObj[4].SetActive(false); DeBuffObj[3].transform.parent = GameManager.instance.BFM.transform;
+                        DeBuffObj[4] = null;
 
-                        DeBuffObj[3] = GameManager.instance.BFM.RequestForDebuff(1,spriteRenderer.sprite.bounds.size.x,spriteRenderer.bounds.size.y);
-                        DeBuffObj[3].transform.parent = transform;
-                        DeBuffObj[3].transform.localPosition = Vector3.zero;
-                        DeBuffObj[3].gameObject.SetActive(true);
+                        DeBuffObj[4] = GameManager.instance.BFM.RequestForDebuff(1,spriteRenderer.sprite.bounds.size.x,spriteRenderer.bounds.size.y);
+                        DeBuffObj[4].transform.parent = transform;
+                        DeBuffObj[4].transform.localPosition = Vector3.zero;
+                        DeBuffObj[4].gameObject.SetActive(true);
                         StartCoroutine(Iced());
                     }
                 }
@@ -196,8 +189,44 @@ public class Enemy : MonoBehaviour
             }
             StartCoroutine(NockBack_Enemy(Info.KnockBack,transform.position - collision.transform.position));
         }
+        else if (collision.CompareTag("EnemyBuff"))
+        {
+            Buff Info = GameManager.instance.BM.GetBulletInfo(GameManager.StringToInt(collision.name)).Buffs;
+            if (Info.Heal != 0) Heal(Info.Heal);
+        }
     }
-    protected GameObject[] DeBuffObj = new GameObject[5];
+
+    protected virtual void Heal(float amount)
+    {
+        HP += (int)amount; HP = Mathf.Min(MaxHP, HP);
+    }
+    
+
+    IEnumerator BuffCheck()
+    {
+        int i;
+
+        for (i = 0; i < 4; i++) { DeBuffVar[i] = 0; LeftTime[i] = 0; }
+
+        for (i = 0; i < DeBuffObj.Length; i++) if (DeBuffObj[i] != null)
+            {
+                DeBuffObj[i].SetActive(false); DeBuffObj[i].transform.parent = GameManager.instance.BFM.transform; DeBuffObj[i] = null;
+            }
+
+        while (true)
+        {
+            // Buff Check
+
+            // DeBuff Check
+            for (i = 0; i < 4; i++)
+            {
+                if (LeftTime[i] == 0) continue;
+                LeftTime[i] -= 0.1f;
+                if (LeftTime[i] <= 0) { LeftTime[i] = 0; DeBuffVar[i] = 0; DeBuffObj[i].SetActive(false); DeBuffObj[i].transform.parent = GameManager.instance.BFM.transform; DeBuffObj[i] = null; }
+            }
+            yield return GameManager.DotOneSec;
+        }
+    }
 
     IEnumerator DefenseChange()
     {
@@ -272,15 +301,7 @@ public class Enemy : MonoBehaviour
     bool IsInit = true;
     protected virtual void OnEnable()
     {
-        if (IsInit) { IsInit = false; return; }
-        for (int i = 0; i < DeBuffObj.Length; i++)
-        {
-            if (DeBuffObj[i] != null)
-            {
-                LeftTime[i] = 0;
-                DeBuffObj[i].SetActive(false); DeBuffObj[i].transform.parent = GameManager.instance.BFM.transform; DeBuffObj[i] = null;
-            }
-        }
+        if (IsInit) { IsInit = false; return; } 
         MoveAble = true; OnHit = false; Fric = null;
         
         anim.enabled = true;
@@ -300,5 +321,7 @@ public class Enemy : MonoBehaviour
         spriteRenderer.sortingOrder = 2;
 
         tag = "Enemy";
+
+        StartCoroutine(BuffCheck());
     }
 }

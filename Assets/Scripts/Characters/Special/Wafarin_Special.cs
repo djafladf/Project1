@@ -64,7 +64,7 @@ public class Wafarin_Special : MonoBehaviour
         {
             Transform cnt = collision.transform;
             GameManager.instance.BM.MakeMeele(
-                new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + Wafarin.AttackRatio) * 35f), false, 0), 0.6f,
+                new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + Wafarin.AttackRatio + Wafarin.ReinforceAmount[0]) * 35f), false, 0), 0.6f,
                 cnt.position, Vector3.zero, 0, false, Bullet);
         }
     }

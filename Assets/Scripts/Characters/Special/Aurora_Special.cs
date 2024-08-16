@@ -37,7 +37,7 @@ public class Aurora_Special : MonoBehaviour
         {
             Transform cnt = collision.transform;
             GameManager.instance.BM.MakeBullet(
-                new BulletInfo((int)(player.InitDefense * (1 + player.DefenseRatio + GameManager.instance.PlayerStatus.defense)), false, 0, debuffs: new DeBuff(ice: 1),scalefactor : 0.2f),
+                new BulletInfo((int)(player.InitDefense * (1 + player.DefenseRatio + GameManager.instance.PlayerStatus.defense + player.ReinforceAmount[1])), false, 0, debuffs: new DeBuff(ice: 1),scalefactor : 0.2f),
                 0, cnt.position, Vector3.zero, 0, false, null);
         }
     }

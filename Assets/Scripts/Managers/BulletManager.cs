@@ -156,7 +156,7 @@ public class BulletManager : MonoBehaviour
             {
                 Bullets[i].SetActive(true);
                 Bullets[i].transform.position = Start;
-                BulletScripts[i].Init_Buff(im,IsEnemy);
+                BulletScripts[i].Init_Buff(BI.ScaleFactor,im,IsEnemy);
                 BulletInfos[i] = BI;
                 break;
             }

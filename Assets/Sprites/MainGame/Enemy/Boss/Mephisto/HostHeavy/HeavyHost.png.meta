@@ -42,14 +42,14 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 60
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -103,7 +103,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: HeavyHost_1
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 1180
+        width: 344
+        height: 380
+      alignment: 9
+      pivot: {x: 0.55, y: 0.37}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e187472af38dcf649aaeaff2156eac3a
+      internalID: -267711091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyHost_2
+      rect:
+        serializedVersion: 2
+        x: 948
+        y: 1176
+        width: 344
+        height: 384
+      alignment: 9
+      pivot: {x: 0.5, y: 0.37}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70e11b9e8132b6d45a90e630fc73f939
+      internalID: 839565077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyHost_3
+      rect:
+        serializedVersion: 2
+        x: 1388
+        y: 1176
+        width: 344
+        height: 384
+      alignment: 9
+      pivot: {x: 0.5, y: 0.37}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c73f97a77c1b6974db446c53f84481cd
+      internalID: 636558853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyHost_4
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 660
+        width: 380
+        height: 384
+      alignment: 9
+      pivot: {x: 0.6, y: 0.37}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57020b84269f40c478f3475c1714d4ef
+      internalID: -774937791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyHost_5
+      rect:
+        serializedVersion: 2
+        x: 1396
+        y: 644
+        width: 304
+        height: 384
+      alignment: 9
+      pivot: {x: 0.5, y: 0.37}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 062204a20d6eeed4e9cd7b166155dbbe
+      internalID: -1956220416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyHost_6
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 96
+        width: 416
+        height: 404
+      alignment: 9
+      pivot: {x: 0.5, y: 0.59}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c8474cb74d5b014dbace5400bf4faad
+      internalID: 850125129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyHost_7
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 108
+        width: 392
+        height: 356
+      alignment: 9
+      pivot: {x: 0.5, y: 0.64}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b0a6951cf160924c9eca2852846b3ff
+      internalID: 1210726751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeavyHost_8
+      rect:
+        serializedVersion: 2
+        x: 1372
+        y: 112
+        width: 384
+        height: 320
+      alignment: 9
+      pivot: {x: 0.5, y: 0.7}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9605e3645edbab42b5bf92ef9f39bba
+      internalID: -1558436218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -114,7 +282,16 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      HeavyHost_0: -758863952
+      HeavyHost_4: -774937791
+      HeavyHost_8: -1558436218
+      HeavyHost_3: 636558853
+      HeavyHost_7: 1210726751
+      HeavyHost_5: -1956220416
+      HeavyHost_6: 850125129
+      HeavyHost_1: -267711091
+      HeavyHost_2: 839565077
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

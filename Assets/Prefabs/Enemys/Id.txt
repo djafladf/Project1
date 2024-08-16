@@ -1,8 +1,0 @@
-0. RedWorm
-1. Yoma
-2. FootMan
-3. BowMan
-4. DualMan
-5. ShieldMan
-6. Magician
-7. Skul
