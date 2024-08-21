@@ -6,7 +6,7 @@ public class AttackRange_Enemy : MonoBehaviour
 {
     Enemy enemy;
 
-    List<GameObject> Targets = new List<GameObject>();
+    List<int> Targets = new List<int>();
 
     private void Awake()
     {
@@ -17,11 +17,12 @@ public class AttackRange_Enemy : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (!Targets.Contains(collision.gameObject))
+            int ind = collision.name[0] - '0';
+            if (!Targets.Contains(ind))
             {
-                Targets.Add(collision.gameObject);
+                Targets.Add(ind);
                 enemy.BeginAttack = true;
-                if (enemy.Target == null) enemy.Target = collision.transform;
+                if (enemy.Target == null || GameManager.instance.UM.IsPriorityAttack[ind]) enemy.Target = collision.transform;
             }
         }
     }
@@ -30,11 +31,12 @@ public class AttackRange_Enemy : MonoBehaviour
     {
         if (collision.CompareTag("Player") || collision.CompareTag("Player_Hide"))
         {
-            if (Targets.Contains(collision.gameObject))
+            int ind = collision.name[0] - '0';
+            if (Targets.Contains(ind))
             {
-                Targets.Remove(collision.gameObject);
+                Targets.Remove(ind);
                 if (Targets.Count == 0) { enemy.BeginAttack = false; enemy.Target = null; }
-                else enemy.Target = Targets[0].transform;
+                else enemy.Target = GameManager.instance.Prefs[ind].transform;
             }
         }
     }

@@ -150,7 +150,7 @@ MonoBehaviour:
     IsFix: 0
     KnockBack: 0
     IgnoreDefense: 0
-    ScaleFactor: 100
+    ScaleFactor: 125
     SpeedFactor: 0
     DeBuffs:
       Last: 0

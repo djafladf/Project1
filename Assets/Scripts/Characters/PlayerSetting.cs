@@ -34,9 +34,8 @@ public class PlayerSetting : MonoBehaviour
         if (!IsSummon)
         {
             GameManager.instance.RequestOfWeapon(WeaponLevelUp, player.Id);
+            gameObject.SetActive(false);
         }
-
-        gameObject.SetActive(false);
     }
 
 
@@ -283,6 +282,7 @@ public class PlayerSetting : MonoBehaviour
         {
             player.CurHP = 0;
             gameObject.SetActive(false);
+            GameManager.instance.UM.BatchOrder.Remove(name[0] - '0');
             if(IsPlayer) GameManager.instance.UM.GameFail();
             else if (!IsSummon) player.MyBatch.ReBatch();
         }

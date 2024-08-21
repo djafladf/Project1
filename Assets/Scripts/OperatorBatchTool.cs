@@ -14,6 +14,7 @@ public class OperatorBatchTool : Buttons
     GameObject BatchObject;
 
     int LeftReBatchTime = 0;
+    int CharInd = 0;
     bool CanBatch = true;
 
     [SerializeField] TMP_Text cost;
@@ -30,9 +31,9 @@ public class OperatorBatchTool : Buttons
     Color Red = new Color(1, 0, 0, 0.5f);
 
 
-    public void Init(GameObject BatchObj, Sprite Head, int Cost, int BatchTime)
+    public void Init(GameObject BatchObj, Sprite Head, int Cost, int BatchTime,int CharInd)
     {
-        this.Cost = Cost; ReBatchTime = BatchTime;
+        this.Cost = Cost; ReBatchTime = BatchTime; this.CharInd = CharInd;
         cost.text = $"{Cost}";
         BatchObject = BatchObj;
         ObjectImage = BatchObject.GetComponent<SpriteRenderer>().sprite;
@@ -63,13 +64,14 @@ public class OperatorBatchTool : Buttons
     {
         if (BatchObject.activeSelf)
         {
+            GameManager.instance.UM.BatchOrder.Remove(CharInd);
             BatchObject.SetActive(false);
             state.color = Black;
             StartCoroutine(ReBatchAble());
         }
         else if(CanBatch)
         {
-            if (GameManager.instance.UM.BatchRequest(ObjectImage, this))
+            if (GameManager.instance.UM.BatchRequest(ObjectImage, this,CharInd))
             {
                 CanBatch = false;
                 face.color = Color.white;

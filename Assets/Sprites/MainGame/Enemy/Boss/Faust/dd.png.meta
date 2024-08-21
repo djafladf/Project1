@@ -108,12 +108,12 @@ TextureImporter:
       name: dd_1
       rect:
         serializedVersion: 2
-        x: 306
-        y: 312
-        width: 176
-        height: 112
+        x: 340
+        y: 291
+        width: 112
+        height: 176
       alignment: 9
-      pivot: {x: 1.3, y: 0.15}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -167,6 +167,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: dd_0
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 364
+        width: 180
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8761afb5f26c8da45b2b132ef0dd174b
+      internalID: 1967932911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dd_4
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 207
+        width: 21
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e34b93eb926acdd4b9356f32cd53ca90
+      internalID: 547937572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -182,6 +224,7 @@ TextureImporter:
       dd_2: 1222751762
       dd_1: -1355346678
       dd_3: -1713358379
+      dd_4: 547937572
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -170,7 +170,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-
+    List<Coroutine> spawncall = new List<Coroutine>();
     public void ExternalSpawnCall(int ind,int Times, float Gap)
     {
         StartCoroutine(ExtraSpawn(ind,Times,Gap));

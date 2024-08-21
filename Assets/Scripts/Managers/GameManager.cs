@@ -105,6 +105,18 @@ public class GameManager : MonoBehaviour
     public List<int> CurPlayerID;
     public int PlayerInd = 0;
 
+    public void AddSummonInfo(GameObject obj,Player pl,bool IsPriority = false)
+    {
+        obj.name = $"{Prefs.Length}";
+
+        var cnt = Prefs.ToList(); cnt.Add(obj);
+        Prefs = cnt.ToArray();
+        UM.IsPriorityAttack.Add(IsPriority);
+
+        var tmp = Players.ToList(); tmp.Add(player);
+        Players = tmp.ToArray();
+    }
+
 
     /*[SerializeField]
     public List<ItemSub> Items;

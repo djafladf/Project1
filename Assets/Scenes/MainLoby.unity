@@ -31985,9 +31985,9 @@ MonoBehaviour:
     rarity: 0
     Islocked: 0
     description:
-    - "\uD68C\uBCF5\uB7C9 5%p \uC99D\uAC00"
-    - "[\uACA9\uB824]\uD6A8\uACFC \uBC94\uC704 20% \uC99D\uAC00"
     - "\uD68C\uBCF5\uB7C9 10%p \uC99D\uAC00"
+    - "[\uACA9\uB824]\uD6A8\uACFC \uBC94\uC704 20% \uC99D\uAC00"
+    - "\uD68C\uBCF5\uB7C9 20%p \uC99D\uAC00"
     - "[\uACA9\uB824]\uD6A8\uACFC \uBC94\uC704 30% \uC99D\uAC00"
     - "[\uACA9\uB824]\uD6A8\uACFC 5%p \uC99D\uAC00"
     - "\uBB34\uB300\uB97C \uB354 \uD654\uB824\uD558\uAC8C!"
@@ -32030,6 +32030,7 @@ MonoBehaviour:
     Inst_Prop: "\uC5C6\uC74C"
     id: 0
     IsLD: 1
+    IsPriorityAttack: 0
     player: {fileID: 11400000, guid: 7ea27ab6edfe0064a8e9fe4225b4b160, type: 2}
     Head: {fileID: -1015682620, guid: 8f431041ae472024aae12403bffc4645, type: 3}
     Standing: {fileID: -1499841691, guid: d04d6fe711cca5849b7cc2859dbc882c, type: 3}
@@ -32040,6 +32041,7 @@ MonoBehaviour:
     Inst_Prop: "\uC5C6\uC74C"
     id: 1
     IsLD: 0
+    IsPriorityAttack: 0
     player: {fileID: 11400000, guid: ccaefb4d44e1a9340ad6da80bfebc00d, type: 2}
     Head: {fileID: 275350670, guid: 8f431041ae472024aae12403bffc4645, type: 3}
     Standing: {fileID: 1584730977, guid: 4ed77682ca8cf3941ba08b129bf7a847, type: 3}
@@ -32052,6 +32054,7 @@ MonoBehaviour:
       \uBD80\uC5EC\uD55C\uB2E4"
     id: 2
     IsLD: 0
+    IsPriorityAttack: 1
     player: {fileID: 11400000, guid: 0d6143cb0a66d034e872112b686cb97d, type: 2}
     Head: {fileID: -1076361438, guid: 8f431041ae472024aae12403bffc4645, type: 3}
     Standing: {fileID: -982866954, guid: acc048ddfda8aa949923e30f3ee2af86, type: 3}
@@ -32062,6 +32065,7 @@ MonoBehaviour:
     Inst_Prop: "\uC801\uC758 \uBC29\uC5B4\uB825\uC744 \uC77C\uBD80 \uBB34\uC2DC\uD55C\uB2E4"
     id: 3
     IsLD: 0
+    IsPriorityAttack: 0
     player: {fileID: 11400000, guid: ce6549f2e780e1a42906fa66e1b4a9d9, type: 2}
     Head: {fileID: 1414688245, guid: 8f431041ae472024aae12403bffc4645, type: 3}
     Standing: {fileID: -1361775641, guid: 9e7b26860f0a55d4788c7db094e818d2, type: 3}
@@ -32072,6 +32076,7 @@ MonoBehaviour:
     Inst_Prop: "\uACF5\uACA9\uC2DC \uC801\uC744 \uBBFC\uB2E4"
     id: 4
     IsLD: 0
+    IsPriorityAttack: 0
     player: {fileID: 11400000, guid: bc324088d7a7d8d4a8d597e2433dfb2b, type: 2}
     Head: {fileID: 1371356227, guid: 8f431041ae472024aae12403bffc4645, type: 3}
     Standing: {fileID: -421338996, guid: 70b67c7c7987e924ebe52d42ec9ebbd8, type: 3}
@@ -32083,6 +32088,7 @@ MonoBehaviour:
       \uC0C1\uD0DC\uC5D0\uC11C \uC740\uC2E0\uD6A8\uACFC\uB97C \uC5BB\uB294\uB2E4"
     id: 5
     IsLD: 0
+    IsPriorityAttack: 0
     player: {fileID: 11400000, guid: 7abab6ba15bb7564fbee9c0340c1e873, type: 2}
     Head: {fileID: -15007968, guid: 8f431041ae472024aae12403bffc4645, type: 3}
     Standing: {fileID: 1596115076, guid: 6f26af5e459faee4ba780c338335ad37, type: 3}
@@ -32093,6 +32099,7 @@ MonoBehaviour:
     Inst_Prop: "\uC5C6\uC74C"
     id: 6
     IsLD: 0
+    IsPriorityAttack: 0
     player: {fileID: 11400000, guid: eb6bfe80d2c375e47bdab0ec572e5b33, type: 2}
     Head: {fileID: 258071598, guid: 8f431041ae472024aae12403bffc4645, type: 3}
     Standing: {fileID: 743111398, guid: bede0edc5b0ec1144a7e850c7e4de4a3, type: 3}
@@ -32104,6 +32111,7 @@ MonoBehaviour:
     Inst_Prop: "\uC5C6\uC74C"
     id: 7
     IsLD: 0
+    IsPriorityAttack: 0
     player: {fileID: 11400000, guid: 3c979b9010ba6614a917ef4419a2d7db, type: 2}
     Head: {fileID: -1141385513, guid: 8f431041ae472024aae12403bffc4645, type: 3}
     Standing: {fileID: 679797768, guid: b7e1685ee8fe116428e177e434db5308, type: 3}
@@ -32115,6 +32123,7 @@ MonoBehaviour:
     Inst_Prop: "\uACF5\uACA9\uC2DC \uC801\uC758 \uBC29\uC5B4\uB825\uC744 \uAC10\uC18C\uC2DC\uD0A8\uB2E4"
     id: 8
     IsLD: 1
+    IsPriorityAttack: 0
     player: {fileID: 11400000, guid: d90cfe6717ab5824d86b1bb6407c4206, type: 2}
     Head: {fileID: 2003934751, guid: 8f431041ae472024aae12403bffc4645, type: 3}
     Standing: {fileID: -554728584, guid: f0a1e2122dd60fc46a9592ebbbb59067, type: 3}
@@ -32126,6 +32135,7 @@ MonoBehaviour:
     Inst_Prop: "\uC5C6\uC74C"
     id: 9
     IsLD: 0
+    IsPriorityAttack: 0
     player: {fileID: 11400000, guid: 0fad72ddab4b9c84382513dae0336576, type: 2}
     Head: {fileID: 194690983, guid: 8f431041ae472024aae12403bffc4645, type: 3}
     Standing: {fileID: 2113799533, guid: 7a6cbe43cef067c46946e10eb9c865d3, type: 3}
@@ -32139,6 +32149,7 @@ MonoBehaviour:
       \uBD80\uC5EC "
     id: 10
     IsLD: 0
+    IsPriorityAttack: 0
     player: {fileID: 11400000, guid: 394e87bae147e6745b45b65061851e3e, type: 2}
     Head: {fileID: 391191481, guid: 8f431041ae472024aae12403bffc4645, type: 3}
     Standing: {fileID: 349488186, guid: 6f26af5e459faee4ba780c338335ad37, type: 3}

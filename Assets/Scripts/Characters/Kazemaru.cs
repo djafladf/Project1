@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
+using System.Linq;
 using System.Linq.Expressions;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Kazemaru : PlayerSetting
@@ -30,11 +32,11 @@ public class Kazemaru : PlayerSetting
             SpecialRatio = 2f;
             ProjNum = 1;
             player.WeaponLevel = 7;
+            GameManager.instance.AddSummonInfo(gameObject, player);
             CanEvade = true; CanAssasin = true;
         }
         Coll = GetComponent<CapsuleCollider2D>();
         base.Awake();
-
     }
 
     protected override void FixedUpdate()
@@ -174,14 +176,7 @@ public class Kazemaru : PlayerSetting
 
     void RespawnAct()
     {
-        try
-        {
-            StartCoroutine(RespawnKaze());
-        }
-        catch
-        {
-
-        }
+        if(gameObject.activeSelf)StartCoroutine(RespawnKaze());
     }
 
     IEnumerator RespawnKaze()

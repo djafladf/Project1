@@ -30,6 +30,7 @@ public class Bullet : MonoBehaviour
         Line = GetComponent<TrailRenderer>(); Line.enabled = false;
     }
 
+
     public void Init_Attack(int Penetrate, Vector3 Dir,
         bool IsMeele, bool IsEnemy, float AfterTime, float ScaleFactor = 1, Sprite Image = null, 
         BulletLine BL = null, RuntimeAnimatorController Anim = null,Sprite HitImage = null, float delay = 0)

@@ -145,8 +145,9 @@ public class Sora : PlayerSetting
         ForceField.localScale = new Vector3(0, 0, 1);
         AIM_Force.StartMaking();
         while (true)
-        {
+        { 
             ForceField.localScale += SizeSub;
+            GameManager.instance.BM.MakeBuff(new BulletInfo(0, false, 0, scalefactor: MaxScale * 0.5f, buffs: new Buff(last: 0.2f, heal: (int)((1 + GameManager.instance.PlayerStatus.attack) * HealRatio), attack: ReinforceRatio, defense: ReinforceRatio)), new Vector3(transform.position.x,transform.position.y - 0.6f), null, false);
             if (ForceField.localScale.x >= MaxScale)
             {
                 yield return GameManager.DotOneSec;
@@ -171,23 +172,17 @@ public class Sora : PlayerSetting
         }
     }
 
-    protected override void OnTriggerEnter2D(Collider2D collision)
-    {
-        base.OnTriggerEnter2D(collision);
-        if (collision.CompareTag("Player"))if(collision.gameObject != gameObject) GameManager.instance.BM.MakeBuff(new BulletInfo(0, false, 0, buffs: new Buff(last:0.5f,heal: (int)((1 + GameManager.instance.PlayerStatus.attack * HealRatio)),attack:ReinforceRatio,defense:ReinforceRatio)), collision.transform.position, null, false);
-    }
 
-
-    float HealRatio = 0.1f;
+    float HealRatio = 1f;
     float ReinforceRatio = 0.1f;
 
     protected override int WeaponLevelUp()
     {
         switch (player.WeaponLevel++)
         {
-            case 1: HealRatio += 0.05f; break;
+            case 1: HealRatio += 0.1f; break;
             case 2: MaxScale = 24; SizeSub = new Vector3(2.4f, 2.4f); break;
-            case 3: HealRatio += 0.1f; break;
+            case 3: HealRatio += 0.2f; break;
             case 4: MaxScale = 30; SizeSub = new Vector3(3f, 3f); break;
             case 5: ReinforceRatio = 0.15f; break;
             case 6: FlyOne.SetActive(true); FlyTwo.SetActive(true); break;

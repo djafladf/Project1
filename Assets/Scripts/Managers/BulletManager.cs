@@ -22,19 +22,19 @@ public class BulletManager : MonoBehaviour
 
     public void Init()
     {
-        Bullets = new GameObject[200];
-        BulletScripts = new Bullet[200];
-        BulletInfos = new BulletInfo[200];
-        Warnings = new GameObject[20];
-        WarningScripts = new WarningBullet[20];
-        for(int i = 0; i < 20; i++)
+        Bullets = new GameObject[400];
+        BulletScripts = new Bullet[400];
+        BulletInfos = new BulletInfo[400];
+        Warnings = new GameObject[40];
+        WarningScripts = new WarningBullet[40];
+        for(int i = 0; i < 40; i++)
         {
             Warnings[i] = Instantiate(Warning, transform);
             Warnings[i].SetActive(false);
             WarningScripts[i] = Warnings[i].GetComponent<WarningBullet>();
         }
 
-        for (int i = 0; i < 200; i++)
+        for (int i = 0; i < 400; i++)
         {
             Bullets[i] = Instantiate(Bullet, transform);
             Bullets[i].gameObject.SetActive(false);
@@ -49,7 +49,7 @@ public class BulletManager : MonoBehaviour
 
     public void MakeWarning(Vector3 Pos, float time, Vector2 size, Color S, System.Action<Vector3> act)
     {
-        for(int i = 0; i < 20; i++)
+        for(int i = 0; i < 40; i++)
         {
             if (!Warnings[i].activeSelf)
             {
@@ -76,7 +76,7 @@ public class BulletManager : MonoBehaviour
     public void MakeBullet(BulletInfo Info, int Penetrate, Vector3 Start, Vector3 Dir, float speed, bool IsEnemy,
         Sprite im = null, DeBuff debuffInfo = null,BulletLine BL = null, RuntimeAnimatorController anim = null, float delay = 0)
     {
-        for(int i = 0; i < 200; i++)
+        for(int i = 0; i < 400; i++)
         {
             if (!Bullets[i].activeSelf)
             {
@@ -102,7 +102,7 @@ public class BulletManager : MonoBehaviour
     /// <param name="debuffInfo"> About DeBuff </param>
     public void MakeMeele(BulletInfo Info, float AfterTime, Vector3 Start, Vector3 Dir, float speed, bool IsEnemy, Sprite im = null, RuntimeAnimatorController Anim = null, DeBuff debuffInfo = null,float delay = 0)
     {
-        for (int i = 0; i < 200; i++)
+        for (int i = 0; i < 400; i++)
         {
             if (!Bullets[i].activeSelf)
             {
@@ -118,7 +118,7 @@ public class BulletManager : MonoBehaviour
 
     public void MakeBoom(BulletInfo Info, BulletInfo After, Vector3 Start, Vector3 Dir, float Speed, Sprite im, Sprite HitIm, bool IsEnemy, DeBuff debuffInfo = null,BulletLine BL = null,float delay = 0)
     {
-        for (int i = 0; i < 200; i++)
+        for (int i = 0; i < 400; i++)
         {
             if (!Bullets[i].activeSelf)
             {
@@ -135,7 +135,7 @@ public class BulletManager : MonoBehaviour
 
     public void MakeEffect(float AfterTime, Vector3 Start, Vector3 Dir, float speed,Sprite im, bool AlphaChange=true,BulletLine BL = null, RuntimeAnimatorController Anim = null)
     {
-        for (int i = 0; i < 200; i++)
+        for (int i = 0; i < 400; i++)
         {
             if (!Bullets[i].activeSelf)
             {
@@ -150,7 +150,7 @@ public class BulletManager : MonoBehaviour
 
     public void MakeBuff(BulletInfo BI,Vector3 Start, Sprite im, bool IsEnemy)
     {
-        for (int i = 0; i < 200; i++)
+        for (int i = 0; i < 400; i++)
         {
             if (!Bullets[i].activeSelf)
             {

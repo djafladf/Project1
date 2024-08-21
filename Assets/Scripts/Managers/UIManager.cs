@@ -425,12 +425,27 @@ public class UIManager : MonoBehaviour
 
     public OperatorBatchTool CurRequest;
     public Image BatchImage;
+
+    [HideInInspector] public List<int> BatchOrder;
+    [HideInInspector] public List<bool> IsPriorityAttack = new List<bool>();
     [SerializeField] RectTransform BatchRect;
     GameObject BatchArea;
 
-    public bool BatchRequest(Sprite image, OperatorBatchTool req)
+    public GameObject ReturnOrderPriority()
+    {
+        if (BatchOrder.Count == 0) return GameManager.instance.player.Self.gameObject;
+        int ind = BatchOrder[BatchOrder.Count-1];
+        foreach (var k in BatchOrder) if (IsPriorityAttack[k]) ind = k;
+        return GameManager.instance.Prefs[ind];
+    }
+
+    public bool BatchRequest(Sprite image, OperatorBatchTool req,int CharInd)
     {
         if (CurRequest != null) return false;
+
+        if (IsPriorityAttack[CharInd]) BatchOrder.Insert(0, CharInd);
+        else BatchOrder.Add(CharInd);
+
         CurRequest = req;
         BatchImage.sprite = image;
 
@@ -510,6 +525,8 @@ public class UIManager : MonoBehaviour
             ItemSub j = Weapons[i];
             j.operatorid = i;
             WeaponSelection.Add(j);
+            IsPriorityAttack.Add(Opers[i].IsPriorityAttack);
+            Prefs[i].name = $"{i}";
             // Init BatchTool;
             if (i != PlayerInd)
             {
@@ -517,12 +534,13 @@ public class UIManager : MonoBehaviour
                 GameObject Tool = Instantiate(BatchTool, ToolField);
                 var k = Tool.GetComponent<OperatorBatchTool>();
                 Players[i].MyBatch = k;
-                k.Init(Prefs[i], Opers[i].Head, Players[i].Cost, Players[i].ReBatchTime);
+                k.Init(Prefs[i], Opers[i].Head, Players[i].Cost, Players[i].ReBatchTime,i);
                 Tool.GetComponent<RectTransform>().anchoredPosition = StartPos - Cnt * batchl++;
                 Tool.SetActive(true);
             }
             else
             {
+                BatchOrder.Add(i);
                 GetArea = Instantiate(GetAreaPref, Prefs[i].transform).transform.GetChild(0);
                 GetArea.localScale *= GameManager.instance.PlayerStatus.pickup;
                 BatchArea = GetArea.transform.parent.GetChild(2).gameObject;

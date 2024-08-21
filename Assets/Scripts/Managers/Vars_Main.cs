@@ -11,6 +11,7 @@ public class OperatorInfos
     public string Inst_Prop;
     public int id;
     public bool IsLD;
+    public bool IsPriorityAttack;
     public Player player;
     public Sprite Head;
     public Sprite Standing;
