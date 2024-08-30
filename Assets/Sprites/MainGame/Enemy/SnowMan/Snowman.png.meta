@@ -42,14 +42,14 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 90
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -103,7 +103,196 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Snowman_0
+      rect:
+        serializedVersion: 2
+        x: 1448
+        y: 1612
+        width: 200
+        height: 336
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e86e7464b1255e24e9075f27ed97dd04
+      internalID: 48600629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snowman_1
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 1104
+        width: 352
+        height: 344
+      alignment: 9
+      pivot: {x: 0.5, y: 0.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c619f5cba6eb1a244861c467a3bd9027
+      internalID: 360109032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snowman_2
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 1092
+        width: 348
+        height: 348
+      alignment: 9
+      pivot: {x: 0.6, y: 0.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af4070719412167479d4f8598fb97860
+      internalID: 439746928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snowman_3
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 1048
+        width: 380
+        height: 340
+      alignment: 9
+      pivot: {x: 0.7, y: 0.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a7184f89154b974abb70a6b65c44cab
+      internalID: 1474208848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snowman_4
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 612
+        width: 340
+        height: 336
+      alignment: 9
+      pivot: {x: 0.45, y: 0.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8eab504bc24f57a4d8f7ecd503dded84
+      internalID: 1842424565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snowman_5
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 592
+        width: 340
+        height: 348
+      alignment: 9
+      pivot: {x: 0.53, y: 0.65}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85cb25fef9a423d45a48122b044b3638
+      internalID: -1651979962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snowman_6
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 56
+        width: 340
+        height: 248
+      alignment: 9
+      pivot: {x: 0.5, y: 1.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21d88b225302e7b4d90a27f776ec7fb2
+      internalID: -123457647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snowman_7
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 64
+        width: 356
+        height: 284
+      alignment: 9
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a825058c0d01dda4fac018e54d1f2926
+      internalID: 1490173205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snowman_8
+      rect:
+        serializedVersion: 2
+        x: 1224
+        y: 52
+        width: 364
+        height: 296
+      alignment: 9
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5d087b210a732b4b8c1d82132383a3b
+      internalID: 1703035503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -114,7 +303,16 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Snowman_4: 1842424565
+      Snowman_3: 1474208848
+      Snowman_2: 439746928
+      Snowman_7: 1490173205
+      Snowman_6: -123457647
+      Snowman_0: 48600629
+      Snowman_1: 360109032
+      Snowman_8: 1703035503
+      Snowman_5: -1651979962
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

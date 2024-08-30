@@ -30213,9 +30213,8 @@ MonoBehaviour:
     Islocked: 0
     description:
     - "\uBC29\uC5B4\uB825 10% \uC99D\uAC00"
-    extra: "\uD14C\uB77C\uC5D0\uC11C \uAC00\uC7A5 \uC778\uAE30\uAC00 \uB9CE\uC740
-      \uC601\uC591 \uAC04\uC2DD!\n\uB108\uBB34 \uC778\uAE30\uAC00 \uB9CE\uC544\uC11C
-      \uD56D\uC0C1 \uBD80\uC871\uD558\uB2E4\uACE0 \uD55C\uB2E4."
+    extra: "\uC774\uAC74 \uB2E8\uC21C\uD55C \uB3CC\uB369\uC774\uAC00 \uC544\uB2C8\uC57C\n\uC218\uB9CE\uC740
+      \uC774\uC758 \uC6D0\uB150, \uAE30\uC6D0, \uAC08\uB9DD.."
     sprite: {fileID: 241251011, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
     attributes:
       attack: 0
@@ -30254,9 +30253,9 @@ MonoBehaviour:
     Islocked: 0
     description:
     - "\uCCB4\uB825 10% \uC99D\uAC00"
-    extra: "\uC815\uB9D0 \uB9DB\uC788\uC5B4\uBCF4\uC774\uB294 \uB85C\uB3C4\uC2A4
-      \uD2B9\uC81C \uD30C\uB974\uD398\n\uD55C \uC785 \uBA39\uB294 \uC21C\uAC04 \uB204\uAD70\uAC00\uC758
-      \uAC15\uB82C\uD55C \uC2DC\uC120\uC774 \uB290\uAEF4\uC9C4\uB2E4\uACE0"
+    extra: "\uB85C\uB3C4\uC2A4 \uD2B9\uC81C \uD30C\uB974\uD398\n\uD55C \uC785 \uBA39\uB294
+      \uC21C\uAC04 \uB204\uAD70\uAC00\uC758 \uAC15\uB82C\uD55C \uC2DC\uC120\uC774
+      \uB290\uAEF4\uC9C4\uB2E4\uACE0"
     sprite: {fileID: -421338576, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
     attributes:
       attack: 0
@@ -30337,7 +30336,7 @@ MonoBehaviour:
     description:
     - "\uB79C\uB364 \uC624\uD37C\uB808\uC774\uD130 1\uBA85\uC758 \uCCB4\uB825, \uACF5\uACA9\uB825
       30% \uC99D\uAC00"
-    extra: "\uADF9\uB2E8\uC5D0 \uCDA9\uC131\uC744!"
+    extra: "\uADF9\uB2E8\uC5D0 \uC601\uC6D0\uD55C \uCDA9\uC131\uC744"
     sprite: {fileID: 232379206, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
     attributes:
       attack: 0
@@ -31016,8 +31015,8 @@ MonoBehaviour:
     Islocked: 0
     description:
     - "\uACF5\uACA9\uC18D\uB3C4 10% \uC99D\uAC00"
-    extra: "\uAE30\uC5B5\uC744 \uC783\uB294 \uC0C1\uC5B4\uC640 \uC0C1\uB0E5\uD55C
-      \uC5EC\uC6B0\uC758 \uC774\uC57C\uAE30"
+    extra: "\uC0C1\uCC98\uBC1B\uC740 \uC0C1\uC5B4\uC640 \uC0C1\uB0E5\uD55C \uC5EC\uC6B0\uC758
+      \uC774\uC57C\uAE30"
     sprite: {fileID: -940125002, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
     attributes:
       attack: 0
@@ -31138,7 +31137,7 @@ MonoBehaviour:
     - "\uACF5\uACA9\uC18D\uB3C4 10% \uC99D\uAC00 \uBC0F \uD2B9\uC815 \uC624\uD37C\uB808\uC774\uD130
       \uAC15\uD654"
     extra: "\uB9C8\uC655\uC740 \uBB38\uBA85\uC758 \uC885\uB9D0\uACFC \uBD80\uD765\uC744
-      \uAC00\uC838\uC654\uB2E4.\n<\uAC15\uD654 \uBBF8\uAD6C\uD604>"
+      \uAC00\uC838\uC654\uB2E4.\n"
     sprite: {fileID: -807682092, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
     attributes:
       attack: 0
@@ -31177,9 +31176,7 @@ MonoBehaviour:
     Islocked: 0
     description:
     - "\uACBD\uD5D8\uCE58 \uD68D\uB4DD\uB7C9 20% \uC99D\uAC00"
-    extra: "\uB300\uB7C9\uC758 \uC804\uC790\uBD80\uD488\uC73C\uB85C \uB9CC\uB4E4\uC5B4\uC9C4
-      \uC7A5\uCE58.\n\uC124\uB9C8 \uC774\uAC78 \uBA39\uC73C\uB824\uB294 \uC0AC\uB78C\uC740
-      \uC5C6\uACA0\uC9C0?"
+    extra: "\uBAA8\uB4E0 \uAE30\uACC4\uC758 \uC6D0\uCD08\uC774\uC790 \uB9D0\uB85C"
     sprite: {fileID: -383143773, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
     attributes:
       attack: 0
@@ -31218,9 +31215,8 @@ MonoBehaviour:
     Islocked: 0
     description:
     - "\uCCB4\uB825 10% \uC99D\uAC00"
-    extra: "\uC5B4\uB290 \uC624\uD37C\uB808\uC774\uD130\uAC00 \uAC00\uC7A5 \uC88B\uC544\uD558\uB294
-      \uAC04\uC2DD!\n<size=50%>\uC5EC\uB2F4\uC73C\uB85C \uC778\uAC04\uC0AC\uB8CC\uB77C
-      \uBD88\uB9B0\uB2E4\uACE0 \uD55C\uB2E4..</size>"
+    extra: "\uD55C\uBC88 \uBA39\uC73C\uBA74 \uBE60\uC838\uB098\uC62C \uC218 \uC5C6\uB294
+      \uAC04\uC2DD\n\uADF8 \uB05D\uC774 \uD30C\uBA78\uC77C\uC9C0\uB77C\uB3C4"
     sprite: {fileID: -1315334508, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
     attributes:
       attack: 0
@@ -31457,7 +31453,7 @@ MonoBehaviour:
     Islocked: 0
     description:
     - "\uACF5\uACA9\uB825 30% \uC99D\uAC00"
-    extra: "\uAC10\uC5FC\uC790\uB97C \uC704\uD55C \uB098\uB77C\uB294 \uC5C6\uB294\uAC00?"
+    extra: "\uC774\uB8E8\uC5B4\uC9C0\uC9C0 \uBABB\uD55C \uC57D\uC18D"
     sprite: {fileID: 1491458760, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
     attributes:
       attack: 0.3

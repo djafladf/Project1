@@ -40,7 +40,7 @@ public class Platinum :PlayerSetting
     {
         base.AttackEnd();
 
-        if(TargetPos != null && SpecTime>0) player.anim.SetTrigger("Spec");
+        if (TargetPos != null && SpecTime > 0) { player.anim.SetTrigger("Spec"); Target = TargetPos.transform.position; }
     }
 
     Vector3 Target;
@@ -89,6 +89,7 @@ public class Platinum :PlayerSetting
         }
         Mark.gameObject.SetActive(false);
 
+
         if (--SpecTime == 0)
         {
             SpecAble = false;
@@ -101,7 +102,7 @@ public class Platinum :PlayerSetting
     protected override void OnEnable()
     {
         base.OnEnable();
-        SpecAble = player.WeaponLevel >= 0;
+        SpecAble = player.WeaponLevel >= 7;
         Mark.gameObject.SetActive(false);
         OneGi.Stop();
     }

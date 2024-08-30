@@ -1,27 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.UI.Image;
-using UnityEngine.UIElements;
+using static UnityEngine.ParticleSystem;
 
 public class Faust : Enemy
 {
-
     protected override void Awake()
     {
         base.Awake();
+        MaxHP = Mathf.FloorToInt(MaxHP * (1 + GameManager.instance.EnemyStatus.boss * 0.05f)); HP = MaxHP;
+        MaxDefense = Mathf.FloorToInt(MaxDefense * (1 + GameManager.instance.EnemyStatus.boss * 0.05f)); Defense = MaxDefense;
+        MaxDamage = Mathf.FloorToInt(MaxDamage * (1 + GameManager.instance.EnemyStatus.boss * 0.05f)); Damage = MaxDamage;
     }
 
+    bool StartEn = true;
     protected override void OnEnable()
     {
         base.OnEnable();
-        ChangeDirCor = StartCoroutine(ChangeDir());
-        StartCoroutine(BatchCool());
-        transform.position = GameManager.instance.ES.ReBatchCall();
-        Dir = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
-        if (Dir.x > 0 && !spriteRenderer.flipX) spriteRenderer.flipX = true;
-        else if (Dir.x < 0 && spriteRenderer.flipX) spriteRenderer.flipX = false;
-        MakeWalls();
+
+        if (StartEn) { StartEn = false; return; }
+            ChangeDirCor = StartCoroutine(ChangeDir());
+            StartCoroutine(BatchCool());
+            transform.position = GameManager.instance.ES.ReBatchCall();
+            Dir = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+            if (Dir.x > 0 && !spriteRenderer.flipX) spriteRenderer.flipX = true;
+            else if (Dir.x < 0 && spriteRenderer.flipX) spriteRenderer.flipX = false;
+            MakeWalls();
     }
 
 
@@ -40,7 +44,7 @@ public class Faust : Enemy
     new Transform Target;
     Vector3 DirSub;
 
-    WaitForSeconds changedir = new WaitForSeconds(5);
+    WaitForSeconds changedir = new WaitForSeconds(7);
     Coroutine ChangeDirCor = null;
     IEnumerator ChangeDir()
     {
@@ -52,7 +56,7 @@ public class Faust : Enemy
         while (IsWallExit.collider != null)
         {
             Dir = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
-            IsWallExit = Physics2D.Raycast(transform.position, Dir, 7, LayerMask.GetMask("Wall"));
+            IsWallExit = Physics2D.Raycast(transform.position, Dir, 10, LayerMask.GetMask("Wall"));
         }
 
         anim.SetBool("IsAttack",true);
@@ -74,15 +78,23 @@ public class Faust : Enemy
         BatchAble = true;
     }
 
+    List<PaustBow> BowList = new List<PaustBow>();
+
     public void BatchBow()
     {
         if (Bows.Count != 0)
         {
             int Ind = Random.Range(0, Bows.Count);
-            Bows[Ind].SetActive(true); Bows.RemoveAt(Ind);
+            Bows[Ind].SetActive(true);
+            PaustBow cnt = Bows[Ind].GetComponent<PaustBow>(); cnt.Fs = this; BowList.Add(cnt);
+            Bows.RemoveAt(Ind);
             StartCoroutine(BatchCool());
         }
     }
+
+    public Sprite bull;
+    public Sprite ShootEffect;
+    public Sprite Spbull;
 
     protected override void AttackMethod()
     {
@@ -94,8 +106,16 @@ public class Faust : Enemy
             if (DirSub.x > 0 && !spriteRenderer.flipX) spriteRenderer.flipX = true;
             else if (DirSub.x < 0 && spriteRenderer.flipX) spriteRenderer.flipX = false;
 
-            if (AttackCount == 3) { GameManager.instance.BM.MakeBullet(new BulletInfo(Mathf.FloorToInt(Damage * 3 * (1 + GameManager.instance.EnemyStatus.attack - DeBuffVar[1])), false, 0, ignoreDefense: 0.2f), 100, transform.position, DirSub, 50, true, Bull); AttackCount = 0; }
-            else GameManager.instance.BM.MakeBullet(new BulletInfo(Mathf.FloorToInt(Damage * (1 + GameManager.instance.EnemyStatus.attack - DeBuffVar[1])), false, 0, ignoreDefense: 0.2f), 0, transform.position, DirSub, 50, true, Bull);
+            if (AttackCount == 3)
+            {
+                foreach (var k in BowList) k.SpecialShoot();
+                GameManager.instance.BM.MakeBullet(new BulletInfo(Mathf.FloorToInt(Damage * 3 * (1 + GameManager.instance.EnemyStatus.attack + GameManager.instance.EnemyStatus.boss - DeBuffVar[1])), false, 0, ignoreDefense: 0.5f), 100, transform.position, DirSub, 100, true, Spbull); AttackCount = 0;
+            }
+            else
+            {
+                GameManager.instance.BM.MakeBullet(new BulletInfo(Mathf.FloorToInt(Damage * (1 + GameManager.instance.EnemyStatus.attack + GameManager.instance.EnemyStatus.boss - DeBuffVar[1])), false, 0, ignoreDefense: 0.2f), 0, transform.position, DirSub, 50, true, bull);
+                GameManager.instance.BM.MakeEffect(0.3f, transform.position + DirSub * 3, DirSub, 0, ShootEffect);
+            }
         }
     }
 
@@ -132,7 +152,7 @@ public class Faust : Enemy
     public void PhazeT()
     {
         GameManager.instance.UM.BossHP.fillAmount = 1;
-        IsHide = false; gameObject.layer = LayerMask.GetMask("Enem");
+        IsHide = false; gameObject.layer = 6;
         HideEffect.SetActive(false);
         Damage = (int)(Damage * 1.5f);
     }
@@ -148,7 +168,6 @@ public class Faust : Enemy
         GameManager.instance.UM.ShowDialog(new List<string>() { "¤·¤µ¤·" },
                 () => { GameManager.instance.BossEnd(); }
                 );
-
     }
 
 
@@ -165,5 +184,14 @@ public class Faust : Enemy
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         if(!IsHide) base.OnTriggerEnter2D(collision);
+    }
+
+    protected override void Heal(float Amount) { HP += (int)Amount; HP = Mathf.Min(MaxHP, HP); GameManager.instance.UM.BossHP.fillAmount = HP / (float)MaxHP; }
+
+    [SerializeField] ParticleSystem AttackEffect;
+    public void MakeAttackEffect()
+    {
+        AttackEffect.transform.localPosition = spriteRenderer.flipX ? new Vector3(3.85f, 0) : new Vector3(-3.85f, 0);
+        AttackEffect.Play();
     }
 }

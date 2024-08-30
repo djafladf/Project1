@@ -5,7 +5,6 @@ using UnityEngine;
 public class Amiya : PlayerSetting
 {
     [SerializeField] Sprite Bullet1;
-    [SerializeField] Sprite Bullet2;
     [SerializeField] GameObject Weapon;
     [SerializeField] GameObject Weapon2;
     [SerializeField] GameObject Crown;
@@ -25,11 +24,14 @@ public class Amiya : PlayerSetting
 
         BulletIm = Bullet1;
         CurApplyLine = BL;
+
     }
 
     private void Start()
     {
         StartCoroutine(Test());
+
+        //for (int i = 0; i < 6; i++) WeaponLevelUp();
     }
 
     IEnumerator Test()
@@ -57,7 +59,7 @@ public class Amiya : PlayerSetting
 
     int ProjNum = 1;
     int ProjRatio = 1;
-    float DamageRatio = 2f;
+    float DamageRatio = 3f;
     int Penetrate = 0;
     float BulletSpeed = 15;
 
@@ -72,7 +74,7 @@ public class Amiya : PlayerSetting
             case 4: Penetrate += 2; break;
             case 5: DamageRatio += 1f; break;
             case 6:
-                ProjRatio = 3; BulletIm = Bullet2; BulletSpeed = 20; Weapon2.SetActive(true); CurApplyLine = BLT;for(int i = 0; i < 4; i++) PTS.Add(Instantiate(PTS[0], transform.GetChild(0)));
+                ProjNum++; ProjRatio = 3; BulletIm = null; BulletSpeed = 40; Weapon2.SetActive(true); CurApplyLine = BLT;for(int i = 0; i < 8; i++) PTS.Add(Instantiate(PTS[0], transform.GetChild(0)));
                 break;
         }
         return player.WeaponLevel;

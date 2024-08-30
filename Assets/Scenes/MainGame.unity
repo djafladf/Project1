@@ -16671,7 +16671,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &655613210
 Transform:
   m_ObjectHideFlags: 0
@@ -16700,20 +16700,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyTypes:
-  - {fileID: 1788775384281307603, guid: fac04da8f4aef134cb2cafd0eb5dcaa6, type: 3}
+  - {fileID: 1788775384281307603, guid: 876d4acea0947d749adff12c1ab7690b, type: 3}
+  - {fileID: 1788775384281307603, guid: ba2eccd61a261d042b9f6756c841a6b6, type: 3}
   BossSet: {fileID: 981838648}
-  PoolSize: 0a000000
+  PoolSize: 0a0000000a000000
   CurActive: 0
   Stages:
   - spawninfo:
     - id: 0
       start: 0
-      end: 1000
-      respawn: 500
+      end: 300
+      respawn: 3
       IsBoss: 0
-      IsLast: 0
-  InitRange: 0
-  StageInits: 00000000
+      IsLast: 1
+    - id: 1
+      start: 0
+      end: 300
+      respawn: 3
+      IsBoss: 0
+      IsLast: 1
+  StageInits: 0100000001000000
 --- !u!1 &684812035
 GameObject:
   m_ObjectHideFlags: 0
@@ -32204,83 +32210,58 @@ MonoBehaviour:
   CurActive: 0
   Stages:
   - spawninfo:
-    - id: 19
-      start: 0
-      end: 1
-      respawn: 1
-      IsBoss: 1
-      IsLast: 0
-    - id: 18
-      start: 0
-      end: 1
-      respawn: 1
-      IsBoss: 1
-      IsLast: 0
-  - spawninfo:
     - id: 0
       start: 0
-      end: 300
+      end: 120
       respawn: 0.5
       IsBoss: 0
       IsLast: 1
     - id: 1
-      start: 60
-      end: 420
+      start: 200
+      end: 240
       respawn: 0.5
       IsBoss: 0
-      IsLast: 1
+      IsLast: 0
     - id: 2
-      start: 60
-      end: 420
+      start: 200
+      end: 240
       respawn: 1
       IsBoss: 0
       IsLast: 0
     - id: 3
-      start: 120
-      end: 540
+      start: 180
+      end: 360
       respawn: 1
-      IsBoss: 0
-      IsLast: 0
-    - id: 6
-      start: 120
-      end: 540
-      respawn: 2
       IsBoss: 0
       IsLast: 0
     - id: 4
       start: 180
-      end: 540
+      end: 360
       respawn: 1
       IsBoss: 0
       IsLast: 0
-    - id: 9
-      start: 180
-      end: 540
-      respawn: 3
-      IsBoss: 0
-      IsLast: 0
-    - id: 5
+    - id: 6
       start: 240
-      end: 540
+      end: 420
       respawn: 2
       IsBoss: 0
       IsLast: 0
-    - id: 11
+    - id: 9
       start: 300
+      end: 420
+      respawn: 1.5
+      IsBoss: 0
+      IsLast: 0
+    - id: 5
+      start: 360
       end: 540
-      respawn: 30
+      respawn: 2
       IsBoss: 0
       IsLast: 0
     - id: 7
       start: 420
       end: 540
       respawn: 2
-      IsBoss: 0
-      IsLast: 0
-    - id: 10
-      start: 480
-      end: 540
-      respawn: 5
       IsBoss: 0
       IsLast: 0
     - id: 8
@@ -32295,7 +32276,7 @@ MonoBehaviour:
       end: 60
       respawn: 1
       IsBoss: 0
-      IsLast: 0
+      IsLast: 1
     - id: 9
       start: 0
       end: 60
@@ -32326,27 +32307,98 @@ MonoBehaviour:
       respawn: 2
       IsBoss: 0
       IsLast: 0
-    - id: 10
-      start: 0
-      end: 60
-      respawn: 5
-      IsBoss: 0
-      IsLast: 0
     - id: 8
       start: 60
       end: 60
       respawn: 1
       IsBoss: 1
-      IsLast: 1
+      IsLast: 0
   - spawninfo:
-    - id: 9
+    - id: 4
       start: 0
-      end: 60
+      end: 120
       respawn: 1
       IsBoss: 0
       IsLast: 1
-  InitRange: 0
-  StageInits: 130000000c0000000c000000
+    - id: 6
+      start: 60
+      end: 180
+      respawn: 2
+      IsBoss: 0
+      IsLast: 1
+    - id: 5
+      start: 60
+      end: 180
+      respawn: 2
+      IsBoss: 0
+      IsLast: 0
+    - id: 7
+      start: 120
+      end: 240
+      respawn: 2
+      IsBoss: 0
+      IsLast: 0
+    - id: 9
+      start: 120
+      end: 180
+      respawn: 0.5
+      IsBoss: 0
+      IsLast: 0
+    - id: 10
+      start: 180
+      end: 300
+      respawn: 5
+      IsBoss: 0
+      IsLast: 0
+    - id: 11
+      start: 240
+      end: 360
+      respawn: 10
+      IsBoss: 0
+      IsLast: 0
+    - id: 9
+      start: 240
+      end: 300
+      respawn: 0.5
+      IsBoss: 0
+      IsLast: 1
+    - id: 12
+      start: 300
+      end: 480
+      respawn: 2
+      IsBoss: 0
+      IsLast: 0
+    - id: 13
+      start: 360
+      end: 480
+      respawn: 10
+      IsBoss: 0
+      IsLast: 0
+    - id: 14
+      start: 420
+      end: 540
+      respawn: 3
+      IsBoss: 0
+      IsLast: 0
+    - id: 15
+      start: 500
+      end: 600
+      respawn: 5
+      IsBoss: 0
+      IsLast: 0
+    - id: 16
+      start: 500
+      end: 600
+      respawn: 5
+      IsBoss: 0
+      IsLast: 0
+    - id: 19
+      start: 600
+      end: 600
+      respawn: 1
+      IsBoss: 1
+      IsLast: 1
+  StageInits: 0c0000000c0000000c00000013000000
 --- !u!4 &8712970481732150842
 Transform:
   m_ObjectHideFlags: 0
@@ -32378,7 +32430,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &8712970481818257479
 MonoBehaviour:
   m_ObjectHideFlags: 0

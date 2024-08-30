@@ -42,14 +42,14 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 90
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -103,7 +103,217 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: SnowSniper_2
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 1150
+        width: 263
+        height: 467
+      alignment: 9
+      pivot: {x: 0.45, y: 0.45}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a2f9fc0b13c9dc409346e3cbf98c1ff
+      internalID: 1581003797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnowSniper_3
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 1159
+        width: 234
+        height: 482
+      alignment: 9
+      pivot: {x: 0.45, y: 0.45}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43555d410602f39478c5b2d99cdd012c
+      internalID: -128987234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnowSniper_4
+      rect:
+        serializedVersion: 2
+        x: 1243
+        y: 1159
+        width: 286
+        height: 463
+      alignment: 9
+      pivot: {x: 0.43, y: 0.45}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe32d2f0b9273444d8c8287f296e5bfc
+      internalID: 361987651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnowSniper_5
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 631
+        width: 394
+        height: 338
+      alignment: 9
+      pivot: {x: 0.65, y: 0.64}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a60ab83bdcfb6c64ea9f09e5b0272361
+      internalID: 1777400546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnowSniper_6
+      rect:
+        serializedVersion: 2
+        x: 1019
+        y: 627
+        width: 398
+        height: 339
+      alignment: 9
+      pivot: {x: 0.543, y: 0.638}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b5b3868bd9179842a1e69a23c96b7a3
+      internalID: -650531100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnowSniper_7
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 115
+        width: 458
+        height: 250
+      alignment: 9
+      pivot: {x: 0.5, y: 1.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aebc5cb57bc5e0f49a06a20bf5c440b7
+      internalID: 301228615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnowSniper_0
+      rect:
+        serializedVersion: 2
+        x: 887
+        y: 1811
+        width: 150
+        height: 198
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af9f194523c8c4c4788449fd034118db
+      internalID: 2119145402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnowSniper_1
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 1799
+        width: 314
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86e5a34762ae19c499765f77b9ab537e
+      internalID: -587630106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnowSniper_10
+      rect:
+        serializedVersion: 2
+        x: 1411
+        y: 115
+        width: 474
+        height: 298
+      alignment: 9
+      pivot: {x: 0.5, y: 0.9}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4aa46a1872c617f4fbf043e3765aee23
+      internalID: 1397304923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnowSniper_12
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 115
+        width: 466
+        height: 298
+      alignment: 9
+      pivot: {x: 0.5, y: 0.9}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0673aa558c8600a4094d63882e6f53fd
+      internalID: -897494438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -114,7 +324,20 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SnowSniper_9: 252005219
+      SnowSniper_11: 944333875
+      SnowSniper_3: -128987234
+      SnowSniper_6: -650531100
+      SnowSniper_8: -1731563735
+      SnowSniper_7: 301228615
+      SnowSniper_4: 361987651
+      SnowSniper_2: 1581003797
+      SnowSniper_1: -587630106
+      SnowSniper_10: 1397304923
+      SnowSniper_12: -897494438
+      SnowSniper_5: 1777400546
+      SnowSniper_0: 2119145402
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

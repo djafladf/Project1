@@ -40,7 +40,7 @@ public class Rosmontis : PlayerSetting
                     yield return new WaitForSeconds(0.1f);
                 }
             }
-            yield return GameManager.OneSec;
+            yield return new WaitForSeconds((3 - GameManager.instance.PlayerStatus.attackspeed) * 0.5f);
         }
     }
 
@@ -64,7 +64,8 @@ public class Rosmontis : PlayerSetting
     protected override void OnEnable()
     {
         base.OnEnable();
-        FloatWeapon.SetActive(false); 
+        FloatWeapon.SetActive(false);
+        GameManager.instance.SetTime(5f,false);
     }
 
     float DamageRatio = 3f;

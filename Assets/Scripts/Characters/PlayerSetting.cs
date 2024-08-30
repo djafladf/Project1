@@ -212,7 +212,7 @@ public class PlayerSetting : MonoBehaviour
             {
                 if (player.ReinforceAmount[0] == Info.Attack) player.ReinForceLast[0] = Mathf.Max(player.ReinforceAmount[0], Info.Last);
                 else player.ReinForceLast[0] = Info.Last;
-                player.ReinforceAmount[0] = Info.Attack;
+                player.ReinforceAmount[0] = Mathf.Max(Info.Attack, player.ReinforceAmount[0]);
             }
             if (player.ReinforceAmount[1] <= Info.Defense && Info.Defense != 0)
             {

@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject[] EnemyTypes;
-    [SerializeField] GameObject BossSet;
+    [SerializeField] public GameObject BossSet;
     [SerializeField] int[] PoolSize;
 
     List<List<GameObject>> Pool = new List<List<GameObject>>();
@@ -48,7 +49,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] List<StageInfo> Stages;
     int CurStage = 0;
 
-    int[] AliveCount;
+    static int[] AliveCount;
     bool[] IsLast;
 
     private void Awake()
@@ -79,7 +80,7 @@ public class EnemySpawner : MonoBehaviour
 
         GameManager.instance.StartLoading();
     }
-    [SerializeField] int InitRange;
+    //[SerializeField] int InitRange;
 
     [SerializeField]
     List<int> StageInits;
@@ -108,6 +109,14 @@ public class EnemySpawner : MonoBehaviour
         {
             if(CurStage != 0)MakeNewPref(StageInits[CurStage]+1, StageInits[CurStage+1]);
             foreach (SpawnInfo cnt in Stages[CurStage].spawninfo) StartCoroutine(Spawn(cnt));
+            for (int i = 0; i < StageInits[CurStage]; i++) if (IsLast[i]) 
+                {
+                    for (int x = 0; x < PoolSize[i]; x++) Destroy(Pool[i][x]);
+                    PoolSize[i] = 0;
+                    Pool[i] = null;
+                    EnemyScript[i] = null;
+                    IsLast[i] = false;
+                }
             CurStage++;
         }
     }
@@ -121,7 +130,7 @@ public class EnemySpawner : MonoBehaviour
         int SpawnTimes = Mathf.FloorToInt((Info.end - Info.start) / Info.respawn);
         WaitForSeconds SpawnGap = new WaitForSeconds(Info.respawn);
         bool IsSpawned;
-        if (Info.IsBoss) { GameManager.instance.BossStage(); BossSet.SetActive(true); }
+        if (Info.IsBoss) { GameManager.instance.BossStage(); /*BossSet.SetActive(true);*/ }
 
         int Id = (int)Info.id;
 
@@ -139,7 +148,6 @@ public class EnemySpawner : MonoBehaviour
                 {
                     pool.transform.position = cnt;
                     pool.SetActive(true);
-                    AliveCount[Id]++;
                     IsSpawned = true;
                     break;
                 }
@@ -149,25 +157,11 @@ public class EnemySpawner : MonoBehaviour
                 var tmp = Instantiate(EnemyTypes[Id], transform); tmp.SetActive(false); Pool[Id].Add(tmp);
                 EnemyScript[Id].Add(Pool[Id][PoolSize[Id]].GetComponent<Enemy>());
                 Pool[Id][PoolSize[Id]++].transform.position = cnt;
-                AliveCount[Id]++;
             }
-
             if (Info.IsBoss) break;
             yield return SpawnGap;
         }
         if (Info.IsLast) IsLast[Id] = true;
-    }
-
-    public void DeadCount(int type)
-    {
-        AliveCount[type]--;
-        if (AliveCount[type] == 0 && IsLast[type])
-        {
-            for (int i = 0; i < PoolSize[type]; i++) Destroy(Pool[type][i]);
-            PoolSize[type] = 0;
-            Pool[type] = null;
-            EnemyScript[type] = null;
-        }
     }
 
     List<Coroutine> spawncall = new List<Coroutine>();
@@ -182,7 +176,6 @@ public class EnemySpawner : MonoBehaviour
         foreach (var pool in Pool[ind]) if (!pool.activeSelf)
             {
                 pool.SetActive(true);
-                AliveCount[ind]++;
                 IsSpawned = true;
                 return pool;
             }
@@ -191,7 +184,6 @@ public class EnemySpawner : MonoBehaviour
             GameObject tmp = Instantiate(EnemyTypes[ind], transform); tmp.SetActive(false);
             Pool[ind].Add(tmp);
             EnemyScript[ind].Add(Pool[ind][PoolSize[ind]].GetComponent<Enemy>());
-            AliveCount[ind]++;
             return tmp;
         }
         return null;
@@ -212,7 +204,6 @@ public class EnemySpawner : MonoBehaviour
                 {
                         pool.transform.position = cnt;
                         pool.SetActive(true);
-                        AliveCount[ind]++;
                         IsSpawned = true;
                         break;
                 }
@@ -222,7 +213,6 @@ public class EnemySpawner : MonoBehaviour
                 Pool[ind].Add(tmp);
                 EnemyScript[ind].Add(Pool[ind][PoolSize[ind]].GetComponent<Enemy>());
                 Pool[ind][PoolSize[ind]++].transform.position = cnt;
-                AliveCount[ind]++;
             }
             yield return SpawnGap;
         }
@@ -246,22 +236,6 @@ public class EnemySpawner : MonoBehaviour
     {
         StopAllCoroutines();
     }
-
-/*
-    public void SpawnEnemy()
-    {
-        Vector3 SpawnPos = SpawnArea[Random.Range(0, SpawnAreaSize- 1)] + GameManager.instance.player.Self.position;
-
-        for (int i = 0; i < PoolSize[0]; i++)
-        {
-            if (!Pool[i, 0].activeSelf)
-            {
-                Pool[i, 0].transform.position = SpawnPos;
-                Pool[i, 0].SetActive(true);
-                break;
-            }
-        }
-    }*/
 
     public Vector3 ReBatchCall()
     {

@@ -47,6 +47,7 @@ public class Bullet : MonoBehaviour
         if (delay != 0) StartCoroutine(AttackDelay(delay));
         else coll.enabled = true;
 
+        if (ScaleFactor == 0) ScaleFactor = 1;
         if (Image != null) coll.size = sprite.bounds.size * ScaleFactor;
         else coll.size = Vector2.one * ScaleFactor;
         
@@ -96,7 +97,7 @@ public class Bullet : MonoBehaviour
         StartCoroutine(AfterImage(AfterTime,AlphaChange));
     }
 
-    public void Init_Buff(float ScaleFactor, Sprite Im,  bool IsEnemy)
+    public void Init_Buff(float ScaleFactor, Sprite Im,  bool IsEnemy,bool IsField)
     {
         rigid.simulated = true;
         coll.enabled = true;
@@ -106,7 +107,8 @@ public class Bullet : MonoBehaviour
         if (Im != null) coll.size = sprite.bounds.size * ScaleFactor;
         else coll.size = Vector2.one * ScaleFactor;
 
-        IsMeele = false;
+        IsMeele = IsField;
+        if (IsMeele) StartCoroutine(AfterImage(0.3f,true));
         tag = IsEnemy ? "EnemyBuff" : "PlayerBuff";
     }
 

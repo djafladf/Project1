@@ -26,9 +26,8 @@ public class Skulslr : Enemy
 
     private void Start()
     {
-        GameManager.instance.ES.ExternalSpawnCall(2, -1, 5f);
-        GameManager.instance.ES.ExternalSpawnCall(4, -1, 5f);
         GameManager.instance.ES.ExternalSpawnCall(3, -1, 5f);
+        GameManager.instance.ES.ExternalSpawnCall(4, -1, 5f);
         GameManager.instance.ES.ExternalSpawnCall(5, -1, 5f);
         GameManager.instance.ES.ExternalSpawnCall(6, -1, 5f);
     }
@@ -215,6 +214,7 @@ public class Skulslr : Enemy
         }
         else
         {
+            print("!");
             GameManager.instance.UM.ShowDialog(new List<string>() { "이걸로..." },
                 () => { GameManager.instance.BossEnd(); }
                 );
@@ -228,6 +228,7 @@ public class Skulslr : Enemy
         base.OnEnable();
         
         if (StartEn) { StartEn = false; return; }
+        GameManager.instance.ES.BossSet.SetActive(true);
         GameManager.instance.UM.BossName.text = IsMisya? "스컬슈레더?" : "스컬슈레더";
         GameManager.instance.UM.BossHP.fillAmount = 1;
         if (!IsMisya) StartCoroutine(SpecialCoolDown());

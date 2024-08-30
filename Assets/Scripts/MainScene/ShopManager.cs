@@ -106,7 +106,7 @@ public class ShopManager : MonoBehaviour
 
     string[] DownStr =
         {
-            "적 공격력", "적 방어력","적 체력","적 이동속도","적 스폰양","보스 스탯(체력/공격력/방어력)"
+            "적 공격력", "적 방어력","적 체력","적 이동속도","적 스폰양","보스 스탯(체력/방어력)"
         };
     int[] DownCount =
     {

@@ -80,7 +80,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected bool MakeLine;
     [SerializeField] protected BulletInfo BI;
     [SerializeField] protected Sprite Bull;
-    [SerializeField] BulletLine BL;
+    [SerializeField] protected BulletLine BL;
 
     protected virtual void AttackMethod()
     {
@@ -99,8 +99,10 @@ public class Enemy : MonoBehaviour
 
     bool CanHit = true;
     protected float[] LeftTime = { 0,0,0,0,0};
+    protected float[] LeftTimeBuff = { 0, 0, 0, 0, 0 };
     // 속, 공, 방, 을, 피증
     protected float[] DeBuffVar = { 0,0,0,0,0 };
+    protected float[] BuffVar = { 0, 0, 0, 0, 0 };
 
     protected GameObject[] DeBuffObj = new GameObject[5];
 
@@ -122,7 +124,7 @@ public class Enemy : MonoBehaviour
         if (collision.CompareTag("PlayerAttack") && CanHit)
         {
             BulletInfo Info = GameManager.instance.BM.GetBulletInfo(GameManager.StringToInt(collision.name));
-            int GetDamage = Info.ReturnDamage(Defense * (1 + GameManager.instance.EnemyStatus.defense - DeBuffVar[2]));
+            int GetDamage = Info.ReturnDamage(Defense * (1 + GameManager.instance.EnemyStatus.defense - DeBuffVar[2] + BuffVar[2]));
             if (GetDamage < 0) GetDamage = 0;
             GameManager.instance.DM.MakeDamage(GetDamage, transform);
             HP -= GetDamage;
@@ -133,8 +135,6 @@ public class Enemy : MonoBehaviour
                 StartCoroutine(DeadLater());
                 spriteRenderer.sortingOrder = 1;
                 IsLive = false; CanHit = false; rigid.simulated = false; coll.enabled = false;
-                GameManager.instance.UM.KillCountUp(1);
-                GameManager.instance.ES.DeadCount(EnemyType);
             }
             else if (Info.DeBuffs != null)
             {
@@ -193,6 +193,12 @@ public class Enemy : MonoBehaviour
         {
             Buff Info = GameManager.instance.BM.GetBulletInfo(GameManager.StringToInt(collision.name)).Buffs;
             if (Info.Heal != 0) Heal(Info.Heal);
+            if (Info.Defense != 0)
+            {
+                if (BuffVar[2] == Info.Defense) LeftTimeBuff[2] = Mathf.Max(LeftTimeBuff[2], Info.Last);
+                else LeftTimeBuff[2] = Info.Last;
+                BuffVar[2] = Mathf.Max(BuffVar[2],Info.Defense);
+            }
         }
     }
 
@@ -206,7 +212,7 @@ public class Enemy : MonoBehaviour
     {
         int i;
 
-        for (i = 0; i < 4; i++) { DeBuffVar[i] = 0; LeftTime[i] = 0; }
+        for (i = 0; i < 4; i++) { DeBuffVar[i] = 0; BuffVar[i] = 0; LeftTimeBuff[i] = 0; LeftTime[i] = 0; }
 
         for (i = 0; i < DeBuffObj.Length; i++) if (DeBuffObj[i] != null)
             {
@@ -215,14 +221,21 @@ public class Enemy : MonoBehaviour
 
         while (true)
         {
-            // Buff Check
-
-            // DeBuff Check
             for (i = 0; i < 4; i++)
             {
-                if (LeftTime[i] == 0) continue;
-                LeftTime[i] -= 0.1f;
-                if (LeftTime[i] <= 0) { LeftTime[i] = 0; DeBuffVar[i] = 0; DeBuffObj[i].SetActive(false); DeBuffObj[i].transform.parent = GameManager.instance.BFM.transform; DeBuffObj[i] = null; }
+                // Buff Check
+                if (LeftTimeBuff[i] != 0)
+                {
+                    LeftTimeBuff[i] -= 0.1f;
+                    if (LeftTimeBuff[i] <= 0) { LeftTimeBuff[i] = 0; BuffVar[i] = 0; }
+                }
+
+                // DeBuff Check
+                if (LeftTime[i] != 0)
+                {
+                    LeftTime[i] -= 0.1f;
+                    if (LeftTime[i] <= 0) { LeftTime[i] = 0; DeBuffVar[i] = 0; DeBuffObj[i].SetActive(false); DeBuffObj[i].transform.parent = GameManager.instance.BFM.transform; DeBuffObj[i] = null; }
+                }
             }
             yield return GameManager.DotOneSec;
         }
@@ -295,10 +308,12 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Dead()
     {
-        GameManager.instance.IM.MakeItem(transform.position);
         gameObject.SetActive(false);
+        GameManager.instance.UM.KillCountUp(1);
+        GameManager.instance.IM.MakeItem(transform.position);
+        
     }
-    bool IsInit = true;
+    protected bool IsInit = true;
     protected virtual void OnEnable()
     {
         if (IsInit) { IsInit = false; return; } 

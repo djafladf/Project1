@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public static WaitForSeconds OneSec = new WaitForSeconds(1);
+    public static WaitForSeconds TwoSec = new WaitForSeconds(2);
     public static WaitForSeconds DotOneSec = new WaitForSeconds(0.1f);
     public static int StringToInt(string Var)
     {
@@ -270,6 +271,10 @@ public class GameManager : MonoBehaviour
         IsBoss = false;
     }
 
+    public void CalcBuffAmount(ref float BuffVar,ref float BuffTime, float GetTime, float GetVar)
+    {
+        //if(BuffVar == )
+    }
     
 
     // --------------------------------------------------------------------------------------------

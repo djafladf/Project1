@@ -7,30 +7,40 @@ public class Mepisto : Enemy
     [SerializeField] ParticleSystem VirusSystem;
 
     Faust faust;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        MaxHP = Mathf.FloorToInt(MaxHP * (1 + GameManager.instance.EnemyStatus.boss * 0.05f)); HP = MaxHP;
+        MaxDefense = Mathf.FloorToInt(MaxDefense * (1 + GameManager.instance.EnemyStatus.boss * 0.05f)); Defense = MaxDefense;
+        MaxDamage = Mathf.FloorToInt(MaxDamage * (1 + GameManager.instance.EnemyStatus.boss * 0.05f)); Damage = MaxDamage;
+    }
+
     protected override void OnEnable()
     {
         base.OnEnable();
+        transform.position = GameManager.instance.player.Self.position + new Vector3(8, 0);
+        GameManager.instance.ES.SetCurrentSpawnPos();
+        StartCoroutine(StartEffect());
+    }
+
+    IEnumerator StartEffect()
+    {
+        yield return GameManager.OneSec; yield return GameManager.OneSec;
+        GameManager.instance.ES.BossSet.SetActive(true);
         GameManager.instance.UM.BossName.text = "메피스토";
         GameManager.instance.UM.BossHP.fillAmount = 1;
-        MaxHP = Mathf.FloorToInt(MaxHP * (1 + GameManager.instance.EnemyStatus.boss * 0.05f));
-        MaxDefense = Mathf.FloorToInt(MaxDefense * (1 + GameManager.instance.EnemyStatus.boss * 0.05f));
-        MaxDamage = Mathf.FloorToInt(MaxDamage * (1 + GameManager.instance.EnemyStatus.boss * 0.05f));
         StartCoroutine(SkillCool());
-        GameManager.instance.ES.SetCurrentSpawnPos();
-    }
-    
-    private void Start()
-    {
-        transform.position = GameManager.instance.player.Self.position + new Vector3(8,0);
+        
         GameManager.instance.ES.ExternalSpawnCall(15, -1, 8f);
         GameManager.instance.ES.ExternalSpawnCall(16, -1, 8f);
-        faust = GameManager.instance.ES.TakeOffObj(18).GetComponent<Faust>() ;
+        faust = GameManager.instance.ES.TakeOffObj(18).GetComponent<Faust>();
 
-        int[] Sub = { -1, 0, 1 };
-        for(int i = 0; i < 9; i++)
+        float[] Sub = { -1, 0, 1 };
+        for (int i = 0; i < 9; i++)
         {
             if (i == 4) continue;
-            Vector3 cnt = new Vector3(Sub[i % 3] * 3, Sub[i/3]*3) + transform.position; cnt.z = 1;
+            Vector3 cnt = new Vector3(Sub[i % 3] * 2.5f, Sub[i / 3] * 2.5f) + transform.position; cnt.z = 1;
             var tmp = GameManager.instance.ES.TakeOffObj(17);
             tmp.transform.position = cnt;
         }
@@ -71,7 +81,7 @@ public class Mepisto : Enemy
         gameObject.SetActive(false);
     }
 
-    new void Heal(float Amount) { }
+    protected override void Heal(float Amount) { HP += (int)Amount; HP = Mathf.Min(MaxHP, HP); GameManager.instance.UM.BossHP.fillAmount = HP / (float)MaxHP; }
 
     new void FixedUpdate()
     {

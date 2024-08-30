@@ -485,6 +485,7 @@ public class UIManager : MonoBehaviour
     }
     public void GameFail()
     {
+        GameManager.instance.ES.StopCor();
         EventTrigger.Entry entry = new EventTrigger.Entry();
         entry.eventID = EventTriggerType.PointerClick;
         entry.callback.AddListener((data) => { GameManager.instance.EndGame(); });
@@ -543,7 +544,7 @@ public class UIManager : MonoBehaviour
                 BatchOrder.Add(i);
                 GetArea = Instantiate(GetAreaPref, Prefs[i].transform).transform.GetChild(0);
                 GetArea.localScale *= GameManager.instance.PlayerStatus.pickup;
-                BatchArea = GetArea.transform.parent.GetChild(2).gameObject;
+                BatchArea = GetArea.transform.parent.GetChild(3).gameObject;
             }
         }
 

@@ -1,0 +1,295 @@
+fileFormatVersion: 2
+guid: 32672bf0e77575a49ad8a653862ef786
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 30
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Yoma_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 219
+        width: 99
+        height: 55
+      alignment: 9
+      pivot: {x: 0.4990069, y: 0.35700488}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6970aeed4ee23da4388f064059772cc1
+      internalID: 895995880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoma_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 222
+        width: 99
+        height: 55
+      alignment: 9
+      pivot: {x: 0.5012594, y: 0.30083925}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56388d5c6d3cbfa42bc4eb6141feb6e7
+      internalID: -1144827023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoma_2
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 123
+        width: 99
+        height: 55
+      alignment: 9
+      pivot: {x: 0.50167555, y: 0.40550813}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a37cdd007cd3f134fb18c3d506ceb2fd
+      internalID: -1956821418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoma_3
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 111
+        width: 99
+        height: 70
+      alignment: 9
+      pivot: {x: 0.4960344, y: 0.48923993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bd2120da3ab0c943a2ffb82019835de
+      internalID: -1489986062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoma_11
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 13
+        width: 101
+        height: 71
+      alignment: 9
+      pivot: {x: 0.5052865, y: 0.32703495}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c42e98c4b80efc94a9695926d798cc93
+      internalID: -159478976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoma_15
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 15
+        width: 85
+        height: 87
+      alignment: 9
+      pivot: {x: 0.51256317, y: 0.21359774}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf44f7a5b950aea4bb9747481ebc83c3
+      internalID: -1707228606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yoma_24
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 13
+        width: 86
+        height: 82
+      alignment: 9
+      pivot: {x: 0.5, y: 0.30248734}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18fc4da06fe5d5148b5f339f4d5255c6
+      internalID: 1006927247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Yoma_16: -540514659
+      Yoma_20: -1183212590
+      Yoma_2: -1956821418
+      Yoma_6: -1953874304
+      Yoma_9: -1654403287
+      Yoma_21: -1592126815
+      Yoma_1: -1144827023
+      Yoma_15: -1707228606
+      Yoma_14: 2134311655
+      Yoma_0: 895995880
+      Yoma_10: 1978144336
+      Yoma_17: -907041590
+      Yoma_7: 906484038
+      Yoma_12: 1802029975
+      Yoma_23: 224032960
+      Yoma_4: -1529775871
+      Yoma_24: 1006927247
+      Yoma_13: 1361587390
+      Yoma_5: -1676474292
+      Yoma_11: -159478976
+      Yoma_18: 1493892068
+      Yoma_19: 364802803
+      Yoma_8: -591407062
+      Yoma_22: 2039957300
+      Yoma_3: -1489986062
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -5145,7 +5145,6 @@ MonoBehaviour:
   AttackRange: 0
   HPBar: {fileID: 6742022308176172255}
   Bullet1: {fileID: 460339736, guid: 3984b5283fed96042ba7d23b68de06f2, type: 3}
-  Bullet2: {fileID: 1781649026, guid: 3984b5283fed96042ba7d23b68de06f2, type: 3}
   Weapon: {fileID: 3772359834302012534}
   Weapon2: {fileID: 3772359834561876204}
   Crown: {fileID: 424572231762231911}
@@ -5208,7 +5207,7 @@ MonoBehaviour:
     Color:
       serializedVersion: 2
       key0: {r: 0.3301887, g: 0.04516733, b: 0.04516733, a: 1}
-      key1: {r: 0, g: 0, b: 0, a: 0.5882353}
+      key1: {r: 0.3301887, g: 0.04516733, b: 0.04516733, a: 0.5882353}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -5267,7 +5266,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    Time: 0.4
+    Time: 1
   PTS:
   - {fileID: 3818787095874411137}
 --- !u!114 &3772359833279883307

@@ -82,7 +82,8 @@ public class BulletManager : MonoBehaviour
             {
                 Bullets[i].SetActive(true);
                 Bullets[i].transform.position = Start; Dir.z = 0;
-                Bullets[i].transform.rotation = Quaternion.FromToRotation(Vector3.up, Dir * speed);
+                Bullets[i].transform.rotation = Quaternion.FromToRotation(Vector3.up, Dir);
+                if (Info.SpeedFactor != 0) speed *= Info.SpeedFactor;
                 BulletScripts[i].Init_Attack(Penetrate, Dir * speed,false,IsEnemy,0,Info.ScaleFactor,im,BL,anim,delay:delay);
                 BulletInfos[i] = Info;
                 break;
@@ -110,6 +111,7 @@ public class BulletManager : MonoBehaviour
                 Bullets[i].transform.position = Start; Dir.z = 0;
                 Bullets[i].transform.rotation = Quaternion.FromToRotation(Vector3.up, Dir);
                 BulletInfos[i] = Info;
+                if (Info.SpeedFactor != 0) speed *= Info.SpeedFactor;
                 BulletScripts[i].Init_Attack(-1, Dir * speed, true, IsEnemy, AfterTime, Info.ScaleFactor, im, Anim:Anim,delay:delay);
                 break;
             }
@@ -148,7 +150,7 @@ public class BulletManager : MonoBehaviour
         }
     }
 
-    public void MakeBuff(BulletInfo BI,Vector3 Start, Sprite im, bool IsEnemy)
+    public void MakeBuff(BulletInfo BI,Vector3 Start, Sprite im, bool IsEnemy,bool IsField = false)
     {
         for (int i = 0; i < 400; i++)
         {
@@ -156,7 +158,8 @@ public class BulletManager : MonoBehaviour
             {
                 Bullets[i].SetActive(true);
                 Bullets[i].transform.position = Start;
-                BulletScripts[i].Init_Buff(BI.ScaleFactor,im,IsEnemy);
+                Bullets[i].transform.rotation = new Quaternion(0, 0, 0, 0);
+                BulletScripts[i].Init_Buff(BI.ScaleFactor,im,IsEnemy,IsField);
                 BulletInfos[i] = BI;
                 break;
             }
