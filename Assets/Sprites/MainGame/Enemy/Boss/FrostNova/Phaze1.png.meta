@@ -1,0 +1,541 @@
+fileFormatVersion: 2
+guid: 2e39f7ba57803004ab32a0b74e934b1d
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 90
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Phaze1_0
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 1704
+        width: 413
+        height: 530
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cc3c2d08862e534b8604e8d5c53e74b
+      internalID: -846545174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phaze1_1
+      rect:
+        serializedVersion: 2
+        x: 892
+        y: 1702
+        width: 402
+        height: 530
+      alignment: 9
+      pivot: {x: 0.515, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ba49b6f1f872d94883a873fa23e8235
+      internalID: -249595985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phaze1_2
+      rect:
+        serializedVersion: 2
+        x: 1450
+        y: 1713
+        width: 391
+        height: 529
+      alignment: 9
+      pivot: {x: 0.529, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 846d270c05b2e22459a1041bc67e5998
+      internalID: -570958011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phaze1_3
+      rect:
+        serializedVersion: 2
+        x: 2017
+        y: 1706
+        width: 391
+        height: 530
+      alignment: 9
+      pivot: {x: 0.53, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68ecd8a4f6398bd4498259eb74c4ac51
+      internalID: -1541568734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phaze1_4
+      rect:
+        serializedVersion: 2
+        x: 2577
+        y: 1699
+        width: 409
+        height: 528
+      alignment: 9
+      pivot: {x: 0.553, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68b430fd4c1940a4a8a4c4faea9483d3
+      internalID: 13143494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phaze1_5
+      rect:
+        serializedVersion: 2
+        x: 3147
+        y: 1716
+        width: 391
+        height: 530
+      alignment: 9
+      pivot: {x: 0.533, y: 0.385}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92f0b4def3cfab748bce7b5f82d7a8ac
+      internalID: 845760634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phaze1_6
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 979
+        width: 406
+        height: 529
+      alignment: 9
+      pivot: {x: 0.509, y: 0.399}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db7c356361bb8324b89a6948da1ecfa1
+      internalID: -1758017403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phaze1_7
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 1033
+        width: 410
+        height: 530
+      alignment: 9
+      pivot: {x: 0.555, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d59194e88b68d544daed1e33c3439753
+      internalID: 1897664796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phaze1_8
+      rect:
+        serializedVersion: 2
+        x: 1448
+        y: 1009
+        width: 390
+        height: 530
+      alignment: 9
+      pivot: {x: 0.532, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2cae23952e445145a1c3cb4c47fe8bc
+      internalID: 1222733897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phaze1_9
+      rect:
+        serializedVersion: 2
+        x: 2006
+        y: 1030
+        width: 389
+        height: 528
+      alignment: 9
+      pivot: {x: 0.531, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59a19e0a653300d47a9ebea923def7ed
+      internalID: 1615988158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phaze1_10
+      rect:
+        serializedVersion: 2
+        x: 2590
+        y: 1018
+        width: 403
+        height: 529
+      alignment: 9
+      pivot: {x: 0.512, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8cb972803b2d834585812dadd0d392b
+      internalID: -1709801160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phaze1_12
+      rect:
+        serializedVersion: 2
+        x: 3215
+        y: 1022
+        width: 365
+        height: 530
+      alignment: 9
+      pivot: {x: 0.568, y: 0.401}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96ad39523f4af83439b0f2449fcfdb7c
+      internalID: 1003991584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phaze1_13
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 255
+        width: 393
+        height: 528
+      alignment: 9
+      pivot: {x: 0.525, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af4bef445f727a34eacf79fc834e2a9f
+      internalID: -211032439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phaze1_14
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 279
+        width: 316
+        height: 530
+      alignment: 9
+      pivot: {x: 0.653, y: 0.399}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 134691c4e994b9e4b86ad18d92e60500
+      internalID: 2117468597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phaze1_15
+      rect:
+        serializedVersion: 2
+        x: 1454
+        y: 255
+        width: 413
+        height: 530
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d95ad7bc562affa46af6232552cbbe0f
+      internalID: 577993575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phaze1_16
+      rect:
+        serializedVersion: 2
+        x: 2032
+        y: 260
+        width: 400
+        height: 530
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c176cf002a1494147b8ac1521da9850c
+      internalID: -364572772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phaze1_11
+      rect:
+        serializedVersion: 2
+        x: 3212
+        y: 262
+        width: 406
+        height: 529
+      alignment: 9
+      pivot: {x: 0.51, y: 0.398}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a847f8c920bd0f48a52195368361192
+      internalID: -2073613312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phaze1_17
+      rect:
+        serializedVersion: 2
+        x: 2645
+        y: 267
+        width: 409
+        height: 528
+      alignment: 9
+      pivot: {x: 0.553, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57dde7e47ec68cb49aa4fd6b94c6ecdc
+      internalID: 836735234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phaze1_18
+      rect:
+        serializedVersion: 2
+        x: 3706
+        y: 252
+        width: 393
+        height: 528
+      alignment: 9
+      pivot: {x: 0.525, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3604b8bd43f85304fbd9bfdd7981b0ce
+      internalID: 1166560415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Phaze1_7: 1897664796
+      Phaze1_12: 1003991584
+      Phaze1_13: -211032439
+      Phaze1_4: 13143494
+      Phaze1_1: -249595985
+      Phaze1_15: 577993575
+      Phaze1_11: -2073613312
+      Phaze1_17: 836735234
+      Phaze1_8: 1222733897
+      Phaze1_2: -570958011
+      Phaze1_10: -1709801160
+      Phaze1_16: -364572772
+      Phaze1_9: 1615988158
+      Phaze1_0: -846545174
+      Phaze1_5: 845760634
+      Phaze1_14: 2117468597
+      Phaze1_3: -1541568734
+      Phaze1_18: 1166560415
+      Phaze1_6: -1758017403
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
