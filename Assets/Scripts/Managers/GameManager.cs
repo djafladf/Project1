@@ -268,6 +268,7 @@ public class GameManager : MonoBehaviour
     public void BossEnd()
     {
         ES.StartStage();
+        UM.BossShaft.gameObject.SetActive(false);
         IsBoss = false;
     }
 

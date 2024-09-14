@@ -48,9 +48,15 @@ public class Player : ScriptableObject
     [NonSerialized] public bool ChangeOccur = false;
     [NonSerialized] public OperatorBatchTool MyBatch;
 
+    [NonSerialized] public bool Unbeat = false;
+
 
     // 공, 방, 속, 공속
     [NonSerialized]public float[] ReinforceAmount = { 0, 0, 0, 0 };
     [NonSerialized]public float[] ReinForceLast = { 0, 0, 0, 0 };
+
+    // 4 : IceRatio
+    [NonSerialized] public float[] DeBuffAmount = { 0, 0, 0, 0 ,0};
+    [NonSerialized] public float[] DeBuffLast = { 0, 0, 0, 0 ,0};
 }
 

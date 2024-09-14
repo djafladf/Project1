@@ -113,7 +113,7 @@ TextureImporter:
         width: 398
         height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,7 +134,7 @@ TextureImporter:
         width: 393
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,7 +155,7 @@ TextureImporter:
         width: 51
         height: 51
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -163,6 +163,27 @@ TextureImporter:
       bones: []
       spriteID: 0cad1e245df079e45b2dcf197ebcf048
       internalID: -2077057485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossStat_3
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 2
+        width: 90
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a83c37b5645f77d48b8b6876213dfc1d
+      internalID: -1703017906
       vertices: []
       indices: 
       edges: []
@@ -178,6 +199,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      BossStat_3: -1703017906
       BossStat_1: -1302632372
       BossStat_0: 1337483544
       BossStat_2: -2077057485

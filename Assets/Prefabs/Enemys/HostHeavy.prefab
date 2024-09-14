@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a8c4a71cf26245408d40b1bc351b006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 1000
+  HP: 2000
   speed: 0
   Damage: 10
   Defense: 75
@@ -340,7 +340,7 @@ Transform:
   m_GameObject: {fileID: 7769702839734820164}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1788775384281307612}
@@ -373,7 +373,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.2, y: 0.2}
   serializedVersion: 2
-  m_Radius: 2.5
+  m_Radius: 5
 --- !u!50 &3760417788998118722
 Rigidbody2D:
   serializedVersion: 4

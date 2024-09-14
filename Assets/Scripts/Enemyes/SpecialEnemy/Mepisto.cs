@@ -18,10 +18,15 @@ public class Mepisto : Enemy
 
     protected override void OnEnable()
     {
+        if (!IsInit)
+        {
+            transform.position = GameManager.instance.player.Self.position + new Vector3(8, 0);
+            GameManager.instance.ES.SetCurrentSpawnPos();
+            GameManager.instance.UM.BossTransform = transform;
+            GameManager.instance.UM.BossShaft.gameObject.SetActive(true);
+            StartCoroutine(StartEffect());
+        }
         base.OnEnable();
-        transform.position = GameManager.instance.player.Self.position + new Vector3(8, 0);
-        GameManager.instance.ES.SetCurrentSpawnPos();
-        StartCoroutine(StartEffect());
     }
 
     IEnumerator StartEffect()
@@ -88,8 +93,21 @@ public class Mepisto : Enemy
 
     }
 
-    protected override void OnTriggerExit2D(Collider2D collision) { }
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Area"))
+        {
+            GameManager.instance.UM.BossShaft.gameObject.SetActive(false);
+        }
+        base.OnTriggerEnter2D(collision);
+    }
 
+    protected override void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Area"))
+        {
+            GameManager.instance.UM.BossShaft.gameObject.SetActive(true);
+        }
+    }
 
-    
 }

@@ -232,8 +232,8 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 64
-  scanRange: 10
-  AttackRange: 10
+  scanRange: 15
+  AttackRange: 15
   HPBar: {fileID: 8779761122903462783}
   Bullet: {fileID: -795090753, guid: be71ba11fdd30ef4a8cdedfbee810110, type: 3}
   Bullet2: {fileID: 299962671, guid: be71ba11fdd30ef4a8cdedfbee810110, type: 3}

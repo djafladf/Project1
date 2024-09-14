@@ -101,12 +101,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a618ecc58f757ce41b2f2a6085095ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 500
+  HP: 1000
   speed: 1
   Damage: 0
-  Defense: 10
+  Defense: 20
   Weight: 0
-  EnemyType: 2
+  EnemyType: 25
   IsRange: 0
   MakeLine: 0
   BI:

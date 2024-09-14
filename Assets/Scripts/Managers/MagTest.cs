@@ -13,9 +13,9 @@ public class MagTest : Editor
         GUILayout.FlexibleSpace(); // 고정된 여백을 넣습니다. ( 버튼이 가운데 오기 위함)
                                    //버튼을 만듭니다 . GUILayout.Button("버튼이름" , 가로크기, 세로크기)
 
-        if (GUILayout.Button("자석 생성", GUILayout.Width(120), GUILayout.Height(30)))
+        if (GUILayout.Button("레벨 업", GUILayout.Width(120), GUILayout.Height(30)))
         {
-            GameManager.instance.IM.MagStart();
+            GameManager.instance.UM.ExpUp(0,true);
         }
         GUILayout.FlexibleSpace();  // 고정된 여백을 넣습니다.
         EditorGUILayout.EndHorizontal();  // 가로 생성 끝

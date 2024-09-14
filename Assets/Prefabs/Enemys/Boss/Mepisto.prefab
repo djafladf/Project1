@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b55aa3ff9afa2a141bcf7877463457ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 2500
+  HP: 10000
   speed: 0
   Damage: 0
   Defense: 0

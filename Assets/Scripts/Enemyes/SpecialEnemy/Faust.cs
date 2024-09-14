@@ -13,19 +13,19 @@ public class Faust : Enemy
         MaxDamage = Mathf.FloorToInt(MaxDamage * (1 + GameManager.instance.EnemyStatus.boss * 0.05f)); Damage = MaxDamage;
     }
 
-    bool StartEn = true;
     protected override void OnEnable()
     {
-        base.OnEnable();
-
-        if (StartEn) { StartEn = false; return; }
+        if (!IsInit)
+        {
             ChangeDirCor = StartCoroutine(ChangeDir());
             StartCoroutine(BatchCool());
-            transform.position = GameManager.instance.ES.ReBatchCall();
+            transform.position = GameManager.instance.ES.ReBatchCall(transform.position);
             Dir = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
             if (Dir.x > 0 && !spriteRenderer.flipX) spriteRenderer.flipX = true;
             else if (Dir.x < 0 && spriteRenderer.flipX) spriteRenderer.flipX = false;
             MakeWalls();
+        }
+        base.OnEnable();      
     }
 
 
@@ -130,22 +130,32 @@ public class Faust : Enemy
     }
 
     [SerializeField] GameObject Wall;
+    List<GameObject> Walls = new List<GameObject>();
     List<GameObject> Bows = new List<GameObject>();
     void MakeWalls()
     {
-        for (float x = -30; x <= 30; x += 2) Instantiate(Wall).transform.position = new Vector3(x, 20, 0);
+        Vector3 PlayerPos = GameManager.instance.player.Self.position;
+        for (float x = -30; x <= 30; x += 2)
+        {
+            GameObject j = Instantiate(Wall); Walls.Add(j); j.transform.position = PlayerPos + new Vector3(x, 20, 0);
+        }
+        
         for (float x = 18.5f; x >= -19; x -= 1.5f) 
         {
-            var cnt = Instantiate(Wall);
-            cnt.transform.position = new Vector3(-30, x, 0);
+            var cnt = Instantiate(Wall); Walls.Add(cnt);
+            cnt.transform.position = PlayerPos + new Vector3(-30, x, 0);
             var tmp = cnt.transform.GetChild(0).gameObject; tmp.GetComponent<SpriteRenderer>().flipX = true; tmp.GetComponent<PaustBow>().Dir = Vector3.right;
             Bows.Add(tmp);
-            cnt = Instantiate(Wall);
-            cnt.transform.position = new Vector3(30, x, 0);
+            cnt = Instantiate(Wall); Walls.Add(cnt);
+            cnt.transform.position = PlayerPos + new Vector3(30, x, 0);
             tmp = cnt.transform.GetChild(0).gameObject; tmp.GetComponent<PaustBow>().Dir = Vector3.left;
             Bows.Add(tmp);
         }
-        for (float x = -30; x <= 30; x += 2) Instantiate(Wall).transform.position = new Vector3(x, -20.5f, 0);
+        for (float x = -30; x <= 30; x += 2)
+        {
+            GameObject j = Instantiate(Wall); Walls.Add(j);
+            j.transform.position = PlayerPos + new Vector3(x, -20.5f, 0);
+        }
     }
 
     [SerializeField] GameObject HideEffect;
@@ -155,19 +165,23 @@ public class Faust : Enemy
         IsHide = false; gameObject.layer = 6;
         HideEffect.SetActive(false);
         Damage = (int)(Damage * 1.5f);
+        GameManager.instance.UM.BossTransform = transform;
     }
 
     protected override void Dead()
     {
-        gameObject.SetActive(false);
-        for (int i = 0; i < 10; i++)
+        foreach (var j in Walls) Destroy(j);
+        for (int i = 0; i < 15; i++)
         {
             GameManager.instance.IM.MakeItem(transform.position +
                 new Vector3(Random.Range(-10, 10) * 0.3f, Random.Range(-10, 10) * 0.3f, 0), true);
         }
-        GameManager.instance.UM.ShowDialog(new List<string>() { "¤·¤µ¤·" },
+        GameManager.instance.UM.ShowDialog(new List<string>() { },
                 () => { GameManager.instance.BossEnd(); }
                 );
+
+        GameManager.instance.ES.ReleaseSpawnPos();
+        gameObject.SetActive(false);
     }
 
 
@@ -176,14 +190,19 @@ public class Faust : Enemy
         GameManager.instance.UM.BossHP.fillAmount = HP / (float)MaxHP;
     }
 
+
     protected override void OnTriggerExit2D(Collider2D collision)
     {
-        
+        if (!IsHide) if (collision.CompareTag("Area")) GameManager.instance.UM.BossShaft.gameObject.SetActive(true);
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!IsHide) base.OnTriggerEnter2D(collision);
+        if (!IsHide)
+        {
+            if (collision.CompareTag("Area")) GameManager.instance.UM.BossShaft.gameObject.SetActive(false);
+            base.OnTriggerEnter2D(collision);
+        }
     }
 
     protected override void Heal(float Amount) { HP += (int)Amount; HP = Mathf.Min(MaxHP, HP); GameManager.instance.UM.BossHP.fillAmount = HP / (float)MaxHP; }
@@ -193,5 +212,11 @@ public class Faust : Enemy
     {
         AttackEffect.transform.localPosition = spriteRenderer.flipX ? new Vector3(3.85f, 0) : new Vector3(-3.85f, 0);
         AttackEffect.Play();
+    }
+
+    private void OnDisable()
+    {
+        GameManager.instance.UM.BossTransform = null;
+        GameManager.instance.UM.BossShaft.gameObject.SetActive(false);
     }
 }

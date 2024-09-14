@@ -16,7 +16,7 @@ public class HostEnemy : Enemy
         if (IsRange)
         {
             BI.Damage = Mathf.FloorToInt(Damage * (1 + GameManager.instance.EnemyStatus.attack - DeBuffVar[1]));
-            GameManager.instance.BM.MakeBullet(BI, 0, transform.position, (AttackPos - transform.position).normalized, 16, true, Bull);
+            GameManager.instance.BM.MakeBullet(BI, 0, transform.position, (AttackPos - transform.position).normalized, 25, true, Bull);
         }
         else
         {
@@ -43,6 +43,4 @@ public class HostEnemy : Enemy
             yield return GameManager.OneSec;
         }
     }
-
-    protected override void OnTriggerExit2D(Collider2D collision) { }
 }

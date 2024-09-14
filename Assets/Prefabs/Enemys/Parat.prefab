@@ -162,7 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 200
   speed: 2.5
-  Damage: 5
+  Damage: 8
   Defense: 10
   Weight: 0
   EnemyType: 9
@@ -188,7 +188,7 @@ MonoBehaviour:
       Speed: 0
       Attack: 0
       Defense: 0
-      Fragility: 0
+      AttackSpeed: 0
       Heal: 0
   Bull: {fileID: 0}
   BL:

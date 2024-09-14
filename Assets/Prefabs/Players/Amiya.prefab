@@ -5206,8 +5206,8 @@ MonoBehaviour:
   BLT:
     Color:
       serializedVersion: 2
-      key0: {r: 0.3301887, g: 0.04516733, b: 0.04516733, a: 1}
-      key1: {r: 0.3301887, g: 0.04516733, b: 0.04516733, a: 0.5882353}
+      key0: {r: 0, g: 0, b: 0, a: 0.78431374}
+      key1: {r: 0.23584908, g: 0.034487363, b: 0.034487363, a: 0.78431374}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -5237,10 +5237,10 @@ MonoBehaviour:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.3
-        inSlope: 0.49999997
-        outSlope: 0.49999997
+        time: 0.0048959935
+        value: 0.35
+        inSlope: 0.25627363
+        outSlope: 0.25627363
         tangentMode: 34
         weightedMode: 0
         inWeight: 0
@@ -5256,9 +5256,9 @@ MonoBehaviour:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.2
-        inSlope: -0.25
-        outSlope: -0.25
+        value: 0.4
+        inSlope: 0
+        outSlope: 0
         tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
@@ -5266,7 +5266,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    Time: 1
+    Time: 0.8
   PTS:
   - {fileID: 3818787095874411137}
 --- !u!114 &3772359833279883307

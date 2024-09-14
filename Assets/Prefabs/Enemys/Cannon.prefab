@@ -4863,7 +4863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a16a6d1d1e021f478c0827894e13ed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 150
+  HP: 200
   speed: 1
   Damage: 15
   Defense: 0
@@ -4878,6 +4878,7 @@ MonoBehaviour:
     KnockBack: 0
     IgnoreDefense: 0
     ScaleFactor: 0
+    SpeedFactor: 0
     DeBuffs:
       Last: 0
       Speed: 0
@@ -4890,7 +4891,7 @@ MonoBehaviour:
       Speed: 0
       Attack: 0
       Defense: 0
-      Fragility: 0
+      AttackSpeed: 0
       Heal: 0
   Bull: {fileID: 0}
   BL:

@@ -1,0 +1,478 @@
+fileFormatVersion: 2
+guid: 0c126503f8b8c964aa9d3aef5d106414
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 90
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Attack_Phaze2_0
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 2806
+        width: 531
+        height: 538
+      alignment: 9
+      pivot: {x: 0.39, y: 0.393}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12f9e44560385b9469eeaa19da1944f6
+      internalID: 693776584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Phaze2_1
+      rect:
+        serializedVersion: 2
+        x: 1222
+        y: 2829
+        width: 534
+        height: 1004
+      alignment: 9
+      pivot: {x: 0.39, y: 0.212}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83115cb5ea49da547bc9a725dfd3d760
+      internalID: 23365576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Phaze2_2
+      rect:
+        serializedVersion: 2
+        x: 1946
+        y: 2829
+        width: 539
+        height: 1000
+      alignment: 9
+      pivot: {x: 0.403, y: 0.214}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 976a9bf5cd0915b4193dc1141df91624
+      internalID: -266454923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Phaze2_3
+      rect:
+        serializedVersion: 2
+        x: 2685
+        y: 2822
+        width: 531
+        height: 529
+      alignment: 9
+      pivot: {x: 0.39, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5860cba9bc1a95d49962423d4ba07813
+      internalID: 2035527659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Phaze2_5
+      rect:
+        serializedVersion: 2
+        x: 1383
+        y: 1940
+        width: 554
+        height: 542
+      alignment: 9
+      pivot: {x: 0.428, y: 0.395}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37547bfe96dea2447a0746bb6b0c7214
+      internalID: 1300227771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Phaze2_6
+      rect:
+        serializedVersion: 2
+        x: 2139
+        y: 1940
+        width: 574
+        height: 527
+      alignment: 9
+      pivot: {x: 0.42, y: 0.405}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e02c1aea97569884a931a3c2acc0611b
+      internalID: 1042542991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Phaze2_7
+      rect:
+        serializedVersion: 2
+        x: 2810
+        y: 1930
+        width: 545
+        height: 532
+      alignment: 9
+      pivot: {x: 0.42, y: 0.402}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b327b58577e5b047aa82584710914ea
+      internalID: -1005008767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Phaze2_8
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 1147
+        width: 682
+        height: 546
+      alignment: 9
+      pivot: {x: 0.48, y: 0.412}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee4ef4980785e25439749605c6b4a493
+      internalID: 917978741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Phaze2_9
+      rect:
+        serializedVersion: 2
+        x: 1193
+        y: 1128
+        width: 711
+        height: 562
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7d9289f390565c4880bfdf9fb6d9563
+      internalID: -337948547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Phaze2_10
+      rect:
+        serializedVersion: 2
+        x: 2132
+        y: 1121
+        width: 562
+        height: 456
+      alignment: 9
+      pivot: {x: 0.418, y: 0.488}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ac253fc9c077d842ba54882e77a2fc9
+      internalID: 248686608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Phaze2_12
+      rect:
+        serializedVersion: 2
+        x: 2829
+        y: 1123
+        width: 547
+        height: 485
+      alignment: 9
+      pivot: {x: 0.43, y: 0.46}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 340e489204ddbd54b83558ab99c08c76
+      internalID: -627342295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Phaze2_14
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 332
+        width: 694
+        height: 553
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 487d64b9cd615fa4dacd7e78607d4feb
+      internalID: -168519129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Phaze2_16
+      rect:
+        serializedVersion: 2
+        x: 1291
+        y: 331
+        width: 442
+        height: 501
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 986db2a4a9be4bf4087d9ed72327ebdd
+      internalID: 2056070261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Phaze2_17
+      rect:
+        serializedVersion: 2
+        x: 1918
+        y: 328
+        width: 590
+        height: 520
+      alignment: 9
+      pivot: {x: 0.56, y: 0.425}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45ce8e8bbd1153d45a58aa2d26d903b2
+      internalID: 1256760028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Phaze2_18
+      rect:
+        serializedVersion: 2
+        x: 2664
+        y: 267
+        width: 665
+        height: 456
+      alignment: 9
+      pivot: {x: 0.466, y: 0.492}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43fd398b8ec347344893c58a6801d167
+      internalID: -2025986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Phaze2_4
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 1961
+        width: 537
+        height: 529
+      alignment: 9
+      pivot: {x: 0.4, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c54eeba6ca16354ebc4fc705071a2dc
+      internalID: 92543688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Attack_Phaze2_10: 248686608
+      Attack_Phaze2_3: 2035527659
+      Attack_Phaze2_2: -266454923
+      Attack_Phaze2_16: 2056070261
+      Attack_Phaze2_7: -1005008767
+      Attack_Phaze2_4: 92543688
+      Attack_Phaze2_14: -168519129
+      Attack_Phaze2_6: 1042542991
+      Attack_Phaze2_18: -2025986
+      Attack_Phaze2_15: 2131493907
+      Attack_Phaze2_9: -337948547
+      Attack_Phaze2_11: -863075597
+      Attack_Phaze2_5: 1300227771
+      Attack_Phaze2_17: 1256760028
+      Attack_Phaze2_0: 693776584
+      Attack_Phaze2_1: 23365576
+      Attack_Phaze2_8: 917978741
+      Attack_Phaze2_12: -627342295
+      Attack_Phaze2_13: 1845555181
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

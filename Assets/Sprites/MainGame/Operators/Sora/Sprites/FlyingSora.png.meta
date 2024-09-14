@@ -167,6 +167,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: FlyingSora_3
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 95
+        width: 152
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97181454e4073874482e4c7bba48bb9b
+      internalID: 40885956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -178,6 +199,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      FlyingSora_3: 40885956
       FlyingSora_1: -1149282612
       FlyingSora_0: 200686132
       FlyingSora_2: 1841697770

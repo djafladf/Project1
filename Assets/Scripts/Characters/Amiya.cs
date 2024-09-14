@@ -30,14 +30,13 @@ public class Amiya : PlayerSetting
     private void Start()
     {
         StartCoroutine(Test());
-
-        //for (int i = 0; i < 6; i++) WeaponLevelUp();
     }
 
     IEnumerator Test()
     {
         while (true)
         {
+            if (OnIce) yield return GameManager.DotOneSec;
             int Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 10);
             var Targets = GameManager.GetNearest(scanRange, ProjNum, transform.position, targetLayer);
             Transform j;
@@ -74,7 +73,7 @@ public class Amiya : PlayerSetting
             case 4: Penetrate += 2; break;
             case 5: DamageRatio += 1f; break;
             case 6:
-                ProjNum++; ProjRatio = 3; BulletIm = null; BulletSpeed = 40; Weapon2.SetActive(true); CurApplyLine = BLT;for(int i = 0; i < 8; i++) PTS.Add(Instantiate(PTS[0], transform.GetChild(0)));
+                Penetrate = 50; ProjNum++; ProjRatio = 3; BulletIm = null; BulletSpeed = 60; Weapon2.SetActive(true); CurApplyLine = BLT;for(int i = 0; i < 8; i++) PTS.Add(Instantiate(PTS[0], transform.GetChild(0)));
                 break;
         }
         return player.WeaponLevel;

@@ -151,7 +151,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 7
   m_Sprite: {fileID: 200686132, guid: ace898a3d6a753b4f8e5bb76eef3ecb4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -282,7 +282,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad5c89b031b03c649832a2a86ca372ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sora: {fileID: 11400000, guid: 394e87bae147e6745b45b65061851e3e, type: 2}
+  Sora: {fileID: 7529310201199820976}
+  sp: {fileID: 40885956, guid: ace898a3d6a753b4f8e5bb76eef3ecb4, type: 3}
 --- !u!50 &8545053409178567156
 Rigidbody2D:
   serializedVersion: 4
@@ -10912,7 +10913,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 7
   m_Sprite: {fileID: 200686132, guid: ace898a3d6a753b4f8e5bb76eef3ecb4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -11043,7 +11044,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad5c89b031b03c649832a2a86ca372ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sora: {fileID: 11400000, guid: 394e87bae147e6745b45b65061851e3e, type: 2}
+  Sora: {fileID: 7529310201199820976}
+  sp: {fileID: 40885956, guid: ace898a3d6a753b4f8e5bb76eef3ecb4, type: 3}
 --- !u!50 &8215827335819275606
 Rigidbody2D:
   serializedVersion: 4
@@ -11246,6 +11248,20 @@ MonoBehaviour:
   ETC:
   - {fileID: -314280399, guid: 5b3481261c82bcd4389ab5b5032c7246, type: 3}
   - {fileID: -1607878231, guid: 5b3481261c82bcd4389ab5b5032c7246, type: 3}
+  CurBuff:
+    Last: 0.2
+    Speed: 0
+    Attack: 0.1
+    Defense: 0.1
+    AttackSpeed: 0
+    Heal: 0
+  CurDeBuff:
+    Last: 0
+    Speed: 0
+    Attack: 0
+    Defense: 0
+    Ice: 0
+    Fragility: 0
 --- !u!212 &7529310201199820988
 SpriteRenderer:
   m_ObjectHideFlags: 0

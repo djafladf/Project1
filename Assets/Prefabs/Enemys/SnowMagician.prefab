@@ -102,12 +102,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02537fbf858b4da419514d7451e1123f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 100
+  HP: 150
   speed: 2
-  Damage: 8
+  Damage: 12
   Defense: 0
   Weight: 0
-  EnemyType: 7
+  EnemyType: 21
   IsRange: 1
   MakeLine: 1
   BI:
@@ -123,7 +123,7 @@ MonoBehaviour:
       Speed: 0
       Attack: 0
       Defense: 0
-      Ice: 0
+      Ice: 1
       Fragility: 0
     Buffs:
       Last: 0

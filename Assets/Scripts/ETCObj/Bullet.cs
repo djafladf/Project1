@@ -107,8 +107,8 @@ public class Bullet : MonoBehaviour
         if (Im != null) coll.size = sprite.bounds.size * ScaleFactor;
         else coll.size = Vector2.one * ScaleFactor;
 
-        IsMeele = IsField;
-        if (IsMeele) StartCoroutine(AfterImage(0.3f,true));
+        IsMeele = true;
+        StartCoroutine(AfterImage(0.3f,true));
         tag = IsEnemy ? "EnemyBuff" : "PlayerBuff";
     }
 

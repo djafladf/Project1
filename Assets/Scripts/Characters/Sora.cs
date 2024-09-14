@@ -54,7 +54,7 @@ public class Sora : PlayerSetting
         }
 
         player.rigid.velocity = Vector2.zero;
-        if (CanMove)
+        if (CanMove && !OnIce)
         {
             if (!IsPlayer)
             {
@@ -139,6 +139,10 @@ public class Sora : PlayerSetting
     }
 
     Vector3 SizeSub;
+    List<Transform> EtcPos = new List<Transform>();
+
+    [HideInInspector] public Buff CurBuff = new Buff(last:0.2f,heal:0,attack:0.1f,defense:0.1f);
+    [HideInInspector] public DeBuff CurDeBuff = null;
     IEnumerator FieldEffect()
     {
         SizeSub = new Vector3(2f, 2f, 0);
@@ -147,7 +151,8 @@ public class Sora : PlayerSetting
         while (true)
         { 
             ForceField.localScale += SizeSub;
-            GameManager.instance.BM.MakeBuff(new BulletInfo(0, false, 0, scalefactor: MaxScale * 0.5f, buffs: new Buff(last: 0.2f, heal: (int)((1 + GameManager.instance.PlayerStatus.attack) * HealRatio), attack: ReinforceRatio, defense: ReinforceRatio)), new Vector3(transform.position.x,transform.position.y - 0.6f), null, false);
+            CurBuff.Heal = (int)Mathf.Round((1 + GameManager.instance.PlayerStatus.attack) * HealRatio);
+            GameManager.instance.BM.MakeBuff(new BulletInfo(0, false, 0, scalefactor: MaxScale * 0.5f,buffs:CurBuff,debuffs:CurDeBuff), new Vector3(transform.position.x,transform.position.y - 0.6f), null, false);
             if (ForceField.localScale.x >= MaxScale)
             {
                 yield return GameManager.DotOneSec;
@@ -174,7 +179,6 @@ public class Sora : PlayerSetting
 
 
     float HealRatio = 1f;
-    float ReinforceRatio = 0.1f;
 
     protected override int WeaponLevelUp()
     {
@@ -184,8 +188,8 @@ public class Sora : PlayerSetting
             case 2: MaxScale = 24; SizeSub = new Vector3(2.4f, 2.4f); break;
             case 3: HealRatio += 0.2f; break;
             case 4: MaxScale = 30; SizeSub = new Vector3(3f, 3f); break;
-            case 5: ReinforceRatio = 0.15f; break;
-            case 6: FlyOne.SetActive(true); FlyTwo.SetActive(true); break;
+            case 5: CurBuff.Attack = 0.15f; CurBuff.Defense = 0.15f; break;
+            case 6: CurBuff.Attack = 0.2f; CurBuff.Defense = 0.2f; CurDeBuff =  new DeBuff(last:0.2f, attack:0.1f,defense:0.1f); FlyOne.SetActive(true); FlyTwo.SetActive(true); break;
         }
         return player.WeaponLevel;
     }

@@ -159,7 +159,7 @@ public class Enemy : MonoBehaviour
                     else LeftTime[2] = Info.DeBuffs.Last;
                     DeBuffVar[2] = Info.DeBuffs.Defense;
                 }
-                if (Info.DeBuffs.Ice != 0 && !OnIce)
+                if (Info.DeBuffs.Ice != 0 && !OnIce && IceRatio != 0)
                 {
                     Cheeled += Info.DeBuffs.Ice * IceRatio;
                     if (DeBuffObj[4] == null)
@@ -170,16 +170,15 @@ public class Enemy : MonoBehaviour
                         DeBuffObj[4].gameObject.SetActive(true);
                         DeBuffVar[0] += 0.3f;
                     }
-                    if (Cheeled >= 5)
+                    if (Cheeled >= 10)
                     {
-                        DeBuffObj[4].SetActive(false); DeBuffObj[3].transform.parent = GameManager.instance.BFM.transform;
+                        DeBuffObj[4].SetActive(false); DeBuffObj[4].transform.parent = GameManager.instance.BFM.transform;
                         DeBuffObj[4] = null;
 
                         DeBuffObj[4] = GameManager.instance.BFM.RequestForDebuff(1,spriteRenderer.sprite.bounds.size.x,spriteRenderer.bounds.size.y);
                         DeBuffObj[4].transform.parent = transform;
                         DeBuffObj[4].transform.localPosition = Vector3.zero;
-                        DeBuffObj[4].gameObject.SetActive(true);
-                        StartCoroutine(Iced());
+                        DeBuffObj[4].gameObject.SetActive(true); DeBuffVar[0] -= 0.3f; Cheeled = 0; anim.enabled = false;
                     }
                 }
                 if (Info.DeBuffs.Fragility != 0)
@@ -234,7 +233,17 @@ public class Enemy : MonoBehaviour
                 if (LeftTime[i] != 0)
                 {
                     LeftTime[i] -= 0.1f;
-                    if (LeftTime[i] <= 0) { LeftTime[i] = 0; DeBuffVar[i] = 0; DeBuffObj[i].SetActive(false); DeBuffObj[i].transform.parent = GameManager.instance.BFM.transform; DeBuffObj[i] = null; }
+                    if (LeftTime[i] <= 0) { LeftTime[i] = 0; DeBuffVar[i] = (i == 0 ? Cheeled == 0 ? 0 : 0.3f : 0); DeBuffObj[i].SetActive(false); DeBuffObj[i].transform.parent = GameManager.instance.BFM.transform; DeBuffObj[i] = null; }
+                }
+                if (LeftTime[4] > 0)
+                {
+                    LeftTime[4] -= 0.1f;
+                    if (LeftTime[4] <= 0)
+                    {
+                        LeftTime[4] = 0; OnIce = false;
+                        DeBuffObj[4].SetActive(false); DeBuffObj[4].transform.parent = GameManager.instance.BFM.transform; DeBuffObj[4] = null; 
+                        LeftTime[4] = 0; anim.enabled = true;
+                    }
                 }
             }
             yield return GameManager.DotOneSec;
@@ -253,26 +262,12 @@ public class Enemy : MonoBehaviour
         DeBuffObj[2] = null;
     }
 
-    IEnumerator Iced()
-    {
-        anim.enabled = false;
-        OnIce = true;
-        yield return GameManager.OneSec;
-
-        Cheeled = 0;
-        anim.enabled = true;
-        IceRatio *= 0.5f;
-        OnIce = false;
-        DeBuffObj[3].SetActive(false); DeBuffObj[3].transform.parent = GameManager.instance.BFM.transform;
-        DeBuffObj[3] = null;
-    }
-
     protected virtual void OnTriggerExit2D(Collider2D collision)
     {
         if (!IsLive) return;
-        if (collision.CompareTag("Area"))
+        if (collision.CompareTag("Area") && !GameManager.instance.ES.IsPosFixed)
         {
-            transform.position = GameManager.instance.player.Self.position + GameManager.instance.ES.ReBatchCall();
+            transform.position = GameManager.instance.player.Self.position + GameManager.instance.ES.ReBatchCall(transform.position);
         }
     }
 

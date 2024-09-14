@@ -84,7 +84,7 @@ public class Platinum :PlayerSetting
         {
             Vector3 RandomSub = Target + Gap;
             if (cnt.Count != 0) RandomSub = cnt[Random.Range(0, cnt.Count)].position + Gap;
-            GameManager.instance.BM.MakeMeele(new BulletInfo(Damage, false,0,ignoreDefense:DefenseIgnore),0.4f,RandomSub,Vector3.down,30,false,Bullet2,delay:0.3f);
+            GameManager.instance.BM.MakeMeele(new BulletInfo(Damage, false,0,ignoreDefense:DefenseIgnore,scalefactor:1.5f),0.4f,RandomSub,Vector3.down,30,false,Bullet2,delay:0.3f);
             yield return GameManager.DotOneSec;
         }
         Mark.gameObject.SetActive(false);

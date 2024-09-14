@@ -192,7 +192,7 @@ public class Kazemaru : PlayerSetting
     {
         switch (player.WeaponLevel++)
         {
-            case 1: DamageRatio += 0.5f; break;
+            case 1: DamageRatio += 1f; break;
             case 2: ProjNum = 1; break;
             case 3: CanEvade = true; break;
             case 4: DamageRatio += 1f; break;

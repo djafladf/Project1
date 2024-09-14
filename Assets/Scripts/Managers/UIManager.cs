@@ -34,6 +34,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject GetAreaPref;
     [SerializeField] GameObject PauseObj;
+
+    public Transform BossShaft;
     Transform GetArea;
     int[] GoodsCount = new int[3];
 
@@ -83,6 +85,8 @@ public class UIManager : MonoBehaviour
 
 
     public int CurMinute = 0;
+
+    [HideInInspector] public Transform BossTransform;
     private void FixedUpdate()
     {
         if (!GameManager.instance.IsBoss)
@@ -91,16 +95,24 @@ public class UIManager : MonoBehaviour
             if (CurTime >= 60) { CurMinute++; CurTime = 0; }
             Timer.text = string.Format("{0:00}:{1:00}", CurMinute, Mathf.FloorToInt(CurTime));
         }
-        if (CurCost < 99) CurCost += Time.fixedDeltaTime * GameManager.instance.PlayerStatus.cost;
+
+        if (BossShaft.gameObject.activeSelf)
+        {
+            Vector3 Dir = (BossTransform.position - GameManager.instance.player.Self.transform.position).normalized;
+            BossShaft.rotation = Quaternion.FromToRotation(Vector3.up, Dir);
+            BossShaft.position = new Vector3(Screen.width / 2, Screen.height / 2) + new Vector3(Dir.x * Screen.width * 0.5f, Dir.y * Screen.height * 0.5f);
+
+        }
+        if (CurCost < 99) CurCost += Time.fixedDeltaTime * GameManager.instance.PlayerStatus.cost * 0.5f;
         Cost.text = $"{(int)CurCost}";
     }
 
     float ExpSub = 0.07f;
     float CurExpVar = 0;
-    public void ExpUp(int value)
+    public void ExpUp(int value,bool Test = false)
     {
         CurExpVar += ExpSub * value * GameManager.instance.PlayerStatus.exp;
-        if (CurExpVar >= 1) {
+        if (CurExpVar >= 1 || Test) {
             CurExpVar--;
             LV.text = $"LV.{++CurLevel}";
             ExpSub *= 0.92f;
@@ -159,6 +171,8 @@ public class UIManager : MonoBehaviour
         ReRollCountText.text = $"³²Àº È½¼ö : <color=red>{ReRollCount}</color>";
         LevelUpEvent();
     }
+
+    int[] RarityPickVar = { 90, 99 };
     public void LevelUpEvent()
     {
         if (NormalItem.Count + RareItem.Count + LegendItem.Count < GameManager.instance.PlayerStatus.selection) NormalItem.AddRange(StatItem);
@@ -198,12 +212,12 @@ public class UIManager : MonoBehaviour
                 while (cnt == null)
                 {
                     int RarityPick = UnityEngine.Random.Range(0, 100);
-                    if (RarityPick < 80 && pickedElements_Normal.Count != 0)
+                    if (RarityPick < RarityPickVar[0] && pickedElements_Normal.Count != 0)
                     {
                         Ind = pickedElements_Normal[0]; pickedElements_Normal.RemoveAt(0);
                         cnt = NormalItem[Ind % NormalItem.Count];
                     }
-                    else if (RarityPick < 99 && pickedElements_Rare.Count != 0)
+                    else if (RarityPick < RarityPickVar[1] && pickedElements_Rare.Count != 0)
                     {
                         Ind = pickedElements_Rare[0]; pickedElements_Rare.RemoveAt(0);
                         cnt = RareItem[Ind % RareItem.Count];
@@ -338,8 +352,8 @@ public class UIManager : MonoBehaviour
                 {
                     switch (cntatt.dragons)
                     {
-                        case 1: GameManager.instance.PlayerStatus.attack += 0.05f * DragonCount++; break;
-                        case 2: GameManager.instance.PlayerStatus.defense += 0.05f * DragonCount++; break;
+                        case 1: GameManager.instance.PlayerStatus.attack += 0.03f * DragonCount++; break;
+                        case 2: GameManager.instance.PlayerStatus.defense += 0.03f * DragonCount++; break;
                         case 3: GameManager.instance.PlayerStatus.exp += 0.05f * DragonCount++; break;
                         case 4: GameManager.instance.PlayerStatus.attackspeed += 0.03f * DragonCount++; break;
                         case 5: GameManager.instance.PlayerStatus.hp += 0.05f * DragonCount++; break;
@@ -348,13 +362,13 @@ public class UIManager : MonoBehaviour
                 }
                 if (Dragons[0])
                 {
-                    GameManager.instance.PlayerStatus.attack += 0.05f;
+                    GameManager.instance.PlayerStatus.attack += 0.03f;
                     AttackStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.attack * 100)}%";
                 }
 
                 if (Dragons[1])
                 {
-                    GameManager.instance.PlayerStatus.defense += 0.05f;
+                    GameManager.instance.PlayerStatus.defense += 0.03f;
                     DefenseStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.defense * 100)}%";
                 }
 
@@ -393,6 +407,9 @@ public class UIManager : MonoBehaviour
                     case 3:
                         Player sub = GameManager.instance.Players[UnityEngine.Random.Range(0,GameManager.instance.Players.Length)];
                         sub.HPRatio += 0.3f; sub.AttackRatio += 0.3f; sub.ChangeOccur = true;
+                        break;
+                    case 4:
+                        RarityPickVar[0] = 86; RarityPickVar[1] = 98;
                         break;
                 }
             }

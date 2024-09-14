@@ -222,16 +222,18 @@ public class Skulslr : Enemy
 
     }
 
-    bool StartEn = true;
     protected override void OnEnable()
     {
+        if (!IsInit)
+        {
+            GameManager.instance.ES.BossSet.SetActive(true);
+            GameManager.instance.UM.BossName.text = IsMisya ? "½ºÄÃ½´·¹´õ?" : "½ºÄÃ½´·¹´õ";
+            GameManager.instance.UM.BossHP.fillAmount = 1;
+            GameManager.instance.UM.BossTransform = transform;
+            GameManager.instance.UM.BossShaft.gameObject.SetActive(true);
+            if (!IsMisya) StartCoroutine(SpecialCoolDown());
+        }
         base.OnEnable();
-        
-        if (StartEn) { StartEn = false; return; }
-        GameManager.instance.ES.BossSet.SetActive(true);
-        GameManager.instance.UM.BossName.text = IsMisya? "½ºÄÃ½´·¹´õ?" : "½ºÄÃ½´·¹´õ";
-        GameManager.instance.UM.BossHP.fillAmount = 1;
-        if (!IsMisya) StartCoroutine(SpecialCoolDown());
     }
 
     bool jj = false;
@@ -285,4 +287,28 @@ public class Skulslr : Enemy
         StartCoroutine(Line1());
 
     }
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Area"))
+        {
+            GameManager.instance.UM.BossShaft.gameObject.SetActive(false);
+        }
+        base.OnTriggerEnter2D(collision);
+    }
+
+    protected override void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Area"))
+        {
+            GameManager.instance.UM.BossShaft.gameObject.SetActive(true);
+        }
+    }
+
+    private void OnDisable()
+    {
+        GameManager.instance.UM.BossTransform = null;
+        GameManager.instance.UM.BossShaft.gameObject.SetActive(false);
+    }
+
 }

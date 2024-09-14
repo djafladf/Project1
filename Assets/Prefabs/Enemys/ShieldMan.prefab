@@ -130,7 +130,7 @@ MonoBehaviour:
       Speed: 0
       Attack: 0
       Defense: 0
-      Fragility: 0
+      AttackSpeed: 0
       Heal: 0
   Bull: {fileID: 0}
   BL:

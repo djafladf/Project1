@@ -107,7 +107,7 @@ MonoBehaviour:
   Damage: 30
   Defense: 0
   Weight: 0
-  EnemyType: 0
+  EnemyType: 24
   IsRange: 0
   MakeLine: 0
   BI:

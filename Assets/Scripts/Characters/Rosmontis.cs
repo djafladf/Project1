@@ -25,6 +25,7 @@ public class Rosmontis : PlayerSetting
         Vector3 DirSub = -VectorSub.normalized;
         while (true)
         {
+            if (OnIce) yield return GameManager.DotOneSec;
             var Targets = GameManager.GetNearest(scanRange, ProjNum, transform.position, targetLayer);
             if (Targets.Count != 0)
             {
@@ -65,7 +66,7 @@ public class Rosmontis : PlayerSetting
     {
         base.OnEnable();
         FloatWeapon.SetActive(false);
-        GameManager.instance.SetTime(5f,false);
+        //GameManager.instance.SetTime(5f,false);
     }
 
     float DamageRatio = 3f;

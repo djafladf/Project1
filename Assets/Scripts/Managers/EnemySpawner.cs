@@ -99,6 +99,7 @@ public class EnemySpawner : MonoBehaviour
                 Pool[i][y].SetActive(false);
             }
         }
+        GameManager.instance.UM.BossShaft.gameObject.SetActive(false);
     }
 
     public void StartStage()
@@ -218,7 +219,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    bool IsPosFixed = false;
+    [HideInInspector] public bool IsPosFixed = false;
     Vector3 FixedPos;
 
     public void SetCurrentSpawnPos()
@@ -237,7 +238,7 @@ public class EnemySpawner : MonoBehaviour
         StopAllCoroutines();
     }
 
-    public Vector3 ReBatchCall()
+    public Vector3 ReBatchCall(Vector3 Pos)
     {
         return SpawnArea[Random.Range(0,SpawnAreaSize)];
     }
