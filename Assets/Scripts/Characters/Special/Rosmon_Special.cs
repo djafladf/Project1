@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Build;
 using UnityEngine;
 
 public class Rosmon_Special : MonoBehaviour
@@ -11,10 +10,12 @@ public class Rosmon_Special : MonoBehaviour
     Transform Target = null;
     AfterImMaker AIM;
     Transform AimTrans;
+    AudioSource AS;
     bool ComeBack = false;
 
     private void Awake()
     {
+        AS = GetComponent<AudioSource>();
         AimTrans = transform.GetChild(0);
         AIM = transform.GetChild(0).GetComponent<AfterImMaker>();
         rigid = GetComponent<Rigidbody2D>();
@@ -72,7 +73,7 @@ public class Rosmon_Special : MonoBehaviour
         float j = Vector3.Magnitude(rigid.velocity);
 
 
-        if (j > 15) rigid.velocity = rigid.velocity.normalized * 15;
+        if (j >  15) rigid.velocity = rigid.velocity.normalized * 15;
 
         transform.rotation = Quaternion.FromToRotation(Vector2.down, rigid.velocity);
 
@@ -83,7 +84,8 @@ public class Rosmon_Special : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            GameManager.instance.BM.MakeBullet(new BulletInfo(Mathf.FloorToInt((1 + GameManager.instance.PlayerStatus.attack + Rosmon.AttackRatio + Rosmon.ReinforceAmount[0]) * 25), false, 0),0,collision.transform.position,Vector3.zero,0,false);
+            if (!AS.isPlaying) AS.Play();
+            GameManager.instance.BM.MakeBullet(new BulletInfo(Mathf.FloorToInt((1 + GameManager.instance.PlayerStatus.attack + GameManager.instance.PlayerStatus.attackspeed + Rosmon.AttackRatio + Rosmon.ReinforceAmount[0]) * 25), false, 0),0,collision.transform.position,Vector3.zero,0,false);
             if (collision.transform == Target && !tmp) { tmp = true; rigid.AddForce(Vector2.right); }
         }
     }

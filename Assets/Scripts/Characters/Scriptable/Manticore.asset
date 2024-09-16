@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7e25e3a93769440ae7e326796378cc, type: 3}
   m_Name: Manticore
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 3
   InitHP: 250
   InitSP: 30
   InitDefense: 15
   Cost: 15
-  ReBatchTime: 20
+  ReBatchTime: 30

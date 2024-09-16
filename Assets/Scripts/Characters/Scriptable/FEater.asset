@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7e25e3a93769440ae7e326796378cc, type: 3}
   m_Name: FEater
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 5
   InitHP: 400
   InitSP: 30
   InitDefense: 35
-  Cost: 18
+  Cost: 20
   ReBatchTime: 30

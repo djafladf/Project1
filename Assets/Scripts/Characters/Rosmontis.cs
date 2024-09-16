@@ -9,8 +9,8 @@ public class Rosmontis : PlayerSetting
     [SerializeField] Sprite[] Sprites;
     [SerializeField] BulletLine BL;
     [SerializeField] GameObject FloatWeapon;
-
-
+    [SerializeField] GameObject AttackSound;
+    [SerializeField] List<AudioSource> AttackSounds;
 
     Vector3 VectorSub = new Vector3(-2, 15,0);
 
@@ -33,6 +33,7 @@ public class Rosmontis : PlayerSetting
                 Transform j;
                 for (int i = 0; i < ProjNum; i++)
                 {
+                    AttackSounds[i].Play();
                     j = Targets[Random.Range(0, Targets.Count)];
 
 
@@ -78,10 +79,10 @@ public class Rosmontis : PlayerSetting
     {
         switch (player.WeaponLevel++)
         {
-            case 1: ProjNum++; break;
+            case 1: ProjNum++; AttackSounds.Add(Instantiate(AttackSound,transform).GetComponent<AudioSource>()); break;
             case 2: DamageRatio += 0.75f; break;
             case 3: defenseRatio += 0.2f; break;
-            case 4: ProjNum++; break;
+            case 4: ProjNum++; AttackSounds.Add(Instantiate(AttackSound, transform).GetComponent<AudioSource>()); break;
             case 5: DamageRatio += 1.25f; break;
             case 6: FloatWeapon.SetActive(true); break;
         }

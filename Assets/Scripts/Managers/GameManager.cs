@@ -8,7 +8,6 @@ using Cinemachine;
 using System.Collections;
 using UnityEngine.UI;
 using Newtonsoft.Json;
-using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
@@ -53,6 +52,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public UIManager UM;
     [HideInInspector] public BuffManager BFM;
     [HideInInspector] public GameObject Git;
+    [HideInInspector] public AudioManager AudioM;
 
     public Camera MainCam;
     public CinemachineVirtualCamera VC;
@@ -76,7 +76,9 @@ public class GameManager : MonoBehaviour
         string json = JsonConvert.SerializeObject(gameStatus);
         File.WriteAllText(Path.Combine(Application.persistentDataPath, "Status.json"), json);
     }
-    
+
+    [HideInInspector] public int RatType = 0;
+
     void Awake()
     {
         InitPlayerStatus = PlayerStatus;
@@ -93,13 +95,32 @@ public class GameManager : MonoBehaviour
                 gameStatus = new GameStatus(); gameStatus.LastBatch.Add(0);
             }
             CurPlayerID = gameStatus.LastBatch;
+#if UNITY_ANDROID || UNITY_IOS
+            Application.targetFrameRate = 60;
+        float Rat = 2560f / 1440f;
+        float Rat2 = (float)Screen.width / Screen.height;
+            float RatRat = Rat / Rat2;
+            Camera.main.transform.localScale *= (RatRat + (RatRat < 0.95f ? 0.15f : 0));
+            if (Rat < Rat2)
+            {
+                transform.GetChild(2).GetComponent<CanvasScaler>().matchWidthOrHeight = 1;
+                
+                RatType = 1;
+            }
+#endif
+
         }
         else if (instance != this) Destroy(gameObject);
         //else Destroy(gameObject);
         
         //LoadAssets();
     }
-
+#if UNITY_ANDROID || UNITY_IOS
+    private void Start()
+    {
+        
+    }
+#endif
 
     [HideInInspector] public Player[] Players;
     [HideInInspector] public GameObject[] Prefs;
@@ -230,7 +251,7 @@ public class GameManager : MonoBehaviour
         UM.Init(LL, CurPlayerID.Select(index => Data.WeaponSub[index]).ToList(), Players, Prefs, CurPlayerID.Select(index => Data.Infos[index]).ToArray(), PlayerInd);
     }
 
-    // ¿ÀÆÛ·¹ÀÌÅÍ ¹«±â
+    // ï¿½ï¿½ï¿½Û·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public void RequestOfWeapon(Func<int> func, int id)
     {
         if (UM.WeaponLevelUps == null)

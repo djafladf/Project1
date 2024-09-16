@@ -16,6 +16,8 @@ public class FrostNova : Enemy
     [SerializeField] GameObject NovaWall;
     [SerializeField] GameObject HideObj;
     [SerializeField] Transform Phaze1Ground;
+
+    [SerializeField] AudioClip clip;
     TrailRenderer BLine;
 
     [HideInInspector]public DeBuff DeBuffOne = new DeBuff(last : 1, ice : 1);
@@ -77,6 +79,7 @@ public class FrostNova : Enemy
                 CurPhaze = 1; MoveAble = false;
                 Particles[0].Play(); StartCoroutine(Phaze1GroundSet());
                 anim.SetTrigger("Phaze1");
+                GameManager.instance.AudioM.ChangeMusic(clip);
             }
     }
 
@@ -90,7 +93,11 @@ public class FrostNova : Enemy
             GameManager.instance.UM.BossTransform = transform;
             GameManager.instance.UM.BossShaft.gameObject.SetActive(true);
             GameManager.instance.ES.SetCurrentSpawnPos();
-            
+
+            GameManager.instance.ES.ExternalSpawnCall(20, -1, 8);
+            GameManager.instance.ES.ExternalSpawnCall(21, -1, 10);
+            GameManager.instance.ES.ExternalSpawnCall(22, -1, 12);
+
             Particles[8].transform.SetParent(Camera.main.transform);
             Particles[8].transform.localPosition = Vector3.zero;
             Border.transform.SetParent(Camera.main.transform);
@@ -110,9 +117,6 @@ public class FrostNova : Enemy
     #region Phaze 1
     protected void Phaze1_1()
     {
-        GameManager.instance.ES.ExternalSpawnCall(20, 3, 0);
-        GameManager.instance.ES.ExternalSpawnCall(21, 2, 0);
-        GameManager.instance.ES.ExternalSpawnCall(22, 1, 0);
 
         IceBulls[0].transform.position = transform.position + (spriteRenderer.flipX ? new Vector3(1,1) : new Vector3(-1, 1));
         IceBulls[0].SetActive(true);
@@ -238,7 +242,7 @@ public class FrostNova : Enemy
 
     protected void BoomAttack_Two()
     {
-        int CurDm = Mathf.FloorToInt(Damage * 3 * (1 + GameManager.instance.EnemyStatus.attack - DeBuffVar[1]));
+        int CurDm = Mathf.FloorToInt(Damage * 2.5f * (1 + GameManager.instance.EnemyStatus.attack - DeBuffVar[1]));
         GameManager.instance.BM.MakeMeele(new BulletInfo(CurDm, false, 0, debuffs: DeBuffTwo), 0.5f, transform.position, Vector2.zero, 0, true, im: BullTwo);
     }
 

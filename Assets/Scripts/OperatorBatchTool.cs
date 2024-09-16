@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.UI;
 
 public class OperatorBatchTool : Buttons
@@ -16,6 +16,7 @@ public class OperatorBatchTool : Buttons
     int LeftReBatchTime = 0;
     int CharInd = 0;
     bool CanBatch = true;
+    int BatchCount = 0;
 
     [SerializeField] TMP_Text cost;
     [SerializeField] Image ReBatchIm;
@@ -59,6 +60,10 @@ public class OperatorBatchTool : Buttons
         }
     }
 
+    /*private void OnPointerMove(InputEventPtr eventPtr, InputDevice device)
+    {
+        print(Pointer.current);
+    }*/
     
     protected override void Click(PointerEventData Data)
     {
@@ -111,8 +116,14 @@ public class OperatorBatchTool : Buttons
     public void EndBatch()
     {
         BatchObject.SetActive(true);
+#if UNITY_STANDALONE
         Vector3 newPos = Camera.main.ScreenToWorldPoint(Input.mousePosition); newPos.z = 1;
-        Cost = Mathf.FloorToInt(Cost * 1.2f); cost.text = $"{Cost}";
+#endif
+#if UNITY_ANDROID || UNITY_IOS
+        Vector3 newPos = Camera.main.ScreenToWorldPoint(Touchscreen.current.primaryTouch.position.ReadValue()); newPos.z = 1;
+#endif
+        if (BatchCount < 2) BatchCount++;
+        Cost = Mathf.FloorToInt(Cost * Mathf.Pow(1.2f,BatchCount)); cost.text = $"{Cost}";
         BatchObject.transform.position = newPos;
         state.gameObject.SetActive(true);
         ReBatchIm.gameObject.SetActive(false);

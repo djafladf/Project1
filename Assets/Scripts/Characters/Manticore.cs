@@ -39,7 +39,7 @@ public class Manticore : PlayerSetting
         GameManager.instance.BM.MakeMeele(new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 10), false, 0),
                     0.5f, transform.position, Vector3.zero, 0, false, Bullets[2]);
         yield return new WaitForSeconds(0.2f);
-        GameManager.instance.BM.MakeMeele(new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 15), false, 0),
+        GameManager.instance.BM.MakeMeele(new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 20), false, 0),
                     0.5f, transform.position, Vector3.zero, 0, false, Bullets[1]);
     }
 

@@ -1,11 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using static UnityEditor.PlayerSettings;
-using static UnityEngine.ParticleSystem;
 
 public class ItemManager : MonoBehaviour
 {

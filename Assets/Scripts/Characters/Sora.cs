@@ -17,6 +17,8 @@ public class Sora : PlayerSetting
 
     [SerializeField] List<Sprite> ETC;
 
+    AudioSource As;
+
 
     bool SpecO = false;
 
@@ -25,6 +27,7 @@ public class Sora : PlayerSetting
     protected override void Awake()
     {
         base.Awake();
+        As = GetComponent<AudioSource>();
         player.SubEffects.Add(transform.GetChild(1).GetComponent<SpriteRenderer>());
         player.SubEffects.Add(FlyOne.GetComponent<SpriteRenderer>());
         player.SubEffects.Add(FlyTwo.GetComponent<SpriteRenderer>());
@@ -194,4 +197,8 @@ public class Sora : PlayerSetting
         return player.WeaponLevel;
     }
 
+    protected void PlayAudio()
+    {
+        As.Play();
+    }
 }

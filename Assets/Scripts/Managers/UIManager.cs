@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -24,8 +25,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] TMP_Text Timer;
     [SerializeField] TMP_Text Cost;
 
-    [SerializeField] TMP_Text[] Goods;
-
     [SerializeField] BatchCnt BatchObj;
 
     [SerializeField] GameObject BatchTool;
@@ -34,6 +33,9 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject GetAreaPref;
     [SerializeField] GameObject PauseObj;
+
+    [SerializeField] GameObject MobileSet;
+    [SerializeField] RectTransform Stick;
 
     public Transform BossShaft;
     Transform GetArea;
@@ -44,10 +46,18 @@ public class UIManager : MonoBehaviour
         GameManager.instance.UM = this;
         CurCost = GameManager.instance.gameStatus.Stat[6] * 5;
         GameManager.instance.StartLoading();
+
+#if UNITY_STANDALONE
+        MobileSet.SetActive(false);
+#endif
     }
+
+    // PC 조작
+#if UNITY_STANDALONE
 
     private void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (PauseObj.activeSelf)
@@ -59,7 +69,6 @@ public class UIManager : MonoBehaviour
             {
                 PauseObj.SetActive(true);
                 GameManager.instance.SetTime(0, false);
-                
             }
         }
 
@@ -72,6 +81,26 @@ public class UIManager : MonoBehaviour
             foreach (var k in GameManager.instance.Players) k.IsFollow = true;
         }
     }
+#endif
+    // Android 조작
+#if UNITY_ANDROID || UNITY_IOS
+    private void Update()
+    {
+        if (Time.timeScale != 1) return;
+        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed && GitAble)
+        {
+            Vector3 TouchPos = Touchscreen.current.primaryTouch.position.ReadValue();
+            if (Vector3.Magnitude(TouchPos - Stick.position) < Stick.rect.width) return;
+            TouchPos = Camera.main.ScreenToWorldPoint(TouchPos); TouchPos.z = 1;
+            GameManager.instance.Git.transform.position = TouchPos;
+            GameManager.instance.Git.SetActive(true);
+            foreach (var k in GameManager.instance.Players) k.IsFollow = true;
+            GitAble = false;
+        }
+
+        if (Touchscreen.current != null && !Touchscreen.current.primaryTouch.press.isPressed && !GitAble) GitAble = true;
+    }
+#endif
 
     public void RemoveGit(BaseEventData data)
     {
@@ -83,6 +112,27 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void StickStatChange(bool IsActive)
+    {
+        if (IsActive) Stick.localScale = Vector3.one;
+        else Stick.localScale = Vector3.zero;
+    }
+
+    public void Pause()
+    {
+        if (PauseObj.activeSelf)
+        {
+            GameManager.instance.SetTime(0, true);
+            PauseObj.SetActive(false);
+            StickStatChange(true);
+        }
+        else
+        {
+            StickStatChange(false);
+            PauseObj.SetActive(true);
+            GameManager.instance.SetTime(0, false);
+        }
+    }
 
     public int CurMinute = 0;
 
@@ -136,7 +186,6 @@ public class UIManager : MonoBehaviour
     public void GoodsUp(int type, int value)
     {
         GoodsCount[type] += (int)(value * GameManager.instance.PlayerStatus.GoodsEarn);
-        Goods[type].text = $"{GoodsCount[type]}";
     }
 
     // Level Up
@@ -175,6 +224,7 @@ public class UIManager : MonoBehaviour
     int[] RarityPickVar = { 90, 99 };
     public void LevelUpEvent()
     {
+        StickStatChange(false);
         if (NormalItem.Count + RareItem.Count + LegendItem.Count < GameManager.instance.PlayerStatus.selection) NormalItem.AddRange(StatItem);
         foreach (var k in Selections) k.gameObject.SetActive(false);
 
@@ -260,6 +310,7 @@ public class UIManager : MonoBehaviour
     int DragonCount = 0;
     public void ApplySelection(int ind,bool IsWeapon,int rarity)
     {
+        StickStatChange(true);
         if (!IsWeapon)
         {
             ItemSub cnt;
@@ -518,6 +569,8 @@ public class UIManager : MonoBehaviour
 
     public void Init(int Count, List<ItemSub> Weapons, Player[] Players, GameObject[] Prefs, OperatorInfos[] Opers, int PlayerInd)
     {
+        transform.GetComponent<CanvasScaler>().matchWidthOrHeight = GameManager.instance.RatType;
+
         NormalItem = new List<ItemSub>(); RareItem = new List<ItemSub>(); LegendItem = new List<ItemSub>();
 
         foreach (var k in GameManager.instance.Data.Items)

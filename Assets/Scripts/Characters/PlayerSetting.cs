@@ -37,6 +37,18 @@ public class PlayerSetting : MonoBehaviour
             GameManager.instance.RequestOfWeapon(WeaponLevelUp, player.Id);
             gameObject.SetActive(false);
         }
+
+        if (IsPlayer)
+        {
+#if UNITY_STANDALONE
+            GetComponent<PlayerInput>().defaultControlScheme = "Keyboard&Mouse";
+            GameManager.instance.SetTime(3, false);
+#endif
+#if UNITY_ANDROID || UNITY_IOS
+            GetComponent<PlayerInput>().defaultControlScheme = "Gamepad";
+#endif
+        }
+
     }
 
 
@@ -291,7 +303,6 @@ public class PlayerSetting : MonoBehaviour
         if (LeftHP != 0)
         {
             player.CurHP += Amount;
-            GameManager.instance.DM.MakeHealCount(Amount, transform);
             HPBar.fillAmount = player.CurHP / (float)player.MaxHP;
             if (IsPlayer) GameManager.instance.UM.HpChange();
             else if (!IsSummon) { player.MyBatch.HPBar.fillAmount = player.CurHP / (float)player.MaxHP; }

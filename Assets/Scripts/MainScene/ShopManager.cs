@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
@@ -37,6 +38,9 @@ public class ShopManager : MonoBehaviour
     private void Start()
     {
         GameManager.instance.Shop = this;
+        transform.parent.GetComponent<CanvasScaler>().matchWidthOrHeight = GameManager.instance.RatType;
+
+
         for (int i = 0; i < 3; i++) Objects[i].text = $"{GameManager.instance.gameStatus.Objects[i]}";
         foreach(var k in UpBTs)
         {
@@ -69,6 +73,7 @@ public class ShopManager : MonoBehaviour
         for (int i = 1; i <= 30; i++) TestGrades.Add(GradeText.transform.parent.GetChild(i).gameObject);
         for (int i = 0; i < CurTestLevel; i++) TestGrades[i].SetActive(true);
         GradeSet(0);
+        gameObject.SetActive(false);
     }
 
     string[] UpStr =
@@ -129,7 +134,12 @@ public class ShopManager : MonoBehaviour
     {
         if (Inf.gameObject.activeSelf)
         {
+#if UNITY_ANDROID || UNITY_IOS
+            Vector3 MousePos = Touchscreen.current.primaryTouch.position.ReadValue();
+#endif
+#if UNITY_STANDALONE
             Vector3 MousePos = Input.mousePosition;
+#endif
             if (ParentRect.sizeDelta.x - MousePos.x < InfRect.sizeDelta.x) MousePos.x = ParentRect.sizeDelta.x - InfRect.sizeDelta.x;
             Inf.transform.position = MousePos;
         }

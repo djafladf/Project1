@@ -113,6 +113,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual IEnumerator DeadLater()
     {
+       
         yield return GameManager.DotOneSec;
         tag = "Untagged";
         StopAllCoroutines();
@@ -133,7 +134,7 @@ public class Enemy : MonoBehaviour
             {
                 anim.SetTrigger("Dead");
                 StartCoroutine(DeadLater());
-                spriteRenderer.sortingOrder = 1;
+                spriteRenderer.sortingOrder = 1; anim.enabled = true;
                 IsLive = false; CanHit = false; rigid.simulated = false; coll.enabled = false;
             }
             else if (Info.DeBuffs != null)
@@ -173,12 +174,11 @@ public class Enemy : MonoBehaviour
                     if (Cheeled >= 10)
                     {
                         DeBuffObj[4].SetActive(false); DeBuffObj[4].transform.parent = GameManager.instance.BFM.transform;
-                        DeBuffObj[4] = null;
-
+                        DeBuffObj[4] = null; LeftTime[4] = 1;
                         DeBuffObj[4] = GameManager.instance.BFM.RequestForDebuff(1,spriteRenderer.sprite.bounds.size.x,spriteRenderer.bounds.size.y);
                         DeBuffObj[4].transform.parent = transform;
                         DeBuffObj[4].transform.localPosition = Vector3.zero;
-                        DeBuffObj[4].gameObject.SetActive(true); DeBuffVar[0] -= 0.3f; Cheeled = 0; anim.enabled = false;
+                        DeBuffObj[4].gameObject.SetActive(true); DeBuffVar[0] -= 0.3f; Cheeled = 0; anim.enabled = false; OnIce = true;
                     }
                 }
                 if (Info.DeBuffs.Fragility != 0)
@@ -215,6 +215,7 @@ public class Enemy : MonoBehaviour
 
         for (i = 0; i < DeBuffObj.Length; i++) if (DeBuffObj[i] != null)
             {
+                rigid.velocity = Vector2.zero;
                 DeBuffObj[i].SetActive(false); DeBuffObj[i].transform.parent = GameManager.instance.BFM.transform; DeBuffObj[i] = null;
             }
 
@@ -241,7 +242,7 @@ public class Enemy : MonoBehaviour
                     if (LeftTime[4] <= 0)
                     {
                         LeftTime[4] = 0; OnIce = false;
-                        DeBuffObj[4].SetActive(false); DeBuffObj[4].transform.parent = GameManager.instance.BFM.transform; DeBuffObj[4] = null; 
+                        if (DeBuffObj[4] != null) { DeBuffObj[4].SetActive(false); DeBuffObj[4].transform.parent = GameManager.instance.BFM.transform; DeBuffObj[4] = null; }
                         LeftTime[4] = 0; anim.enabled = true;
                     }
                 }

@@ -74,7 +74,7 @@ public class Mepisto : Enemy
     protected override void HPChange()
     {
         GameManager.instance.UM.BossHP.fillAmount = HP / (float)MaxHP;
-        if (HP <= Mathf.FloorToInt(MaxHP * 0.5f))
+        if (HP <= Mathf.FloorToInt(MaxHP * 0.25f))
         {
             Invoke("Exit", 1);
             faust.PhazeT();
