@@ -101,6 +101,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -108,12 +120,12 @@ TextureImporter:
       name: Standing_0
       rect:
         serializedVersion: 2
-        x: 44
-        y: 40
-        width: 430
-        height: 425
+        x: 143
+        y: 155
+        width: 435
+        height: 419
       alignment: 9
-      pivot: {x: 0.48, y: 0.4}
+      pivot: {x: 0.5, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -129,12 +141,12 @@ TextureImporter:
       name: Standing_1
       rect:
         serializedVersion: 2
-        x: 579
-        y: 22
+        x: 826
+        y: 135
         width: 436
-        height: 432
+        height: 419
       alignment: 9
-      pivot: {x: 0.487, y: 0.396}
+      pivot: {x: 0.501, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -150,12 +162,12 @@ TextureImporter:
       name: Standing_2
       rect:
         serializedVersion: 2
-        x: 1144
-        y: 31
-        width: 436
-        height: 420
+        x: 1502
+        y: 155
+        width: 435
+        height: 415
       alignment: 9
-      pivot: {x: 0.485, y: 0.407}
+      pivot: {x: 0.502, y: 0.404}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -171,12 +183,12 @@ TextureImporter:
       name: Standing_3
       rect:
         serializedVersion: 2
-        x: 1707
-        y: 37
-        width: 433
-        height: 421
+        x: 2147
+        y: 139
+        width: 435
+        height: 415
       alignment: 9
-      pivot: {x: 0.482, y: 0.408}
+      pivot: {x: 0.5, y: 0.404}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -199,10 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Standing_2: 911901291
-      Standing_3: -1984474915
       Standing_0: -554728584
       Standing_1: -1642628631
+      Standing_2: 911901291
+      Standing_3: -1984474915
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

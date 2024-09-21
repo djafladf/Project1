@@ -48,9 +48,6 @@ public class ShopManager : MonoBehaviour
             UpCosts.Add(k.transform.GetChild(3).GetComponent<TMP_Text>());
             SoldOut.Add(k.transform.GetChild(5).gameObject);
         }
-
-        ParentRect = transform.parent.GetComponent<RectTransform>();
-        InfRect = Inf.GetComponent<RectTransform>();
         for (int i = 0; i < GameManager.instance.gameStatus.Stat.Length; i++)
         {
             int cnt = GameManager.instance.gameStatus.Stat[i];
@@ -87,26 +84,21 @@ public class ShopManager : MonoBehaviour
 
     public void CloseMessage()
     {
-        Inf.gameObject.SetActive(false);
+        GameManager.instance.FloatM.gameObject.SetActive(false);
     }
 
     public void FloatMessage(string message)
     {
-        Inf.gameObject.SetActive(true);
-        InfText.text = message;
-        LayoutRebuilder.ForceRebuildLayoutImmediate(InfRect);
+
+        GameManager.instance.FloatM.Init(message);
     }
 
     public void InfChange_Upgrade(int i)
     {
-        
-        if(i == 6 || i == 9)
-            InfText.text = $"레벨 당 <color=blue><u>{UpStr[i]} {UpCount[i]}</color></u> 증가\n 현재 증가량 : <color=red><u>{UpCount[i] * (GameManager.instance.gameStatus.Stat[i] - 1)}</u></color>";
+        if (i == 6 || i == 9)
+            GameManager.instance.FloatM.Init($"레벨 당 <color=blue><u>{UpStr[i]} {UpCount[i]}</color></u> 증가\n 현재 증가량 : <color=red><u>{UpCount[i] * (GameManager.instance.gameStatus.Stat[i] - 1)}</u></color>");
         else
-            InfText.text = $"레벨 당 <color=blue><u>{UpStr[i]} {UpCount[i]}%</color></u> 증가\n 현재 증가량 : <color=red><u>{UpCount[i] * (GameManager.instance.gameStatus.Stat[i] - 1)}%</u></color>";
-
-        Inf.gameObject.SetActive(true);
-        LayoutRebuilder.ForceRebuildLayoutImmediate(InfRect);
+            GameManager.instance.FloatM.Init($"레벨 당 <color=blue><u>{UpStr[i]} {UpCount[i]}%</color></u> 증가\n 현재 증가량 : <color=red><u>{UpCount[i] * (GameManager.instance.gameStatus.Stat[i] - 1)}%</u></color>");
     }
 
     string[] DownStr =
@@ -121,29 +113,12 @@ public class ShopManager : MonoBehaviour
 
     public void InfChange_Enem(int i)
     {
-        InfText.text = $"레벨 당 <color=blue><u>{DownStr[i]} {DownCount[i]}%</color></u> 증가\n 현재 증가량 : <color=red><u>{DownCount[i] * (GameManager.instance.gameStatus.Enem[i])}%</u></color>";
-        if (i == 5) InfText.text += "\n* 다른 적 스탯과 곱연산으로 적용";
-        Inf.gameObject.SetActive(true);
-        LayoutRebuilder.ForceRebuildLayoutImmediate(InfRect);
+        string j = $"레벨 당 <color=blue><u>{DownStr[i]} {DownCount[i]}%</color></u> 증가\n 현재 증가량 : <color=red><u>{DownCount[i] * (GameManager.instance.gameStatus.Enem[i])}%</u></color>";
+        if (i == 5) j += "\n* 다른 적 스탯과 곱연산으로 적용";
+        GameManager.instance.FloatM.Init(j);
     }
 
-    RectTransform ParentRect;
-    RectTransform InfRect;
-
-    private void Update()
-    {
-        if (Inf.gameObject.activeSelf)
-        {
-#if UNITY_ANDROID || UNITY_IOS
-            Vector3 MousePos = Touchscreen.current.primaryTouch.position.ReadValue();
-#endif
-#if UNITY_STANDALONE
-            Vector3 MousePos = Input.mousePosition;
-#endif
-            if (ParentRect.sizeDelta.x - MousePos.x < InfRect.sizeDelta.x) MousePos.x = ParentRect.sizeDelta.x - InfRect.sizeDelta.x;
-            Inf.transform.position = MousePos;
-        }
-    }
+    
 
     public void LevelUpEnem(int ind)
     {
@@ -187,8 +162,7 @@ public class ShopManager : MonoBehaviour
         }
         else
         {
-            InfText.text = "보유한 용문패가 부족합니다.";
-            LayoutRebuilder.ForceRebuildLayoutImmediate(InfRect);
+            GameManager.instance.FloatM.Init("보유한 용문패가 부족합니다.");
         }
     }
 

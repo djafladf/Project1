@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7e25e3a93769440ae7e326796378cc, type: 3}
   m_Name: Aurora
   m_EditorClassIdentifier: 
-  speed: 2.5
+  speed: 2
   InitHP: 500
   InitSP: 30
   InitDefense: 50

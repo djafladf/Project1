@@ -34,7 +34,10 @@ public class Amiya : PlayerSetting
     private void Start()
     {
         StartCoroutine(Test());
-        //for (int i = 0; i < 6; i++) WeaponLevelUp();
+#if UNITY_EDITOR
+        //GameManager.instance.SetTime(3, false);
+        for (int i = 0; i < 6; i++) WeaponLevelUp();
+#endif
     }
 
     IEnumerator Test()
@@ -80,7 +83,7 @@ public class Amiya : PlayerSetting
             case 5: DamageRatio += 1f; break;
             case 6:
                 source.Play(); BulletIm = Bullet2;
-                Penetrate = 50; ProjNum++; ProjRatio = 2; BulletIm = null; BulletSpeed = 50; Weapon2.SetActive(true); CurApplyLine = BLT;for (int i = 0; i < 4; i++) { PTS.Add(Instantiate(PTS[0], transform.GetChild(0))); AttackSounds.Add(PTS[i+2].GetComponent<AudioSource>()); }
+                Penetrate = 50; ProjNum++; ProjRatio = 2; BulletIm = Bullet2; BulletSpeed = 50; Weapon2.SetActive(true); CurApplyLine = BLT;for (int i = 0; i < 4; i++) { PTS.Add(Instantiate(PTS[0], transform.GetChild(0))); AttackSounds.Add(PTS[i+2].GetComponent<AudioSource>()); }
                 break;
         }
         return player.WeaponLevel;

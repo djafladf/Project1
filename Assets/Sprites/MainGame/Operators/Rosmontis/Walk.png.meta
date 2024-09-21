@@ -101,6 +101,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -108,12 +120,12 @@ TextureImporter:
       name: Walk_0
       rect:
         serializedVersion: 2
-        x: 96
-        y: 65
-        width: 376
-        height: 526
+        x: 128
+        y: 189
+        width: 392
+        height: 463
       alignment: 9
-      pivot: {x: 0.5, y: 0.35}
+      pivot: {x: 0.4, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -129,12 +141,12 @@ TextureImporter:
       name: Walk_1
       rect:
         serializedVersion: 2
-        x: 756
-        y: 70
-        width: 376
-        height: 516
+        x: 757
+        y: 146
+        width: 396
+        height: 471
       alignment: 9
-      pivot: {x: 0.5, y: 0.32}
+      pivot: {x: 0.4, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -142,6 +154,48 @@ TextureImporter:
       bones: []
       spriteID: 695c247c8fd7c7b4ba33b4bfc79ebf50
       internalID: 888029757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_2
+      rect:
+        serializedVersion: 2
+        x: 1304
+        y: 177
+        width: 396
+        height: 459
+      alignment: 9
+      pivot: {x: 0.4, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd165d03458b7d744901eddc35212093
+      internalID: 878688079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_3
+      rect:
+        serializedVersion: 2
+        x: 1928
+        y: 174
+        width: 391
+        height: 468
+      alignment: 9
+      pivot: {x: 0.4, y: 0.43}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 567bcd9c2324ffd4caeffd1bc332b23d
+      internalID: -518398941
       vertices: []
       indices: 
       edges: []
@@ -159,6 +213,8 @@ TextureImporter:
     nameFileIdTable:
       Walk_0: -1812698864
       Walk_1: 888029757
+      Walk_2: 878688079
+      Walk_3: -518398941
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

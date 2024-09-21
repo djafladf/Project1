@@ -54,6 +54,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public GameObject Git;
     [HideInInspector] public AudioManager AudioM;
 
+    //Both
+    public FloatMessage FloatM;
+
     public Camera MainCam;
     public CinemachineVirtualCamera VC;
 

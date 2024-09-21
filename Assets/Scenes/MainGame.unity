@@ -31612,6 +31612,11 @@ MonoBehaviour:
   RelicList: {fileID: 550270944}
   RelicObj: {fileID: 1505433954499642328, guid: 3f1ed15018ef31042aa23e7eb0a057e1, type: 3}
   ReRollBT: {fileID: 850141673}
+  RelicSubSprites:
+  - {fileID: 2003958746, guid: 71c8da25a7a6b3f44a3ad4e081c4d6aa, type: 3}
+  - {fileID: -1170912894, guid: 71c8da25a7a6b3f44a3ad4e081c4d6aa, type: 3}
+  - {fileID: -670043424, guid: 71c8da25a7a6b3f44a3ad4e081c4d6aa, type: 3}
+  DragonCount: 0
   CurRequest: {fileID: 0}
   BatchImage: {fileID: 2034442018859482266}
   BatchOrder: 

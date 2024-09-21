@@ -60,6 +60,7 @@ public class UIManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            GameManager.instance.FloatM.gameObject.SetActive(false);
             if (PauseObj.activeSelf)
             {
                 GameManager.instance.SetTime(0, true);
@@ -305,9 +306,9 @@ public class UIManager : MonoBehaviour
 
     int ReRollCount;
 
-
+    [SerializeField] List<Sprite> RelicSubSprites;
     bool[] Dragons = { false, false, false, false, false };
-    int DragonCount = 0;
+    [HideInInspector] public int DragonCount = 0;
     public void ApplySelection(int ind,bool IsWeapon,int rarity)
     {
         StickStatChange(true);
@@ -329,9 +330,6 @@ public class UIManager : MonoBehaviour
                     if (cnt.attributes.special != -1) { Selected.Add(cnt); LegendItem.RemoveAt(ind); }
                     break;
             }
-            GameObject cntRelic = Instantiate(RelicObj,RelicList);
-            cntRelic.transform.GetChild(0).GetComponent<Image>().sprite = cnt.sprite;
-
             attribute cntatt = cnt.attributes;
             attribute enem = cnt.attribute_Enem;
 
@@ -396,21 +394,24 @@ public class UIManager : MonoBehaviour
                 HealthStat.text = $"{Mathf.FloorToInt(cntatt.hp * 100)}%";
             }
 
+            
+
             if (cntatt.dragons != 0)
             {
+                
                 Dragons[cntatt.dragons - 1] = true;
                 if(DragonCount >= 1)
                 {
                     switch (cntatt.dragons)
                     {
-                        case 1: GameManager.instance.PlayerStatus.attack += 0.03f * DragonCount++; break;
-                        case 2: GameManager.instance.PlayerStatus.defense += 0.03f * DragonCount++; break;
-                        case 3: GameManager.instance.PlayerStatus.exp += 0.05f * DragonCount++; break;
-                        case 4: GameManager.instance.PlayerStatus.attackspeed += 0.03f * DragonCount++; break;
-                        case 5: GameManager.instance.PlayerStatus.hp += 0.05f * DragonCount++; break;
+                        case 1: GameManager.instance.PlayerStatus.attack += 0.03f * DragonCount; break;
+                        case 2: GameManager.instance.PlayerStatus.defense += 0.03f * DragonCount; break;
+                        case 3: GameManager.instance.PlayerStatus.exp += 0.05f * DragonCount; break;
+                        case 4: GameManager.instance.PlayerStatus.attackspeed += 0.03f * DragonCount; break;
+                        case 5: GameManager.instance.PlayerStatus.hp += 0.05f * DragonCount; break;
                     }
-
                 }
+                DragonCount++;
                 if (Dragons[0])
                 {
                     GameManager.instance.PlayerStatus.attack += 0.03f;
@@ -442,6 +443,7 @@ public class UIManager : MonoBehaviour
                     HealthStat.text = $"{Mathf.FloorToInt(GameManager.instance.PlayerStatus.hp * 100)}%";
                 }
             }
+
             if (cntatt.special != 0)
             {
                 switch (cntatt.special)
@@ -457,13 +459,17 @@ public class UIManager : MonoBehaviour
                         break;
                     case 3:
                         Player sub = GameManager.instance.Players[UnityEngine.Random.Range(0,GameManager.instance.Players.Length)];
-                        sub.HPRatio += 0.3f; sub.AttackRatio += 0.3f; sub.ChangeOccur = true;
+                        sub.HPRatio += 0.3f; sub.AttackRatio += 0.3f; sub.ChangeOccur = true; cnt.description[0] += $"<size=75%>({sub.name})</size>";
                         break;
                     case 4:
                         RarityPickVar[0] = 86; RarityPickVar[1] = 98;
                         break;
                 }
             }
+
+            if(cntatt.dragons != 0) Instantiate(RelicObj, RelicList).GetComponent<RelicSub>().Init(RelicSubSprites[cnt.rarity], cnt.sprite, cnt.name, cnt.description[0], cnt.extra, 1, ((cntatt.dragons == 3 || cntatt.dragons == 5) ? 5 : 3));
+            else Instantiate(RelicObj, RelicList).GetComponent<RelicSub>().Init(RelicSubSprites[cnt.rarity],cnt.sprite, cnt.name, cnt.description[0], cnt.extra);
+
         }
         else
         {

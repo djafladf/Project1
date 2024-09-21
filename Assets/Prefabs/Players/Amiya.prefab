@@ -5243,6 +5243,7 @@ MonoBehaviour:
   AttackRange: 0
   HPBar: {fileID: 6742022308176172255}
   Bullet1: {fileID: 460339736, guid: 3984b5283fed96042ba7d23b68de06f2, type: 3}
+  Bullet2: {fileID: 1781649026, guid: 3984b5283fed96042ba7d23b68de06f2, type: 3}
   Weapon: {fileID: 3772359834302012534}
   Weapon2: {fileID: 3772359834561876204}
   Crown: {fileID: 424572231762231911}

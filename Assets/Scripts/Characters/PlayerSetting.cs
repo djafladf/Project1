@@ -42,7 +42,6 @@ public class PlayerSetting : MonoBehaviour
         {
 #if UNITY_STANDALONE
             GetComponent<PlayerInput>().defaultControlScheme = "Keyboard&Mouse";
-            GameManager.instance.SetTime(3, false);
 #endif
 #if UNITY_ANDROID || UNITY_IOS
             GetComponent<PlayerInput>().defaultControlScheme = "Gamepad";
