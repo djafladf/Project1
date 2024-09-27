@@ -44,10 +44,12 @@ public class BuffManager : MonoBehaviour
             if (!DeBuffs[i].activeSelf) 
             {
                 DeBuffs[i].transform.localScale = Vector3.one;
+                Sprites[i].sortingOrder = 2;
                 switch (type)
                 {
                     case 0: Sprites[i].sprite = Chill; break;
                     case 1:
+                        Sprites[i].sortingOrder = 5;
                         Sprites[i].sprite = Freeze;
                         DeBuffs[i].transform.localScale = new Vector3(Size_X / Freeze.bounds.size.x, Size_Y / Freeze.bounds.size.y, 1);
                         break;

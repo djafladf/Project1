@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db7e25e3a93769440ae7e326796378cc, type: 3}
+  m_Name: Gum
+  m_EditorClassIdentifier: 
+  speed: 2
+  InitHP: 550
+  InitSP: 30
+  InitDefense: 40
+  Cost: 25
+  ReBatchTime: 50

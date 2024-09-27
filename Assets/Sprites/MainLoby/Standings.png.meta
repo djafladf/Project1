@@ -101,37 +101,28 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Standings_0
-      rect:
-        serializedVersion: 2
-        x: 77
-        y: 1017
-        width: 159
-        height: 353
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f1b0b53c09a806547b87c0566c566f46
-      internalID: -1466009962
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Standings_1
       rect:
         serializedVersion: 2
-        x: 512
+        x: 533
         y: 1003
-        width: 300
+        width: 280
         height: 383
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -150,10 +141,10 @@ TextureImporter:
       name: Standings_2
       rect:
         serializedVersion: 2
-        x: 1029
-        y: 1008
-        width: 258
-        height: 389
+        x: 1027
+        y: 1007
+        width: 261
+        height: 392
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,10 +162,10 @@ TextureImporter:
       name: Standings_3
       rect:
         serializedVersion: 2
-        x: 1437
+        x: 1436
         y: 1043
-        width: 265
-        height: 309
+        width: 268
+        height: 311
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,9 +184,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1878
-        y: 1009
-        width: 292
-        height: 365
+        y: 1008
+        width: 293
+        height: 369
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,9 +205,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 37
-        y: 291
-        width: 314
-        height: 369
+        y: 290
+        width: 315
+        height: 370
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,10 +225,10 @@ TextureImporter:
       name: Standings_6
       rect:
         serializedVersion: 2
-        x: 612
-        y: 320
-        width: 205
-        height: 352
+        x: 610
+        y: 318
+        width: 208
+        height: 355
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -255,12 +246,12 @@ TextureImporter:
       name: Standings_7
       rect:
         serializedVersion: 2
-        x: 984
-        y: 306
-        width: 376
-        height: 428
-      alignment: 9
-      pivot: {x: 0.5, y: 0.6}
+        x: 990
+        y: 298
+        width: 436
+        height: 420
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -276,10 +267,10 @@ TextureImporter:
       name: Standings_8
       rect:
         serializedVersion: 2
-        x: 1555
+        x: 1551
         y: 331
-        width: 282
-        height: 322
+        width: 287
+        height: 324
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -297,10 +288,10 @@ TextureImporter:
       name: Standings_9
       rect:
         serializedVersion: 2
-        x: 1965
-        y: 329
-        width: 300
-        height: 354
+        x: 1963
+        y: 327
+        width: 305
+        height: 358
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -318,12 +309,12 @@ TextureImporter:
       name: Standings_10
       rect:
         serializedVersion: 2
-        x: 2392
-        y: 325
-        width: 216
-        height: 422
+        x: 2391
+        y: 324
+        width: 217
+        height: 423
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -331,6 +322,48 @@ TextureImporter:
       bones: []
       spriteID: 445e5ed90cda8d3498723cf63797fe59
       internalID: 349488186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Standings_11
+      rect:
+        serializedVersion: 2
+        x: 2826
+        y: 340
+        width: 320
+        height: 389
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a16a445f4a819a246aace3435341c70a
+      internalID: -1719932979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Standings_0
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 1016
+        width: 161
+        height: 355
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c9b3173a06c85d4ea1fb0b54531a3e6
+      internalID: -1466009962
       vertices: []
       indices: 
       edges: []
@@ -346,17 +379,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Standings_7: 922643873
-      Standings_2: 530092768
-      Standings_9: 1596115076
-      Standings_4: 1415707880
       Standings_0: -1466009962
-      Standings_6: 134435340
-      Standings_3: 794098961
-      Standings_8: -1298633637
       Standings_1: -1421310069
       Standings_10: 349488186
+      Standings_11: -1719932979
+      Standings_2: 530092768
+      Standings_3: 794098961
+      Standings_4: 1415707880
       Standings_5: 1152281158
+      Standings_6: 134435340
+      Standings_7: 922643873
+      Standings_8: -1298633637
+      Standings_9: 1596115076
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

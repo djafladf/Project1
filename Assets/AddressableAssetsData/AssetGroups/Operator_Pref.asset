@@ -73,6 +73,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Operator_Pref
+  - m_GUID: c484427c499e4de4b946b6ec2a1aa67c
+    m_Address: Gum
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Operator_Pref
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: cc440d98b8634f3449b1aae4fa894063, type: 2}
   m_SchemaSet:

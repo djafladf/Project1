@@ -33,7 +33,7 @@ public class ItemManager : MonoBehaviour
 
         for(int i =  0; i < MaxItem; i++)
         {
-            Items[i] = Instantiate(ItemPref, transform);
+            Items[i] = Instantiate(ItemPref, transform); Items[i].name = "a";
             ItemsSprite[i] = Items[i].GetComponent<SpriteRenderer>();
             ItemsScript[i] = Items[i].GetComponent<Item>();
             ItemsScript[i].poolInd = i;
@@ -46,7 +46,7 @@ public class ItemManager : MonoBehaviour
     public void MakeItem(Vector3 pos, bool MustMake = false)
     {
         int Ran;
-        if (CreatedTiming.Count == MaxItem)
+        if (CreatedTiming.Count >= MaxItem)
         {
             // If Over MaxItem Num. FIFO
             int First = CreatedTiming[0]; CreatedTiming.RemoveAt(0);
@@ -56,7 +56,7 @@ public class ItemManager : MonoBehaviour
             {
                 CreatedTiming.Add(First);
                 Items[First].SetActive(true);
-                Items[First].transform.position = pos;
+                Items[First].transform.position = pos + new Vector3(-0.2f + Ran * 0.002f,0.2f - Ran * 0.002f);
             }
             if (Ran < 140)
             {
@@ -96,7 +96,7 @@ public class ItemManager : MonoBehaviour
                     {
                         CreatedTiming.Add(i);
                         Items[i].SetActive(true);
-                        Items[i].transform.position = pos;
+                        Items[i].transform.position = pos + new Vector3(-0.2f + Ran * 0.002f, 0.2f - Ran * 0.002f);
                     }
 
                     if (Ran < 140)
@@ -129,6 +129,49 @@ public class ItemManager : MonoBehaviour
                     break;
                 }
             }
+        for(int i =0; i < ExternalItems.Count; i++)
+        {
+            var r = Random.Range(0, 1f);
+            if (ExternalProb[i] >= r)
+            {
+                foreach(var j in ExternalItems[i]) if (!j.activeSelf)
+                    {
+                        j.SetActive(true); j.transform.position = pos + new Vector3(-0.2f + r * 0.4f, 0.2f - r * 0.4f);
+                        break;
+                    }
+            }
+        }
+    }
+
+    List<List<GameObject>> ExternalItems = new List<List<GameObject>>();
+    List<float> ExternalProb = new List<float>();
+
+    public int MakeExternalItem(Sprite ItemSprite,int maxCount,float prob,int Target)
+    {
+        ExternalItems.Add(new List<GameObject>()); ExternalProb.Add(prob);
+        int n = ExternalItems.Count - 1;
+        for(int i = 0; i < maxCount; i++)
+        {
+            GameObject cnt = Instantiate(ItemPref, transform);
+            cnt.name = $"{n}"; cnt.GetComponent<SpriteRenderer>().sprite = ItemSprite; cnt.GetComponent<Item>().Init(-1, 0, Target,n);
+            ExternalItems[n].Add(cnt);
+            cnt.SetActive(false);
+        }
+        return ExternalItems.Count-1;
+    }
+
+    public void UpdateExternalItem(int num,Sprite sp = null ,string name = null,float prob = -1,int Target = -1)
+    {
+        if (prob != -1) ExternalProb[num] = prob;
+        if(sp != null || name != null || Target != -1)
+        {
+            foreach(var j in ExternalItems[num])
+            {
+                if(sp != null) j.GetComponent<SpriteRenderer>().sprite = sp;
+                if(name != null) j.name = name;
+                if (Target != -1) j.GetComponent<Item>().Init(-1, 0, Target);
+            }
+        }
     }
 
     public void RemoveItem(int ind)

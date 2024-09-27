@@ -101,6 +101,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -109,7 +121,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 8
-        y: 708
+        y: 1026
         width: 232
         height: 156
       alignment: 0
@@ -130,7 +142,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 692
+        y: 1010
         width: 352
         height: 156
       alignment: 0
@@ -151,7 +163,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 812
-        y: 560
+        y: 878
         width: 196
         height: 340
       alignment: 0
@@ -172,7 +184,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1120
-        y: 668
+        y: 986
         width: 244
         height: 164
       alignment: 0
@@ -193,7 +205,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1460
-        y: 628
+        y: 946
         width: 136
         height: 168
       alignment: 0
@@ -214,7 +226,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1772
-        y: 680
+        y: 998
         width: 140
         height: 184
       alignment: 0
@@ -235,7 +247,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 100
-        y: 116
+        y: 434
         width: 160
         height: 376
       alignment: 0
@@ -256,7 +268,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 500
-        y: 200
+        y: 518
         width: 168
         height: 168
       alignment: 0
@@ -277,7 +289,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 788
-        y: 161
+        y: 479
         width: 239
         height: 232
       alignment: 0
@@ -298,7 +310,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1129
-        y: 189
+        y: 507
         width: 234
         height: 245
       alignment: 0
@@ -319,7 +331,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1609
-        y: 184
+        y: 502
         width: 93
         height: 264
       alignment: 0
@@ -335,6 +347,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Weapons_11
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 106
+        width: 180
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f52ad884b430a645b75eac842020456
+      internalID: -1545153692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -346,17 +379,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Weapons_8: 2076436959
-      Weapons_7: -499433692
       Weapons_0: 1382738697
-      Weapons_6: 643932704
-      Weapons_9: 632579578
-      Weapons_10: -2121452629
-      Weapons_5: -694137584
       Weapons_1: 1201906897
-      Weapons_4: 865768842
+      Weapons_10: -2121452629
+      Weapons_11: -1545153692
       Weapons_2: -1987540644
       Weapons_3: -1700633392
+      Weapons_4: 865768842
+      Weapons_5: -694137584
+      Weapons_6: 643932704
+      Weapons_7: -499433692
+      Weapons_8: 2076436959
+      Weapons_9: 632579578
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

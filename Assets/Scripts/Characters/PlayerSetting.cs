@@ -301,7 +301,7 @@ public class PlayerSetting : MonoBehaviour
         if (Amount > LeftHP) Amount = LeftHP;
         if (LeftHP != 0)
         {
-            player.CurHP += Amount;
+            player.CurHP += Amount; if(Amount >= 10) GameManager.instance.DM.MakeHealCount(Amount, transform);
             HPBar.fillAmount = player.CurHP / (float)player.MaxHP;
             if (IsPlayer) GameManager.instance.UM.HpChange();
             else if (!IsSummon) { player.MyBatch.HPBar.fillAmount = player.CurHP / (float)player.MaxHP; }

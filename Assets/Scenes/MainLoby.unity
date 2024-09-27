@@ -7830,6 +7830,7 @@ MonoBehaviour:
   - Rosmontis
   - Wafarin
   - Sora
+  - Gum
   PlayerStatus:
     attack: 0
     attackspeed: 0
@@ -29872,6 +29873,7 @@ MonoBehaviour:
   - Rosmontis
   - Wafarin
   - Sora
+  - Gum
   Items:
   - name: "\uB9C1\uACE0\uC9F1"
     operatorid: 0
@@ -31486,7 +31488,7 @@ MonoBehaviour:
     Islocked: 0
     description:
     - "\uACF5\uACA9\uC18D\uB3C4 10% \uC99D\uAC00 \uBC0F \uD2B9\uC815 \uC624\uD37C\uB808\uC774\uD130
-      \uAC15\uD654"
+      \uAC15\uD654(\uBBF8\uAD6C\uD604)"
     extra: "\uADF8 \uB9C8\uC655\uC740 \uBB38\uBA85\uC758 \uC885\uB9D0\uACFC \uBD80\uD765\uC744
       \uAC00\uC838\uC654\uB2E4.\n"
     sprite: {fileID: -807682092, guid: fb382ac0cf85d904c985c6866b8d34d5, type: 3}
@@ -32529,6 +32531,51 @@ MonoBehaviour:
       dragons: 0
       special: 0
       hp: 0
+  - name: "\uAD7C\uC758 \uC694\uB9AC \uB3C4\uAD6C"
+    operatorid: 0
+    lv: 1
+    rarity: 0
+    Islocked: 0
+    description:
+    - "\uCD5C\uB300 \uCCB4\uB825 50 \uC99D\uAC00"
+    - "[\uACE0\uAE30] \uB4DC\uB78D\uC728 10% \uC99D\uAC00"
+    - "\uBC29\uC5B4\uB825 10 \uC99D\uAC00"
+    - "[\uACE0\uAE30] \uC2B5\uB4DD \uBC94\uC704 50% \uC99D\uAC00"
+    - "\uCD5C\uB300 \uCCB4\uB825 100 \uC99D\uAC00"
+    - "[\uACE0\uAE30]\uB97C \uC694\uB9AC\uD55C\uB2E4"
+    extra: "\uD55C \uBC88\uC73C\uB85C \uC548 \uB41C\uB2E4\uBA74 \uB450 \uBC88\uC73C\uB85C\n\uB450
+      \uBC88\uC73C\uB85C \uC548 \uB41C\uB2E4\uBA74 \uC138 \uBC88\uC73C\uB85C"
+    sprite: {fileID: -1545153692, guid: cb87e0f4884fbd24d8d2360be61eafdd, type: 3}
+    attributes:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 1
+    attribute_Enem:
+      attack: 0
+      attackspeed: 0
+      defense: 0
+      speed: 0
+      power: 0
+      cost: 0
+      pickup: 0
+      selection: 0
+      exp: 0
+      heal: 0
+      GoodsEarn: 0
+      dragons: 0
+      special: 0
+      hp: 0
   Infos:
   - name: "\uC544\uBBF8\uC57C"
     name_e: Amiya
@@ -32544,7 +32591,7 @@ MonoBehaviour:
   - name: "\uC544\uC2A4\uD14C\uC2DC\uC544"
     name_e: Astesia
     Inst_Weapon: "\uBCC4\uC758 \uD798\uC744 \uBE4C\uB824 \uC801\uC744 \uACF5\uACA9\uD55C\uB2E4"
-    Inst_Prop: "\uC801 \uACF5\uACA9\uC758 \uC6B0\uC120 \uC21C\uC704\uAC00 \uB41C\uB2E4"
+    Inst_Prop: "\uC5C6\uC74C"
     id: 1
     IsLD: 0
     IsPriorityAttack: 1
@@ -32556,7 +32603,8 @@ MonoBehaviour:
     name_e: Aurora
     Inst_Weapon: "\uC790\uC2E0\uC758 \uC8FC\uBCC0\uC5D0 \uBE59\uACB0 \uC9C0\uB300\uB97C
       \uC18C\uD658\uD55C\uB2E4"
-    Inst_Prop: "\uC801 \uACF5\uACA9\uC758 \uC6B0\uC120 \uC21C\uC704\uAC00 \uB41C\uB2E4"
+    Inst_Prop: "\uACF5\uACA9\uC2DC \uC801\uC5D0\uAC8C \uC11C\uB9AC \uD6A8\uACFC\uB97C
+      \uBD80\uC5EC"
     id: 2
     IsLD: 0
     IsPriorityAttack: 1
@@ -32624,8 +32672,8 @@ MonoBehaviour:
     Standing2: {fileID: 134435340, guid: 6f26af5e459faee4ba780c338335ad37, type: 3}
   - name: "\uB85C\uC988\uBAAC\uD2F0\uC2A4"
     name_e: Rosmontis
-    Inst_Weapon: "\uB3D9\uC2DC\uC5D0 \uCD5C\uB300 \uB450\uAE30\uC758 \uC801\uC744
-      \uACF5\uACA9\uD55C\uB2E4"
+    Inst_Weapon: "\uC801\uC744 \uACF5\uACA9\uD558\uB294 \uCD94\uAC00 \uAE30\uCCB4
+      \uC18C\uD658"
     Inst_Prop: "\uACF5\uACA9\uC2DC \uC801\uC758 \uBC29\uC5B4\uB825\uC744 \uAC10\uC18C\uC2DC\uD0A8\uB2E4"
     id: 8
     IsLD: 1
@@ -32659,6 +32707,19 @@ MonoBehaviour:
     Head: {fileID: 391191481, guid: 8f431041ae472024aae12403bffc4645, type: 3}
     Standing: {fileID: 349488186, guid: 6f26af5e459faee4ba780c338335ad37, type: 3}
     Standing2: {fileID: 349488186, guid: 6f26af5e459faee4ba780c338335ad37, type: 3}
+  - name: "\uAD7C"
+    name_e: Gum
+    Inst_Weapon: "[\uACE0\uAE30]\uB97C \uC694\uB9AC\uD558\uC5EC \uACB0\uACFC\uC5D0
+      \uB530\uB77C    \uB2E4\uC591\uD55C \uD6A8\uACFC\uB97C \uBD80\uC5EC"
+    Inst_Prop: "\uB9E4 3\uBC88\uC9F8 \uD589\uB3D9\uC774 30% \uAC15\uD654\uB418\uBA70  
+      \uCCB4\uB825\uC744 \uC77C\uBD80 \uC18C\uBAA8"
+    id: 11
+    IsLD: 0
+    IsPriorityAttack: 1
+    player: {fileID: 11400000, guid: b5bb6895ee05e7047ac949916d78228b, type: 2}
+    Head: {fileID: 68194539, guid: 8f431041ae472024aae12403bffc4645, type: 3}
+    Standing: {fileID: -2084515103, guid: 76aaddc58ce546141a79a7829804968b, type: 3}
+    Standing2: {fileID: -1719932979, guid: 6f26af5e459faee4ba780c338335ad37, type: 3}
   Resolution: {fileID: 0}
 --- !u!1 &4680751101627770853
 GameObject:

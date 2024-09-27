@@ -16,6 +16,7 @@ TagManager:
   - PlayerBuff
   - EnemyBuff
   - Player_Hide
+  - ExternalArea0
   layers:
   - Default
   - TransparentFX
