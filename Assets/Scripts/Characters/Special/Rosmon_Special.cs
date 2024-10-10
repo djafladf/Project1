@@ -21,6 +21,12 @@ public class Rosmon_Special : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
     }
 
+    BulletInfo BI;
+    private void Start()
+    {
+        BI = new BulletInfo(0, false,0, debuffs: new DeBuff(last: 5, defense: 0.5f), dealFrom: Rosmon.name[0] - '0');
+    }
+
 
     bool tmp = false;
     bool IsAddForce = false;
@@ -85,7 +91,8 @@ public class Rosmon_Special : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             if (!AS.isPlaying) AS.Play();
-            GameManager.instance.BM.MakeBullet(new BulletInfo(Mathf.FloorToInt((1 + GameManager.instance.PlayerStatus.attack + GameManager.instance.PlayerStatus.attackspeed + Rosmon.AttackRatio + Rosmon.ReinforceAmount[0]) * 25), false, 0),0,collision.transform.position,Vector3.zero,0,false);
+            BI.Damage = Mathf.FloorToInt((1 + GameManager.instance.PlayerStatus.attack + GameManager.instance.PlayerStatus.attackspeed + Rosmon.AttackRatio + Rosmon.ReinforceAmount[0]) * 25);
+            GameManager.instance.BM.MakeMeele(BI,0.3f,collision.transform.position,Vector3.zero,0,false);
             if (collision.transform == Target && !tmp) { tmp = true; rigid.AddForce(Vector2.right); }
         }
     }

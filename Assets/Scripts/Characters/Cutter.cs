@@ -12,38 +12,41 @@ public class Cutter : PlayerSetting
         base.Awake();
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         for (int i = 0; i < PM.StartSize.Count; i++)
         {
             PM.StartSize[i] = Random.Range(8, 12);
             PM.StartRotations[i] = Quaternion.Euler(0, 0, -i * 60);
         }
-
+        NormalInfo.IgnoreDefense = 0.2f;
+        KnifeInfo = new BulletInfo(0,false,0,ignoreDefense:0.2f,dealFrom:NormalInfo.DealFrom);
     }
 
+    BulletInfo KnifeInfo;
     protected override void AttackMethod()
     {
         if (TargetPos != null)
         {
             float DamageSub = (1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]);
+            NormalInfo.Damage = (int)(DamageSub * DamageRatio * 10);
             if (Vector3.Distance(TargetPos.position, transform.position) <= 2.5f)
             {
-                GameManager.instance.BM.MakeMeele(
-                    new BulletInfo((int)(DamageSub * DamageRatio * 10), false, 0, ignoreDefense: 0.2f), 0.3f,
-                    transform.position, -player.Dir, 0, false, NormalAttack);
+                GameManager.instance.BM.MakeMeele(NormalInfo, 0.3f, transform.position, -player.Dir, 0, false, NormalAttack);
 
                 if (player.WeaponLevel >= 7) MakeSpec = true;
             }
             if (ProjNum != 0)
             {
+                KnifeInfo.Damage = (int)(DamageSub * SpecialRatio * 10);
                 Vector2 Sub = (TargetPos.position - transform.position).normalized;
                 float rad = Vector2.Angle(Vector2.right, Sub) * Mathf.Deg2Rad;
                 if (Sub.y < 0) rad = Mathf.PI * 2 - rad;
                 for (int i = -ProjNum; i <= ProjNum; i++)
                 {
                     GameManager.instance.BM.MakeBullet(
-                        new BulletInfo((int)(DamageSub * SpecialRatio * 10), false, 0, ignoreDefense: 0.2f), 0,
+                        KnifeInfo, 0,
                     transform.position, new Vector3(Mathf.Cos(rad + 0.1f * i), Mathf.Sin(rad + 0.1f * i), 0),
                     15, false, Bullet);
                 }

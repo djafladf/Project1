@@ -9,6 +9,12 @@ public class Manticore : PlayerSetting
 
     [SerializeField] Sprite[] Bullets;
 
+    protected override void Start()
+    {
+        base.Start();
+        SpecInfo = new BulletInfo(0, false, 0, NormalInfo.DealFrom);
+    }
+
     protected override void AttackMethod()
     {
         if (TargetPos != null)
@@ -27,20 +33,22 @@ public class Manticore : PlayerSetting
     {
         Vector3 z = (TargetPos.position - transform.position).normalized * 2;
 
-        for(int i = 1; i < 6; i++)
+        NormalInfo.Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 10);
+        for (int i = 1; i < 6; i++)
         {
-            GameManager.instance.BM.MakeMeele(new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 10), false, 0),
-                    0.5f, transform.position + z * i, Vector3.zero, 0, false, Bullets[0]);
+            GameManager.instance.BM.MakeMeele(NormalInfo, 0.5f, transform.position + z * i, Vector3.zero, 0, false, Bullets[0]);
             yield return new WaitForSeconds(0.1f);
         }
     }
+
+    BulletInfo SpecInfo;
     IEnumerator UpLocker()
     {
-        GameManager.instance.BM.MakeMeele(new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 10), false, 0),
-                    0.5f, transform.position, Vector3.zero, 0, false, Bullets[2]);
+        NormalInfo.Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 10);
+        GameManager.instance.BM.MakeMeele(NormalInfo, 0.5f, transform.position, Vector3.zero, 0, false, Bullets[2]);
         yield return new WaitForSeconds(0.2f);
-        GameManager.instance.BM.MakeMeele(new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 20), false, 0),
-                    0.5f, transform.position, Vector3.zero, 0, false, Bullets[1]);
+        SpecInfo.DealFrom = NormalInfo.Damage * 2;
+        GameManager.instance.BM.MakeMeele(SpecInfo, 0.5f, transform.position, Vector3.zero, 0, false, Bullets[1]);
     }
 
     IEnumerator HideTime()

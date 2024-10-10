@@ -102,22 +102,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02537fbf858b4da419514d7451e1123f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 20
+  HP: 25
   speed: 1
-  AS: 1
   Damage: 1
   Defense: 0
   Weight: 0
-  ItemVal: 0
+  EnemyType: 0
   IsRange: 0
   MakeLine: 0
   BI:
     Damage: 0
+    DealFrom: 0
     IsEffect: 0
     IsFix: 0
     KnockBack: 0
     IgnoreDefense: 0
     ScaleFactor: 0
+    SpeedFactor: 0
     DeBuffs:
       Last: 0
       Speed: 0
@@ -130,7 +131,7 @@ MonoBehaviour:
       Speed: 0
       Attack: 0
       Defense: 0
-      Fragility: 0
+      AttackSpeed: 0
       Heal: 0
   Bull: {fileID: 0}
   BL:
@@ -209,7 +210,7 @@ Rigidbody2D:
   m_Constraints: 4
 --- !u!95 &1788775384281307618
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -226,7 +227,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5856835231089376059
 GameObject:
   m_ObjectHideFlags: 0

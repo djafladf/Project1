@@ -18,6 +18,7 @@ public class Aurora : PlayerSetting
         base.Awake();
     }
 
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -27,19 +28,19 @@ public class Aurora : PlayerSetting
             if (s >= 1)
             {
                 s = 0;
-                Heal((int)(player.MaxHP * (1 + GameManager.instance.PlayerStatus.heal) * 0.01f));
+                int amount = (int)(player.MaxHP * (1 + GameManager.instance.PlayerStatus.heal) * 0.01f);
+                GameManager.instance.UM.DamageUp(1, NormalInfo.DealFrom,amount);
+                Heal(amount);
             }
         }
     }
 
     protected override void AttackMethod()
     {
+        NormalInfo.Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * 10);
         GameManager.instance.BM.MakeMeele(
-            new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * 10),false,0,debuffs: new DeBuff(ice: this.ice)),
-            0.2f, TargetPos.position, Vector3.zero, 0, false,null);
+            NormalInfo, 0.2f, TargetPos.position, Vector3.zero, 0, false,null);
     }
-
-    int ice = 0;
 
     protected override int WeaponLevelUp()
     {
@@ -47,7 +48,7 @@ public class Aurora : PlayerSetting
         {
             case 1: player.InitDefense += 5; break;
             case 2: player.InitDefense += 5; break;
-            case 3: ice = 1; break;
+            case 3: NormalInfo.DeBuffs = new DeBuff(ice:1); break;
             case 4: player.InitDefense += 10; break;
             case 5: IsHeal = true; break;
             case 6: IceField.SetActive(true); IceOn = true; /*StartCoroutine(FieldAct());*/ break;

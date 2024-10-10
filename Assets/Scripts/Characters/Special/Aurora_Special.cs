@@ -8,18 +8,22 @@ public class Aurora_Special : MonoBehaviour
     [SerializeField] Sprite Sp;
 
     WaitForSeconds ZeroDotFive = new WaitForSeconds(0.5f);
+    BulletInfo BI;
     IEnumerator EAE()
     {
         while (true)
         {
             yield return ZeroDotFive;
-            GameManager.instance.BM.MakeBullet(
-                new BulletInfo((int)(player.InitDefense * (1 + player.DefenseRatio + GameManager.instance.PlayerStatus.defense + player.ReinforceAmount[1]) * 0.5f), false, 0, debuffs: new DeBuff(ice: 1)),
-                0, transform.position, Vector3.zero, 0, false, Sp);
+            BI.Damage = (int)(player.InitDefense * (1 + player.DefenseRatio + GameManager.instance.PlayerStatus.defense + player.ReinforceAmount[1]) * 0.5f);
+            GameManager.instance.BM.MakeMeele(BI,0.3f, transform.position, Vector3.zero, 0, false, Sp);
             yield return ZeroDotFive;
         }
     }
 
+    private void Start()
+    {
+        BI = new BulletInfo(0, false, 0, debuffs: new DeBuff(ice: 1), dealFrom: player.name[0] - '0');
+    }
     private void OnEnable()
     {
         transform.localPosition = Vector3.zero;

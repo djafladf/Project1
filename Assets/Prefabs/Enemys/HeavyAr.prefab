@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02537fbf858b4da419514d7451e1123f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 1000
+  HP: 750
   speed: 0.5
   Damage: 5
   Defense: 65
@@ -112,6 +112,7 @@ MonoBehaviour:
   MakeLine: 0
   BI:
     Damage: 0
+    DealFrom: 0
     IsEffect: 0
     IsFix: 0
     KnockBack: 0
@@ -209,7 +210,7 @@ Rigidbody2D:
   m_Constraints: 4
 --- !u!95 &4883451087436554637
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -226,7 +227,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5856835231089376059
 GameObject:
   m_ObjectHideFlags: 0

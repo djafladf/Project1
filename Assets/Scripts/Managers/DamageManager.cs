@@ -28,6 +28,7 @@ public class DamageManager : MonoBehaviour
 
     public void MakeDamage(int Damage, Transform position)
     {
+        if (!GameManager.instance.gameStatus.IsShowDamage) return;
         for(int i = 0; i < MaxDamage; i++)
         {
             if (!DamageObjects[i].activeSelf)
@@ -41,6 +42,7 @@ public class DamageManager : MonoBehaviour
 
     public void MakeHealCount(int Amount, Transform Position)
     {
+        if (!GameManager.instance.gameStatus.IsShowDamage) return;
         for (int i = 0; i < MaxDamage; i++)
         {
             if (!DamageObjects[i].activeSelf)

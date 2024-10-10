@@ -14,6 +14,12 @@ public class Platinum :PlayerSetting
 
     bool SpecAble = false;
 
+    protected override void Start()
+    {
+        base.Start();
+        NormalInfo.IgnoreDefense = DefenseIgnore;
+        SpecInfo = new BulletInfo(0, false, 0, 1.5f, ignoreDefense:0.5f,dealFrom: NormalInfo.DealFrom);
+    }
 
     protected override void AttackMethod()
     {
@@ -22,11 +28,10 @@ public class Platinum :PlayerSetting
             Vector2 Sub = (TargetPos.position - transform.position).normalized;
             float rad = Vector2.Angle(Vector2.right, Sub) * Mathf.Deg2Rad;
             if (Sub.y < 0) rad = Mathf.PI * 2 - rad;
-            int Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 10);
+            NormalInfo.Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 10);
             for (int i = -ProjNum+1; i <= ProjNum-1; i++)
             {
-                GameManager.instance.BM.MakeBullet(
-                    new BulletInfo(Damage,false,0,ignoreDefense : DefenseIgnore),Penetrate,
+                GameManager.instance.BM.MakeBullet( NormalInfo,Penetrate,
                 transform.position, new Vector3(Mathf.Cos(rad + 0.25f * i), Mathf.Sin(rad + 0.25f * i)),
                 15, false,Bullet,BL:BL);
             }
@@ -72,19 +77,20 @@ public class Platinum :PlayerSetting
     {
         OneGi.Stop();
     }
-    
 
+
+    BulletInfo SpecInfo;
     IEnumerator RainSub()
     {
         yield return new WaitForSeconds(0.3f);
-        int Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 10);
+        SpecInfo.Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 15);
         var cnt = GameManager.GetNearest(5, 7, Target, targetLayer);
         Vector3 Gap = new Vector3(0, 15, 0);
         for (int i = 0; i < 7; i++)
         {
             Vector3 RandomSub = Target + Gap;
             if (cnt.Count != 0) RandomSub = cnt[Random.Range(0, cnt.Count)].position + Gap;
-            GameManager.instance.BM.MakeMeele(new BulletInfo(Damage, false,0,ignoreDefense:DefenseIgnore,scalefactor:1.5f),0.4f,RandomSub,Vector3.down,30,false,Bullet2,delay:0.3f);
+            GameManager.instance.BM.MakeMeele(SpecInfo,0.4f,RandomSub,Vector3.down,30,false,Bullet2,delay:0.3f);
             yield return GameManager.DotOneSec;
         }
         Mark.gameObject.SetActive(false);
@@ -123,7 +129,7 @@ public class Platinum :PlayerSetting
             case 5: DamageRatio ++; break;
             case 6:
                 Penetrate = 100;
-                DefenseIgnore = 0.5f;
+                DefenseIgnore = 0.5f; NormalInfo.IgnoreDefense = 0.5f;
                 SpecAble = true;
                 break;
         }

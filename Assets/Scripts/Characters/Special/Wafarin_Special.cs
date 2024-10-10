@@ -35,6 +35,15 @@ public class Wafarin_Special : MonoBehaviour
         }       
     }
 
+    BulletInfo BI;
+    BulletInfo Buff;
+
+    private void Start()
+    {
+        BI = new BulletInfo(0, false, 0, dealFrom: Wafarin.name[0] - '0');
+        Buff = new BulletInfo(0, false, 0,scalefactor:0.1f,buffs:new Buff(heal:0),dealFrom:BI.DealFrom);
+    }
+
     private void OnEnable()
     {
         StartCoroutine(Attack());
@@ -58,14 +67,14 @@ public class Wafarin_Special : MonoBehaviour
     {
         if (collision.CompareTag("Player") || collision.CompareTag("Player_Hide"))
         {
-            Particles[collision.transform].Play(); GameManager.instance.BM.MakeBuff(new BulletInfo(0, false, 0, buffs: new Buff(heal: (int)((1 + GameManager.instance.PlayerStatus.attack * 0.1f))),scalefactor:0.1f), collision.transform.position, null, false);
+            Buff.Buffs.Heal = Mathf.FloorToInt((1 + GameManager.instance.PlayerStatus.attack * 0.1f));
+            Particles[collision.transform].Play(); GameManager.instance.BM.MakeBuff(Buff, collision.transform.position, null, false);
         }
         if (collision.CompareTag("Enemy"))
         {
             Transform cnt = collision.transform;
-            GameManager.instance.BM.MakeMeele(
-                new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + Wafarin.AttackRatio + Wafarin.ReinforceAmount[0]) * 35f), false, 0), 0.6f,
-                cnt.position, Vector3.zero, 0, false, Bullet);
+            BI.Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + Wafarin.AttackRatio + Wafarin.ReinforceAmount[0]) * 30);
+            GameManager.instance.BM.MakeMeele(BI, 0.6f, cnt.position, Vector3.zero, 0, false, Bullet);
         }
     }
 }

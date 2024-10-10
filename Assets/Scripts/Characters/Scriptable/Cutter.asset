@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7e25e3a93769440ae7e326796378cc, type: 3}
   m_Name: Cutter
   m_EditorClassIdentifier: 
+  name_k: "\uCEE4\uD130"
   speed: 5
   InitHP: 250
   InitSP: 30

@@ -66,6 +66,7 @@ public class EnemStat
 public class BulletInfo
 {
     public int Damage;
+    public int DealFrom;
     public bool IsEffect;
     public bool IsFix;
     public float KnockBack;
@@ -78,9 +79,9 @@ public class BulletInfo
     public Buff Buffs;
 
     public BulletInfo(int damage, bool isEffect,float knockBack, float scalefactor = 1, float speedfactor = 1,bool isFix = false, float ignoreDefense = 0,
-        DeBuff debuffs = null, Buff buffs = null)
+        DeBuff debuffs = null, Buff buffs = null, int dealFrom = -1)
     {
-        Damage = damage;
+        Damage = damage; DealFrom = dealFrom;
         IsEffect = isEffect; IsFix = isFix; ScaleFactor = scalefactor; SpeedFactor = speedfactor;
         KnockBack = knockBack; IgnoreDefense = ignoreDefense;
         DeBuffs = debuffs;
@@ -95,6 +96,11 @@ public class BulletInfo
 
         if (IsFix) return Damage;
         else return Mathf.CeilToInt(Damage * (100 + IgnoreDefense - defense) * 0.01f);
+    }
+
+    public void Copy(BulletInfo From)
+    {
+        Damage = From.Damage; DealFrom = From.DealFrom; IsEffect = From.IsEffect; IsFix = From.IsFix; KnockBack = From.KnockBack; IgnoreDefense = From.IgnoreDefense; ScaleFactor = From.ScaleFactor; SpeedFactor = From.SpeedFactor; DeBuffs = From.DeBuffs; Buffs = From.Buffs;
     }
 }
 

@@ -40,6 +40,7 @@ public class BulletManager : MonoBehaviour
             Bullets[i].gameObject.SetActive(false);
             Bullets[i].name = $"{i}";
             BulletScripts[i] = Bullets[i].GetComponent<Bullet>();
+            BulletInfos[i] = new BulletInfo(0,false,0);
         }
         GameManager.instance.StartLoading();
     }
@@ -85,7 +86,7 @@ public class BulletManager : MonoBehaviour
                 Bullets[i].transform.rotation = Quaternion.FromToRotation(Vector3.up, Dir);
                 if (Info.SpeedFactor != 0) speed *= Info.SpeedFactor;
                 BulletScripts[i].Init_Attack(Penetrate, Dir * speed,false,IsEnemy,0,Info.ScaleFactor,im,BL,anim,delay:delay);
-                BulletInfos[i] = Info;
+                BulletInfos[i].Copy(Info);
                 break;
             }
         }
@@ -110,7 +111,7 @@ public class BulletManager : MonoBehaviour
                 Bullets[i].SetActive(true);
                 Bullets[i].transform.position = Start; Dir.z = 0;
                 Bullets[i].transform.rotation = Quaternion.FromToRotation(Vector3.up, Dir);
-                BulletInfos[i] = Info;
+                BulletInfos[i].Copy(Info);
                 if (Info.SpeedFactor != 0) speed *= Info.SpeedFactor;
                 BulletScripts[i].Init_Attack(-1, Dir * speed, true, IsEnemy, AfterTime, Info.ScaleFactor, im, Anim:Anim,delay:delay);
                 break;
@@ -127,7 +128,7 @@ public class BulletManager : MonoBehaviour
                 Bullets[i].SetActive(true);
                 Bullets[i].transform.position = Start; Dir.z = 0;
                 Bullets[i].transform.rotation = Quaternion.FromToRotation(Vector3.up, Dir);
-                BulletInfos[i] = Info;
+                BulletInfos[i].Copy(Info);
                 BulletScripts[i].Init_Explode(After, Dir * Speed,IsEnemy,im,HitIm,BL : BL,delay:delay);
                 break;
             }
@@ -160,7 +161,7 @@ public class BulletManager : MonoBehaviour
                 Bullets[i].transform.position = Start;
                 Bullets[i].transform.rotation = new Quaternion(0, 0, 0, 0);
                 BulletScripts[i].Init_Buff(BI.ScaleFactor,im,IsEnemy,IsField);
-                BulletInfos[i] = BI;
+                BulletInfos[i].Copy(BI);
                 break;
             }
         }

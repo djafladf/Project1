@@ -13,6 +13,8 @@ public class PlayerSetting : MonoBehaviour
     public bool IsPlayer;
     public bool IsSummon = false;
     public bool HasWeapon;
+
+    public BulletInfo NormalInfo = new BulletInfo(0,false, 0);
     protected bool OnIce;
 
     [NonSerialized] public bool CanMove = true;
@@ -29,7 +31,7 @@ public class PlayerSetting : MonoBehaviour
         CanMove = IsPlayer;
         player.CurHP = player.InitHP; player.MaxHP = player.InitHP;
 
-        player.ChangeOccur = true;
+        player.ChangeOccur = true; player.AllowFollow = true; player.AllowMove = true;
         //player.MaxSp = player.CurSP = player.InitSP;
 
         if (!IsSummon)
@@ -47,7 +49,11 @@ public class PlayerSetting : MonoBehaviour
             GetComponent<PlayerInput>().defaultControlScheme = "Gamepad";
 #endif
         }
+    }
 
+    protected virtual void Start()
+    {
+        NormalInfo.DealFrom = name[0] - '0';
     }
 
 
@@ -73,21 +79,30 @@ public class PlayerSetting : MonoBehaviour
         {
             if (!IsPlayer)
             {
-                if (player.IsFollow)
+                if (player.AllowMove)
                 {
-                    TargetPos = GameManager.instance.Git.transform;
-                    player.Dir = (TargetPos.position - transform.position).normalized;
-                    if (Vector3.Distance(transform.position, TargetPos.position) <= 2f) player.IsFollow = false;
+                    if (player.IsFollow && player.AllowFollow)
+                    {
+                        TargetPos = GameManager.instance.Git.transform;
+                        player.Dir = (TargetPos.position - transform.position).normalized;
+                        if (Vector3.Distance(transform.position, TargetPos.position) <= 2f) player.IsFollow = false;
+                    }
+                    else
+                    {
+                        TargetPos = GetNearest(scanRange);
+                        if (TargetPos != null)
+                        {
+                            if (Vector3.Distance(transform.position, TargetPos.position) <= AttackRange) Attack();
+                            player.Dir = (TargetPos.position - transform.position).normalized;
+                        }
+                        else player.Dir = Vector2.zero;
+                    }
                 }
                 else
                 {
+                    player.Dir = Vector2.zero;
                     TargetPos = GetNearest(scanRange);
-                    if (TargetPos != null)
-                    {
-                        if (Vector3.Distance(transform.position, TargetPos.position) <= AttackRange) Attack();
-                        player.Dir = (TargetPos.position - transform.position).normalized;
-                    }
-                    else player.Dir = Vector2.zero;
+                    if (TargetPos != null) if (Vector3.Distance(transform.position, TargetPos.position) <= AttackRange) Attack();
                 }
             }
             Vector2 nextVec = player.Dir * player.speed * (1 + player.SpeedRatio + GameManager.instance.PlayerStatus.speed + player.ReinforceAmount[2] - player.DeBuffAmount[0]) *  Time.fixedDeltaTime;
@@ -218,6 +233,8 @@ public class PlayerSetting : MonoBehaviour
             if (Info.Heal != 0)
             {
                 Amount = (int)(Info.Heal * (1 + GameManager.instance.PlayerStatus.heal));
+                Amount = Math.Min(player.MaxHP - player.CurHP, Amount);
+                GameManager.instance.UM.DamageUp(1, GameManager.instance.BM.GetBulletInfo(GameManager.StringToInt(collision.name)).DealFrom, Amount);
                 if (Amount != 0 && player.CurHP < player.MaxHP) Heal(Amount);
             }
             if (player.ReinforceAmount[0] <= Info.Attack && Info.Attack != 0)
@@ -297,15 +314,10 @@ public class PlayerSetting : MonoBehaviour
 
     protected void Heal(int Amount)
     {
-        int LeftHP = player.MaxHP - player.CurHP;
-        if (Amount > LeftHP) Amount = LeftHP;
-        if (LeftHP != 0)
-        {
-            player.CurHP += Amount; if(Amount >= 10) GameManager.instance.DM.MakeHealCount(Amount, transform);
-            HPBar.fillAmount = player.CurHP / (float)player.MaxHP;
-            if (IsPlayer) GameManager.instance.UM.HpChange();
-            else if (!IsSummon) { player.MyBatch.HPBar.fillAmount = player.CurHP / (float)player.MaxHP; }
-        }
+        player.CurHP += Amount; if(Amount >= 10) GameManager.instance.DM.MakeHealCount(Amount, transform);
+        HPBar.fillAmount = player.CurHP / (float)player.MaxHP;
+        if (IsPlayer) GameManager.instance.UM.HpChange();
+        else if (!IsSummon) { player.MyBatch.HPBar.fillAmount = player.CurHP / (float)player.MaxHP; }
     }
 
 
@@ -314,6 +326,7 @@ public class PlayerSetting : MonoBehaviour
     {
         if (player.Unbeat) return;
         int GetDamage = Info.ReturnDamage(player.InitDefense * (1 + player.DefenseRatio + GameManager.instance.PlayerStatus.defense + player.ReinforceAmount[1]));
+        GameManager.instance.UM.DamageUp(2, NormalInfo.DealFrom, GetDamage);
         player.CurHP -= GetDamage;
         if (player.CurHP > 0 && Info.DeBuffs != null)
         {

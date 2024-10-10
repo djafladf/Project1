@@ -40,4 +40,9 @@ public class DataManager : MonoBehaviour
     {
         Application.OpenURL(Url);
     }
+
+    public void ShowSetting()
+    {
+        GameManager.instance.SettingM.gameObject.SetActive(true);
+    }
 }

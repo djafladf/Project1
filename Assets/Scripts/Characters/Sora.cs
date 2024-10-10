@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,6 +32,13 @@ public class Sora : PlayerSetting
         player.SubEffects.Add(FlyTwo.GetComponent<SpriteRenderer>());
     }
 
+    protected override void Start()
+    {
+        base.Start();
+        NormalInfo.Buffs = new Buff(last: 0.2f, heal: 0, attack: 0.1f, defense: 0.1f);
+        NormalInfo.ScaleFactor = MaxScale * 0.5f;
+    }
+
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -57,35 +63,32 @@ public class Sora : PlayerSetting
         }
 
         player.rigid.velocity = Vector2.zero;
-        if (CanMove && !OnIce)
+        if (CanMove && !OnIce && player.AllowMove)
         {
-            if (!IsPlayer)
+            if (player.IsFollow && player.AllowFollow)
             {
-                if (player.IsFollow)
+                TargetPos = GameManager.instance.Git.transform;
+                player.Dir = (TargetPos.position - transform.position).normalized;
+                if (Vector3.Distance(transform.position, TargetPos.position) <= 2f) player.IsFollow = false;
+            }
+            else
+            {
+                var Test = GameManager.GetNearest(scanRange, 2, transform.position, targetLayer);
+                TargetPos = null;
+                foreach (var k in Test) if (k != transform) TargetPos = k;
+                if (TargetPos != null)
                 {
-                    TargetPos = GameManager.instance.Git.transform;
-                    player.Dir = (TargetPos.position - transform.position).normalized;
-                    if (Vector3.Distance(transform.position, TargetPos.position) <= 2f) player.IsFollow = false;
-                }
-                else
-                {
-                    var Test = GameManager.GetNearest(scanRange, 2, transform.position, targetLayer);
-                    TargetPos = null;
-                    foreach (var k in Test) if (k != transform) TargetPos = k;
-                    if (TargetPos != null)
+                    float ChangeRange = AttackRange;
+                    if (TargetPos.position.y > transform.position.y)
                     {
-                        float ChangeRange = AttackRange;
-                        if (TargetPos.position.y > transform.position.y)
-                        {
-                            float xgap = Mathf.Abs(TargetPos.position.x - transform.position.x);
-                            if (xgap < 2) ChangeRange = AttackRange * 0.5f;
-                            else if (xgap < 4) ChangeRange = AttackRange * 0.8f;
-                        }
-                        if (Vector3.Distance(transform.position, TargetPos.position) <= ChangeRange) CanMove = false;
-                        player.Dir = (TargetPos.position - transform.position).normalized;
+                        float xgap = Mathf.Abs(TargetPos.position.x - transform.position.x);
+                        if (xgap < 2) ChangeRange = AttackRange * 0.5f;
+                        else if (xgap < 4) ChangeRange = AttackRange * 0.8f;
                     }
-                    else player.Dir = Vector2.zero;
+                    if (Vector3.Distance(transform.position, TargetPos.position) <= ChangeRange) CanMove = false;
+                    player.Dir = (TargetPos.position - transform.position).normalized;
                 }
+                else player.Dir = Vector2.zero;
             }
             Vector2 nextVec = player.Dir * player.speed * (1 + player.SpeedRatio + GameManager.instance.PlayerStatus.speed) * Time.fixedDeltaTime;
             if (nextVec.Equals(Vector2.zero))
@@ -144,18 +147,17 @@ public class Sora : PlayerSetting
     Vector3 SizeSub;
     List<Transform> EtcPos = new List<Transform>();
 
-    [HideInInspector] public Buff CurBuff = new Buff(last:0.2f,heal:0,attack:0.1f,defense:0.1f);
-    [HideInInspector] public DeBuff CurDeBuff = null;
+
     IEnumerator FieldEffect()
     {
         SizeSub = new Vector3(2f, 2f, 0);
         ForceField.localScale = new Vector3(0, 0, 1);
         AIM_Force.StartMaking();
         while (true)
-        { 
+        {
             ForceField.localScale += SizeSub;
-            CurBuff.Heal = (int)Mathf.Round((1 + GameManager.instance.PlayerStatus.attack) * HealRatio);
-            GameManager.instance.BM.MakeBuff(new BulletInfo(0, false, 0, scalefactor: MaxScale * 0.5f,buffs:CurBuff,debuffs:CurDeBuff), new Vector3(transform.position.x,transform.position.y - 0.6f), null, false);
+            NormalInfo.Buffs.Heal = (int)Mathf.Round((1 + GameManager.instance.PlayerStatus.attack) * HealRatio);
+            GameManager.instance.BM.MakeBuff(NormalInfo, new Vector3(transform.position.x, transform.position.y - 0.6f), null, false);
             if (ForceField.localScale.x >= MaxScale)
             {
                 yield return GameManager.DotOneSec;
@@ -191,8 +193,8 @@ public class Sora : PlayerSetting
             case 2: MaxScale = 24; SizeSub = new Vector3(2.4f, 2.4f); break;
             case 3: HealRatio += 0.2f; break;
             case 4: MaxScale = 30; SizeSub = new Vector3(3f, 3f); break;
-            case 5: CurBuff.Attack = 0.15f; CurBuff.Defense = 0.15f; break;
-            case 6: CurBuff.Attack = 0.2f; CurBuff.Defense = 0.2f; CurDeBuff =  new DeBuff(last:0.2f, attack:0.1f,defense:0.1f); FlyOne.SetActive(true); FlyTwo.SetActive(true); break;
+            case 5: NormalInfo.Buffs.Attack = 0.15f; NormalInfo.Buffs.Defense = 0.15f; break;
+            case 6: NormalInfo.Buffs.Attack = 0.2f; NormalInfo.Buffs.Defense = 0.2f; NormalInfo.DeBuffs = new DeBuff(last: 0.2f, attack: 0.1f, defense: 0.1f); FlyOne.SetActive(true); FlyTwo.SetActive(true); break;
         }
         return player.WeaponLevel;
     }

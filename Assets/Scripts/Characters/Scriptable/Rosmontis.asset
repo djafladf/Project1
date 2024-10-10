@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7e25e3a93769440ae7e326796378cc, type: 3}
   m_Name: Rosmontis
   m_EditorClassIdentifier: 
+  name_k: "\uB85C\uC988\uBAAC\uD2F0\uC2A4"
   speed: 5
   InitHP: 200
   InitSP: 0

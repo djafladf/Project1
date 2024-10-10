@@ -128,6 +128,7 @@ public class Enemy : MonoBehaviour
             int GetDamage = Info.ReturnDamage(Defense * (1 + GameManager.instance.EnemyStatus.defense - DeBuffVar[2] + BuffVar[2]));
             if (GetDamage < 0) GetDamage = 0;
             GameManager.instance.DM.MakeDamage(GetDamage, transform);
+            GameManager.instance.UM.DamageUp(0,Info.DealFrom, GetDamage);
             HP -= GetDamage;
             HPChange();     // For Boss
             if (HP <= 0)

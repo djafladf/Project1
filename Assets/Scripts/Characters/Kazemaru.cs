@@ -39,6 +39,13 @@ public class Kazemaru : PlayerSetting
         base.Awake();
     }
 
+    protected override void Start()
+    {
+        base.Start();
+        if (!IsSummon) Doll.GetComponent<Kazemaru>().NormalInfo.DealFrom = NormalInfo.DealFrom;
+        KunaiInfo = new BulletInfo(0, false, 0, dealFrom: NormalInfo.DealFrom);
+    }
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -119,10 +126,11 @@ public class Kazemaru : PlayerSetting
         Vector2 Sub = (EvadeFrom - Attackfrom).normalized;
         float rad = Vector2.Angle(Vector2.right, Sub) * Mathf.Deg2Rad;
         if (Sub.y < 0) rad = Mathf.PI * 2 - rad;
+
+        KunaiInfo.Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * SpecialRatio * 10);
         for (int i = -2; i <= 2; i++)
         {
-            GameManager.instance.BM.MakeBullet(
-                new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * SpecialRatio * 10), false, 0), 0,
+            GameManager.instance.BM.MakeBullet( KunaiInfo, 0,
             Attackfrom, new Vector3(Mathf.Cos(rad + 0.05f * i), Mathf.Sin(rad + 0.05f * i), 0),
             15, false, bullet, delay: 0.1f);
         }
@@ -142,31 +150,33 @@ public class Kazemaru : PlayerSetting
         CanAssasin = true;
     }
 
+    BulletInfo KunaiInfo;
     bool IsAssasin = false;
     protected override void AttackMethod()
     {
         float DamageSub = (1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]);
         if (IsAssasin)
         {
-            GameManager.instance.BM.MakeMeele(
-            new BulletInfo((int)(DamageSub * DamageRatio * 20), false, 0, isFix: true), 0.3f,
+            NormalInfo.Damage = (int)(DamageSub * DamageRatio * 20); NormalInfo.IsFix = true;
+            GameManager.instance.BM.MakeMeele( NormalInfo, 0.3f,
             transform.position, -player.Dir, 0, false, MeeleAttack);
             IsAssasin = false;
         }
-        else
+        else 
         {
+            NormalInfo.Damage = (int)(DamageSub * DamageRatio * 10); NormalInfo.IsFix = false;
             GameManager.instance.BM.MakeMeele(
-            new BulletInfo((int)(DamageSub * DamageRatio * 10), false, 0), 0.3f,
+            NormalInfo, 0.3f,
             transform.position, -player.Dir, 0, false, MeeleAttack);
             if (ProjNum != 0)
             {
+                KunaiInfo.Damage = (int)(DamageSub * SpecialRatio * 10);
                 Vector2 Sub = (TargetPos.position - transform.position).normalized;
                 float rad = Vector2.Angle(Vector2.right, Sub) * Mathf.Deg2Rad;
                 if (Sub.y < 0) rad = Mathf.PI * 2 - rad;
                 for (int i = -ProjNum; i <= ProjNum; i++)
                 {
-                    GameManager.instance.BM.MakeBullet(
-                        new BulletInfo((int)(DamageSub * SpecialRatio * 10), false, 0), 0,
+                    GameManager.instance.BM.MakeBullet( KunaiInfo, 0,
                     transform.position, new Vector3(Mathf.Cos(rad + 0.1f * i), Mathf.Sin(rad + 0.1f * i), 0),
                     15, false, bullet);
                 }

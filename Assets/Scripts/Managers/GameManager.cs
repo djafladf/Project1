@@ -8,9 +8,12 @@ using Cinemachine;
 using System.Collections;
 using UnityEngine.UI;
 using Newtonsoft.Json;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
+    public float CurVersion;
+
     public static GameManager instance;
     public static WaitForSeconds OneSec = new WaitForSeconds(1);
     public static WaitForSeconds TwoSec = new WaitForSeconds(2);
@@ -54,6 +57,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public GameObject Git;
     [HideInInspector] public AudioManager AudioM;
 
+    public SettingManager SettingM;
+
     //Both
     public FloatMessage FloatM;
 
@@ -71,13 +76,13 @@ public class GameManager : MonoBehaviour
     attribute InitPlayerStatus;
 
     public GameStatus gameStatus;
-
+    public InputActionAsset PlayerInput;
 
     private void OnApplicationQuit()
     {
         gameStatus.LastBatch = CurPlayerID;
         string json = JsonConvert.SerializeObject(gameStatus);
-        File.WriteAllText(Path.Combine(Application.persistentDataPath, "Status.json"), json);
+        File.WriteAllText(Path.Combine(Application.persistentDataPath, $"Status_{CurVersion}.json"), json);
     }
 
     [HideInInspector] public int RatType = 0;
@@ -88,15 +93,12 @@ public class GameManager : MonoBehaviour
         if (instance == null) { 
             instance = this; 
             DontDestroyOnLoad(gameObject);
-            string path = Path.Combine(Application.persistentDataPath, "Status.json");
-            if (File.Exists(path))
-            {
-                gameStatus = JsonConvert.DeserializeObject<GameStatus>(File.ReadAllText(path));
-            }
-            else
-            {
-                gameStatus = new GameStatus(); gameStatus.LastBatch.Add(0);
-            }
+
+            // Load GameStatus
+            string path = Path.Combine(Application.persistentDataPath, $"Status_{CurVersion}.json");
+            if (File.Exists(path)) gameStatus = JsonConvert.DeserializeObject<GameStatus>(File.ReadAllText(path));
+            else { gameStatus = new GameStatus(); gameStatus.LastBatch.Add(0); }
+
             CurPlayerID = gameStatus.LastBatch;
 #if UNITY_ANDROID || UNITY_IOS
             Application.targetFrameRate = 60;
@@ -124,6 +126,20 @@ public class GameManager : MonoBehaviour
         
     }
 #endif
+
+    public void ApplyKeyOption()
+    {
+        var MoveBind = PlayerInput.FindAction("Move");
+        int keyboardInd = 0;
+
+        while (!MoveBind.bindings[keyboardInd].path.StartsWith("<Keyboard>")) keyboardInd++;
+
+        for (int i = 0; i < 4; i++) MoveBind.ApplyBindingOverride(keyboardInd+i, gameStatus.MoveKey[i]);
+
+        PlayerInput.FindAction("Pause").ApplyBindingOverride(0, gameStatus.PauseKey);
+        
+        for (int i = 0; i < 3; i++) PlayerInput.FindAction($"Unit{i+1}").ApplyBindingOverride(0, gameStatus.UnitKey[i]);
+    }
 
     [HideInInspector] public Player[] Players;
     [HideInInspector] public GameObject[] Prefs;
@@ -199,6 +215,7 @@ public class GameManager : MonoBehaviour
             if(LastLoading == 6) LoadAsset_Game();
             else if (LastLoading == 0)
             {
+                ApplyKeyOption();
                 StartCoroutine(LoadingEndAct());
                 PlayerObj.SetActive(true);
                 ES.StartStage();

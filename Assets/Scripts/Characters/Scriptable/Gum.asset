@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7e25e3a93769440ae7e326796378cc, type: 3}
   m_Name: Gum
   m_EditorClassIdentifier: 
+  name_k: "\uAD7C"
   speed: 2
-  InitHP: 550
+  InitHP: 500
   InitSP: 30
   InitDefense: 40
   Cost: 25

@@ -31,8 +31,9 @@ public class Amiya : PlayerSetting
         CurApplyLine = BL;
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         StartCoroutine(Test());
 #if UNITY_EDITOR
         //GameManager.instance.SetTime(3, false);
@@ -45,7 +46,7 @@ public class Amiya : PlayerSetting
         while (true)
         {
             if (OnIce) yield return GameManager.DotOneSec;
-            int Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 10);
+            NormalInfo.Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 10);
             var Targets = GameManager.GetNearest(scanRange, ProjNum, transform.position, targetLayer);
             Transform j;
             if (Targets.Count != 0)
@@ -56,7 +57,7 @@ public class Amiya : PlayerSetting
                     j = Targets[Random.Range(0, Targets.Count)];
                     PTS[i].gameObject.transform.position = RandomSub;
                     PTS[i].Play();
-                    GameManager.instance.BM.MakeBullet(new BulletInfo(Damage, false, 0), Penetrate, RandomSub,
+                    GameManager.instance.BM.MakeBullet(NormalInfo, Penetrate, RandomSub,
                         (j.position - transform.position).normalized, BulletSpeed, false, BulletIm,
                         BL: CurApplyLine);
                     yield return new WaitForSeconds(0.1f);

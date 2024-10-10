@@ -33,9 +33,8 @@ public class Astesia : PlayerSetting
 
         if (TargetPos != null)
         {
-            GameManager.instance.BM.MakeMeele(
-                    new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 10), false, 0), 0.3f,
-                    transform.position, -player.Dir, 0, false, im: AttackIm);
+            NormalInfo.Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0] + GameManager.instance.PlayerStatus.defense + player.DefenseRatio + player.ReinforceAmount[1]) * DamageRatio * 10);
+            GameManager.instance.BM.MakeMeele(NormalInfo, 0.3f,transform.position, -player.Dir, 0, false, im: AttackIm);
             if (player.WeaponLevel == 7)
             {
                 StartCoroutine(LateDamage(0.25f));
@@ -47,9 +46,7 @@ public class Astesia : PlayerSetting
     IEnumerator LateDamage(float Time)
     {
         yield return new WaitForSeconds(Time);
-        GameManager.instance.BM.MakeBullet(
-            new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio+player.ReinforceAmount[0]) * DamageRatio * 10), false, 0),0,
-                TargetPos.position, Vector3.zero, 0, false);
+        GameManager.instance.BM.MakeMeele(NormalInfo,0.3f,TargetPos.position, Vector3.zero, 0, false);
     }
 
     float DamageRatio = 1f;

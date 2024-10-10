@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7e25e3a93769440ae7e326796378cc, type: 3}
   m_Name: Amiya
   m_EditorClassIdentifier: 
+  name_k: "\uC544\uBBF8\uC57C"
   speed: 4
   InitHP: 200
   InitSP: 30

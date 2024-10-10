@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Wafarin :PlayerSetting
@@ -23,11 +21,11 @@ public class Wafarin :PlayerSetting
             Vector2 Sub = (TargetPos.position - transform.position).normalized;
             float rad = Vector2.Angle(Vector2.right, Sub) * Mathf.Deg2Rad;
             if (Sub.y < 0) rad = Mathf.PI * 2 - rad;
+            NormalInfo.Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 10);
             for (int i = -ProjNum+1; i <= ProjNum-1; i++)
             {
                 GameManager.instance.BM.MakeBullet(
-                    new BulletInfo((int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 10),false,0),
-                    Penetrate, transform.position, new Vector3(Mathf.Cos(rad + 0.25f * i), Mathf.Sin(rad + 0.25f * i)),10, false,Bullet,BL:BL);
+                    NormalInfo, Penetrate, transform.position, new Vector3(Mathf.Cos(rad + 0.25f * i), Mathf.Sin(rad + 0.25f * i)),10, false,Bullet,BL:BL);
             }
             if (player.WeaponLevel >= 7 && !Pond.activeSelf)
             {

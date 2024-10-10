@@ -23,7 +23,9 @@ public class DamageObject : MonoBehaviour
         gameObject.SetActive(true); 
         text.text = amount == 0 ? "Blocked" : $"{amount}";
         text.fontSize = 0.8f + 0.2f * (amount / 100);
-        if (amount <= 100) text.color = Color.white; else if (amount <= 250) text.color = Orange; else text.color = Color.red;
+        if (amount <= 100) text.color = Color.white; 
+        else if (amount <= 250) text.color = Orange; 
+        else text.color = Color.red;
         transform.position = pos.position;
         rigid.AddForce(UB);
         StartCoroutine(RemoveDamage());

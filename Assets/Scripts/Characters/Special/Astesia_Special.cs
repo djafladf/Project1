@@ -9,16 +9,24 @@ public class Astesia_Special : MonoBehaviour
     Coroutine color = null;
     Color Sub = new Color(0.75f, 0.75f, 1);
 
+
+    BulletInfo BI;
     private void Awake()
     {
         Sprite = GetComponent<SpriteRenderer>();
     }
+    private void Start()
+    {
+        BI = new BulletInfo(0, false, 10, dealFrom: Astesia.name[0] - '0');
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
         {
             if (color == null) color = StartCoroutine(ColorChange());
-            GameManager.instance.BM.MakeBullet(new BulletInfo(Mathf.FloorToInt((1 + GameManager.instance.PlayerStatus.attack + Astesia.AttackRatio+Astesia.ReinforceAmount[0]) * 15), false, 3), 0, collision.transform.position, Vector3.zero, 0, false);
+            BI.Damage = Mathf.FloorToInt((1 + GameManager.instance.PlayerStatus.attack + Astesia.AttackRatio + Astesia.ReinforceAmount[0] + GameManager.instance.PlayerStatus.defense + Astesia.DefenseRatio + Astesia.ReinforceAmount[1]) * 15);
+            GameManager.instance.BM.MakeMeele(BI, 0, collision.transform.position, Vector3.zero, 0, false);
         }
     }
 

@@ -41,6 +41,15 @@ public class OperatorBatchTool : Buttons
         face.sprite = Head; CanBatch = true;
     }
     
+    public void AllowFollow()
+    {
+        GameManager.instance.Players[CharInd].AllowFollow = GameManager.instance.Players[CharInd].AllowFollow == false;
+    }
+
+    public void AllowMove()
+    {
+        GameManager.instance.Players[CharInd].AllowMove = GameManager.instance.Players[CharInd].AllowMove == false;
+    }
 
     private void FixedUpdate()
     {

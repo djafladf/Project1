@@ -20,7 +20,6 @@ public class Gum : PlayerSetting
 
     int ItemCount = -1;
     string ItemName;
-    bool NeedItemUpdate = false;
     bool OnSkill = false;
     BulletInfo Injure = new BulletInfo(0,false,0);
 
@@ -32,20 +31,21 @@ public class Gum : PlayerSetting
         player.InitDefense = 40; player.InitHP = 500;
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         GameManager.instance.IM.UpdateExternalItem(ItemCount, Target: name[0] - '0');
-
-        for (int i = 0; i < 7;i++) WeaponLevelUp();
+        Injure.DealFrom = NormalInfo.DealFrom;
+        //for (int i = 0; i < 7;i++) WeaponLevelUp();
     }
 
     protected override void AttackMethod()
     {
         if (ActCount == 2)
         {
+            NormalInfo.Damage = Mathf.FloorToInt((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * 19.5f);
             GameManager.instance.BM.MakeMeele(
-                new BulletInfo(Mathf.FloorToInt((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * 19.5f), false, 0),
-                0.2f, TargetPos.position, Vector3.zero, 0, false, null);
+                NormalInfo, 0.2f, TargetPos.position, Vector3.zero, 0, false, null);
 
             Injure.Damage = Mathf.FloorToInt(player.MaxHP * 0.03f);
             GetDamage(Injure, transform);
@@ -53,9 +53,9 @@ public class Gum : PlayerSetting
         }
         else
         {
+            NormalInfo.Damage = Mathf.FloorToInt((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * 15);
             GameManager.instance.BM.MakeMeele(
-                new BulletInfo(Mathf.FloorToInt((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * 15), false, 0),
-                0.2f, TargetPos.position, Vector3.zero, 0, false, null);
+                NormalInfo, 0.2f, TargetPos.position, Vector3.zero, 0, false, null);
             ActCount++;
         }
     }
@@ -94,8 +94,8 @@ public class Gum : PlayerSetting
         {
             Injure.Damage = Mathf.FloorToInt((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * 26);
             GameManager.instance.BM.MakeBullet(Injure, 0, transform.position + Vector3.up, player.sprite.flipX ? Vector3.left : Vector3.right, 30, false,FailMeat);
-            Injure.Damage = Mathf.FloorToInt(player.MaxHP * 0.03f);
-            GetDamage(Injure, transform);
+            NormalInfo.Damage = Mathf.FloorToInt(player.MaxHP * 0.03f);
+            GetDamage(NormalInfo, transform);
             ActCount = 0;
         }
         else

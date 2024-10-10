@@ -16,7 +16,7 @@ public class Sora_Special : MonoBehaviour
     {
         while (true)
         {
-            GameManager.instance.BM.MakeBuff(new BulletInfo(0, false, 0, buffs: Sora.CurBuff, debuffs: Sora.CurDeBuff), transform.position,sp, false);
+            GameManager.instance.BM.MakeBuff(Sora.NormalInfo, transform.position,sp, false);
             yield return GameManager.DotOneSec;
         }
     }

@@ -8,6 +8,9 @@ using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+
+// InGameManager
+
 public class UIManager : MonoBehaviour
 {
     [NonSerialized] public int KillCount = 0;
@@ -36,6 +39,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject MobileSet;
     [SerializeField] RectTransform Stick;
+
+    [SerializeField] Transform DamageField;
 
     public Transform BossShaft;
     Transform GetArea;
@@ -154,11 +159,11 @@ public class UIManager : MonoBehaviour
             BossShaft.position = new Vector3(Screen.width / 2, Screen.height / 2) + new Vector3(Dir.x * Screen.width * 0.5f, Dir.y * Screen.height * 0.5f);
 
         }
-        if (CurCost < 99) CurCost += Time.fixedDeltaTime * GameManager.instance.PlayerStatus.cost * 0.5f;
+        if (CurCost < 99) CurCost += Time.fixedDeltaTime * GameManager.instance.PlayerStatus.cost * 0.75f;
         Cost.text = $"{(int)CurCost}";
     }
 
-    float ExpSub = 0.07f;
+    float ExpSub = 0.08f;
     float CurExpVar = 0;
     public void ExpUp(int value,bool Test = false)
     {
@@ -572,6 +577,25 @@ public class UIManager : MonoBehaviour
     }
 
     //ETC
+    List<TMP_Text> DamageTexts = new List<TMP_Text>();
+    List<TMP_Text> HealTexts = new List<TMP_Text>();
+    List<TMP_Text> DefenseTexts = new List<TMP_Text>();
+    List<List<int>> DamageInt = new List<List<int>>();
+
+    public void DamageUp(int type,int num, int Count)
+    {
+        DamageInt[type][num] += Count;
+    }
+
+    public void SetDamage()
+    {
+        for(int i = 0; i < DamageTexts.Count; i++)
+        {
+            DamageTexts[i].text = DamageInt[0][i] > 1000 ? $"{(int)(DamageInt[0][i]*0.001)}k" : $"{DamageInt[0][i]}";
+            HealTexts[i].text = DamageInt[1][i] > 1000 ? $"{(int)(DamageInt[1][i] * 0.001)}k" : $"{DamageInt[1][i]}";
+            DefenseTexts[i].text = DamageInt[2][i] > 1000 ? $"{(int)(DamageInt[2][i] * 0.001)}k" : $"{DamageInt[2][i]}";
+        }
+    }
 
     public void Init(int Count, List<ItemSub> Weapons, Player[] Players, GameObject[] Prefs, OperatorInfos[] Opers, int PlayerInd)
     {
@@ -596,6 +620,13 @@ public class UIManager : MonoBehaviour
         Vector3 StartPos = new Vector3(100, 840, 0); Vector3 Cnt = new Vector3(0, 280, 0);
         int batchl = 0;
 
+        Transform NameSet = DamageField.GetChild(1);
+        Transform DamageText = DamageField.GetChild(2);
+        Transform HealText = DamageField.GetChild(3);
+        Transform DefenseText = DamageField.GetChild(4);
+
+        DamageInt.Add(new List<int>()); DamageInt.Add(new List<int>()); DamageInt.Add(new List<int>());
+
         for (int i = 0; i < Count; i++)
         {
             // Add Weapon To Item
@@ -603,13 +634,20 @@ public class UIManager : MonoBehaviour
             j.operatorid = i;
             WeaponSelection.Add(j);
             IsPriorityAttack.Add(Opers[i].IsPriorityAttack);
+
+            var tmp = NameSet.GetChild(i); tmp.gameObject.SetActive(true);
+            tmp.GetComponent<TMP_Text>().text = Players[i].name_k;
+            DamageInt[0].Add(0); DamageInt[1].Add(0); DamageInt[2].Add(0);
+            var ttmp = DamageText.GetChild(i).GetComponent<TMP_Text>(); DamageTexts.Add(ttmp); ttmp.text = "0"; ttmp.gameObject.SetActive(true);
+            var tttmp = HealText.GetChild(i).GetComponent<TMP_Text>(); HealTexts.Add(tttmp); tttmp.text = "0"; tttmp.gameObject.SetActive(true);
+            var ttttmp = DefenseText.GetChild(i).GetComponent<TMP_Text>(); DefenseTexts.Add(ttttmp); ttttmp.text = "0"; ttttmp.gameObject.SetActive(true);
             Prefs[i].name = $"{i}";
             // Init BatchTool;
             if (i != PlayerInd)
             {
                 int ind = i;
                 GameObject Tool = Instantiate(BatchTool, ToolField);
-                var k = Tool.GetComponent<OperatorBatchTool>();
+                var k = Tool.transform.GetChild(0).GetComponent<OperatorBatchTool>();
                 Players[i].MyBatch = k;
                 k.Init(Prefs[i], Opers[i].Head, Players[i].Cost, Players[i].ReBatchTime,i);
                 Tool.GetComponent<RectTransform>().anchoredPosition = StartPos - Cnt * batchl++;
