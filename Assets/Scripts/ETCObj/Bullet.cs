@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -37,6 +38,11 @@ public class Bullet : MonoBehaviour
     {
         if (BL != null)
         {
+            if (GameManager.instance.gameStatus.AttackAlpha != 1)
+            {
+                GradientAlphaKey[] alphaKeys = BL.Color.alphaKeys; for (int i = 0; i < alphaKeys.Length; i++) alphaKeys[i].alpha *= GameManager.instance.gameStatus.AttackAlpha;
+                BL.Color.SetKeys(BL.Color.colorKeys, alphaKeys);
+            }
             Line.enabled = true;Line.colorGradient = BL.Color;Line.widthCurve = BL.Width;Line.time = BL.Time;
         }
         if (Anim != null) { anim.enabled = true; anim.runtimeAnimatorController = Anim; }
@@ -54,6 +60,8 @@ public class Bullet : MonoBehaviour
         if (IsMeele) StartCoroutine(AfterImage(AfterTime,delay == 0));
         
         tag = IsEnemy ? "EnemyAttack" : "PlayerAttack";
+
+        sprite.color -= new Color(0,0,0,1 - GameManager.instance.gameStatus.AttackAlpha);
     }
 
     IEnumerator AttackDelay(float time)
@@ -67,6 +75,11 @@ public class Bullet : MonoBehaviour
     {
         if (BL != null)
         {
+            if(GameManager.instance.gameStatus.AttackAlpha != 1)
+            {
+                GradientAlphaKey[] alphaKeys = BL.Color.alphaKeys; for (int i = 0; i < alphaKeys.Length; i++) alphaKeys[i].alpha *= GameManager.instance.gameStatus.AttackAlpha;
+                BL.Color.SetKeys(BL.Color.colorKeys,alphaKeys);
+            }
             Line.enabled = true; Line.colorGradient = BL.Color; Line.widthCurve = BL.Width; Line.time = BL.Time;
         }
         if (Anim != null) { anim.enabled = true; anim.runtimeAnimatorController = Anim; }
@@ -80,6 +93,7 @@ public class Bullet : MonoBehaviour
         else coll.size = Vector2.one;
 
         tag = IsEnemy ? "EnemyAttack" : "PlayerAttack";
+        sprite.color -= new Color(0, 0, 0, 1 - GameManager.instance.gameStatus.AttackAlpha);
     }
 
 
@@ -87,6 +101,11 @@ public class Bullet : MonoBehaviour
     {
         if (BL != null)
         {
+            if (GameManager.instance.gameStatus.AttackAlpha != 1)
+            {
+                GradientAlphaKey[] alphaKeys = BL.Color.alphaKeys; for (int i = 0; i < alphaKeys.Length; i++) alphaKeys[i].alpha *= GameManager.instance.gameStatus.AttackAlpha;
+                BL.Color.SetKeys(BL.Color.colorKeys, alphaKeys);
+            }
             Line.enabled = true; Line.colorGradient = BL.Color; Line.widthCurve = BL.Width; Line.time = BL.Time;
         }
         if (Anim != null){ anim.enabled = true; anim.runtimeAnimatorController = Anim; }
@@ -94,6 +113,7 @@ public class Bullet : MonoBehaviour
         rigid.simulated = true; rigid.velocity = Dir; sprite.sprite = Image;
         if (BL == null) Line.enabled = false;
 
+        sprite.color -= new Color(0, 0, 0, 1 - GameManager.instance.gameStatus.AttackAlpha);
         StartCoroutine(AfterImage(AfterTime,AlphaChange));
     }
 
@@ -108,6 +128,7 @@ public class Bullet : MonoBehaviour
         else coll.size = Vector2.one * ScaleFactor;
 
         IsMeele = true;
+        sprite.color -= new Color(0, 0, 0, 1 - GameManager.instance.gameStatus.AttackAlpha);
         StartCoroutine(AfterImage(0.3f,true));
         tag = IsEnemy ? "EnemyBuff" : "PlayerBuff";
     }
@@ -147,7 +168,7 @@ public class Bullet : MonoBehaviour
     IEnumerator AfterImage(float AfterTime,bool SizeChange = false) 
     {
         float j = AfterTime * 0.2f;
-        Color D = new Color(0, 0, 0, 0.2f);
+        Color D = new Color(0, 0, 0, 0.2f * sprite.color.a);
         yield return new WaitForSeconds(j);
         for (int i = 0; i < 5; i++)
         {

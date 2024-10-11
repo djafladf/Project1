@@ -37,7 +37,7 @@ public class Amiya : PlayerSetting
         StartCoroutine(Test());
 #if UNITY_EDITOR
         //GameManager.instance.SetTime(3, false);
-        for (int i = 0; i < 6; i++) WeaponLevelUp();
+        /*for (int i = 0; i < 6; i++) WeaponLevelUp();*/
 #endif
     }
 
@@ -88,6 +88,38 @@ public class Amiya : PlayerSetting
                 break;
         }
         return player.WeaponLevel;
+    }
+
+    void OnPause()
+    {
+        if(!GameManager.instance.SettingM.gameObject.activeSelf) GameManager.instance.UM.GamePause();
+    }
+
+    void OnUnit1()
+    {
+        for(int i = 0; i < GameManager.instance.Players.Length-1; i++)
+        {
+            GameManager.instance.Players[i + 1].MyBatch.AllowFollow(0);
+            GameManager.instance.Players[i + 1].MyBatch.AllowMove(0);
+        }
+    }
+
+    void OnUnit2()
+    {
+        for (int i = 0; i < GameManager.instance.Players.Length - 1; i++)
+        {
+            GameManager.instance.Players[i + 1].MyBatch.AllowFollow(1);
+            GameManager.instance.Players[i + 1].MyBatch.AllowMove(1);
+        }
+    }
+
+    void OnUnit3()
+    {
+        for (int i = 0; i < GameManager.instance.Players.Length - 1; i++)
+        {
+            GameManager.instance.Players[i + 1].MyBatch.AllowFollow(2);
+            GameManager.instance.Players[i + 1].MyBatch.AllowMove(2);
+        }
     }
 }
 

@@ -30,7 +30,7 @@ public class ShopManager : MonoBehaviour
 
     int[] Costs =
     {
-        0,150,300,600,1200,3200,6400,12800,25600,51200,100000
+        0,150,300,600,1200,3200,6400,12800,25600,51200,100000,0
     };
     
     List<GameObject> SoldOut = new List<GameObject>();

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -17,6 +18,9 @@ public class SettingManager : MonoBehaviour
     [SerializeField] List<TMP_Text> KeyBinds;
     [SerializeField] List<OnOffButton> KeyBindsImages;
 
+    [SerializeField] int DetailStartInd;
+    List<List<List<OnOffButton>>> CustomDetails = new List<List<List<OnOffButton>>>();
+
 
     int CurOpen = 0;
 
@@ -25,6 +29,19 @@ public class SettingManager : MonoBehaviour
         if (GameManager.instance.SettingM == null) GameManager.instance.SettingM = this;
         else Destroy(gameObject);
         foreach (var j in KeyBindsImages) KeyBinds.Add(j.transform.GetChild(0).GetComponent<TMP_Text>());
+
+        Transform cnt = Contents[2].transform.GetChild(0).GetChild(0);
+
+        for (int x = 0; x < 3; x++)
+        {
+            CustomDetails.Add(new List<List<OnOffButton>>());
+            for (int i = DetailStartInd; i < DetailStartInd + 3; i++)
+            {
+                Transform tmp = cnt.GetChild(i);
+                CustomDetails[x].Add(new List<OnOffButton>{ tmp.GetChild(1).GetComponent<OnOffButton>(), tmp.GetChild(2).GetComponent<OnOffButton>() });
+            }
+            DetailStartInd += 4;
+        }
     }
     private void Start()
     {
@@ -42,7 +59,11 @@ public class SettingManager : MonoBehaviour
         }
         // GameSetting
         if (GameManager.instance.gameStatus.IsShowDamage) OnOffSettings[0].ExternalOff(); else OnOffSettings[0].ExternalOn();
-
+        for(int i = 0; i < 3; i++)for(int x = 0; x <3; x++) for(int y = 0; y <2; y++)
+                {
+                    if (GameManager.instance.gameStatus.UnitKeySetting[i][x][y]) CustomDetails[i][x][y].ExternalOn();
+                    else CustomDetails[i][x][y].ExternalOff();
+                }
 #if UNITY_STANDALONE
         CurBindKeyCodes.Clear();
         // KeySetting
@@ -78,6 +99,10 @@ public class SettingManager : MonoBehaviour
         // GameSetting
 
         GameManager.instance.gameStatus.IsShowDamage = !OnOffSettings[0].Onuse;
+        for (int i = 0; i < 3; i++) for (int x = 0; x < 3; x++) for (int y = 0; y < 2; y++)
+                {
+                    GameManager.instance.gameStatus.UnitKeySetting[i][x][y] = CustomDetails[i][x][y].Onuse;
+                }
 
 #if UNITY_STANDALONE
         // KeySetting

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -24,6 +25,10 @@ public class OperatorBatchTool : Buttons
     [SerializeField] Image pan;
     [SerializeField] Image face;
     [SerializeField] Image state;
+
+    [SerializeField] OnOffButton FollowSet;
+    [SerializeField] OnOffButton MoveSet;
+ 
     public Image HPBar;
     Sprite ObjectImage;
 
@@ -40,15 +45,25 @@ public class OperatorBatchTool : Buttons
         ObjectImage = BatchObject.GetComponent<SpriteRenderer>().sprite;
         face.sprite = Head; CanBatch = true;
     }
-    
-    public void AllowFollow()
+
+    public void AllowFollow(int ind = -1)
     {
-        GameManager.instance.Players[CharInd].AllowFollow = GameManager.instance.Players[CharInd].AllowFollow == false;
+        if (ind >= 0)
+        {
+            if (!GameManager.instance.gameStatus.UnitKeySetting[ind][CharInd-1][1]) { GameManager.instance.Players[CharInd].AllowFollow = true; FollowSet.ExternalOff(); }
+            else { GameManager.instance.Players[CharInd].AllowFollow = false; FollowSet.ExternalOn(); }
+        }
+        else GameManager.instance.Players[CharInd].AllowFollow = GameManager.instance.Players[CharInd].AllowFollow == false;
     }
 
-    public void AllowMove()
+    public void AllowMove(int ind = -1)
     {
-        GameManager.instance.Players[CharInd].AllowMove = GameManager.instance.Players[CharInd].AllowMove == false;
+        if (ind >= 0)
+        {
+            if (!GameManager.instance.gameStatus.UnitKeySetting[ind][CharInd-1][0]) { GameManager.instance.Players[CharInd].AllowMove = true; MoveSet.ExternalOff(); }
+            else { GameManager.instance.Players[CharInd].AllowMove = false; MoveSet.ExternalOn(); }
+        }
+        else GameManager.instance.Players[CharInd].AllowMove = GameManager.instance.Players[CharInd].AllowMove == false;
     }
 
     private void FixedUpdate()

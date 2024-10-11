@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
+public class DoubleArray<T>
+{
+    List<List<T>> array;
+}
+[System.Serializable]
 public class OperatorInfos
 {
     public string name;
@@ -25,7 +30,7 @@ public class GameStatus
     public string[] MoveKey;
     public string PauseKey;
     public string[] UnitKey;
-    public bool[][] UnitKeySetting;
+    public bool[][][] UnitKeySetting;
 
     // GameSetting
     public float[] Sounds;      // Game, Unit, Effect
@@ -46,7 +51,12 @@ public class GameStatus
         MoveKey = new string[4] { "<Keyboard>/w", "<Keyboard>/s", "<Keyboard>/a", "<Keyboard>/d" };
         PauseKey = "<Keyboard>/escape";
         UnitKey = new string[3] { "<Keyboard>/1","<Keyboard>/2","<Keyboard>/3" };
-        UnitKeySetting = new bool[3][]{ new bool[2]{false,false},new bool[2]{false,false },new bool[2]{false,false } };
+        UnitKeySetting = new bool[3][][]
+        {
+            new[] { new bool[2], new bool[2], new bool[2] },
+            new[] { new bool[2], new bool[2], new bool[2] },
+            new[] { new bool[2], new bool[2], new bool[2] }
+        };
         Sounds = new float[3] { 1, 1, 1 };
         IsShowDamage = true; AttackAlpha = 1;
 
@@ -61,8 +71,21 @@ public class GameStatus
         MoveKey = new string[4] { "<Keyboard>/w", "<Keyboard>/s", "<Keyboard>/a", "<Keyboard>/d" };
         PauseKey = "<Keyboard>/escape";
         UnitKey = new string[3] { "<Keyboard>/1", "<Keyboard>/2", "<Keyboard>/3" };
-        UnitKeySetting = new bool[3][] { new bool[2] { false, false }, new bool[2] { false, false }, new bool[2] { false, false } };
+        UnitKeySetting = new bool[3][][]
+        {
+            new[] { new bool[2], new bool[2], new bool[2] },
+            new[] { new bool[2], new bool[2], new bool[2] },
+            new[] { new bool[2], new bool[2], new bool[2] }
+        };
         Sounds = new float[3] { 1, 1, 1 };
         IsShowDamage = true; AttackAlpha = 1;
+
+        if (IsResetGameVar)
+        {
+            Objects = new int[3] { 0, 0, 0 };
+            Stat = new int[10] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+            Enem = new int[6] { 0, 0, 0, 0, 0, 0 };
+            LastBatch = new List<int>() { 0 };
+        }
     }
 }

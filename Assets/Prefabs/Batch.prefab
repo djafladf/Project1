@@ -103,24 +103,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b29bf7281eb5894d94987eb1bbd72f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ReactAtOn: 0
   OnSprite: {fileID: -1541734628, guid: bb70ff7adb132c44d83e99fdff3cfbcd, type: 3}
   OffSprite: {fileID: 1540137214, guid: bb70ff7adb132c44d83e99fdff3cfbcd, type: 3}
-  Render: {fileID: 6771388102844638229}
+  Text: {fileID: 0}
+  OnColor: {r: 0, g: 0, b: 0, a: 0}
+  OffColor: {r: 0, g: 0, b: 0, a: 0}
   ClickEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4081578403051869120}
         m_TargetAssemblyTypeName: OperatorBatchTool, Assembly-CSharp
         m_MethodName: AllowMove
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: -1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  Onuse: 0
 --- !u!1 &3912573947494519902
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,6 +220,8 @@ MonoBehaviour:
   pan: {fileID: 3912573947494519896}
   face: {fileID: 3912573949135925956}
   state: {fileID: 3912573948558171146}
+  FollowSet: {fileID: 7882236756108176224}
+  MoveSet: {fileID: 4496732523204849010}
   HPBar: {fileID: 3912573948374244791}
 --- !u!1 &3912573947521571086
 GameObject:
@@ -979,21 +985,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b29bf7281eb5894d94987eb1bbd72f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ReactAtOn: 0
   OnSprite: {fileID: 448875175, guid: bb70ff7adb132c44d83e99fdff3cfbcd, type: 3}
   OffSprite: {fileID: -867291124, guid: bb70ff7adb132c44d83e99fdff3cfbcd, type: 3}
-  Render: {fileID: 6313881701629747138}
+  Text: {fileID: 0}
+  OnColor: {r: 0, g: 0, b: 0, a: 0}
+  OffColor: {r: 0, g: 0, b: 0, a: 0}
   ClickEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4081578403051869120}
         m_TargetAssemblyTypeName: OperatorBatchTool, Assembly-CSharp
         m_MethodName: AllowFollow
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: -1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  Onuse: 0

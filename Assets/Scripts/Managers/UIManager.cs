@@ -62,22 +62,6 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            GameManager.instance.FloatM.gameObject.SetActive(false);
-            if (PauseObj.activeSelf)
-            {
-                GameManager.instance.SetTime(0, true);
-                PauseObj.SetActive(false);
-            }
-            else
-            {
-                PauseObj.SetActive(true);
-                GameManager.instance.SetTime(0, false);
-            }
-        }
-
         if (Time.timeScale == 0) return;
         if (Input.GetMouseButtonDown(1))
         {
@@ -107,6 +91,21 @@ public class UIManager : MonoBehaviour
         if (Touchscreen.current != null && !Touchscreen.current.primaryTouch.press.isPressed && !GitAble) GitAble = true;
     }
 #endif
+
+    public void GamePause()
+    {
+        GameManager.instance.FloatM.gameObject.SetActive(false);
+        if (PauseObj.activeSelf)
+        {
+            GameManager.instance.SetTime(0, true);
+            PauseObj.SetActive(false);
+        }
+        else
+        {
+            PauseObj.SetActive(true);
+            GameManager.instance.SetTime(0, false);
+        }
+    }
 
     public void RemoveGit(BaseEventData data)
     {
@@ -163,7 +162,7 @@ public class UIManager : MonoBehaviour
         Cost.text = $"{(int)CurCost}";
     }
 
-    float ExpSub = 0.08f;
+    float ExpSub = 0.1f;
     float CurExpVar = 0;
     public void ExpUp(int value,bool Test = false)
     {
@@ -709,5 +708,11 @@ public class UIManager : MonoBehaviour
             yield return GameManager.OneSec;
         }
         if (After != null) After();
+    }
+
+
+    public void ShowSetting()
+    {
+        GameManager.instance.SettingM.gameObject.SetActive(true);
     }
 }
