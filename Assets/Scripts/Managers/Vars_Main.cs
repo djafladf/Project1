@@ -15,6 +15,8 @@ public class OperatorInfos
     public string Inst_Weapon;
     public string Inst_Prop;
     public int id;
+    public int CurAwaken;
+    public string[] AwakenInfo;
     public bool IsLD;
     public bool IsPriorityAttack;
     public Player player;
@@ -42,6 +44,7 @@ public class GameStatus
     public int[] Objects;
     public int[] Stat;
     public int[] Enem;
+    public int[] Exceed;
     public List<int> LastBatch;
     public List<bool> Unlock_Char;
     public List<bool> Unlock_Item;
@@ -62,7 +65,8 @@ public class GameStatus
 
         Objects = new int[3] {0,0,0};
         Stat = new int[10] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
-        Enem = new int[6] { 0, 0, 0, 0, 0 ,0}; 
+        Enem = new int[6] { 0, 0, 0, 0, 0 ,0};
+        Exceed = new int[17];
         LastBatch = new List<int>() {};
     }
 

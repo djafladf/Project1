@@ -235,9 +235,12 @@ public class GameManager : MonoBehaviour
         // Get Operators
         Players = new Player[LL];
         Prefs = new GameObject[LL];
-        
-        await AddressablesLoader.InitAssets(BatchName, "Operator_Scriptable", Players, typeof(Player));
-        for (int i = 0; i < LL; i++) { Players[i].Id = i; }
+        for (int i = 0; i < LL; i++) 
+        {
+            var CurId = CurPlayerID[i];
+            Players[i] = Data.Infos[CurId].player; Players[i].Id = i;  Players[i].CurReinforce = Mathf.FloorToInt(gameStatus.Exceed[CurId] *0.1f); 
+        }
+
         Players[PlayerInd].IsPlayer = true;
         player = Players[PlayerInd];
         await AddressablesLoader.InitAssets(BatchName, "Operator_Pref", Prefs, DM.transform.parent);

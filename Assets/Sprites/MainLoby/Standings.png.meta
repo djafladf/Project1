@@ -120,10 +120,10 @@ TextureImporter:
       name: Standings_1
       rect:
         serializedVersion: 2
-        x: 533
-        y: 1003
-        width: 280
-        height: 383
+        x: 518
+        y: 995
+        width: 300
+        height: 400
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,9 +141,9 @@ TextureImporter:
       name: Standings_2
       rect:
         serializedVersion: 2
-        x: 1027
+        x: 1012
         y: 1007
-        width: 261
+        width: 294
         height: 392
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -162,10 +162,10 @@ TextureImporter:
       name: Standings_3
       rect:
         serializedVersion: 2
-        x: 1436
+        x: 1470
         y: 1043
-        width: 268
-        height: 311
+        width: 234
+        height: 312
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,9 +184,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1878
-        y: 1008
-        width: 293
-        height: 369
+        y: 1009
+        width: 276
+        height: 368
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,10 +204,10 @@ TextureImporter:
       name: Standings_5
       rect:
         serializedVersion: 2
-        x: 37
+        x: 73
         y: 290
-        width: 315
-        height: 370
+        width: 279
+        height: 372
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,9 +225,9 @@ TextureImporter:
       name: Standings_6
       rect:
         serializedVersion: 2
-        x: 610
+        x: 574
         y: 318
-        width: 208
+        width: 267
         height: 355
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -246,9 +246,9 @@ TextureImporter:
       name: Standings_7
       rect:
         serializedVersion: 2
-        x: 990
+        x: 1048
         y: 298
-        width: 436
+        width: 315
         height: 420
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -267,9 +267,9 @@ TextureImporter:
       name: Standings_8
       rect:
         serializedVersion: 2
-        x: 1551
+        x: 1591
         y: 331
-        width: 287
+        width: 243
         height: 324
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -288,9 +288,9 @@ TextureImporter:
       name: Standings_9
       rect:
         serializedVersion: 2
-        x: 1963
+        x: 1978
         y: 327
-        width: 305
+        width: 270
         height: 358
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -309,9 +309,9 @@ TextureImporter:
       name: Standings_10
       rect:
         serializedVersion: 2
-        x: 2391
+        x: 2351
         y: 324
-        width: 217
+        width: 315
         height: 423
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -332,7 +332,7 @@ TextureImporter:
         serializedVersion: 2
         x: 2826
         y: 340
-        width: 320
+        width: 291
         height: 389
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

@@ -12,7 +12,7 @@ public class MinimumButton : Buttons
     [SerializeField] float MinY;
     [SerializeField] Sprite SmallB;
     [SerializeField] List<GameObject> Subs;
-    [SerializeField] Transform Moved;
+    [SerializeField] RectTransform Moved;
     Image image;
 
     bool MinimumType;
@@ -35,10 +35,13 @@ public class MinimumButton : Buttons
     IEnumerator Mover()
     {
         image.sprite = IsOn ? SmallB : MaxB;
+        Vector2 GapVec = new Vector2(0, Gap);
         for(int i = 0; i < 20; i++)
         {
-            if (IsOn) Moved.Translate(0,-Gap, 0);
-            else Moved.Translate(0,Gap,0);
+            var cnt = Moved.anchoredPosition;
+            if (IsOn) cnt -= GapVec;
+            else cnt += GapVec;
+            Moved.anchoredPosition = cnt;
             yield return wfs;
         }
         

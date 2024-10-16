@@ -101,6 +101,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -302,7 +314,7 @@ TextureImporter:
         width: 50
         height: 59
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -310,6 +322,27 @@ TextureImporter:
       bones: []
       spriteID: ddd1e88708b56ce428e5d122ea5fe29e
       internalID: 1679345436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BatchPictures_10
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 112
+        width: 120
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcdb7544f5955be4591db50d54b079de
+      internalID: 300738336
       vertices: []
       indices: 
       edges: []
@@ -325,16 +358,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BatchPictures_2: 620522478
-      BatchPictures_9: 1679345436
-      BatchPictures_4: -715350059
+      BatchPictures_0: 716338323
       BatchPictures_1: 142621045
+      BatchPictures_10: 300738336
+      BatchPictures_2: 620522478
       BatchPictures_3: 497538176
+      BatchPictures_4: -715350059
       BatchPictures_5: -99285114
+      BatchPictures_6: -862872035
       BatchPictures_7: -112749054
       BatchPictures_8: 1641850473
-      BatchPictures_6: -862872035
-      BatchPictures_0: 716338323
+      BatchPictures_9: 1679345436
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

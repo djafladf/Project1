@@ -11,7 +11,7 @@ public class BatchSet : MonoBehaviour
 {
     [SerializeField] List<Image> BatchIms;
     [SerializeField] Sprite NormalBatch;
-
+    [SerializeField] List<Image> Exceeds;
 
     [SerializeField] Transform BatchScroll;
     [SerializeField] GameObject BatchPref;
@@ -69,6 +69,10 @@ public class BatchSet : MonoBehaviour
         Cost.text = $"{cnt.player.Cost}"; ReBatch.text = $"{cnt.player.ReBatchTime}s";
         Image.sprite = cnt.Standing; Weapon.sprite = GameManager.instance.Data.WeaponSub[ind].sprite;
         Inf_Main.text = cnt.Inst_Weapon; Inf_Prop.text = cnt.Inst_Prop;
+        cnt.CurAwaken = Mathf.FloorToInt(GameManager.instance.gameStatus.Exceed[cnt.id] * 0.1f);
+        for (int i = 0; i < cnt.CurAwaken; i++) { Exceeds[i].gameObject.SetActive(true); Exceeds[i].color = Color.white; }
+        if (cnt.CurAwaken != 5) { Exceeds[cnt.CurAwaken].gameObject.SetActive(true); Exceeds[cnt.CurAwaken].color = new Color(0.3137255f, 0.6470588f, 0.882353f); }
+        for (int i = cnt.CurAwaken + 1; i < 5; i++) Exceeds[i].gameObject.SetActive(false);
     }
 
     public void SelectOper(int ind,bool IsLeader)

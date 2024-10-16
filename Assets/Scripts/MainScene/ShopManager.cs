@@ -28,6 +28,9 @@ public class ShopManager : MonoBehaviour
     [SerializeField] TMP_Text ResultText;
     List<GameObject> TestGrades = new List<GameObject>();
 
+    // About Gacha
+    [SerializeField] GachaSimul Gacha;
+
     int[] Costs =
     {
         0,150,300,600,1200,3200,6400,12800,25600,51200,100000,0
@@ -186,6 +189,20 @@ public class ShopManager : MonoBehaviour
         Tabs[CurOpenTab].color = Color.white;
         Tabs_Text[CurOpenTab].color = Color.black;
         Tabs_Sub[CurOpenTab].SetActive(true);
+    }
+
+    public void GachaAble()
+    {
+        if (Gacha.GachaNum * 100 <= GameManager.instance.gameStatus.Objects[2])
+        {
+            Gacha.StartGacha();
+            GameManager.instance.gameStatus.Objects[2] -= Gacha.GachaNum * 100;
+            Objects[2].text = $"{GameManager.instance.gameStatus.Objects[2]}";
+        }
+        else
+        {
+            GameManager.instance.FloatM.Init("보유한 합성옥이 부족합니다.");
+        }
     }
 
 }

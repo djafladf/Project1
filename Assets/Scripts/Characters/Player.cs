@@ -23,7 +23,7 @@ public class Player : ScriptableObject
     [NonSerialized] public int CurHP;
     [NonSerialized] public int MaxSp;
     [NonSerialized] public int CurSP;
-
+    [NonSerialized] public int CurReinforce;
 
     [NonSerialized] public List<SpriteRenderer> SubEffects = new List<SpriteRenderer>();
 
