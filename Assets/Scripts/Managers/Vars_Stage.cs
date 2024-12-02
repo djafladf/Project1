@@ -67,6 +67,7 @@ public class BulletInfo
 {
     public int Damage;
     public int DealFrom;
+    public int LayerOrder;
     public bool IsEffect;
     public bool IsFix;
     public float KnockBack;
@@ -78,14 +79,15 @@ public class BulletInfo
 
     public Buff Buffs;
 
-    public BulletInfo(int damage, bool isEffect,float knockBack, float scalefactor = 1, float speedfactor = 1,bool isFix = false, float ignoreDefense = 0,
-        DeBuff debuffs = null, Buff buffs = null, int dealFrom = -1)
+    public BulletInfo(int damage = 0, bool isEffect = false, float knockBack = 0, float scalefactor = 1, float speedfactor = 1,bool isFix = false, float ignoreDefense = 0,
+        DeBuff debuffs = null, Buff buffs = null, int dealFrom = -1,int layerOrder = 4)
     {
         Damage = damage; DealFrom = dealFrom;
         IsEffect = isEffect; IsFix = isFix; ScaleFactor = scalefactor; SpeedFactor = speedfactor;
         KnockBack = knockBack; IgnoreDefense = ignoreDefense;
         DeBuffs = debuffs;
         Buffs = buffs;
+        LayerOrder = layerOrder;
     }
 
     public int ReturnDamage(float defense)
@@ -100,7 +102,7 @@ public class BulletInfo
 
     public void Copy(BulletInfo From)
     {
-        Damage = From.Damage; DealFrom = From.DealFrom; IsEffect = From.IsEffect; IsFix = From.IsFix; KnockBack = From.KnockBack; IgnoreDefense = From.IgnoreDefense; ScaleFactor = From.ScaleFactor; SpeedFactor = From.SpeedFactor; DeBuffs = From.DeBuffs; Buffs = From.Buffs;
+        Damage = From.Damage; DealFrom = From.DealFrom; IsEffect = From.IsEffect; IsFix = From.IsFix; KnockBack = From.KnockBack; IgnoreDefense = From.IgnoreDefense; ScaleFactor = From.ScaleFactor; SpeedFactor = From.SpeedFactor; DeBuffs = From.DeBuffs; Buffs = From.Buffs; LayerOrder = From.LayerOrder;
     }
 }
 
@@ -134,8 +136,9 @@ public class DeBuff
     public float Defense;
     public float Ice;
     public float Fragility;
+    public bool Stun;
 
-    public DeBuff(float last = 0, float speed = 0, float attack = 0, float defense = 0, float ice = 0, float fragility = 0)
+    public DeBuff(float last = 0, float speed = 0, float attack = 0, float defense = 0, float ice = 0, float fragility = 0, bool stun = false)
     {
         Last = last;
         Speed = speed;
@@ -143,6 +146,7 @@ public class DeBuff
         Defense = defense;
         Ice = ice;
         Fragility = fragility;
+        Stun = stun;
     }
 }
 

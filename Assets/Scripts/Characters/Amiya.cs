@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Amiya : PlayerSetting
 {
@@ -8,12 +9,13 @@ public class Amiya : PlayerSetting
     [SerializeField] Sprite Bullet2;
     [SerializeField] GameObject Weapon;
     [SerializeField] GameObject Weapon2;
-    [SerializeField] GameObject Crown;
     [SerializeField] BulletLine BL;
     [SerializeField] BulletLine BLT;
     [SerializeField] List<ParticleSystem> PTS;
 
     [SerializeField] List<AudioSource> AttackSounds;
+
+    [SerializeField] List<Transform> Razer;
 
     AudioSource source;
 
@@ -25,21 +27,28 @@ public class Amiya : PlayerSetting
         source = GetComponent<AudioSource>(); AttackSounds.Add(PTS[0].GetComponent<AudioSource>());
         player.SubEffects.Add(Weapon.GetComponent<SpriteRenderer>());
         player.SubEffects.Add(Weapon2.GetComponent<SpriteRenderer>());
-        player.SubEffects.Add(Crown.GetComponent<SpriteRenderer>());
-
+        
         BulletIm = Bullet1;
         CurApplyLine = BL;
     }
+
+    BulletInfo SpecInfo = new BulletInfo();
 
     protected override void Start()
     {
         base.Start();
         StartCoroutine(Test());
-#if UNITY_EDITOR
-        //GameManager.instance.SetTime(3, false);
-        /*for (int i = 0; i < 6; i++) WeaponLevelUp();*/
+        SpecInfo.Copy(NormalInfo);
+        Razer[0].parent = GameManager.instance.BM.transform;
+
+        for (int i = 0; i < 6; i++) { Transform cnt = Instantiate(Razer[0].gameObject).transform; Razer.Add(cnt); Razer.Add(cnt.transform.GetChild(0)); }
+        for (int i = 0; i < 6; i++) { Razer[2 * i + 1].name = $"{GameManager.instance.BM.RegistExBullet(SpecInfo)}"; Razer[2 * i].parent = GameManager.instance.BM.transform; }
+#if UNITY_STANDALONE
+        player.sprite.color = Color.red;
 #endif
     }
+
+    int LastUse = 0;
 
     IEnumerator Test()
     {
@@ -48,8 +57,9 @@ public class Amiya : PlayerSetting
             if (OnIce) yield return GameManager.DotOneSec;
             NormalInfo.Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 10);
             var Targets = GameManager.GetNearest(scanRange, ProjNum, transform.position, targetLayer);
-            Transform j;
             if (Targets.Count != 0)
+            {
+                Transform j = Targets[0];
                 for (int i = 0; i < ProjNum * ProjRatio; i++)
                 {
                     AttackSounds[i].Play();
@@ -62,13 +72,23 @@ public class Amiya : PlayerSetting
                         BL: CurApplyLine);
                     yield return new WaitForSeconds(0.1f);
                 }
+
+                if (player.WeaponLevel >= 7)
+                {
+                    SpecInfo.Damage = (int)(NormalInfo.Damage * 0.1f);
+                    Vector3 RandomSub = new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 1f)) + transform.position;
+                    Vector2 DirSub = (j.position - RandomSub).normalized; 
+                    Razer[2 * LastUse].position = RandomSub; Razer[2 * LastUse + 1].rotation = Quaternion.FromToRotation(Vector2.right, DirSub); Razer[2 * LastUse].gameObject.SetActive(true);
+                    LastUse++; if (LastUse >= 6) LastUse = 0;
+                }
+            }
             yield return new WaitForSeconds(0.25f * (2 - GameManager.instance.PlayerStatus.attackspeed));
         }
     }
 
     int ProjNum = 1;
     int ProjRatio = 1;
-    float DamageRatio = 3f;
+    float DamageRatio = 2f;
     int Penetrate = 0;
     float BulletSpeed = 15;
 
@@ -84,10 +104,15 @@ public class Amiya : PlayerSetting
             case 5: DamageRatio += 1f; break;
             case 6:
                 source.Play(); BulletIm = Bullet2;
-                Penetrate = 50; ProjNum++; ProjRatio = 2; BulletIm = Bullet2; BulletSpeed = 50; Weapon2.SetActive(true); CurApplyLine = BLT;for (int i = 0; i < 4; i++) { PTS.Add(Instantiate(PTS[0], transform.GetChild(0))); AttackSounds.Add(PTS[i+2].GetComponent<AudioSource>()); }
+                Penetrate = 50; ProjNum++; ProjRatio = 2; BulletIm = Bullet2; BulletSpeed = 30; Weapon2.SetActive(true); for (int i = 0; i < 4; i++) { PTS.Add(Instantiate(PTS[0], transform.GetChild(0))); AttackSounds.Add(PTS[i+2].GetComponent<AudioSource>()); }
                 break;
         }
         return player.WeaponLevel;
+    }
+
+    void OnMove(InputValue value)
+    {
+        player.Dir = value.Get<Vector2>();
     }
 
     void OnPause()

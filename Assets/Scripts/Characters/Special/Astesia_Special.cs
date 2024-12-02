@@ -17,7 +17,7 @@ public class Astesia_Special : MonoBehaviour
     }
     private void Start()
     {
-        BI = new BulletInfo(0, false, 10, dealFrom: Astesia.name[0] - '0');
+        BI = new BulletInfo(0, false, 10, dealFrom: Astesia.Id);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

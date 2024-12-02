@@ -24,7 +24,7 @@ public class Rosmon_Special : MonoBehaviour
     BulletInfo BI;
     private void Start()
     {
-        BI = new BulletInfo(0, false,0, debuffs: new DeBuff(last: 5, defense: 0.5f), dealFrom: Rosmon.name[0] - '0');
+        BI = new BulletInfo(0, false,0, debuffs: new DeBuff(last: 5, defense: 0.5f), dealFrom: Rosmon.Id);
     }
 
 

@@ -18,7 +18,9 @@ public class Player : ScriptableObject
     [SerializeField] public int InitDefense;
     [SerializeField] public int Cost;
     [SerializeField] public int ReBatchTime;
+    
 
+    // Status(NonSerializeAble)
     [NonSerialized] public int MaxHP;
     [NonSerialized] public int CurHP;
     [NonSerialized] public int MaxSp;
@@ -42,6 +44,7 @@ public class Player : ScriptableObject
     [NonSerialized] public float AttackSpeed = 1f;
     [NonSerialized] public float MaxAttackSpeed = 1f;
 
+    [NonSerialized] public float HealRatio = 1f;
     [NonSerialized] public float DefenseRatio = 0f;
     [NonSerialized] public float HPRatio = 0f;
     [NonSerialized] public float AttackRatio = 0f;

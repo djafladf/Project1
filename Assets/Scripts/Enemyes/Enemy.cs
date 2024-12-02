@@ -25,9 +25,11 @@ public class Enemy : MonoBehaviour
     protected int MaxHP;
     protected bool IsLive = true;
     protected bool OnIce = false;
+    protected bool OnStun = false;
     protected bool OnHit = false;
 
     protected float IceRatio = 1;
+    protected bool StunImmun = false;
     protected float Cheeled = 0;
 
     protected Animator anim;
@@ -45,7 +47,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        if (!IsLive || OnIce) return;
+        if (!IsLive || OnIce || OnStun) return;
         if (MoveAble && !anim.GetBool("IsAttack"))
         {
             Vector2 Dir = (GameManager.instance.player.Self.position - transform.position).normalized;
@@ -98,11 +100,13 @@ public class Enemy : MonoBehaviour
     }
 
     bool CanHit = true;
-    protected float[] LeftTime = { 0,0,0,0,0};
-    protected float[] LeftTimeBuff = { 0, 0, 0, 0, 0 };
-    // 속, 공, 방, 을, 피증
-    protected float[] DeBuffVar = { 0,0,0,0,0 };
-    protected float[] BuffVar = { 0, 0, 0, 0, 0 };
+    // 속, 공, 방, 피증, 빙, 스턴
+    protected float[] LeftTime = { 0,0,0,0,0,0};
+    protected float[] DeBuffVar = { 0, 0, 0, 0, 0 };
+
+    // 속, 공, 방, 피증
+    protected float[] LeftTimeBuff = { 0, 0, 0, 0};
+    protected float[] BuffVar = { 0, 0, 0, 0};
 
     protected GameObject[] DeBuffObj = new GameObject[5];
 
@@ -142,7 +146,15 @@ public class Enemy : MonoBehaviour
             {
                 if (Info.DeBuffs.Speed != 0)
                 {
-
+                    /*if (DeBuffVar[0] == 0)
+                    {
+                        DeBuffObj[2] = GameManager.instance.BFM.RequestForDebuff(3);
+                        DeBuffObj[2].transform.parent = transform;
+                        DeBuffObj[2].transform.localPosition = spriteRenderer.sprite.bounds.size * 0.5f;
+                        DeBuffObj[2].gameObject.SetActive(true);
+                    }*/
+                    if (DeBuffVar[0] == Info.DeBuffs.Speed) LeftTime[0] = Mathf.Max(LeftTime[0], Info.DeBuffs.Last);
+                    else if (DeBuffVar[0] < Info.DeBuffs.Speed) { LeftTime[0] = Info.DeBuffs.Last; DeBuffVar[0] = Info.DeBuffs.Speed; }
                 }
                 if (Info.DeBuffs.Attack != 0)
                 {
@@ -150,18 +162,17 @@ public class Enemy : MonoBehaviour
                 }
                 if (Info.DeBuffs.Defense != 0 && DeBuffVar[2] <= Info.DeBuffs.Defense)
                 {
-                    if (DeBuffVar[2] == 0)
+                    /*if (DeBuffVar[2] == 0)
                     {
                         DeBuffObj[2] = GameManager.instance.BFM.RequestForDebuff(3);
                         DeBuffObj[2].transform.parent = transform;
                         DeBuffObj[2].transform.localPosition = spriteRenderer.sprite.bounds.size * 0.5f;
                         DeBuffObj[2].gameObject.SetActive(true);
-                    }
+                    }*/
                     if (DeBuffVar[2] == Info.DeBuffs.Defense) LeftTime[2] = Mathf.Max(LeftTime[2], Info.DeBuffs.Last);
-                    else LeftTime[2] = Info.DeBuffs.Last;
-                    DeBuffVar[2] = Info.DeBuffs.Defense;
+                    else if (DeBuffVar[2] < Info.DeBuffs.Defense) { LeftTime[2] = Info.DeBuffs.Last; DeBuffVar[2] = Info.DeBuffs.Defense; }
                 }
-                if (Info.DeBuffs.Ice != 0 && !OnIce && IceRatio != 0)
+                if (Info.DeBuffs.Ice != 0 && !OnIce && IceRatio > 0)
                 {
                     Cheeled += Info.DeBuffs.Ice * IceRatio;
                     if (DeBuffObj[4] == null)
@@ -179,15 +190,19 @@ public class Enemy : MonoBehaviour
                         DeBuffObj[4] = GameManager.instance.BFM.RequestForDebuff(1,spriteRenderer.sprite.bounds.size.x,spriteRenderer.bounds.size.y);
                         DeBuffObj[4].transform.parent = transform;
                         DeBuffObj[4].transform.localPosition = Vector3.zero;
-                        DeBuffObj[4].gameObject.SetActive(true); DeBuffVar[0] -= 0.3f; Cheeled = 0; anim.enabled = false; OnIce = true;
+                        DeBuffObj[4].gameObject.SetActive(true); DeBuffVar[0] -= 0.3f; Cheeled = 0; anim.speed = 0; OnIce = true;
                     }
                 }
                 if (Info.DeBuffs.Fragility != 0)
                 {
 
                 }
+                if (Info.DeBuffs.Stun && !StunImmun)
+                {
+                    LeftTime[5] = Mathf.Max(Info.DeBuffs.Last, LeftTime[5]); OnStun = true; anim.speed = 0;
+                }
             }
-            StartCoroutine(NockBack_Enemy(Info.KnockBack,transform.position - collision.transform.position));
+            if(GetDamage > 0) StartCoroutine(NockBack_Enemy(Info.KnockBack,transform.position - collision.transform.position));
         }
         else if (collision.CompareTag("EnemyBuff"))
         {
@@ -230,21 +245,37 @@ public class Enemy : MonoBehaviour
                     LeftTimeBuff[i] -= 0.1f;
                     if (LeftTimeBuff[i] <= 0) { LeftTimeBuff[i] = 0; BuffVar[i] = 0; }
                 }
-
-                // DeBuff Check
-                if (LeftTime[i] != 0)
+            }
+            // DeBuff Check
+            for (i = 0; i < 6; i++) 
+            {
+                
+                // About stun
+                if (i == 5 && LeftTime[5] > 0)
                 {
-                    LeftTime[i] -= 0.1f;
-                    if (LeftTime[i] <= 0) { LeftTime[i] = 0; DeBuffVar[i] = (i == 0 ? Cheeled == 0 ? 0 : 0.3f : 0); DeBuffObj[i].SetActive(false); DeBuffObj[i].transform.parent = GameManager.instance.BFM.transform; DeBuffObj[i] = null; }
+                    LeftTime[5] -= 0.1f;
+                    if (LeftTime[5] <= 0)
+                    {
+                        LeftTime[5] = 0; OnStun = false;
+                        if (!OnIce) anim.speed = 1;
+                    }
                 }
-                if (LeftTime[4] > 0)
+                else if (i == 4 && LeftTime[4] > 0)
                 {
                     LeftTime[4] -= 0.1f;
                     if (LeftTime[4] <= 0)
                     {
                         LeftTime[4] = 0; OnIce = false;
                         if (DeBuffObj[4] != null) { DeBuffObj[4].SetActive(false); DeBuffObj[4].transform.parent = GameManager.instance.BFM.transform; DeBuffObj[4] = null; }
-                        LeftTime[4] = 0; anim.enabled = true;
+                        if(!OnStun) anim.speed = 1;
+                    }
+                }
+                else
+                {
+                    if (LeftTime[i] > 0)
+                    {
+                        LeftTime[i] -= 0.1f;
+                        if (LeftTime[i] <= 0) { LeftTime[i] = 0; DeBuffVar[i] = (i == 0 ? Cheeled == 0 ? 0 : 0.3f : 0); /*DeBuffObj[i].SetActive(false); DeBuffObj[i].transform.parent = GameManager.instance.BFM.transform; DeBuffObj[i] = null;*/ }
                     }
                 }
             }
@@ -316,7 +347,7 @@ public class Enemy : MonoBehaviour
         if (IsInit) { IsInit = false; return; } 
         MoveAble = true; OnHit = false; Fric = null;
         
-        anim.enabled = true;
+        anim.enabled = true; anim.speed = 1;
         anim.SetBool("IsAttack", false);
         BeginAttack = false;
         CanHit = true;
@@ -327,6 +358,7 @@ public class Enemy : MonoBehaviour
         IsLive = true;
 
         OnIce = false; IceRatio = 1; Cheeled = 0;
+        OnStun = false;
         Defense = MaxDefense; speed = MaxSpeed; Damage = MaxDamage;
 
         spriteRenderer.color = Color.white;

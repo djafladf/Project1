@@ -22,7 +22,7 @@ public class Aurora_Special : MonoBehaviour
 
     private void Start()
     {
-        BI = new BulletInfo(0, false, 0, debuffs: new DeBuff(ice: 1), dealFrom: player.name[0] - '0');
+        BI = new BulletInfo(0, false, 0, debuffs: new DeBuff(ice: 2.5f), dealFrom: player.Id);
     }
     private void OnEnable()
     {

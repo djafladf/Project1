@@ -53,9 +53,7 @@ public class Skulslr : Enemy
 
     protected override void FixedUpdate()
     {
-        if (!IsLive) return;
-
-        if (OnIce) return;
+        if (!IsLive || OnIce || OnStun) return;
         if (IsRush)
         {
             Vector2 Dir = (RushTarget.position - transform.position).normalized;
@@ -128,7 +126,6 @@ public class Skulslr : Enemy
     float SpecialRad;
     public void SpecialAttack3()
     {
-        
         GameManager.instance.BM.MakeMeele(new BulletInfo(Mathf.FloorToInt(Damage * (1 + GameManager.instance.EnemyStatus.attack - DeBuffVar[1])), false, 0, ignoreDefense: 0.5f), 0.3f,
             transform.position + new Vector3(6 * Mathf.Cos(SpecialRad + 0.75f * Count),6 * Mathf.Sin(SpecialRad + 0.75f * Count),0), 
             Vector3.zero, 0, true, Boom);

@@ -5026,7 +5026,7 @@ Rigidbody2D:
   m_Constraints: 4
 --- !u!95 &1539120915725065936
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5043,7 +5043,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &5270227661941241800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5060,11 +5061,36 @@ MonoBehaviour:
   IsPlayer: 0
   IsSummon: 0
   HasWeapon: 0
+  NormalInfo:
+    Damage: 0
+    DealFrom: -1
+    LayerOrder: 4
+    IsEffect: 0
+    IsFix: 0
+    KnockBack: 0
+    IgnoreDefense: 0
+    ScaleFactor: 1
+    SpeedFactor: 1
+    DeBuffs:
+      Last: 0
+      Speed: 0
+      Attack: 0
+      Defense: 0
+      Ice: 0
+      Fragility: 0
+      Stun: 0
+    Buffs:
+      Last: 0
+      Speed: 0
+      Attack: 0
+      Defense: 0
+      AttackSpeed: 0
+      Heal: 0
   targetLayer:
     serializedVersion: 2
     m_Bits: 64
   scanRange: 10
-  AttackRange: 3
+  AttackRange: 5
   HPBar: {fileID: 6591888774103275800}
   HideObj: {fileID: 66780581242045876}
   Bullets:

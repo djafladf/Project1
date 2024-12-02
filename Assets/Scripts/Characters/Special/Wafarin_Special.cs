@@ -10,29 +10,12 @@ public class Wafarin_Special : MonoBehaviour
     [SerializeField] Sprite Bullet;
     WaitForSeconds ZeroDotFive = new WaitForSeconds(0.5f);
     [SerializeField] LayerMask[] Layers;
-    [SerializeField] GameObject Particle;
     [SerializeField] Player Wafarin;
-
-    Dictionary<Transform, ParticleSystem> Particles;
     BoxCollider2D Coll;
 
     private void Awake()
     {
-        Particles = new Dictionary<Transform, ParticleSystem>();
-        Particles[transform] = Particle.GetComponent<ParticleSystem>();
         Coll = GetComponent<BoxCollider2D>();
-
-        foreach(var k in GameManager.instance.Prefs)
-        {
-            if (k != gameObject)
-            {
-                var j = Instantiate(Particle, transform).GetComponent<ParticleSystem>();
-                j.transform.parent = k.transform; j.transform.localPosition = Vector3.zero;
-                j.transform.localScale = Vector3.one;
-                j.Stop();
-                Particles[k.transform] = j;
-            }
-        }       
     }
 
     BulletInfo BI;
@@ -40,15 +23,15 @@ public class Wafarin_Special : MonoBehaviour
 
     private void Start()
     {
-        BI = new BulletInfo(0, false, 0, dealFrom: Wafarin.name[0] - '0');
-        Buff = new BulletInfo(0, false, 0,scalefactor:0.1f,buffs:new Buff(heal:0),dealFrom:BI.DealFrom);
+        BI = new BulletInfo(0, false, 0, dealFrom: Wafarin.Id);
+        Buff = new BulletInfo(0, false, 0,scalefactor:0.1f,buffs:new Buff(attack:0.2f),dealFrom:BI.DealFrom);
     }
 
     private void OnEnable()
     {
         StartCoroutine(Attack());
-        foreach(var k in Particles.Values) k.Stop();
     }
+
     IEnumerator Attack()
     {
         Coll.enabled = true;
@@ -66,10 +49,7 @@ public class Wafarin_Special : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") || collision.CompareTag("Player_Hide"))
-        {
-            Buff.Buffs.Heal = Mathf.FloorToInt((1 + GameManager.instance.PlayerStatus.attack * 0.1f));
-            Particles[collision.transform].Play(); GameManager.instance.BM.MakeBuff(Buff, collision.transform.position, null, false);
-        }
+            GameManager.instance.BM.MakeBuff(Buff, collision.transform.position, null, false);
         if (collision.CompareTag("Enemy"))
         {
             Transform cnt = collision.transform;

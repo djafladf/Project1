@@ -10,7 +10,7 @@ public class Cutter_Special : MonoBehaviour
     BulletInfo BI;
     private void Start()
     {
-        BI = new BulletInfo(0, false, 0, ignoreDefense: 0.2f, dealFrom: Cutter.name[0] - '0');
+        BI = new BulletInfo(0, false, 0, ignoreDefense: 0.2f, dealFrom: Cutter.Id);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

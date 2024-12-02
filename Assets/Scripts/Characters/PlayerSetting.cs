@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerSetting : MonoBehaviour
 {
-    [SerializeField] protected Player player;
+    [SerializeField] public Player player;
     /*[SerializeField] protected Sprite WeaponIm;
     [SerializeField] protected Sprite HeadIm;*/
     
@@ -14,7 +14,7 @@ public class PlayerSetting : MonoBehaviour
     public bool IsSummon = false;
     public bool HasWeapon;
 
-    public BulletInfo NormalInfo = new BulletInfo(0,false, 0);
+    public BulletInfo NormalInfo = new BulletInfo();
     protected bool OnIce;
 
     [NonSerialized] public bool CanMove = true;
@@ -53,7 +53,7 @@ public class PlayerSetting : MonoBehaviour
 
     protected virtual void Start()
     {
-        NormalInfo.DealFrom = name[0] - '0';
+        NormalInfo.DealFrom = player.Id;
     }
 
 
@@ -129,10 +129,6 @@ public class PlayerSetting : MonoBehaviour
         } 
     }
 
-    protected virtual void OnMove(InputValue value)
-    {
-        player.Dir = value.Get<Vector2>();
-    }
     protected virtual void WeaponAnim()
     {
 
@@ -234,8 +230,11 @@ public class PlayerSetting : MonoBehaviour
             {
                 Amount = (int)(Info.Heal * (1 + GameManager.instance.PlayerStatus.heal));
                 Amount = Math.Min(player.MaxHP - player.CurHP, Amount);
-                GameManager.instance.UM.DamageUp(1, GameManager.instance.BM.GetBulletInfo(GameManager.StringToInt(collision.name)).DealFrom, Amount);
-                if (Amount != 0 && player.CurHP < player.MaxHP) Heal(Amount);
+                if (Amount > 0 && player.CurHP < player.MaxHP)
+                {
+                    Heal(Amount);
+                    GameManager.instance.UM.DamageUp(1, GameManager.instance.BM.GetBulletInfo(GameManager.StringToInt(collision.name)).DealFrom, Amount);
+                }
             }
             if (player.ReinforceAmount[0] <= Info.Attack && Info.Attack != 0)
             {
@@ -260,6 +259,7 @@ public class PlayerSetting : MonoBehaviour
                 if (player.ReinforceAmount[3] == Info.AttackSpeed) player.ReinForceLast[3] = Mathf.Max(player.ReinforceAmount[3], Info.Last);
                 else player.ReinForceLast[3] = Info.Last;
                 player.ReinforceAmount[3] = Info.AttackSpeed;
+                player.ChangeOccur = true;
             }
 
         }
@@ -314,7 +314,7 @@ public class PlayerSetting : MonoBehaviour
 
     protected void Heal(int Amount)
     {
-        player.CurHP += Amount; if(Amount >= 10) GameManager.instance.DM.MakeHealCount(Amount, transform);
+        player.CurHP += Amount; GameManager.instance.DM.MakeHealCount(Amount, transform);
         HPBar.fillAmount = player.CurHP / (float)player.MaxHP;
         if (IsPlayer) GameManager.instance.UM.HpChange();
         else if (!IsSummon) { player.MyBatch.HPBar.fillAmount = player.CurHP / (float)player.MaxHP; }

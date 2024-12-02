@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -33,8 +30,8 @@ public class Bullet : MonoBehaviour
 
 
     public void Init_Attack(int Penetrate, Vector3 Dir,
-        bool IsMeele, bool IsEnemy, float AfterTime, float ScaleFactor = 1, Sprite Image = null, 
-        BulletLine BL = null, RuntimeAnimatorController Anim = null,Sprite HitImage = null, float delay = 0)
+        bool IsMeele, bool IsEnemy, float AfterTime, float ScaleFactor = 1, Sprite Image = null,
+        BulletLine BL = null, RuntimeAnimatorController Anim = null, Sprite HitImage = null, float delay = 0, int order = 4)
     {
         if (BL != null)
         {
@@ -56,12 +53,15 @@ public class Bullet : MonoBehaviour
         if (ScaleFactor == 0) ScaleFactor = 1;
         if (Image != null) coll.size = sprite.bounds.size * ScaleFactor;
         else coll.size = Vector2.one * ScaleFactor;
+
+        if (coll.size.y > coll.size.x) coll.direction = CapsuleDirection2D.Vertical; else coll.direction = CapsuleDirection2D.Horizontal;
         
         if (IsMeele) StartCoroutine(AfterImage(AfterTime,delay == 0));
         
         tag = IsEnemy ? "EnemyAttack" : "PlayerAttack";
 
         sprite.color -= new Color(0,0,0,1 - GameManager.instance.gameStatus.AttackAlpha);
+        sprite.sortingOrder = order;
     }
 
     IEnumerator AttackDelay(float time)

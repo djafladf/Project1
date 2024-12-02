@@ -48,7 +48,7 @@ public class Aurora : PlayerSetting
         {
             case 1: player.InitDefense += 5; break;
             case 2: player.InitDefense += 5; break;
-            case 3: NormalInfo.DeBuffs = new DeBuff(ice:1); break;
+            case 3: NormalInfo.DeBuffs = new DeBuff(ice:5); break;
             case 4: player.InitDefense += 10; break;
             case 5: IsHeal = true; break;
             case 6: IceField.SetActive(true); IceOn = true; /*StartCoroutine(FieldAct());*/ break;

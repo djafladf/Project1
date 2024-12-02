@@ -13,11 +13,13 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
     public float CurVersion;
+    public bool IsTest = false;
 
     public static GameManager instance;
     public static WaitForSeconds OneSec = new WaitForSeconds(1);
     public static WaitForSeconds TwoSec = new WaitForSeconds(2);
     public static WaitForSeconds DotOneSec = new WaitForSeconds(0.1f);
+    public static WaitForSeconds DotFiveSec = new WaitForSeconds(0.5f);
     public static int StringToInt(string Var)
     {
         int outValue = 0;
@@ -82,7 +84,7 @@ public class GameManager : MonoBehaviour
     {
         gameStatus.LastBatch = CurPlayerID;
         string json = JsonConvert.SerializeObject(gameStatus);
-        File.WriteAllText(Path.Combine(Application.persistentDataPath, $"Status_{CurVersion}.json"), json);
+        File.WriteAllText(Path.Combine(Application.persistentDataPath, $"Status.json"), json);
     }
 
     [HideInInspector] public int RatType = 0;
@@ -95,7 +97,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
             // Load GameStatus
-            string path = Path.Combine(Application.persistentDataPath, $"Status_{CurVersion}.json");
+            string path = Path.Combine(Application.persistentDataPath, $"Status.json");
             if (File.Exists(path)) gameStatus = JsonConvert.DeserializeObject<GameStatus>(File.ReadAllText(path));
             else { gameStatus = new GameStatus(); gameStatus.LastBatch.Add(0); }
 

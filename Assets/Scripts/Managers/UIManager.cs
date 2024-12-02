@@ -55,6 +55,9 @@ public class UIManager : MonoBehaviour
 #if UNITY_STANDALONE
         MobileSet.SetActive(false);
 #endif
+/*#if UNITY_EDITOR
+        GameManager.instance.SetTime(5, false);
+#endif*/
     }
 
     // PC Á¶ÀÛ
@@ -170,7 +173,10 @@ public class UIManager : MonoBehaviour
         if (CurExpVar >= 1 || Test) {
             CurExpVar--;
             LV.text = $"LV.{++CurLevel}";
-            ExpSub *= 0.92f;
+            if (CurLevel < 25) ExpSub *= 0.92f;
+            else if (CurLevel < 50) ExpSub *= 0.94f;
+            else if (CurLevel < 75) ExpSub *= 0.96f;
+            else ExpSub *= 0.98f;
             LevelUpEvent();
         }
         ExpBar.fillAmount =  Mathf.Min(CurExpVar,1);
@@ -467,6 +473,12 @@ public class UIManager : MonoBehaviour
                         break;
                     case 4:
                         RarityPickVar[0] = 86; RarityPickVar[1] = 98;
+                        break;
+                    case 5:
+                        foreach(var j in GameManager.instance.Players)
+                        if(!j.IsPlayer){
+                            j.MyBatch.ReBatchTime = Mathf.FloorToInt(j.MyBatch.ReBatchTime * 0.9f);
+                        }
                         break;
                 }
             }

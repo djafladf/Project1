@@ -101,6 +101,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -398,6 +410,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Weapon_9
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 552
+        width: 205
+        height: 11
+      alignment: 9
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a077860e70528f4ba03430331b80c57
+      internalID: -1630711809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -409,23 +442,23 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Weapon_5: 460339736
-      Weapon_6: 1781649026
+      Weapon_0: 1380682082
       Weapon_1: 5260532
-      Weapon_15: -680967487
-      Weapon_2: -2046736610
-      Weapon_12: 994815268
-      Weapon_4: -69721558
-      Weapon_13: -153123048
       Weapon_10: -2033801500
       Weapon_11: 434109609
-      Weapon_9: -1630711809
-      Weapon_0: 1380682082
-      Weapon_3: -793594884
-      Weapon_16: 714359277
-      Weapon_8: 490707950
-      Weapon_7: -1664407725
+      Weapon_12: 994815268
+      Weapon_13: -153123048
       Weapon_14: -32248335
+      Weapon_15: -680967487
+      Weapon_16: 714359277
+      Weapon_2: -2046736610
+      Weapon_3: -793594884
+      Weapon_4: -69721558
+      Weapon_5: 460339736
+      Weapon_6: 1781649026
+      Weapon_7: -1664407725
+      Weapon_8: 490707950
+      Weapon_9: -1630711809
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

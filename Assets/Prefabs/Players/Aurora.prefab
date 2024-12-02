@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 265244429008350597}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -2, z: -1}
-  m_LocalScale: {x: 10, y: 5, z: 1}
+  m_LocalScale: {x: 2, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7882917619409072174}
@@ -435,6 +435,31 @@ MonoBehaviour:
   IsPlayer: 0
   IsSummon: 0
   HasWeapon: 0
+  NormalInfo:
+    Damage: 0
+    DealFrom: -1
+    LayerOrder: 4
+    IsEffect: 0
+    IsFix: 0
+    KnockBack: 0
+    IgnoreDefense: 0
+    ScaleFactor: 1
+    SpeedFactor: 1
+    DeBuffs:
+      Last: 0
+      Speed: 0
+      Attack: 0
+      Defense: 0
+      Ice: 0
+      Fragility: 0
+      Stun: 0
+    Buffs:
+      Last: 0
+      Speed: 0
+      Attack: 0
+      Defense: 0
+      AttackSpeed: 0
+      Heal: 0
   targetLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -4529,7 +4554,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.7411765, g: 0.92549026, b: 0.9921569, a: 0.5882353}
+        key0: {r: 0.7411765, g: 0.92549026, b: 0.9921569, a: 0.39215687}
         key1: {r: 0.86666673, g: 0.9803922, b: 0.9960785, a: 0.19607843}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -4642,7 +4667,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 0.78431374}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9351,7 +9376,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.7411765, g: 0.92549026, b: 0.9921569, a: 0.5882353}
+        key0: {r: 0.7411765, g: 0.92549026, b: 0.9921569, a: 0.39215687}
         key1: {r: 0.86666673, g: 0.9803922, b: 0.9960785, a: 0.19607843}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -9464,7 +9489,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 0.78431374}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

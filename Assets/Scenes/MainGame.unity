@@ -16976,13 +16976,14 @@ MonoBehaviour:
   - {fileID: 1788775384281307603, guid: fac04da8f4aef134cb2cafd0eb5dcaa6, type: 3}
   BossSet: {fileID: 981838648}
   PoolSize: 14000000
+  IsTest: 1
   CurActive: 0
   Stages:
   - spawninfo:
     - id: 0
       start: 0
       end: 1
-      respawn: 1
+      respawn: 1000
       IsBoss: 0
       IsLast: 1
   StageInits: 0000000000000000
@@ -35176,6 +35177,7 @@ MonoBehaviour:
   - {fileID: 1788775384281307603, guid: d6fc4551295665d40a93a4ea50304d5d, type: 3}
   BossSet: {fileID: 981838648}
   PoolSize: 140000001400000014000000140000000a0000000a0000000a0000000a000000010000000a00000005000000050000001400000005000000050000000a0000000a0000000a000000010000000100000014000000140000001400000014000000140000000500000001000000
+  IsTest: 0
   CurActive: 0
   Stages:
   - spawninfo:

@@ -32,7 +32,7 @@ public class Faust : Enemy
     Vector2 Dir;
     protected override void FixedUpdate()
     {
-        if (!IsLive || OnIce) return;
+        if (!IsLive || OnIce||OnStun) return;
         if (MoveAble && !anim.GetBool("IsAttack"))
         {
             if (BatchAble) { anim.SetTrigger("Batch"); anim.SetBool("IsAttack", true); BatchAble = false; }

@@ -11,6 +11,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject[] EnemyTypes;
     [SerializeField] public GameObject BossSet;
     [SerializeField] int[] PoolSize;
+    public bool IsTest;
 
     List<List<GameObject>> Pool = new List<List<GameObject>>();
 
@@ -54,8 +55,8 @@ public class EnemySpawner : MonoBehaviour
 
     private void Awake()
     {
-        GameManager.instance.ES = this;
-        GameManager.instance.StartLoading();
+            GameManager.instance.ES = this;
+            GameManager.instance.StartLoading();
     }
 
     public void Init(int Stage)

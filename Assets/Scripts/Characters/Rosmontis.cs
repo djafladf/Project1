@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 
 public class Rosmontis : PlayerSetting
@@ -89,5 +90,42 @@ public class Rosmontis : PlayerSetting
             case 6: FloatWeapon.SetActive(true); break;
         }
         return player.WeaponLevel;
+    }
+
+    void OnMove(InputValue value)
+    {
+        player.Dir = value.Get<Vector2>();
+    }
+
+    void OnPause()
+    {
+        if (!GameManager.instance.SettingM.gameObject.activeSelf) GameManager.instance.UM.GamePause();
+    }
+
+    void OnUnit1()
+    {
+        for (int i = 0; i < GameManager.instance.Players.Length - 1; i++)
+        {
+            GameManager.instance.Players[i + 1].MyBatch.AllowFollow(0);
+            GameManager.instance.Players[i + 1].MyBatch.AllowMove(0);
+        }
+    }
+
+    void OnUnit2()
+    {
+        for (int i = 0; i < GameManager.instance.Players.Length - 1; i++)
+        {
+            GameManager.instance.Players[i + 1].MyBatch.AllowFollow(1);
+            GameManager.instance.Players[i + 1].MyBatch.AllowMove(1);
+        }
+    }
+
+    void OnUnit3()
+    {
+        for (int i = 0; i < GameManager.instance.Players.Length - 1; i++)
+        {
+            GameManager.instance.Players[i + 1].MyBatch.AllowFollow(2);
+            GameManager.instance.Players[i + 1].MyBatch.AllowMove(2);
+        }
     }
 }
