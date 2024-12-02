@@ -9,6 +9,7 @@ using System.Collections;
 using UnityEngine.UI;
 using Newtonsoft.Json;
 using UnityEngine.InputSystem;
+using UnityEditor;
 
 public class GameManager : MonoBehaviour
 {
@@ -131,6 +132,7 @@ public class GameManager : MonoBehaviour
 
     public void ApplyKeyOption()
     {
+
         var MoveBind = PlayerInput.FindAction("Move");
         int keyboardInd = 0;
 
@@ -144,6 +146,7 @@ public class GameManager : MonoBehaviour
     }
 
     [HideInInspector] public Player[] Players;
+    public GameObject[] Prefabs;
     [HideInInspector] public GameObject[] Prefs;
     public List<int> CurPlayerID;
     public int PlayerInd = 0;
@@ -172,6 +175,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         if (CurPlayerID[0] == -1) return;
+        player = Data.Infos[0].player;
         FirstLoading = 6; LastLoading = 7;
         TimeSet.Clear(); Time.timeScale = 1;
         StartCoroutine(LoadingAct("MainGame", LoadingSprites[1],false));
@@ -193,7 +197,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
             LoadedImage.color += CntAlpha;
         }
-        SceneManager.LoadSceneAsync(SceneName);
+        SceneManager.LoadScene(SceneName);
         if (AutoEnd) StartCoroutine(LoadingEndAct());
     }
 
@@ -226,7 +230,7 @@ public class GameManager : MonoBehaviour
     }
     GameObject PlayerObj;
     
-    private async void LoadAsset_Game()
+    private void LoadAsset_Game()
     {
         // SetManager
         Git = DM.transform.parent.GetChild(0).gameObject;
@@ -240,13 +244,14 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < LL; i++) 
         {
             var CurId = CurPlayerID[i];
-            Players[i] = Data.Infos[CurId].player; Players[i].Id = i;  Players[i].CurReinforce = Mathf.FloorToInt(gameStatus.Exceed[CurId] *0.1f); 
+            Players[i] = Data.Infos[CurId].player; Players[i].Id = i;  Players[i].CurReinforce = Mathf.FloorToInt(gameStatus.Exceed[CurId] *0.1f);
+            Prefs[i] = Instantiate(Prefabs[CurPlayerID[i]],DM.transform.parent);
         }
-
         Players[PlayerInd].IsPlayer = true;
         player = Players[PlayerInd];
-        await AddressablesLoader.InitAssets(BatchName, "Operator_Pref", Prefs, DM.transform.parent);
-        PlayerObj = Prefs[PlayerInd]; PlayerObj.SetActive(false);
+        /*await AddressablesLoader.InitAssets(BatchName, "Operator_Pref", Prefs, DM.transform.parent);*/
+        PlayerObj = Prefs[0];
+
 
         // Init
 
@@ -270,10 +275,10 @@ public class GameManager : MonoBehaviour
         EnemyStatus.boss = gameStatus.Enem[5] * 0.05f;
 
         PlayerStatus.GoodsEarn = gameStatus.Enem.Sum() * 0.1f + 1;
-
-
+        
         IM.Init(); BM.Init(); ES.Init(1); DM.Init(); BFM.Init();
         UM.Init(LL, CurPlayerID.Select(index => Data.WeaponSub[index]).ToList(), Players, Prefs, CurPlayerID.Select(index => Data.Infos[index]).ToArray(), PlayerInd);
+
     }
 
     // ���۷����� ����

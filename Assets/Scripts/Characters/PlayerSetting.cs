@@ -10,7 +10,7 @@ public class PlayerSetting : MonoBehaviour
     /*[SerializeField] protected Sprite WeaponIm;
     [SerializeField] protected Sprite HeadIm;*/
     
-    public bool IsPlayer;
+    [SerializeField] bool IsPlayer;
     public bool IsSummon = false;
     public bool HasWeapon;
 
@@ -20,7 +20,6 @@ public class PlayerSetting : MonoBehaviour
     [NonSerialized] public bool CanMove = true;
     protected virtual void Awake()
     {
-        IsPlayer = player.IsPlayer;
         player.SubEffects.Clear();
         player.Self = transform;
         player.rigid = GetComponent<Rigidbody2D>();
@@ -33,11 +32,10 @@ public class PlayerSetting : MonoBehaviour
 
         player.ChangeOccur = true; player.AllowFollow = true; player.AllowMove = true;
         //player.MaxSp = player.CurSP = player.InitSP;
-
         if (!IsSummon)
         {
             GameManager.instance.RequestOfWeapon(WeaponLevelUp, player.Id);
-            gameObject.SetActive(false);
+            
         }
 
         if (IsPlayer)
@@ -49,11 +47,12 @@ public class PlayerSetting : MonoBehaviour
             GetComponent<PlayerInput>().defaultControlScheme = "Gamepad";
 #endif
         }
+        gameObject.SetActive(false);
     }
 
     protected virtual void Start()
     {
-        NormalInfo.DealFrom = player.Id;
+
     }
 
 
@@ -269,9 +268,8 @@ public class PlayerSetting : MonoBehaviour
     IEnumerator BuffCheck()
     {
         int i;
-
         for (i = 0; i < 4; i++) { player.ReinforceAmount[i] = 0; player.ReinForceLast[i] = 0; }
-        for(i = 0; i < 5; i++) { player.DeBuffAmount[i] = 0; player.DeBuffLast[i] = 0; if (DeBuffObj[i] != null) { DeBuffObj[i].SetActive(false); DeBuffObj[i].transform.parent = GameManager.instance.BFM.transform; DeBuffObj[i] = null; } }
+        for(i = 0; i < 5; i++) { player.DeBuffAmount[i] = 0; player.DeBuffLast[i] = 0; if (DeBuffObj[i] != null) { DeBuffObj[i].SetActive(false); Debug.Log(GameManager.instance.BFM); DeBuffObj[i].transform.parent = GameManager.instance.BFM.transform; DeBuffObj[i] = null; } }
         OnIce = false;
 
         while (true)
@@ -404,7 +402,8 @@ public class PlayerSetting : MonoBehaviour
         player.anim.SetFloat("AttackSpeed", player.MaxAttackSpeed + GameManager.instance.PlayerStatus.attackspeed);
         player.sprite.color = Color.white;
         CanMove = false; player.Unbeat = false;
-        
+        NormalInfo.DealFrom = player.Id;
+
         if (!IsPlayer)
         {
             
@@ -415,6 +414,6 @@ public class PlayerSetting : MonoBehaviour
             }
         }
         else player.Dir = Vector2.zero;
-        StartCoroutine(BuffCheck());
+        if(GameManager.instance.BFM != null) StartCoroutine(BuffCheck());
     }
 }

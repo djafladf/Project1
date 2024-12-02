@@ -56,8 +56,7 @@ public class Sora : PlayerSetting
             {
                 player.CurHP += player.MaxHP - cnt;
                 HPBar.fillAmount = player.CurHP / (float)player.MaxHP;
-                if (!IsPlayer) player.MyBatch.HPBar.fillAmount = player.CurHP / (float)player.MaxHP;
-                else GameManager.instance.UM.HpChange();
+                player.MyBatch.HPBar.fillAmount = player.CurHP / (float)player.MaxHP;
             }
             player.anim.SetFloat("AttackSpeed", player.AttackSpeed + GameManager.instance.PlayerStatus.attackspeed);
         }

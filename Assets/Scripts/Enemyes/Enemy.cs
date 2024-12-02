@@ -366,6 +366,6 @@ public class Enemy : MonoBehaviour
 
         tag = "Enemy";
 
-        StartCoroutine(BuffCheck());
+        if(GameManager.instance.BFM != null) StartCoroutine(BuffCheck());
     }
 }

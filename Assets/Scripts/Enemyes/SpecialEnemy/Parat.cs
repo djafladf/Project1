@@ -11,8 +11,8 @@ public class Parat : Enemy
     {
         base.OnEnable();
         int z = Random.Range(0, 4);
-        if (z <= 1) 
-            transform.position = GameManager.instance.player.Self.position + new Vector3(Random.Range(-5,5),(z == 0 ? -5 : 5));
+        if (z <= 1)
+            transform.position = GameManager.instance.player.Self.position + new Vector3(Random.Range(-5, 5), (z == 0 ? -5 : 5));
         else
             transform.position = GameManager.instance.player.Self.position + new Vector3((z == 0 ? -5 : 5), Random.Range(-5, 5));
 

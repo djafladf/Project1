@@ -38,14 +38,7 @@ public class Amiya : PlayerSetting
     {
         base.Start();
         StartCoroutine(Test());
-        SpecInfo.Copy(NormalInfo);
-        Razer[0].parent = GameManager.instance.BM.transform;
-
-        for (int i = 0; i < 6; i++) { Transform cnt = Instantiate(Razer[0].gameObject).transform; Razer.Add(cnt); Razer.Add(cnt.transform.GetChild(0)); }
-        for (int i = 0; i < 6; i++) { Razer[2 * i + 1].name = $"{GameManager.instance.BM.RegistExBullet(SpecInfo)}"; Razer[2 * i].parent = GameManager.instance.BM.transform; }
-#if UNITY_STANDALONE
-        player.sprite.color = Color.red;
-#endif
+        
     }
 
     int LastUse = 0;
@@ -93,6 +86,8 @@ public class Amiya : PlayerSetting
     float BulletSpeed = 15;
 
 
+
+
     protected override int WeaponLevelUp()
     {
         switch (player.WeaponLevel++)
@@ -104,7 +99,13 @@ public class Amiya : PlayerSetting
             case 5: DamageRatio += 1f; break;
             case 6:
                 source.Play(); BulletIm = Bullet2;
-                Penetrate = 50; ProjNum++; ProjRatio = 2; BulletIm = Bullet2; BulletSpeed = 30; Weapon2.SetActive(true); for (int i = 0; i < 4; i++) { PTS.Add(Instantiate(PTS[0], transform.GetChild(0))); AttackSounds.Add(PTS[i+2].GetComponent<AudioSource>()); }
+                Penetrate = 50; ProjNum++; ProjRatio = 2; BulletIm = Bullet2; BulletSpeed = 30; Weapon2.SetActive(true); for (int i = 0; i < 4; i++) { PTS.Add(Instantiate(PTS[0], transform.GetChild(0))); AttackSounds.Add(PTS[i+2].GetComponent<AudioSource>());}
+
+                SpecInfo.Copy(NormalInfo);
+                Razer[0].parent = GameManager.instance.BM.transform;
+
+                for (int i = 0; i < 6; i++) { Transform cnt = Instantiate(Razer[0].gameObject).transform; Razer.Add(cnt); Razer.Add(cnt.transform.GetChild(0)); }
+                for (int i = 0; i < 6; i++) { Razer[2 * i + 1].name = $"{GameManager.instance.BM.RegistExBullet(SpecInfo)}"; Razer[2 * i].parent = GameManager.instance.BM.transform; }
                 break;
         }
         return player.WeaponLevel;

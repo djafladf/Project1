@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainLoby.unity
     guid: dfdfca60a66144c47b9b637141bce47e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Loading.unity
     guid: 77988e9de6dff90458e631bfd2d7178d
   - enabled: 1
@@ -16,3 +16,4 @@ EditorBuildSettings:
     guid: 8c9cfa26abfee488c85f1582747f6a02
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 0ee89a96e3f514b40a8235e03f9a55be, type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: 172629264f6b8064cb015ef72836dca4, type: 2}

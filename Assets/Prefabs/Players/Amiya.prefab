@@ -5344,7 +5344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 11400000, guid: 7ea27ab6edfe0064a8e9fe4225b4b160, type: 2}
-  IsPlayer: 0
+  IsPlayer: 1
   IsSummon: 0
   HasWeapon: 1
   NormalInfo:

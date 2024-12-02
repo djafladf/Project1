@@ -55,8 +55,8 @@ public class EnemySpawner : MonoBehaviour
 
     private void Awake()
     {
-            GameManager.instance.ES = this;
-            GameManager.instance.StartLoading();
+        GameManager.instance.ES = this;
+        GameManager.instance.StartLoading();
     }
 
     public void Init(int Stage)
@@ -93,6 +93,10 @@ public class EnemySpawner : MonoBehaviour
         {
             Pool.Add(new List<GameObject>());
             EnemyScript.Add(new List<Enemy>());
+            if (EnemyTypes[i] == null)
+            {
+                print($"{i} Is Null"); continue;
+            }
             for (int y = 0; y < PoolSize[i]; y++)
             {
                 Pool[i].Add(Instantiate(EnemyTypes[i], transform));

@@ -26,7 +26,6 @@ MonoBehaviour:
     m_Address: Cutter
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Cutter
     - Operator_Pref
   - m_GUID: 633c72588354ba249945b01cc76e66da
     m_Address: Amiya
@@ -73,13 +72,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Operator_Pref
-  - m_GUID: c484427c499e4de4b946b6ec2a1aa67c
-    m_Address: Gum
+  - m_GUID: ae9e941a86c990e45b9258665d95df14
+    m_Address: Matoimaru
     m_ReadOnly: 0
     m_SerializedLabels:
     - Operator_Pref
-  - m_GUID: ae9e941a86c990e45b9258665d95df14
-    m_Address: Matoimaru
+  - m_GUID: c484427c499e4de4b946b6ec2a1aa67c
+    m_Address: Gum
     m_ReadOnly: 0
     m_SerializedLabels:
     - Operator_Pref

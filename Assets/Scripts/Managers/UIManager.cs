@@ -122,6 +122,7 @@ public class UIManager : MonoBehaviour
 
     public void StickStatChange(bool IsActive)
     {
+        if (Stick == null) return;
         if (IsActive) Stick.localScale = Vector3.one;
         else Stick.localScale = Vector3.zero;
     }
@@ -689,7 +690,6 @@ public class UIManager : MonoBehaviour
         ReRollCountText = ReRollBT.transform.GetChild(1).GetComponent<TMP_Text>();
         ReRollBT.interactable = ReRollCount != 0;
         ReRollCountText.text = $"³²Àº È½¼ö : <color=red>{ReRollCount}</color>";
-
         GameManager.instance.StartLoading();
     }
 

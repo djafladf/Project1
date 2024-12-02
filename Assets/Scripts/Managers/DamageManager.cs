@@ -23,6 +23,7 @@ public class DamageManager : MonoBehaviour
             DamageObjects[i] = Instantiate(DamagePref, transform);
             DamageScripts[i] = DamageObjects[i].GetComponent<DamageObject>();
         }
+
         GameManager.instance.StartLoading();
     }
 

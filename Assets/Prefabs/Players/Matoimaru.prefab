@@ -4969,7 +4969,7 @@ GameObject:
   - component: {fileID: 1539120915725065940}
   - component: {fileID: 1539120915725065936}
   m_Layer: 7
-  m_Name: Mato
+  m_Name: Matoimaru
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
