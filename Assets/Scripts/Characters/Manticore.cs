@@ -17,7 +17,7 @@ public class Manticore : PlayerSetting
 
     protected override void AttackMethod()
     {
-        if (TargetPos != null)
+        if (TargetPos != null && gameObject.activeSelf)
         {
             if (player.WeaponLevel < 7)
                 StartCoroutine(Locker());

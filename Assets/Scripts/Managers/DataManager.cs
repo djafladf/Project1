@@ -6,7 +6,7 @@ using TMPro;
 
 public class DataManager : MonoBehaviour
 {
-    [SerializeField]
+    [HideInInspector]
     public string[] Player_ID;
 
     [SerializeField]
@@ -28,6 +28,7 @@ public class DataManager : MonoBehaviour
     private void Start()
     {
         GameManager.instance.Data = this;
+        Player_ID = GameManager.instance.Player_ID;
         Mat = Title.fontMaterial;
         Mat.SetColor("_GlowColor", Color.red);
         Title.fontSize = 200;

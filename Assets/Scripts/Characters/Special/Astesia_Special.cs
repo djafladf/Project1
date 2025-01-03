@@ -22,7 +22,7 @@ public class Astesia_Special : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy") && gameObject.activeSelf)
         {
             if (color == null) color = StartCoroutine(ColorChange());
             BI.Damage = Mathf.FloorToInt((1 + GameManager.instance.PlayerStatus.attack + Astesia.AttackRatio + Astesia.ReinforceAmount[0] + GameManager.instance.PlayerStatus.defense + Astesia.DefenseRatio + Astesia.ReinforceAmount[1]) * 15);

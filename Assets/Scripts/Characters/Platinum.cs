@@ -54,7 +54,7 @@ public class Platinum :PlayerSetting
     {
         if (player.sprite.flipX) GameManager.instance.BM.MakeEffect(0.3f, transform.position, new Vector3(1, 1, 0), 25, SpecBul, BL: BL2);
         else GameManager.instance.BM.MakeEffect(0.5f, transform.position, new Vector3(-1, 1, 0), 25, SpecBul, BL: BL2);
-        StartCoroutine(RainSub());
+        if(gameObject.activeSelf) StartCoroutine(RainSub());
     }
     
 

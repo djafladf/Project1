@@ -67,7 +67,7 @@ public class Kazemaru : PlayerSetting
 
     protected override void GetDamage(BulletInfo Info, Transform DamageFrom)
     {
-        if (CanEvade)
+        if (CanEvade && gameObject.activeSelf)
         {
             OnEvade = true;
             player.anim.SetTrigger("Evade");
@@ -88,7 +88,7 @@ public class Kazemaru : PlayerSetting
     void Assasin()
     {
         var j = GameManager.GetNearest(10, 5, transform.position, targetLayer);
-        if (j.Count != 0)
+        if (j.Count != 0 && gameObject.activeSelf)
         {
             player.anim.SetTrigger("Spec");
             CanAssasin = false;

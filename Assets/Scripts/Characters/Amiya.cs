@@ -38,7 +38,6 @@ public class Amiya : PlayerSetting
     {
         base.Start();
         StartCoroutine(Test());
-        
     }
 
     int LastUse = 0;

@@ -91,7 +91,7 @@ public class ParticleMy : MonoBehaviour
 
     public void StartMaking()
     {
-        Making = StartCoroutine(Maker());
+        if(gameObject.activeSelf) Making = StartCoroutine(Maker());
     }
 
     private void OnEnable()

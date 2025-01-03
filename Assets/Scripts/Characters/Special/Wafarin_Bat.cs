@@ -44,6 +44,7 @@ public class Wafarin_Bat : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!gameObject.activeSelf) return;
         if (IsAttack == 0)
         {
             if (collision.transform == Target)

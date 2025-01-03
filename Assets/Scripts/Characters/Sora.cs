@@ -128,8 +128,11 @@ public class Sora : PlayerSetting
     protected override void EndBatch()
     {
         base.EndBatch();
-        StartCoroutine(SyntheEffect());
-        StartCoroutine(FieldEffect());
+        if (gameObject.activeSelf)
+        {
+            StartCoroutine(SyntheEffect());
+            StartCoroutine(FieldEffect());
+        }
         Norm.Play();
         foreach (var k in Synthe) k.gameObject.SetActive(true);
         if (player.WeaponLevel >= 7) { FlyOne.SetActive(true); FlyTwo.SetActive(true); }
