@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Red : PlayerSetting
 {
-    ParticleSystem Trail;
+    [SerializeField] GameObject Trail;
+    [SerializeField] Material Mat;
 
-
+    protected override void FindTarget()
+    {
+        
+    }
 }

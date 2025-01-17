@@ -39,13 +39,16 @@ Material:
     m_Ints: []
     m_Floats:
     - _Alpha: 1
-    - _AlphaWeight: 1
-    - _BlurRadius: 0
+    - _AlphaWeight: 0.1
+    - _ApplyTime: 1
+    - _BlurRadius: 3
     - _BlurSize: 1
     - _EnableExternalAlpha: 0
     - _OnBlur: 0
+    - _Power: 5
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _Outline: {r: 1, g: 0, b: 0, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

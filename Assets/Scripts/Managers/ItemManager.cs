@@ -48,7 +48,7 @@ public class ItemManager : MonoBehaviour
         int Ran;
         if (CreatedTiming.Count >= MaxItem)
         {
-            // If Over MaxItem Num. FIFO
+            // FIFO
             int First = CreatedTiming[0]; CreatedTiming.RemoveAt(0);
             if (MustMake) Ran = Random.Range(0, 149);
             else Ran = Random.Range(0, 200);

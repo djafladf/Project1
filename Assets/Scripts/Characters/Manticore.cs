@@ -47,7 +47,7 @@ public class Manticore : PlayerSetting
         NormalInfo.Damage = (int)((1 + GameManager.instance.PlayerStatus.attack + player.AttackRatio + player.ReinforceAmount[0]) * DamageRatio * 10);
         GameManager.instance.BM.MakeMeele(NormalInfo, 0.5f, transform.position, Vector3.zero, 0, false, Bullets[2]);
         yield return new WaitForSeconds(0.2f);
-        SpecInfo.DealFrom = NormalInfo.Damage * 2;
+        SpecInfo.Damage = NormalInfo.Damage * 2;
         GameManager.instance.BM.MakeMeele(SpecInfo, 0.5f, transform.position, Vector3.zero, 0, false, Bullets[1]);
     }
 

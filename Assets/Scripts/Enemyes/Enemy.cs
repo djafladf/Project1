@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     [NonSerialized] public Transform Target = null;
 
     protected int MaxHP;
+    protected int[] EnemyInd = { -1, -1 };
     protected bool IsLive = true;
     protected bool OnIce = false;
     protected bool OnStun = false;
@@ -134,6 +135,7 @@ public class Enemy : MonoBehaviour
             GameManager.instance.DM.MakeDamage(GetDamage, transform);
             GameManager.instance.UM.DamageUp(0,Info.DealFrom, GetDamage);
             HP -= GetDamage;
+            if (Info.Vamp > 0) GameManager.instance.BM.Vamp[Info.DealFrom]((int)(GetDamage * Info.Vamp));
             HPChange();     // For Boss
             if (HP <= 0)
             {

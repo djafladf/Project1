@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -44,7 +45,7 @@ public class attribute
     public int dragons;
     public int special;
     public float hp;
-
+    public float vamp;
     public attribute()
     {
         attack = 0; attackspeed = 0; defense = 0; speed = 0; hp = 0;
@@ -71,16 +72,21 @@ public class BulletInfo
     public bool IsEffect;
     public bool IsFix;
     public float KnockBack;
+    public float Vamp;
     public float IgnoreDefense;
     public float ScaleFactor;
     public float SpeedFactor;
+
+    public Action<Transform, int> DeadTrigger;
 
     public DeBuff DeBuffs;
 
     public Buff Buffs;
 
-    public BulletInfo(int damage = 0, bool isEffect = false, float knockBack = 0, float scalefactor = 1, float speedfactor = 1,bool isFix = false, float ignoreDefense = 0,
-        DeBuff debuffs = null, Buff buffs = null, int dealFrom = -1,int layerOrder = 4)
+    public BulletInfo(int damage = 0, bool isEffect = false, float knockBack = 0, float scalefactor = 1,
+        float speedfactor = 1, bool isFix = false, float ignoreDefense = 0,
+        DeBuff debuffs = null, Buff buffs = null, int dealFrom = -1, int layerOrder = 4, float vamp = 0,
+        Action<Transform, int> DT = null)
     {
         Damage = damage; DealFrom = dealFrom;
         IsEffect = isEffect; IsFix = isFix; ScaleFactor = scalefactor; SpeedFactor = speedfactor;
@@ -88,16 +94,18 @@ public class BulletInfo
         DeBuffs = debuffs;
         Buffs = buffs;
         LayerOrder = layerOrder;
+        if(GameManager.instance != null) Vamp = vamp + GameManager.instance.PlayerStatus.vamp;
     }
 
     public int ReturnDamage(float defense)
     {
+        if (IsFix) return Damage;
+
         if (defense < 70) { }
         else if (defense < 80) defense = 80 + (defense - 80) * 0.5f;
         else if (defense < 90) defense = 85 + (defense - 90) * 0.2f;
-
-        if (IsFix) return Damage;
-        else return Mathf.CeilToInt(Damage * (100 + IgnoreDefense - defense) * 0.01f);
+        
+        return Mathf.CeilToInt(Damage * (100 + IgnoreDefense - defense) * 0.01f);
     }
 
     public void Copy(BulletInfo From)

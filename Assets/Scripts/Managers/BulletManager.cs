@@ -1,7 +1,11 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletManager : MonoBehaviour
 {
+    [HideInInspector] public List<Action<int>> Vamp = new List<Action<int>>();
+
     [SerializeField] GameObject Bullet;
     [SerializeField] GameObject Warning;
     GameObject[] Bullets;

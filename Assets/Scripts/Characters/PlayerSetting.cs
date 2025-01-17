@@ -87,15 +87,7 @@ public class PlayerSetting : MonoBehaviour
                         if (Vector3.Distance(transform.position, TargetPos.position) <= 2f) player.IsFollow = false;
                     }
                     else
-                    {
-                        TargetPos = GetNearest(scanRange);
-                        if (TargetPos != null)
-                        {
-                            if (Vector3.Distance(transform.position, TargetPos.position) <= AttackRange) Attack();
-                            player.Dir = (TargetPos.position - transform.position).normalized;
-                        }
-                        else player.Dir = Vector2.zero;
-                    }
+                        FindTarget();
                 }
                 else
                 {
@@ -126,6 +118,17 @@ public class PlayerSetting : MonoBehaviour
             }
             WeaponAnim();
         } 
+    }
+
+    protected virtual void FindTarget()
+    {
+        TargetPos = GetNearest(scanRange);
+        if (TargetPos != null)
+        {
+            if (Vector3.Distance(transform.position, TargetPos.position) <= AttackRange) Attack();
+            player.Dir = (TargetPos.position - transform.position).normalized;
+        }
+        else player.Dir = Vector2.zero;
     }
 
     protected virtual void WeaponAnim()
